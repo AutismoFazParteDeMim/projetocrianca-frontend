@@ -5,10 +5,12 @@ const styles = StyleSheet.create({
     container: {
         width: '100%',
         height: metrics.headerHeight,
-        padding: metrics.headerPadding,
+        paddingTop: metrics.headerPadding,
         flexDirection: "row",
         alignItems: "center",
-        justifyContent: "center"
+        justifyContent: "center",
+        position: "relative",
+        backgroundColor: colors.background
     },
 
     title: {
@@ -19,7 +21,7 @@ const styles = StyleSheet.create({
 
     button: {
         position: "absolute",
-        left: metrics.padding
+        left: 0
     }
 })
 

@@ -1,11 +1,12 @@
 import React from "react"
 import { Text, SafeAreaView } from "react-native"
 
+import styles from "./styles"
 import Header from "../../components/Header"
 
-function Login({navigation}) {
+function Login({ navigation }) {
     return (
-        <SafeAreaView>
+        <SafeAreaView style={styles.globalContainer}>
             <Header title="Login" navigation={navigation} />
             <Text>Login</Text>
         </SafeAreaView>
