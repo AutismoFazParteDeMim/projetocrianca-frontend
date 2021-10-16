@@ -1,18 +1,16 @@
-import React from "react";
+import React from "react"
+import { Text, View } from "react-native"
 
-import { View, Text } from "react-native"
-
-import Button from '../Button'
-
-import style from "./style"
+import styles from "./styles"
+import BackButton from "./BackButton"
 
 function Header(props) {
     return (
-        <View style={style.container}>
-            <View style={style.button}>
-                <Button type="back" />
+        <View style={styles.container}>
+            <View style={styles.button}>
+                <BackButton onPress={() => props.navigation.goBack()} />
             </View>
-            <Text style={[style.text, style.title]}>{props.title}</Text>
+            <Text style={styles.title}>{props.title}</Text>
         </View>
     )
 }

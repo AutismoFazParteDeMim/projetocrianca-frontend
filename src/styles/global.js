@@ -1,20 +1,26 @@
-import metrics from './metrics';
-import colors from './colors';
+import { StyleSheet } from "react-native"
 
-const global = {
-  container: {
-    paddingHorizontal: metrics.padding,
-    backgroundColor: colors.background
-  },
+import { colors, fonts, metrics } from "./index"
 
-  text: {
-      color: colors.text
-  },
+const global = StyleSheet.create({
+    globalContainer: {
+        width: "100%",
+        flex: 1,
+        padding: metrics.padding,
+        backgroundColor: colors.background
+    },
 
-  icon: {
-    fontSize: 24,
-    color: colors.text
-  }
-};
+    globalText: {
+        fontSize: fonts.text.size,
+        fontWeight: fonts.text.weight,
+        color: colors.text
+    },
 
-export default global;
+    globalTitle: {
+        fontSize: fonts.title.size,
+        fontWeight: fonts.title.weight,
+        color: colors.text
+    }
+})
+
+export default global

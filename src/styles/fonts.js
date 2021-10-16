@@ -7,7 +7,7 @@ export default {
         size: 18,
         weight: '700'
     },
-    regular: {
+    text: {
         size: 14,
         weight: '400'
     },

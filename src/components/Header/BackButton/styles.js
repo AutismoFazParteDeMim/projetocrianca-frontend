@@ -1,5 +1,4 @@
-import { StyleSheet } from "react-native";
-
+import { StyleSheet } from "react-native"
 import {colors, metrics} from "../../../styles"
 
 const styles = StyleSheet.create({
@@ -8,9 +7,9 @@ const styles = StyleSheet.create({
         height: 40,
         alignItems: "center",
         justifyContent: "center",
-        borderBottomWidth: metrics.button.borderBottomWidth,
         borderLeftWidth: 0.1,
         borderRightWidth: 0.1,
+        borderBottomWidth: metrics.button.borderBottomWidth,
         borderRadius: 40,
         borderColor: colors.inputBackground_shadow,
         backgroundColor: colors.inputBackground

@@ -1,25 +1,25 @@
 import { StyleSheet } from "react-native"
-
-import { global, metrics, fonts } from '../../styles'
+import { colors, fonts, metrics } from "../../styles"
 
 const styles = StyleSheet.create({
-    ...global,
     container: {
+        width: '100%',
         height: metrics.headerHeight,
-        paddingTop: metrics.headerPadding,
+        padding: metrics.headerPadding,
         flexDirection: "row",
         alignItems: "center",
-        justifyContent: "center",
+        justifyContent: "center"
     },
-    
+
     title: {
         fontSize: fonts.title.size,
         fontWeight: fonts.title.weight,
+        color: colors.text
     },
 
     button: {
         position: "absolute",
-        left: metrics.padding,
+        left: metrics.padding
     }
 })
 

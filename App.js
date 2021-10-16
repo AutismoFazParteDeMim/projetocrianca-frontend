@@ -1,27 +1,30 @@
-import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-import Button from './src/components/Button';
+import React from "react"
+import { StatusBar } from "react-native"
+import { NavigationContainer } from '@react-navigation/native'
+import { createNativeStackNavigator } from '@react-navigation/native-stack'
 
-import Header from './src/components/Header';
+import Welcome from "./src/screens/Welcome"
+import Login from "./src/screens/Login"
+import Register from "./src/screens/Register"
+import { colors } from "./src/styles"
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Header title="Faça Login" />
-      <StatusBar
-        animated={true}
-        backgroundColor="#fff"
-        translucent={false}
-        hidden={false} />
-
-        <Button  icon="log-in-outline" text="Login" />
-    </View>
-  );
+const Stack = createNativeStackNavigator()
+function App() {
+    return (
+        <NavigationContainer>
+            <StatusBar
+                animated={true}
+                backgroundColor={colors.background}
+                barStyle="dark-content"
+                translucent={false}
+                hidden={false} />
+            <Stack.Navigator initialRouteName="Welcome" screenOptions={{ headerShown: false }}>
+                <Stack.Screen name="Welcome" component={Welcome} />
+                <Stack.Screen name="Login" component={Login} />
+                <Stack.Screen name="Register" component={Register} />
+            </Stack.Navigator>
+        </NavigationContainer>
+    )
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-});
+export default App

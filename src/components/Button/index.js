@@ -1,16 +1,20 @@
-import React from "react";
+import React from "react"
+import { Text, TouchableOpacity } from "react-native"
 
-import Back from "./Back";
-import DefaultButton from "./Default";
+import styles from "./styles"
 
 function Button(props) {
-    if (props.type == "back") {
+    if (props.type == "secondary") {
         return (
-            <Back />
+            <TouchableOpacity onPress={props.onPress} style={[styles.container, styles.secondaryContainer]}>
+                <Text style={[styles.title, styles.secondaryTitle]}>{props.title}</Text>
+            </TouchableOpacity>
         )
     } else {
         return (
-            <DefaultButton type={props.type} icon={props.icon} text={props.text} />
+            <TouchableOpacity onPress={props.onPress} style={styles.container}>
+                <Text style={styles.title}>{props.title}</Text>
+            </TouchableOpacity>
         )
     }
 }
