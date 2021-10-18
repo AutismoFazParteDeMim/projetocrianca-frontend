@@ -10,7 +10,8 @@ const styles = StyleSheet.create({
         alignItems: "center",
         justifyContent: "center",
         position: "relative",
-        backgroundColor: colors.background
+        backgroundColor: colors.background,
+        zIndex: 1
     },
 
     title: {

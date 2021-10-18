@@ -1,22 +1,17 @@
 import React from "react"
 import { Text, TouchableOpacity } from "react-native"
+import { Icon } from "../../styles"
 
 import styles from "./styles"
 
 function Button(props) {
-    if (props.type == "secondary") {
-        return (
-            <TouchableOpacity onPress={props.onPress} style={[styles.container, styles.secondaryContainer]}>
-                <Text style={[styles.title, styles.secondaryTitle]}>{props.title}</Text>
-            </TouchableOpacity>
-        )
-    } else {
-        return (
-            <TouchableOpacity onPress={props.onPress} style={styles.container}>
-                <Text style={styles.title}>{props.title}</Text>
-            </TouchableOpacity>
-        )
-    }
+    return (
+        <TouchableOpacity onPress={props.onPress} style={props.type == "secondary" ? [styles.container, styles.secondaryContainer] : styles.container}>
+            {props.iconPosition == "left" && <Icon name={props.icon} style={props.type == "secondary" ? [styles.icon, styles.secondaryIcon] : styles.icon} />}
+            <Text style={props.type == "secondary" ? [styles.title, styles.secondaryTitle] : styles.title}>{props.title}</Text>
+            {props.iconPosition == "right" && <Icon name={props.icon} style={props.type == "secondary" ? [styles.icon, styles.secondaryIcon] : styles.icon} />}
+        </TouchableOpacity>
+    )
 }
 
 export default Button

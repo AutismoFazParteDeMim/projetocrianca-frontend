@@ -1,6 +1,8 @@
 import { StyleSheet } from "react-native"
 
-import { colors, fonts, metrics } from "./index"
+import colors from "./colors"
+import metrics from "./metrics"
+import fonts from "./fonts"
 
 const global = StyleSheet.create({
     globalContainer: {
@@ -20,6 +22,10 @@ const global = StyleSheet.create({
         fontSize: fonts.title.size,
         fontWeight: fonts.title.weight,
         color: colors.text
+    },
+
+    globalIcon: {
+        fontSize: 24
     }
 })
 
