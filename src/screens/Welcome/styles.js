@@ -4,7 +4,6 @@ import { colors, global, metrics } from "../../styles"
 const styles = StyleSheet.create({
     ...global,
     container: {
-        width: "100%",
         flex: 1,
         alignItems: "center",
         justifyContent: "center"
@@ -13,7 +12,7 @@ const styles = StyleSheet.create({
     text: {
         width: "80%",
         textAlign: "center",
-        color: colors.text_alt,
+        color: colors.text_alt
     },
 
     title: {

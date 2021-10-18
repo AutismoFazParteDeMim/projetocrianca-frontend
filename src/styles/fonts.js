@@ -1,18 +1,22 @@
 export default {
     title: {
         size: 24,
-        weight: '700'
+        font: "bold",
+        paddingTop: 4
     },
     subTitle: {
         size: 18,
-        weight: '700'
+        font: "bold",
+        paddingTop: 4
     },
     text: {
         size: 14,
-        weight: '400'
+        font: "regular",
+        paddingTop: 4
     },
     button: {
         size: 16,
-        weight: '700'
+        font: "bold",
+        paddingTop: 5
     }
 }

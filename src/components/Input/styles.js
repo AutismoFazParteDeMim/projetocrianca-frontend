@@ -1,5 +1,5 @@
 import { StyleSheet } from "react-native"
-import { colors, global, metrics } from "../../styles"
+import { colors, global, metrics, fonts } from "../../styles"
 
 const styles = StyleSheet.create({
     ...global,
@@ -35,7 +35,10 @@ const styles = StyleSheet.create({
     },
 
     input: {
-        flex: 1
+        flex: 1,
+        fontFamily: fonts.text.font,
+        fontSize: fonts.text.size,
+        paddingTop: fonts.text.paddingTop
     }
 })
 

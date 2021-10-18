@@ -1,10 +1,11 @@
 import { StyleSheet } from "react-native"
-import {colors, fonts, metrics} from "../../styles"
+import { colors, fonts } from "../../styles"
 
 const styles = StyleSheet.create({
     text: {
+        fontFamily: fonts.button.font,
         fontSize: fonts.text.size,
-        fontWeight: fonts.button.weight,
+        paddingTop: fonts.text.paddingTop,
         textDecorationLine: "underline",
         color: colors.primary
     }
