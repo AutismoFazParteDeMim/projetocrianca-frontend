@@ -1,7 +1,7 @@
 import React from "react"
 import { Text, TextInput, View } from "react-native"
-import { colors, Icon } from "../../styles"
-import styles from "./styles"
+import { colors, Icon } from "../../../styles"
+import styles from "../styles"
 
 function Input(props) {
     return (
@@ -12,12 +12,7 @@ function Input(props) {
                         <Icon name={props.icon} style={[styles.globalIcon, styles.icon]} />
                     </View>
                 }
-
-                {props.type == "password"
-                    ? <TextInput placeholder={props.placeholder} secureTextEntry={true} placeholderTextColor={colors.text} style={styles.input} />
-                    : <TextInput placeholder={props.placeholder} placeholderTextColor={colors.text} style={styles.input} />
-                }
-
+                <TextInput placeholder={props.placeholder} placeholderTextColor={colors.text} style={styles.input} secureTextEntry={true} autoCompleteType={props.type} autoCorrect={false}/>
             </View>
         </View>
     )

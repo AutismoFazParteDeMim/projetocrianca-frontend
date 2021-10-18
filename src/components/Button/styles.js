@@ -1,11 +1,10 @@
 import { StyleSheet } from "react-native"
-import { colors, fonts, metrics, global } from "../../styles"
+import { colors, fonts, metrics } from "../../styles"
 
 const styles = StyleSheet.create({
     container: {
         width: metrics.button.width,
         height: metrics.button.height,
-        flexDirection: "row",
         alignItems: "center",
         justifyContent: "center",
         borderLeftWidth: 0.1,

@@ -12,7 +12,7 @@ const styles = StyleSheet.create({
         borderBottomWidth: metrics.button.borderBottomWidth,
         borderRadius: 40,
         borderColor: colors.inputBackground_shadow,
-        backgroundColor: colors.inputBackground
+        backgroundColor: colors.background
     },
 
     icon: {
