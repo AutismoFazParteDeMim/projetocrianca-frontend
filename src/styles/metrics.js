@@ -3,7 +3,7 @@ import { Platform } from "react-native"
 export default {
     padding: 16,
     ...Platform.select({
-        ios: { headerHeight: 64, headerPadding: 24 },
+        ios: { headerHeight: 64, headerPadding: 28 },
         android: { headerHeight: 80, headerPadding: 0 }
     }),
 
