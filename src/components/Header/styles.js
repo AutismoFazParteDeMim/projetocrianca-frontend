@@ -6,7 +6,6 @@ const styles = StyleSheet.create({
     container: {
         width: '100%',
         height: metrics.headerHeight,
-        paddingTop: metrics.headerPadding,
         flexDirection: "row",
         alignItems: "center",
         justifyContent: "center",
