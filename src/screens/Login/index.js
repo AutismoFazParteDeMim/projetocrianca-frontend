@@ -10,7 +10,11 @@ import Link from "../../components/Link"
 
 function Login({ navigation }) {
     return (
+<<<<<<< HEAD
         <View style={styles.globalContainer}>
+=======
+        
+>>>>>>> 9f91f376fa561c12dc9a6a0c89facecf432ce148
             <Header title="Login" navigation={navigation} />
             
             <View style={[styles.container]}>
