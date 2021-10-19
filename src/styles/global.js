@@ -13,15 +13,17 @@ const global = StyleSheet.create({
     },
 
     globalText: {
+        fontFamily: fonts.text.font,
         fontSize: fonts.text.size,
-        fontWeight: fonts.text.weight,
-        color: colors.text
+        color: colors.text,
+        paddingTop: fonts.text.paddingTop
     },
 
     globalTitle: {
+        fontFamily: fonts.title.font,
         fontSize: fonts.title.size,
-        fontWeight: fonts.title.weight,
-        color: colors.text
+        paddingTop: fonts.title.paddingTop,
+        color: colors.text,
     },
 
     globalIcon: {

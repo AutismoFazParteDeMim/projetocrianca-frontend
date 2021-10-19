@@ -10,7 +10,7 @@ function Header(props) {
             <View style={styles.button}>
                 <BackButton onPress={() => props.navigation.goBack()} />
             </View>
-            <Text style={styles.title}>{props.title}</Text>
+            <Text style={styles.globalTitle}>{props.title}</Text>
         </View>
     )
 }

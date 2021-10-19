@@ -17,11 +17,12 @@ const styles = StyleSheet.create({
     },
 
     title: {
+        fontFamily: fonts.button.font,
         fontSize: fonts.button.size,
-        fontWeight: fonts.button.weight,
-        color: colors.text_alt,
+        paddingTop: fonts.button.paddingTop,
         marginLeft: metrics.padding,
-        marginRight: metrics.padding
+        marginRight: metrics.padding,
+        color: colors.text_alt,
     },
 
     icon: {
