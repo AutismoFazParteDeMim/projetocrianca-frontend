@@ -23,7 +23,7 @@ const global = StyleSheet.create({
         fontFamily: fonts.title.font,
         fontSize: fonts.title.size,
         paddingTop: fonts.title.paddingTop,
-        color: colors.text,
+        color: colors.text
     },
 
     globalIcon: {

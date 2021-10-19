@@ -9,7 +9,7 @@ import Button from "../../components/Button"
 
 function Login({ navigation }) {
     return (
-        <SafeAreaView style={styles.globalContainer}>
+        <SafeAreaView edges={['bottom', 'left', 'right']} style={styles.globalContainer}>
             <Header title="Login" navigation={navigation} />
             
             <View style={[styles.container]}>

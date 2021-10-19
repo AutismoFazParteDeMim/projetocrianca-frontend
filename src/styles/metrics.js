@@ -6,7 +6,6 @@ export default {
         ios: { headerHeight: 64, headerPadding: 28 },
         android: { headerHeight: 80, headerPadding: 0 }
     }),
-
     button: {
         width: 240,
         height: 56,
