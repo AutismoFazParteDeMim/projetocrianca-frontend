@@ -9,7 +9,7 @@ import Button from "../../components/Button"
 
 function Register({ navigation }) {
     return (
-        <SafeAreaView edges={['bottom', 'left', 'right']} style={[styles.globalContainer]}>
+        <View edges={['bottom', 'left', 'right']} style={[styles.globalContainer]}>
             <Header title="Cadastre-se" navigation={navigation} />
 
             <View style={[styles.container]}>
@@ -20,7 +20,7 @@ function Register({ navigation }) {
                 <InputPass type="password" icon="lock-closed-outline" placeholder="Crie uma senha" />
                 <Button icon="arrow-forward-outline" iconPosition="right" title="Próximo" />
             </View>
-        </SafeAreaView>
+        </View>
     )
 }
 

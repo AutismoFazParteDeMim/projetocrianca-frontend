@@ -9,7 +9,7 @@ import Button from "../../components/Button"
 
 function Login({ navigation }) {
     return (
-        <SafeAreaView edges={['bottom', 'left', 'right']} style={styles.globalContainer}>
+        <View edges={['bottom', 'left', 'right']} style={styles.globalContainer}>
             <Header title="Login" navigation={navigation} />
             
             <View style={[styles.container]}>
@@ -20,7 +20,7 @@ function Login({ navigation }) {
                 <Image source={require('../../../assets/animais.png')} style={styles.animals} />
                 
             </View>
-        </SafeAreaView>
+        </View>
     )
 }
 
