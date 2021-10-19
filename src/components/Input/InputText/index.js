@@ -9,7 +9,7 @@ function Input(props) {
             <View style={styles.wrapper}>
                 {props.icon &&
                     <View style={styles.iconWrapper}>
-                        <Icon name={props.icon} style={[styles.globalIcon, styles.icon]} />
+                        <Icon name={props.icon} style={[styles.icon]} />
                     </View>
                 }
 

@@ -31,7 +31,8 @@ const styles = StyleSheet.create({
     },
 
     icon: {
-        color: colors.text,
+        fontSize: metrics.button.iconSize,
+        color: colors.text
     },
 
     input: {
