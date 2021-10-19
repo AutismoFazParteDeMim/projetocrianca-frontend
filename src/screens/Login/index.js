@@ -10,9 +10,13 @@ import Link from "../../components/Link"
 
 function Login({ navigation }) {
     return (
-        <View style={styles.globalContainer}>
-            <Header title="Login" navigation={navigation} />
 
+        <View style={styles.globalContainer}>
+
+        
+
+            <Header title="Login" navigation={navigation} />
+            
             <View style={[styles.container]}>
 
                 <InputText type="email" icon="mail-outline" placeholder="Insira seu e-mail" />
@@ -20,14 +24,14 @@ function Login({ navigation }) {
 
                 <View style={styles.link} >
 
-                    <Link text="Esqueceu sua senha?" />
-
+                <Link text="Esqueceu sua senha?" />
+                
 
                 </View>
 
                 <Button icon="enter-outline" iconPosition="left" title="Entrar" />
                 <Image source={require('../../../assets/animais.png')} style={styles.animals} />
-
+                
             </View>
         </View>
     )
