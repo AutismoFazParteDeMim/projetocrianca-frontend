@@ -9,13 +9,11 @@ const styles = StyleSheet.create({
         justifyContent: "center",
     },
 
-    animals:{
-        flex: 1,
-        width: 266,
-        heigth: 256, 
-        marginBottom: 16,
-        marginTop: 464,  
-    },
+    animals: {
+        height: "40%",
+        resizeMode: 'contain',
+        marginBottom: metrics.padding
+    }
 })
 
 export default styles
