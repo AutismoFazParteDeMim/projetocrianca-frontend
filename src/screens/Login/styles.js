@@ -13,6 +13,12 @@ const styles = StyleSheet.create({
         height: "40%",
         resizeMode: 'contain',
         marginBottom: metrics.padding
+    },
+    link:{
+        width: "100%",
+        flexDirection: "row-reverse",
+        // justifyContent: "fle-end",
+        flexWrap: "wrap",
     }
 })
 
