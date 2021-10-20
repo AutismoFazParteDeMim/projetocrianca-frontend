@@ -13,7 +13,7 @@ function Welcome({ navigation }) {
         <View style={styles.container}>
             <View style={styles.topSide}>
                 <Text style={[styles.globalTitle, styles.text, styles.title]}>Seja Bem Vindo(a)!</Text>
-                <Text style={[styles.globalText, styles.text]}>Lorem ipsum nunc primiskj suscipit dictumst, sociosqu vehicula morbi fermentumf litora, facilisis tristiquedwgj  consectetur cubilia.</Text>
+                <Text style={[styles.globalText, styles.text]}>Esse aplicativo serve para o auxílio de cuidados e desenvolvimentos de crianças autistas por seus país.</Text>
             </View>
 
             <View style={styles.bottomSide}>
@@ -25,13 +25,7 @@ function Welcome({ navigation }) {
             <CustomModal visible={showModal} title="Cadastro" closeAction={() => setShowModal(false)}>
                 <ScrollView>
                     <Text>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Adipiscing sed sapien auctor integer. Urna, eros sit accumsan ultricies pharetra eget interdum nibh. Sit mi consectetur pellentesque urna quis. Praesent commodo commodo, justo, turpis nisi, tristique arcu.
-
-                        Auctor sem lacus, morbi vel. In blandit quam senectus ullamcorper. Tempor, quis vitae posuere vel, suspendisse ut bibendum at. Duis sed nullam tortor consectetur duis arcu. Consectetur massa et sagittis sit lacus consectetur lectus.
-                        Enim tortor et imperdiet fermentum quam. Dolor, aliquet feugiat mattis pharetra.
-
-                        *Nec ac suspendisse auctor et semper. Dignissim commodo volutpat lacus, enim mattis est mattis viverra. Lacinia non mattis elit nulla urna, rhoncus mattis volutpat. Tortor commodo placerat mus sem amet velit.
-                        *Amet, magna congue vitae, fermentum viverra natoque felis praesent. Tempus porttitor et.
+                        Esse aplicativo coleta e armazena informações pessoais sobre seu usuário, com a finalidade de oferecer recursos relacionados ao aplicativo, nós não compartilhamos suas informações com terceiros. Ao utilizar esse aplicativo, você concorda em ter essas informações coletadas e utilizadas por nós, estudantes do Curso de Extensão da UniSociesc.
                     </Text>
                 </ScrollView>
             </CustomModal>

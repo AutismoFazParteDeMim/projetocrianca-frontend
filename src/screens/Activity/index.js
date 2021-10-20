@@ -5,19 +5,19 @@ import styles from "./styles"
 
 import Button from "../../components/Button"
 
-function Atividade({ navigation }) {
+function Activity({ navigation }) {
     return (
         <View style={styles.container}>
             <Header title="Atividade" navigation={navigation} />
 
             <View style={styles.bottomSide}>
-                <Button title="Alfabeto Pontilhado" onPress={()=> navigation('Alfabeto')}/>
-                <Button type="secondary" title="Rotina" onPress={()=> navigation('Rotina')}/>
-                <Button type="tertiary" title="Expressão" onPress={()=> navigation('Expressao')}/>
+                <Button title="Alfabeto Pontilhado" onPress={()=> navigation.navigate('Alfabeto')}/>
+                <Button type="secondary" title="Rotina" onPress={()=> navigation.navigate('Rotina')}/>
+                <Button type="tertiary" title="Expressão" onPress={()=> navigation.navigate('Expressao')}/>
             </View>
 
         </View>
     )
 }
 
-export default Atividade
+export default Activity
