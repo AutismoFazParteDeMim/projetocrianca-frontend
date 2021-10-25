@@ -1,16 +1,17 @@
 import { StyleSheet } from "react-native"
-import { metrics, global } from "../../styles"
+import { metrics, global, colors } from "../../styles"
 
 const styles = StyleSheet.create({
     ...global,
     modal: {
         alignItems: "center",
-        justifyContent: "center"
+        justifyContent: "center",
+        backgroundColor: "rgba(0,0,0,0.6)"
     },
 
     container: {
-        width: "100%",
-        height: 400,
+        width: "80%",
+        height: 200,
         padding: metrics.padding,
         borderLeftWidth: 0.1,
         borderRightWidth: 0.1,
@@ -22,6 +23,13 @@ const styles = StyleSheet.create({
         flex: 1,
         alignItems: "center",
         justifyContent: "space-evenly"
+    },
+    icon:{
+        color: colors.text_alt,
+        fontSize: 48
+    },
+    text: {
+        color: colors.text_alt,
     }
 })
 

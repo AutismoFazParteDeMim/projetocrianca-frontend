@@ -6,9 +6,11 @@ import styles from "./styles"
 import Button from "../../components/Button"
 import Link from "../../components/Link"
 import CustomModal from "../../components/Modal/CustomModal"
+import SucessModal from "../../components/Modal/Success"
 
 function Welcome({ navigation }) {
     const [showModal, setShowModal] = React.useState(false)
+    // const [showModalS, setShowModalS] = React.useState(false)
     return (
         <View style={styles.container}>
             <View style={styles.topSide}>
@@ -17,10 +19,12 @@ function Welcome({ navigation }) {
             </View>
 
             <View style={styles.bottomSide}>
+                {/* <Button title="Pop-up" onPress={() => setShowModalS(true)} /> */}
                 <Button title="Faça login" onPress={() => navigation.navigate('Login')} />
                 <Button type="secondary" title="Crie uma conta" onPress={() => navigation.navigate('Register')} />
                 <Link text="Política de privacidade" onPress={() => setShowModal(true)} />
             </View>
+
 
             <CustomModal visible={showModal} title="Cadastro" closeAction={() => setShowModal(false)}>
                 <ScrollView>
@@ -35,6 +39,10 @@ function Welcome({ navigation }) {
                     </Text>
                 </ScrollView>
             </CustomModal>
+            {/* <SucessModal visible={showModalS} title="Cadastro" closeAction={() => setShowModalS(false)} text="lorem ipsum!!"/> */}
+
+
+        
         </View>
     )
 }
