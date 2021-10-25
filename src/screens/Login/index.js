@@ -7,7 +7,7 @@ import InputText from "../../components/Input/InputText"
 import InputPass from "../../components/Input/InputPass"
 import Button from "../../components/Button"
 import Link from "../../components/Link"
-import CustomModal from "../../components/Modal"
+import CustomModal from "../../components/Modal/CustomModal"
 
 function Login({ navigation }) {
     const [showModal, setShowModal] = React.useState(false)

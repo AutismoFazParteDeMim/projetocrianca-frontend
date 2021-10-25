@@ -7,7 +7,7 @@ import Header from "../../components/Header"
 import InputText from "../../components/Input/InputText"
 import InputPass from "../../components/Input/InputPass"
 import Button from "../../components/Button"
-import CustomModal from "../../components/Modal"
+import CustomModal from "../../components/Modal/CustomModal"
 
 function Register({ navigation }) {
     const [showModal, setShowModal] = React.useState(false)

@@ -5,7 +5,7 @@ import styles from "./styles"
 
 import Button from "../../components/Button"
 import Link from "../../components/Link"
-import CustomModal from "../../components/Modal"
+import CustomModal from "../../components/Modal/CustomModal"
 
 function Welcome({ navigation }) {
     const [showModal, setShowModal] = React.useState(false)
