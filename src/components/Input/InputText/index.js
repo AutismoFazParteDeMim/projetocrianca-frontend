@@ -14,10 +14,10 @@ function Input(props) {
                 }
 
                 {props.type == "email"
-                    ? <TextInput placeholder={props.placeholder} placeholderTextColor={colors.text} style={styles.input} autoCompleteType={props.type} autoCorrect={false} autoCapitalize="none" />
+                    ? <TextInput placeholder={props.placeholder} placeholderTextColor={colors.text} style={styles.input} autoCompleteType={props.type} autoCorrect={false} autoCapitalize="none" onChangeText={props.onChangeText} />
                     : props.autoCapitalize
-                        ? <TextInput placeholder={props.placeholder} placeholderTextColor={colors.text} style={styles.input} autoCompleteType={props.type} autoCapitalize={props.autoCapitalize} />
-                        : <TextInput placeholder={props.placeholder} placeholderTextColor={colors.text} style={styles.input} autoCompleteType={props.type} />
+                        ? <TextInput placeholder={props.placeholder} placeholderTextColor={colors.text} style={styles.input} autoCompleteType={props.type} autoCapitalize={props.autoCapitalize} onChangeText={props.onChangeText} />
+                        : <TextInput placeholder={props.placeholder} placeholderTextColor={colors.text} style={styles.input} autoCompleteType={props.type} onChangeText={props.onChangeText} />
                 }
             </View>
         </View>

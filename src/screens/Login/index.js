@@ -1,5 +1,5 @@
-import React from "react"
-import { Text, View, Image } from "react-native"
+import React, { useState } from "react"
+import { Text, View, Image, Alert } from "react-native"
 
 import styles from "./styles"
 import Header from "../../components/Header"
@@ -9,19 +9,51 @@ import Button from "../../components/Button"
 import Link from "../../components/Link"
 import CustomModal from "../../components/Modal"
 
+import Firebase from '../../config/firebase'
+const auth = Firebase.auth()
+
 function Login({ navigation }) {
     const [showModal, setShowModal] = React.useState(false)
+
+    const [email, setEmail] = useState('')
+    const [password, setPassword] = useState('')
+
+    const onLogin = async () => {
+        try {
+            if (email !== '' && password !== '') {
+                await auth.signInWithEmailAndPassword(email, password)
+            } else {
+                Alert.alert(
+                    "Error",
+                    "Os campos não podem estar vazios.",
+                    [
+                        { text: "OK", onPress: () => console.log("OK Pressed") }
+                    ]
+                );
+            }
+        } catch (error) {
+            Alert.alert(
+                "Error",
+                error.message,
+                [
+                    { text: "OK", onPress: () => console.log("OK Pressed") }
+                ]
+            );
+        }
+    }
+
+
     return (
         <View style={styles.globalContainer}>
             <Header title="Login" navigation={navigation} />
 
             <View style={[styles.container]}>
-                <InputText type="email" icon="mail-outline" placeholder="Insira seu e-mail" />
-                <InputPass type="password" icon="lock-closed-outline" placeholder="Insira sua senha" />
+                <InputText type="email" icon="mail-outline" placeholder="Insira seu e-mail" onChangeText={text => setEmail(text)} />
+                <InputPass type="password" icon="lock-closed-outline" placeholder="Insira sua senha" onChangeText={text => setPassword(text)} />
                 <View style={styles.link} >
                     <Link text="Esqueceu sua senha?" onPress={() => setShowModal(true)} />
                 </View>
-                <Button icon="enter-outline" iconPosition="left" title="Entrar" />
+                <Button icon="enter-outline" iconPosition="left" title="Entrar" onPress={() => onLogin()} />
                 <Image source={require('../../../assets/animais.png')} style={styles.animals} />
             </View>
 

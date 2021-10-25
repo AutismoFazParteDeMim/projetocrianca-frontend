@@ -3,7 +3,7 @@ import { Text, TextInput, View } from "react-native"
 import { colors, Icon } from "../../../styles"
 import styles from "../styles"
 
-function Input(props) {
+function Input(props, { ...rest }) {
     return (
         <View style={styles.container}>
             <View style={styles.wrapper}>
@@ -12,7 +12,7 @@ function Input(props) {
                         <Icon name={props.icon} style={[styles.icon]} />
                     </View>
                 }
-                <TextInput placeholder={props.placeholder} placeholderTextColor={colors.text} style={styles.input} secureTextEntry={true} autoCompleteType={props.type} autoCorrect={false}/>
+                <TextInput {...rest} placeholder={props.placeholder} placeholderTextColor={colors.text} style={styles.input} secureTextEntry={true} autoCompleteType={props.type} autoCorrect={false} onChangeText={props.onChangeText} />
             </View>
         </View>
     )

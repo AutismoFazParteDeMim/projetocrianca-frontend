@@ -1,5 +1,5 @@
 import React from "react"
-import { Text, View, SafeAreaView, ScrollView } from "react-native"
+import { Text, View, ScrollView } from "react-native"
 
 import styles from "./styles"
 
@@ -9,6 +9,7 @@ import CustomModal from "../../components/Modal"
 
 function Welcome({ navigation }) {
     const [showModal, setShowModal] = React.useState(false)
+
     return (
         <View style={styles.container}>
             <View style={styles.topSide}>
@@ -18,7 +19,7 @@ function Welcome({ navigation }) {
 
             <View style={styles.bottomSide}>
                 <Button title="Faça login" onPress={() => navigation.navigate('Login')} />
-                <Button type="secondary" title="Crie uma conta" onPress={() => navigation.navigate('Register')} />
+                <Button type="secondary" title="Crie uma conta" onPress={() => navigation.navigate('Signup')} />
                 <Link text="Política de privacidade" onPress={() => setShowModal(true)} />
             </View>
 
