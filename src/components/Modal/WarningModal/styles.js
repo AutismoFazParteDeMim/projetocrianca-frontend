@@ -4,16 +4,13 @@ import ModalStyle from "../styles"
 
 const styles = StyleSheet.create({
     ...ModalStyle,
-    modal_alt: {
-        backgroundColor: "rgba(0,0,0,0.6)",
-    },
 
     container_alt: {
-        width: "100%",
-        height: 400,
-        borderColor: colors.inputBackground_shadow,
-        backgroundColor: colors.background,
-    }
+        borderColor: colors.warning_shadow,
+        backgroundColor: colors.warning,
+    },
+   
+  
 })
 
 export default styles

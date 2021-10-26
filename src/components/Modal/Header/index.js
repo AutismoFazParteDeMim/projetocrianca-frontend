@@ -7,7 +7,7 @@ import CloseButton from "../../Button/CloseButton"
 function ModalHeader(props) {
     return (
         <View style={styles.container}>
-            <Text style={[styles.globalTitle, styles.title]}>{props.title}</Text>
+            <Text style={[styles.globalTitle, styles.title, props.color &&  {color:props.color} ]}>{props.title}</Text>
             <View style={styles.button}>
                 <CloseButton onPress={props.closeAction} />
             </View>
