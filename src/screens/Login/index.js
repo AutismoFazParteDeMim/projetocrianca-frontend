@@ -10,35 +10,36 @@ import Link from "../../components/Link"
 import CustomModal from "../../components/Modal/CustomModal"
 
 import Firebase from '../../config/firebase'
+import WarningModal from "../../components/Modal/WarningModal"
 const auth = Firebase.auth()
 
 function Login({ navigation }) {
     const [showModal, setShowModal] = React.useState(false)
+    const [warningModal, setWarningModal] = React.useState(false)
 
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
+    const [errorMessage, setErrorMessage] = useState('')
 
     const onLogin = async () => {
         try {
             if (email !== '' && password !== '') {
                 await auth.signInWithEmailAndPassword(email, password)
             } else {
-                Alert.alert(
-                    "Error",
-                    "Os campos não podem estar vazios.",
-                    [
-                        { text: "OK", onPress: () => console.log("OK Pressed") }
-                    ]
-                );
+                setErrorMessage("Nehum campo pode estar vazio!")
+                setWarningModal(true)
             }
         } catch (error) {
-            Alert.alert(
-                "Error",
-                error.message,
-                [
-                    { text: "OK", onPress: () => console.log("OK Pressed") }
-                ]
-            );
+            if (error.code == "auth/invalid-email") {
+                setErrorMessage("O email digitado não está correto. Verifique e digite novamente.")
+            } else if (error.code == "auth/user-not-found") {
+                setErrorMessage("Usuário não encontrado. Verifique seu email ou crie uma conta.")
+            } else if (error.code == "auth/wrong-password") {
+                setErrorMessage("A senha digitada não está correta. Verifique e digite novamente.")
+            } else {
+                setErrorMessage("Algo deu errado! Pedimos desculpas pelo transtorno. | " + error.code)
+            }
+            setWarningModal(true)
         }
     }
 
@@ -62,6 +63,7 @@ function Login({ navigation }) {
                 <InputText type="email" icon="mail-outline" placeholder="Insira seu e-mail" />
                 <Button icon="send-outline" iconPosition="right" title="Enviar" onPress={() => setShowModal(false)} />
             </CustomModal>
+            <WarningModal visible={warningModal} closeAction={() => setWarningModal(false)} text={errorMessage} />
         </View>
     )
 }

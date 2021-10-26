@@ -6,7 +6,7 @@ import Icons from '@expo/vector-icons/Feather'  // novo import de outra bibliote
 
 import styles from './styles'
 
-function Error(props) {
+function ErrorModal(props) {
     const [showModal, setShowModal] = useState(props.visible)
 
     React.useEffect(() => {
@@ -22,7 +22,7 @@ function Error(props) {
             <View style={[styles.globalContainer, styles.modal]} >
 
                 <View style={[styles.container, styles.container_alt]}>
-                    <ModalHeader title={props.title} closeAction={props.closeAction} color={colors.text_alt} title="Error" />
+                    <ModalHeader closeAction={props.closeAction} color={colors.text_alt} title="Erro!" />
                     <View style={styles.content}>
                         <Icons name="alert-octagon" style={[styles.icon]} />
                         <Text style={styles.text}>{props.text}</Text>
@@ -33,4 +33,4 @@ function Error(props) {
     )
 }
 
-export default Error
+export default ErrorModal

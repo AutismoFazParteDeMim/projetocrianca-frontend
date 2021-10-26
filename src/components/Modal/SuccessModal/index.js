@@ -5,7 +5,7 @@ import { colors, Icon } from '../../../styles';
 
 import styles from './styles'
 
-function Sucess(props) {
+function SucessModal(props) {
     const [showModal, setShowModal] = useState(props.visible)
 
     React.useEffect(() => {
@@ -21,7 +21,7 @@ function Sucess(props) {
             <View style={[styles.globalContainer, styles.modal]}>
 
                 <View style={[styles.container, styles.container_alt]}>
-                    <ModalHeader title={props.title} closeAction={props.closeAction} color={colors.text_alt} title="Sucess" />
+                    <ModalHeader closeAction={props.closeAction} color={colors.text_alt} title="Sucesso!" />
                     <View style={styles.content}>
                         <Icon name="checkmark-circle-outline" style={[styles.icon]} />
                         <Text style={styles.text}>{props.text}</Text>
@@ -32,4 +32,4 @@ function Sucess(props) {
     )
 }
 
-export default Sucess
+export default SucessModal

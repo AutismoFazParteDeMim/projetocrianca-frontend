@@ -30,6 +30,7 @@ const styles = StyleSheet.create({
     },
     text: {
         color: colors.text_alt,
+        textAlign: "center"
     }
 })
 
