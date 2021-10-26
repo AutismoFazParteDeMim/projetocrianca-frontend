@@ -26,7 +26,7 @@ const styles = StyleSheet.create({
     },
     icon:{
         color: colors.text_alt,
-        fontSize: 48
+        fontSize: 70
     },
     text: {
         color: colors.text_alt,

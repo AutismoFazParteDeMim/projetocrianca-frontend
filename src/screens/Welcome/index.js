@@ -6,7 +6,7 @@ import styles from "./styles"
 import Button from "../../components/Button"
 import Link from "../../components/Link"
 import CustomModal from "../../components/Modal/CustomModal"
-import SucessModal from "../../components/Modal/Success"
+import Warning from "../../components/Modal/WarningModal"
 
 function Welcome({ navigation }) {
     const [showModal, setShowModal] = React.useState(false)
@@ -39,7 +39,7 @@ function Welcome({ navigation }) {
                     </Text>
                 </ScrollView>
             </CustomModal>
-            {/* <SucessModal visible={showModalS} title="Cadastro" closeAction={() => setShowModalS(false)} text="lorem ipsum!!"/> */}
+            {/* <Warning visible={showModalS} closeAction={() => setShowModalS(false)} text="lorem ipsum!"/> */}
 
 
         
