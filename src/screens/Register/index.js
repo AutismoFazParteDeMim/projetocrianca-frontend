@@ -6,7 +6,7 @@ import Header from "../../components/Header"
 import InputText from "../../components/Input/InputText"
 import InputPass from "../../components/Input/InputPass"
 import Button from "../../components/Button"
-import CustomModal from "../../components/Modal"
+import CustomModal from "../../components/Modal/CustomModal"
 
 import Firebase from '../../config/firebase'
 const auth = Firebase.auth()

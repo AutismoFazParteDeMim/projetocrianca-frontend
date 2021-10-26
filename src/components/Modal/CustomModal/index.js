@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Modal, View } from 'react-native'
-import ModalHeader from './Header';
+import ModalHeader from '../Header';
 
 import styles from './styles'
 
@@ -17,9 +17,9 @@ function CustomModal(props) {
 
     return (
         <Modal animationType="fade" transparent={true} visible={showModal}>
-            <View style={[styles.globalContainer, styles.modal]}>
+            <View style={[styles.globalContainer, styles.modal, styles.modal_alt]}>
 
-                <View style={styles.container}>
+                <View style={[styles.container, styles.container_alt]}>
                     <ModalHeader title={props.title} closeAction={props.closeAction} />
                     <View style={styles.content}>
                         {props.children}
