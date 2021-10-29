@@ -10,7 +10,7 @@ import Warning from "../../components/Modal/WarningModal"
 
 function Welcome({ navigation }) {
     const [showModal, setShowModal] = React.useState(false)
-    //const [showModalS, setShowModalS] = React.useState(false)
+    // const [showModalS, setShowModalS] = React.useState(false)
 
     return (
         <View style={styles.container}>
