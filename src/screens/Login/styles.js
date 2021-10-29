@@ -15,9 +15,10 @@ const styles = StyleSheet.create({
         marginBottom: metrics.padding
     },
     link:{
+        padding: 15,
         width: "100%",
         flexDirection: "row-reverse",
-        // justifyContent: "fle-end",
+        // justifyContent: "flex-end",
         flexWrap: "wrap",
     }
 })
