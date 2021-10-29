@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
-import { Modal, View } from 'react-native'
-import ModalHeader from './Header';
+import { Modal, View, Text } from 'react-native'
+import ModalHeader from '../Header';
+import { colors, Icon } from '../../../styles';
 
 import styles from './styles'
 
-function CustomModal(props) {
+function SucessModal(props) {
     const [showModal, setShowModal] = useState(props.visible)
 
     React.useEffect(() => {
@@ -19,10 +20,11 @@ function CustomModal(props) {
         <Modal animationType="fade" transparent={true} visible={showModal}>
             <View style={[styles.globalContainer, styles.modal]}>
 
-                <View style={styles.container}>
-                    <ModalHeader title={props.title} closeAction={props.closeAction} />
+                <View style={[styles.container, styles.container_alt]}>
+                    <ModalHeader closeAction={props.closeAction} color={colors.text_alt} title="Sucesso!" />
                     <View style={styles.content}>
-                        {props.children}
+                        <Icon name="checkmark-circle-outline" style={[styles.icon]} />
+                        <Text style={styles.text}>{props.text}</Text>
                     </View>
                 </View>
             </View>
@@ -30,4 +32,4 @@ function CustomModal(props) {
     )
 }
 
-export default CustomModal
+export default SucessModal

@@ -1,6 +1,5 @@
-import { Inter_100Thin } from "@expo-google-fonts/inter"
 import { StyleSheet } from "react-native"
-import { colors, metrics, global } from "../../styles"
+import { metrics, global, colors } from "../../styles"
 
 const styles = StyleSheet.create({
     ...global,
@@ -11,21 +10,27 @@ const styles = StyleSheet.create({
     },
 
     container: {
-        width: "100%",
-        height: 400,
+        width: "80%",
+        height: 200,
         padding: metrics.padding,
         borderLeftWidth: 0.1,
         borderRightWidth: 0.1,
         borderBottomWidth: metrics.button.borderBottomWidth,
         borderRadius: metrics.button.borderRadius,
-        borderColor: colors.inputBackground_shadow,
-        backgroundColor: colors.background,
     },
 
     content: {
         flex: 1,
         alignItems: "center",
         justifyContent: "space-evenly"
+    },
+    icon:{
+        color: colors.text_alt,
+        fontSize: 70
+    },
+    text: {
+        color: colors.text_alt,
+        textAlign: "center"
     }
 })
 

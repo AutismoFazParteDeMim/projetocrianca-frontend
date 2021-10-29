@@ -6,21 +6,24 @@ import Header from "../../components/Header"
 import InputText from "../../components/Input/InputText"
 import InputPass from "../../components/Input/InputPass"
 import Button from "../../components/Button"
-import CustomModal from "../../components/Modal"
+import CustomModal from "../../components/Modal/CustomModal"
+import WarningModal from "../../components/Modal/WarningModal"
 
 import Firebase from '../../config/firebase'
 const auth = Firebase.auth()
 
 function Register({ navigation }) {
     const [showModal, setShowModal] = React.useState(false)
+    const [warningModal, setWarningModal] = React.useState(false)
 
-    const [email, setEmail] = useState('')
-    const [password, setPassword] = useState('')
-    const [userName, setUserName] = useState('')
+    const [email, setEmail] = useState("")
+    const [password, setPassword] = useState("")
+    const [userName, setUserName] = useState("")
+    const [errorMessage, setErrorMessage] = useState("")
 
     const onHandleSignup = async () => {
         try {
-            if (email !== '' && password !== '') {
+            if (email !== "" && password !== "" && userName !== "") {
                 await auth.createUserWithEmailAndPassword(email, password)
                 auth.signInWithEmailAndPassword(email, password)
 
@@ -31,25 +34,22 @@ function Register({ navigation }) {
                                 navigation.navigate("Welcome")
 
                             }, function (error) {
-                                Alert.alert(
-                                    "Error",
-                                    error.message,
-                                    [
-                                        { text: "OK", onPress: () => console.log("OK Pressed") }
-                                    ]
-                                );
+                                setErrorMessage("Algo deu errado! Pedimos desculpas pelo transtorno. | " + error.code)
+                                setWarningModal(true)
                             });
                     }
                 });
+            } else {
+                setErrorMessage("Nenhum campo pode estar vazio!")
+                setWarningModal(true)
             }
         } catch (error) {
-            Alert.alert(
-                "Error",
-                error.message,
-                [
-                    { text: "OK", onPress: () => console.log("OK Pressed") }
-                ]
-            );
+            if (error.code == "auth/invalid-email") {
+                setErrorMessage("O email digitado não está correto. Verifique e digite novamente.")
+            } else {
+                setErrorMessage("Algo deu errado! Pedimos desculpas pelo transtorno. | " + error.code)
+            }
+            setWarningModal(true)
         }
     }
 
@@ -71,6 +71,7 @@ function Register({ navigation }) {
                 <InputText type="name" icon="person-circle-outline" placeholder="Insira o nome e sobrenome" autoCapitalize="words" />
                 <Button icon="checkmark-circle-outline" iconPosition="left" title="Concluído" onPress={() => navigation.navigate("Welcome")} />
             </CustomModal>
+            <WarningModal visible={warningModal} closeAction={() => setWarningModal(false)} text={errorMessage} />
         </View >
     )
 }
