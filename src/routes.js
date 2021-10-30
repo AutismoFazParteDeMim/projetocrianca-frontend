@@ -8,7 +8,10 @@ import { colors } from "./styles"
 import Welcome from "./screens/Welcome"
 import Login from "./screens/Login"
 import Register from "./screens/Register"
-import Home from "./screens/Home"
+
+import Settings from "./screens/Settings";
+import Home from "./screens/Home";
+
 
 
 const Stack = createNativeStackNavigator()
@@ -27,6 +30,7 @@ function Routes() {
                 <Stack.Screen name="Welcome" component={Welcome} />
                 <Stack.Screen name="Login" component={Login} />
                 <Stack.Screen name="Register" component={Register} />
+                <Stack.Screen name="Settings" component={Settings} />
                 <Stack.Screen name="Home" component={Home} />
             </Stack.Navigator>
         </NavigationContainer>

@@ -14,10 +14,15 @@ const styles = StyleSheet.create({
         resizeMode: 'contain',
         marginBottom: metrics.padding
     },
+<<<<<<< HEAD
     link: {
+=======
+    link:{
+        padding: 15,
+>>>>>>> main
         width: "100%",
         flexDirection: "row-reverse",
-        // justifyContent: "fle-end",
+        // justifyContent: "flex-end",
         flexWrap: "wrap",
     }
 })
