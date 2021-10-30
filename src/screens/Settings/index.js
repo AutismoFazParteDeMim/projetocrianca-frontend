@@ -6,7 +6,17 @@ import styles from "./styles"
 import Icon from "../../styles/icons"
 import Button from "../../components/Button";
 
+import firebase from '../../config/firebase'
+const auth = firebase.auth();
+
 function Settings ({ navigation }) {
+    const handleSignOut = async () => {
+        try {
+            await auth.signOut();
+        } catch (error) {
+            console.log(error);
+        }
+    }
     return (
         <View style={styles.globalContainer}>
             <Header title="Configurações" navigation={navigation} />
@@ -34,7 +44,7 @@ function Settings ({ navigation }) {
                 </View>
             </View>
             <View style={styles.bottomSide}>
-                <Button  title="Logout" icon="log-in-outline" onPress={() => navigation.navigate('Welcome')} />
+                <Button  title="Logout" icon="log-in-outline" onPress={() => handleSignOut()} />
             </View>
         </View>
     )

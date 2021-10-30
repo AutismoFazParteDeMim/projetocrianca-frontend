@@ -5,20 +5,12 @@ import Input from "../../components/Input/InputText"
 
 import styles from "./styles"
 
-import firebase from '../../config/firebase'
 import { AuthenticatedUserContext } from '../../navigation/AuthenticatedUserProvider';
 
-const auth = firebase.auth();
 
 function Home({ navigation }) {
     const { user } = useContext(AuthenticatedUserContext);
-    const handleSignOut = async () => {
-        try {
-            await auth.signOut();
-        } catch (error) {
-            console.log(error);
-        }
-    }
+
     return (
         <View style={styles.container}>
             <View>
@@ -30,7 +22,7 @@ function Home({ navigation }) {
                 <Text>Bem Vindo (a) {user.displayName}</Text>
             </View>
             <View>
-                <TouchableOpacity>
+                <TouchableOpacity onPress={() => navigation.navigate("Settings")}>
                     <Image
                         source={require('../../assets/books.png')} />
                     <Image

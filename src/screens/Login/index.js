@@ -45,7 +45,7 @@ function Login({ navigation }) {
 
     return (
         <KeyboardAvoidingView
-            behavior={Platform.OS === "ios" ? "padding" : "height"}
+            behavior={Platform.OS === "ios" ? "height" : "height"}
             style={{ flex: 1 }}
         >
             <Header title="Login" navigation={navigation} />

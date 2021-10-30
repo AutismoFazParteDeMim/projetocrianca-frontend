@@ -6,7 +6,7 @@ import { StatusBar } from "react-native"
 import firebase from "../config/firebase"
 import { AuthenticatedUserContext } from "./AuthenticatedUserProvider"
 import AuthStack from "./routes/AuthStack"
-import HomeStack from "./routes/HomeStack"
+import NoAuthStack from "./routes/NoAuthStack"
 
 import { colors } from "../styles"
 
@@ -46,7 +46,7 @@ function RootNavigator() {
                 translucent={false}
                 hidden={false} />
 
-            {user ? <HomeStack /> : <AuthStack />}
+            {user ? <AuthStack /> : <NoAuthStack />}
         </NavigationContainer>
     )
 }
