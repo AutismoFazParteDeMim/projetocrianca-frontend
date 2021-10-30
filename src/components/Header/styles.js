@@ -20,7 +20,7 @@ const styles = StyleSheet.create({
 
     button: {
         position: "absolute",
-        left: 0
+        left: metrics.padding
     }
 })
 

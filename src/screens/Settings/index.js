@@ -2,7 +2,7 @@ import React from 'react';
 import {View, Text} from "react-native";
 import Header from "../../components/Header";
 
-import styles from "./index"
+import styles from "./styles"
 import Icon from "../../styles/icons"
 import Button from "../../components/Button";
 

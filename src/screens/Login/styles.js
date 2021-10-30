@@ -1,5 +1,5 @@
 import { StyleSheet } from "react-native"
-import { colors, global, metrics } from "../../styles"
+import { global, metrics } from "../../styles"
 
 const styles = StyleSheet.create({
     ...global,
@@ -14,15 +14,11 @@ const styles = StyleSheet.create({
         resizeMode: 'contain',
         marginBottom: metrics.padding
     },
-<<<<<<< HEAD
-    link: {
-=======
+
     link:{
-        padding: 15,
->>>>>>> main
+        paddingBottom: metrics.padding,
         width: "100%",
         flexDirection: "row-reverse",
-        // justifyContent: "flex-end",
         flexWrap: "wrap",
     }
 })

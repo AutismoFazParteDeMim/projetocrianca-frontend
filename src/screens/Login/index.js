@@ -1,5 +1,5 @@
 import React, { useState } from "react"
-import { Text, View, Image, Alert } from "react-native"
+import { Text, View, Image, KeyboardAvoidingView, Platform } from "react-native"
 
 import styles from "./styles"
 import Header from "../../components/Header"
@@ -8,22 +8,22 @@ import InputPass from "../../components/Input/InputPass"
 import Button from "../../components/Button"
 import Link from "../../components/Link"
 import CustomModal from "../../components/Modal/CustomModal"
-
-import Firebase from '../../config/firebase'
 import WarningModal from "../../components/Modal/WarningModal"
-const auth = Firebase.auth()
+
+import firebase from '../../config/firebase'
+const auth = firebase.auth()
 
 function Login({ navigation }) {
-    const [showModal, setShowModal] = React.useState(false)
-    const [warningModal, setWarningModal] = React.useState(false)
+    const [showCustomModal, setShowCustomModal] = useState(false)
+    const [warningModal, setWarningModal] = useState(false)
 
-    const [email, setEmail] = useState('')
-    const [password, setPassword] = useState('')
-    const [errorMessage, setErrorMessage] = useState('')
+    const [email, setEmail] = useState("")
+    const [password, setPassword] = useState("")
+    const [errorMessage, setErrorMessage] = useState("")
 
-    const onLogin = async () => {
+    async function onLogin() {
         try {
-            if (email !== '' && password !== '') {
+            if (email !== "" && password !== "") {
                 await auth.signInWithEmailAndPassword(email, password)
             } else {
                 setErrorMessage("Nehum campo pode estar vazio!")
@@ -43,28 +43,35 @@ function Login({ navigation }) {
         }
     }
 
-
     return (
-        <View style={styles.globalContainer}>
+        <KeyboardAvoidingView
+            behavior={Platform.OS === "ios" ? "padding" : "height"}
+            style={{ flex: 1 }}
+        >
             <Header title="Login" navigation={navigation} />
 
-            <View style={[styles.container]}>
-                <InputText type="email" icon="mail-outline" placeholder="Insira seu e-mail" onChangeText={text => setEmail(text)} />
-                <InputPass type="password" icon="lock-closed-outline" placeholder="Insira sua senha" onChangeText={text => setPassword(text)} />
-                <View style={styles.link} >
-                    <Link text="Esqueceu sua senha?" onPress={() => setShowModal(true)} />
-                </View>
-                <Button icon="enter-outline" iconPosition="left" title="Entrar" onPress={() => onLogin()} />
-                <Image source={require('../../../assets/animais.png')} style={styles.animals} />
-            </View>
+            <View style={styles.globalContainer}>
+                <View style={styles.container}>
+                    <InputText type="email" icon="mail-outline" placeholder="Insira seu e-mail" onChangeText={text => setEmail(text)} />
+                    <InputPass type="password" icon="lock-closed-outline" placeholder="Insira sua senha" onChangeText={text => setPassword(text)} />
 
-            <CustomModal visible={showModal} title="Redefinição de senha" closeAction={() => setShowModal(false)}>
-                <Text>Enviaremos um e-mail com todas as instruções para a redefinição de senha.</Text>
-                <InputText type="email" icon="mail-outline" placeholder="Insira seu e-mail" />
-                <Button icon="send-outline" iconPosition="right" title="Enviar" onPress={() => setShowModal(false)} />
-            </CustomModal>
-            <WarningModal visible={warningModal} closeAction={() => setWarningModal(false)} text={errorMessage} />
-        </View>
+                    <View style={styles.link} >
+                        <Link text="Esqueceu sua senha?" onPress={() => setShowCustomModal(true)} />
+                    </View>
+
+                    <Button icon="enter-outline" iconPosition="left" title="Entrar" onPress={() => onLogin()} />
+
+                    <Image source={require('../../../assets/animais.png')} style={styles.animals} />
+                </View>
+
+                <CustomModal visible={showCustomModal} title="Redefinição de senha" closeAction={() => setShowCustomModal(false)}>
+                    <Text>Enviaremos um e-mail com todas as instruções para a redefinição de senha.</Text>
+                    <InputText type="email" icon="mail-outline" placeholder="Insira seu e-mail" />
+                    <Button icon="send-outline" iconPosition="right" title="Enviar" onPress={() => setShowCustomModal(false)} />
+                </CustomModal>
+                <WarningModal visible={warningModal} closeAction={() => setWarningModal(false)} text={errorMessage} />
+            </View>
+        </KeyboardAvoidingView>
     )
 }
 
