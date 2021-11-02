@@ -3,69 +3,57 @@ import { colors, global, metrics, fonts } from "../../styles"
 
 const styles = StyleSheet.create({
     ...global,
-    container:{
-        flex:1,
+    container: {
+        flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
         width: "100%",
-        height: metrics.button.height,
-        marginBottom: metrics.padding
+
+
+        
+        
+        
     },
     headerHome: {
-        flex: 0,
-        flexDirection: 'row',
-    },
-    iconPerson: {
-        width: "30%",
-        fontSize: 50,
-        height: metrics.button.height,
-        marginBottom: metrics.padding,
-    },
-    containerInputSearch:{
-        width: "70%",
-        height: metrics.button.height,
-        marginBottom: metrics.padding,
-        alignItems: 'flex-end',
-    },
-    wrapper: {
-        width: "100%",
-        height: "100%",
-        paddingRight: metrics.padding,
+        width: '100%',
+        height: metrics.headerHeight,
         flexDirection: "row",
-        borderRadius: metrics.button.borderRadius,
-        borderWidth: 5,
-        borderColor: colors.primary,
-        backgroundColor: colors.inputBackground
-    },
-    iconWrapper: {
-        height: "100%",
+        alignItems: "center",
+        justifyContent: "space-between",
+        backgroundColor: colors.background,
         paddingLeft: metrics.padding,
         paddingRight: metrics.padding,
-        alignItems: "center",
-        justifyContent: "center",
-        borderRadius: metrics.button.borderRadius,
-        //marginRight: metrics.padding,
-        //backgroundColor: colors.inputBackground_shadow,
-        color: colors.text_alt
+        
     },
-    icon: {
-        fontSize: metrics.button.iconSize,
-        color: colors.text
+    iconPerson: {
+        width: 50,
+        height: 50,
+        borderRadius: 50,
     },
-    input: {
-        flex: 1,
-        fontFamily: fonts.text.font,
-        fontSize: fonts.text.size,
-        paddingTop: fonts.text.paddingTop
+    containerInputSearch: {
+        width: "60%",
+        alignItems: 'center',
     },
-
-    welcome:{
-        marginTop: 26
-    },
-    titleHome:{
+    
+    titleHome: {
         fontSize: fonts.subTitle.size,
         fontWeight: 'bold',
     },
+    welcome:{
+        fontSize: fonts.subTitle.size,
+        fontWeight: fonts.subTitle.font,
+
+    },
+    grid:{
+        width: "100%",
+        flexDirection:'row',
+        alignItems: 'center',
+        justifyContent: 'space-evenly',
+        marginBottom: metrics.padding
+    
+        
+        
+    }
 })
 
 export default styles

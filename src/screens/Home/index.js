@@ -1,30 +1,35 @@
 import React from "react"
-import { Text, View, Image } from "react-native"
-import {colors, Icon} from "../../styles"
+import { Text, View, Image, TouchableOpacity } from "react-native"
 
 import styles from "./styles"
 import InputText from "../../components/Input/InputText"
-import InputPass from "../../components/Input/InputPass"
-import InputSearch from "./components/InputSearch"
-import Button from "../../components/Button"
-import CustomModal from "../../components/Modal"
+import SquareButton from "../../components/Button/SquareButton"
 
 function Home({ navigation }) {
     return (
-        <View style={[styles.globalContainer]}>
-            {/* Aqui vai o HeaderHome com a imagem e o search */}
+        <View style={{ flex: 1 }}>
+
             <View style={styles.headerHome}>
-                <Icon name={"person-outline"} style={styles.iconPerson} />
-                <InputSearch placeholder={'Pesquise aqui.'} icon={'ios-search'} />
+                <TouchableOpacity >
+                    <Image style={styles.iconPerson} source={require('../../../assets/User.jpg')} />
+                </TouchableOpacity>
+                <View style={styles.containerInputSearch}>
+                    <InputText placeholder='Pesquise aqui.' icon={'ios-search'} />
+                </View>
             </View>
 
-            <View style={styles.welcome}>
-                <Text style={[styles.titleHome]}>Bem vindo(a)!!!</Text>
-                <Text style={[styles.titleHome]}>Username:</Text>
-            </View>
-            
-            <View style={[styles.container]}>
-                <Text> Os botões vão logo a baixo</Text>
+            <View style={styles.globalContainer}>
+                <Text style={styles.globalSubtitle}>Bem-vindo(a)!! {'\n'}Username</Text>
+                <View style={styles.container}>
+                    <View style={styles.grid}>
+                        <SquareButton type='secondary' image={require('../../../assets/books.png')} title="Atividades" />
+                        <SquareButton type='secondary' image={require('../../../assets/parque-infantil.png')} title="Jogos" />
+
+                    </View>
+                    <View style={styles.grid}>
+                        <SquareButton type='secondary' image={require('../../../assets/cogwheel.png')} title="Configurações" />
+                    </View>
+                </View>
             </View>
 
         </View >

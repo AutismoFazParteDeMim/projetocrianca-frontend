@@ -6,7 +6,7 @@ const styles = StyleSheet.create({
     container:{
         width: "100%",
         height: metrics.button.height,
-        marginBottom: metrics.padding
+        
     },
 
     wrapper: {
