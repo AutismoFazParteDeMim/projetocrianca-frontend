@@ -12,5 +12,12 @@ export default {
         borderBottomWidth: 4,
         borderRadius: 12,
         iconSize: 24
+    },
+    squareButton: {
+        width: 160,
+        height: 160,
+        borderBottomWidth: 4,
+        borderRadius: 25,
+        imageSize: 64
     }
 }

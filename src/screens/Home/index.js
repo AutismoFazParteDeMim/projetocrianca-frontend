@@ -1,37 +1,38 @@
-import React, {useContext} from 'react';
-import { View, Text, TouchableOpacity, Image } from "react-native"
-import { Icon } from "../../styles"
-import Input from "../../components/Input/InputText"
+import React from "react"
+import { Text, View, Image, TouchableOpacity } from "react-native"
 
 import styles from "./styles"
-
-import { AuthenticatedUserContext } from '../../navigation/AuthenticatedUserProvider';
-
+import InputText from "../../components/Input/InputText"
+import SquareButton from "../../components/Button/SquareButton"
 
 function Home({ navigation }) {
-    const { user } = useContext(AuthenticatedUserContext);
-
     return (
-        <View style={styles.container}>
-            <View>
-                <Icon name="person-circle-outline" size={25} color="#00A7DF" />
-                <Icon name="search-outline" size={25} color="#000" />
-                <Input />
-            </View>
-            <View >
-                <Text>Bem Vindo (a) {user.displayName}</Text>
-            </View>
-            <View>
-                <TouchableOpacity onPress={() => navigation.navigate("Settings")}>
-                    <Image
-                        source={require('../../assets/books.png')} />
-                    <Image
-                        source={require('../../assets/cogwheel.png')} />
-                    <Image
-                        source={require('../../assets/parque-infantil.png')} />
+        <View style={{ flex: 1 }}>
+
+            <View style={styles.headerHome}>
+                <TouchableOpacity >
+                    <Image style={styles.iconPerson} source={require('../../../assets/User.jpg')} />
                 </TouchableOpacity>
+                <View style={styles.containerInputSearch}>
+                    <InputText placeholder='Pesquise aqui.' icon={'ios-search'} />
+                </View>
             </View>
-        </View>
+
+            <View style={styles.globalContainer}>
+                <Text style={styles.globalSubtitle}>Bem-vindo(a)!! {'\n'}Username</Text>
+                <View style={styles.container}>
+                    <View style={styles.grid}>
+                        <SquareButton type='secondary' image={require('../../../assets/books.png')} title="Atividades" />
+                        <SquareButton type='secondary' image={require('../../../assets/parque-infantil.png')} title="Jogos" />
+
+                    </View>
+                    <View style={styles.grid}>
+                        <SquareButton type='secondary' image={require('../../../assets/cogwheel.png')} title="Configurações" />
+                    </View>
+                </View>
+            </View>
+
+        </View >
     )
 }
 
