@@ -25,9 +25,15 @@ const global = StyleSheet.create({
         paddingTop: fonts.title.paddingTop,
         color: colors.text
     },
-
+    globalSubtitle:{
+        fontFamily: fonts.subTitle.font,
+        fontSize: fonts.subTitle.size,
+        paddingTop: fonts.subTitle.paddingTop,
+        color: colors.text,
+    },
     globalIcon: {
-        fontSize: 24
+        fontSize: 24,
+        color: colors.text,
     }
 })
 

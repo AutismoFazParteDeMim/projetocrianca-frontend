@@ -1,40 +1,46 @@
 import React from 'react';
 import {View, Text} from "react-native";
-import Header from "../../components/Header";
 
-import styles from "./index"
-import Icon from "../../styles/icons"
-import Button from "../../components/Button";
+import styles from "./styles";
+import Icon from "../../styles/icons";
+import Header from "../../components/Header";
+import ButtonLogout from "../../components/ButtonLogout";
 
 function Settings ({ navigation }) {
     return (
         <View style={styles.globalContainer}>
             <Header title="Configurações" navigation={navigation} />
             <View style={styles.container}>
-                <View style={styles.titulo1}>
-                    <Text>Interface</Text>
+                <View style={styles.sessao}>
+                    <Text style={[styles.globalText, styles.titulo]}>Interface</Text>
+                    <View style={styles.item}>
+                        <View style={styles.itemTitle}>
+                            <Icon name="moon-outline" style={[styles.iconTitle, styles.globalIcon]}/>
+                            <Text>Tema escuro</Text>
+                        </View>
+                        <Icon name="toggle" style={styles.globalIcon}/>
+                    </View>
+                    <View style={styles.item}>
+                        <View style={styles.itemTitle}>
+                            <Icon name="contrast" style={[styles.iconTitle, styles.globalIcon]}/>
+                            <Text>Modo daltônico</Text>
+                        </View>
+                            <Icon name="toggle" style={styles.globalIcon}/>
+                    </View>
                 </View>
-                <View style={styles.conteudoInterface1}>
-                    <Icon name="moon-outline" size={20} color="#000"/>
-                    <Text>Tema escuro</Text>
-                    <Icon name="toggle" size={20} color="#000"/>
+                <View style={styles.sessao}>
+                    <Text style={[styles.globalText, styles.titulo]}>Aplicativo</Text>
+                    <View style={styles.item}>
+                        <View style={styles.itemTitle}>
+                            <Icon name="information-circle-outline" style={[styles.iconTitle, styles.globalIcon]}/>
+                            <Text>Saiba mais</Text>
+                        </View>
+                            <Icon name="arrow-forward-outline" style={styles.globalIcon}/>
+                    </View>
                 </View>
-                <View style={styles.conteudoInterface2}>
-                    <Icon name="contrast" size={20} color="#000"/>
-                    <Text>Modo daltônico</Text>
-                    <Icon name="toggle" size={20} color="#000"/>
+                <View style={styles.buttonLogout}>
+                    <ButtonLogout  title="Logout" icon="log-in-outline" onPress={() => navigation.navigate('Welcome')} />
                 </View>
-                <View style={styles.titulo2}>
-                    <Text>Aplicativo</Text>
-                </View>
-                <View style={styles.conteudoAplicativo}>
-                    <Icon name="information-circle-outline" size={20} color="#000"/>
-                    <Text>Saiba mais</Text>
-                    <Icon name="arrow-forward-outline" size={20} color="#000"/>
-                </View>
-            </View>
-            <View style={styles.bottomSide}>
-                <Button  title="Logout" icon="log-in-outline" onPress={() => navigation.navigate('Welcome')} />
             </View>
         </View>
     )
