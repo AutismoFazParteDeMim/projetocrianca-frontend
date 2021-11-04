@@ -1,11 +1,21 @@
-import React from "react"
+import React, { useContext } from "react"
 import { Text, View, Image, TouchableOpacity } from "react-native"
 
 import styles from "./styles"
 import InputText from "../../components/Input/InputText"
 import SquareButton from "../../components/Button/SquareButton"
 
+import { AuthenticatedUserContext } from "../../navigation/AuthenticatedUserProvider"
+
 function Home({ navigation }) {
+    const { user } = useContext(AuthenticatedUserContext);
+    const handleSignOut = async () => {
+        try {
+            await auth.signOut();
+        } catch (error) {
+            console.log(error);
+        }
+    };
     return (
         <View style={{ flex: 1 }}>
 
@@ -19,7 +29,7 @@ function Home({ navigation }) {
             </View>
 
             <View style={styles.globalContainer}>
-                <Text style={styles.globalSubtitle}>Bem-vindo(a)!! {'\n'}Username</Text>
+                <Text style={styles.globalSubtitle}>Bem-vindo(a)!! {"\n" + user.displayName}</Text>
                 <View style={styles.container}>
                     <View style={styles.grid}>
                         <SquareButton type='secondary' image={require('../../../assets/books.png')} title="Atividades" />

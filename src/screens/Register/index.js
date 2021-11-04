@@ -25,6 +25,12 @@ function Register({ navigation }) {
         try {
             if (email !== "" && password !== "" && userName !== "") {
                 await auth.createUserWithEmailAndPassword(email, password);
+            } else if (password.length < 8) {
+                setErrorMessage("A senha deve conter pelo menos 08 dígitos!")
+                setWarningModal(true)
+            } else if (userName.length < 3) {
+                setErrorMessage("Seu nome deve conter pelo menos 03 letras.")
+                setWarningModal(true)
             }
         } catch (error) {
             setErrorMessage(error.message)
