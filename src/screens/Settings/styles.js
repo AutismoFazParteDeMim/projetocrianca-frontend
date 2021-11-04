@@ -1,67 +1,40 @@
 import { StyleSheet } from "react-native"
-import { global, colors } from "../../styles"
+import {global, colors, metrics} from "../../styles"
 
 const styles = StyleSheet.create({
     ...global,
     container: {
-        flex: 6,
+        flex: 1,
     },
-    titulo1:{
-        position: "absolute",
-        width: 366,
-        height: 158,
-        left: 24,
-        top: 132,
-        fontSize: 12
+    titulo:{
+        marginBottom: metrics.padding,
+        fontFamily: "medium",
     },
-    conteudoInterface1:{
-        position: "absolute",
-        width: 366,
-        height: 56,
-        left: 10,
-        top: 162,
-        borderRadius: 12,
-        backgroundColor:"#E5E5E5",
+    item:{
+        paddingLeft: metrics.padding,
+        paddingRight: metrics.padding,
+        marginBottom: metrics.padding,
+        height: metrics.button.height,
+        width: "100%",
+        borderRadius: metrics.button.borderRadius,
+        backgroundColor:colors.inputBackground,
         flexDirection: "row",
         alignItems: "center",
-        justifyContent: "space-around",
+        justifyContent: "space-between",
     },
-    conteudoInterface2:{
-        position: "absolute",
-        width: 366,
-        height: 56,
-        left: 10,
-        top: 234,
-        borderRadius: 12,
-        backgroundColor:"#E5E5E5",
+    itemTitle:{
         flexDirection: "row",
         alignItems: "center",
-        justifyContent: "space-around",
+        justifyContent: "center"
     },
-    titulo2:{
-        position: "absolute",
-        width: 366,
-        height: 158,
-        left: 24,
-        top: 334
+    iconTitle:{
+        marginRight: metrics.padding,
     },
-    conteudoAplicativo:{
-        position: "absolute",
-        width: 366,
-        height: 56,
-        left: 10,
-        top: 364,
-        borderRadius: 12,
-        backgroundColor:"#E5E5E5",
-        flexDirection: "row",
+    sessao:{
+        marginBottom: 40,
+    },
+    buttonLogout: {
         alignItems: "center",
-        justifyContent: "space-around",
-    },
-    bottomSide: {
-        flex: 15,
-        alignItems: "center",
-        justifyContent: "center",
-
     }
 })
 
