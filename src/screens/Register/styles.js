@@ -9,6 +9,10 @@ const styles = StyleSheet.create({
         justifyContent: "center",
     },
 
+    input: {
+        marginBottom: metrics.padding
+    },
+
     image: {
         height: "40%",
         resizeMode: 'contain',

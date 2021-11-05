@@ -1,5 +1,5 @@
 import React, { useContext } from "react"
-import { Text, View, Image, TouchableOpacity } from "react-native"
+import { Text, View, Image, TouchableOpacity, KeyboardAvoidingView } from "react-native"
 
 import styles from "./styles"
 import InputText from "../../components/Input/InputText"
@@ -9,15 +9,11 @@ import { AuthenticatedUserContext } from "../../navigation/AuthenticatedUserProv
 
 function Home({ navigation }) {
     const { user } = useContext(AuthenticatedUserContext);
-    const handleSignOut = async () => {
-        try {
-            await auth.signOut();
-        } catch (error) {
-            console.log(error);
-        }
-    };
     return (
-        <View style={{ flex: 1 }}>
+        <KeyboardAvoidingView
+            behavior={Platform.OS === "ios" ? "padding" : "height"}
+            style={{ flex: 1 }}
+        >
 
             <View style={styles.headerHome}>
                 <TouchableOpacity >
@@ -37,12 +33,12 @@ function Home({ navigation }) {
 
                     </View>
                     <View style={styles.grid}>
-                        <SquareButton type='secondary' image={require('../../../assets/cogwheel.png')} title="Configurações" />
+                        <SquareButton type='secondary' image={require('../../../assets/cogwheel.png')} title="Configurações" onPress={() => navigation.navigate("Settings")} />
                     </View>
                 </View>
             </View>
 
-        </View >
+        </KeyboardAvoidingView >
     )
 }
 

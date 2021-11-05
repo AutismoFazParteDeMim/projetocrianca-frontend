@@ -6,20 +6,22 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         alignItems: "center",
-        justifyContent: "center",
+        justifyContent: "center"
     },
 
     animals: {
         height: "40%",
-        resizeMode: 'contain',
+        resizeMode: 'contain'
+    },
+
+    input: {
         marginBottom: metrics.padding
     },
 
     link:{
-        paddingBottom: metrics.padding,
         width: "100%",
         flexDirection: "row-reverse",
-        flexWrap: "wrap",
+        marginBottom: metrics.padding
     }
 })
 

@@ -10,8 +10,7 @@ import Link from "../../components/Link"
 import CustomModal from "../../components/Modal/CustomModal"
 import WarningModal from "../../components/Modal/WarningModal"
 
-import firebase from '../../config/firebase'
-const auth = firebase.auth()
+import {auth} from '../../config/firebase'
 
 function Login({ navigation }) {
     const [showCustomModal, setShowCustomModal] = useState(false)
@@ -52,8 +51,8 @@ function Login({ navigation }) {
 
             <View style={styles.globalContainer}>
                 <View style={styles.container}>
-                    <InputText type="email" icon="mail-outline" placeholder="Insira seu e-mail" onChangeText={text => setEmail(text)} />
-                    <InputPass type="password" icon="lock-closed-outline" placeholder="Insira sua senha" onChangeText={text => setPassword(text)} />
+                    <InputText type="email" icon="mail-outline" placeholder="Insira seu e-mail" onChangeText={text => setEmail(text)} style={styles.input} />
+                    <InputPass type="password" icon="lock-closed-outline" placeholder="Insira sua senha" onChangeText={text => setPassword(text)} style={styles.input} />
 
                     <View style={styles.link} >
                         <Link text="Esqueceu sua senha?" onPress={() => setShowCustomModal(true)} />

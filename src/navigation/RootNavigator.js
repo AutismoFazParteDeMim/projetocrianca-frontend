@@ -3,14 +3,12 @@ import { NavigationContainer } from "@react-navigation/native"
 import { View, ActivityIndicator } from "react-native"
 import { StatusBar } from "react-native"
 
-import firebase from "../config/firebase"
+import {auth} from "../config/firebase"
 import { AuthenticatedUserContext } from "./AuthenticatedUserProvider"
 import AuthStack from "./routes/AuthStack"
 import NoAuthStack from "./routes/NoAuthStack"
 
 import { colors } from "../styles"
-
-const auth = firebase.auth()
 
 function RootNavigator() {
     const { user, setUser } = useContext(AuthenticatedUserContext)

@@ -5,7 +5,7 @@ import styles from "../styles"
 
 function Input(props, { ...rest }) {
     return (
-        <View style={styles.container}>
+        <View style={[styles.container, props.style]}>
             <View style={styles.wrapper}>
                 {props.icon &&
                     <View style={styles.iconWrapper}>
