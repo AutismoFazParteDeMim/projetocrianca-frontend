@@ -11,9 +11,8 @@ const styles = StyleSheet.create({
         justifyContent: "center",
         position: "relative",
         backgroundColor: colors.background,
-        zIndex: 1
+        zIndex: 1,
     },
-
     title: {
         color: colors.text
     },
