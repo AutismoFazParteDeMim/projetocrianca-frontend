@@ -6,7 +6,7 @@ import BackButton from "./BackButton"
 
 function Header(props) {
     return (
-        <View style={styles.container}>
+        <View style={[styles.container, props.transparent && {backgroundColor: "transparent"}]}>
             <View style={styles.button}>
                 <BackButton onPress={() => props.navigation.goBack()} />
             </View>

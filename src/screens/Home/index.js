@@ -16,7 +16,7 @@ function Home({ navigation }) {
         >
 
             <View style={styles.headerHome}>
-                <TouchableOpacity >
+                <TouchableOpacity onPress={() => navigation.navigate("Profile")}>
                     <Image style={styles.iconPerson} source={require('../../../assets/User.jpg')} />
                 </TouchableOpacity>
                 <View style={styles.containerInputSearch}>

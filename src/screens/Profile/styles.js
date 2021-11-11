@@ -1,43 +1,58 @@
 import { StyleSheet } from "react-native"
-import {global, colors, metrics} from "../../styles"
+import { global, colors, metrics } from "../../styles"
 
 const styles = StyleSheet.create({
-...global,
-    container: {
-        flex: 1,
+    ...global,
+
+    infos: {
+        width: "100%",
+        height: 60,
+        paddingLeft: metrics.padding,
+        paddingRight: metrics.padding,
+        backgroundColor: colors.background
     },
-    itemTitle:{
+
+    userData: {
         flexDirection: "row",
-        alignItems: "center",
-        justifyContent: "flex-start",
+        alignItems: "center"
     },
-    item:{
+
+    profilePic: {
+        width: 100,
+        height: 100,
+        position: "absolute",
+        top: -50,
+        left: metrics.padding,
+        borderRadius: 100
+    },
+
+    title: {
+        marginLeft: 100 + metrics.padding,
+    },
+
+    icon: {
+        color: colors.primary
+    },
+
+    item: {
         paddingLeft: metrics.padding,
         paddingRight: metrics.padding,
         marginBottom: metrics.padding,
         height: metrics.button.height,
         width: "100%",
         borderRadius: metrics.button.borderRadius,
-        backgroundColor:colors.inputBackground,
+        backgroundColor: colors.inputBackground,
         flexDirection: "row",
         alignItems: "center",
         justifyContent: "space-between",
     },
-
-    iconProfile:{
-        fontSize: 150,
-        color: colors.primary,
+    itemTitle: {
+        flexDirection: "row",
+        alignItems: "center",
+        justifyContent: "center"
     },
-    iconTitle:{
-        fontSize: 30,
-        color: colors.primary,
-    },
-    icons:{
+    iconTitle: {
         marginRight: metrics.padding,
     },
-    button: {
-        position: "absolute",
-        left: 0
-    }
 })
 export default styles
