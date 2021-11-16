@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { View, Text, Image } from 'react-native';
 import AppIntroSlider from 'react-native-app-intro-slider';
-import { Slides } from '../../components/Slides/Rotina';
+import { SlidesRotina } from '../../components/Slides/Rotina';
 import styles from './styles';
 import Header from '../../components/Header';
 import { Icon } from '../../styles';
@@ -28,7 +28,7 @@ function Rotinas({ navigation }) {
         return (
             <AppIntroSlider
                 renderItem={renderSlides}
-                data={Slides}
+                data={SlidesRotina}
                 activeDotStyle={styles.botaoPaginacao}
                 renderNextButton={() => <Icon name="chevron-forward-outline" style={[styles.globalIcon, styles.icon]} />}
                 renderDoneButton={() => <Icon name="checkmark" style={[styles.globalIcon, styles.icon]} />}

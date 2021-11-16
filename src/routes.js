@@ -9,7 +9,6 @@ import Welcome from "./screens/Welcome"
 import Login from "./screens/Login"
 import Register from "./screens/Register"
 import Settings from "./screens/Settings";
-import Home from "./screens/Home";
 import Profile from "./screens/Profile";
 import Rotinas from "./screens/Rotinas"
 
@@ -31,7 +30,6 @@ function Routes() {
                 <Stack.Screen name="Login" component={Login} />
                 <Stack.Screen name="Register" component={Register} />
                 <Stack.Screen name="Settings" component={Settings} />
-                <Stack.Screen name="Home" component={Home} />
                 <Stack.Screen name="Profile" component={Profile} />
                 <Stack.Screen name="Rotinas" component={Rotinas} />
             </Stack.Navigator>

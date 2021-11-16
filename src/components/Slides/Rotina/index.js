@@ -1,4 +1,4 @@
-export const Slides = [
+export const SlidesRotina = [
     {
         key: '1',
         text: 'Lorem ipsum urna potenti etiam praesentr fringilla aliquam, vestibulum curabiturkufy imperdiet turpis nisi semper, rutrum metus dipisci ng enim sagittis augue.',
