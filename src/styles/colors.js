@@ -17,5 +17,7 @@ export default {
     text: '#3D3D3D',
     text_alt: '#fff',
 
+    shadow: '#e5e5e5',
+
     background: '#FFFFFF',
 }
