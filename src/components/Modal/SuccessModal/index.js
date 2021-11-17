@@ -5,7 +5,7 @@ import { colors, Icon } from '../../../styles';
 
 import styles from './styles'
 
-function SucessModal(props) {
+function SuccessModal(props) {
     const [showModal, setShowModal] = useState(props.visible)
 
     React.useEffect(() => {
@@ -32,4 +32,4 @@ function SucessModal(props) {
     )
 }
 
-export default SucessModal
+export default SuccessModal

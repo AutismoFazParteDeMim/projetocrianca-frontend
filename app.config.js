@@ -2,8 +2,8 @@ import 'dotenv/config'
 
 export default {
   expo: {
-    name: "ProjetoCrianca",
-    slug: "ProjetoCrianca",
+    name: "ProjetoCriança",
+    slug: "projetoCrianca",
     version: "1.0.0",
     orientation: "portrait",
     icon: "./assets/icon.png",
@@ -25,11 +25,12 @@ export default {
       adaptiveIcon: {
         foregroundImage: "./assets/adaptive-icon.png",
         backgroundColor: "#FFFFFF"
-      }
+      },
+      package: "com.unisociesc.projetocrianca"
     },
     web: {
       favicon: "./assets/favicon.png"
-    },
+    },    
     extra: {
       apiKey: process.env.API_KEY,
       authDomain: process.env.AUTH_DOMAIN,

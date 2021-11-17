@@ -10,7 +10,7 @@ import Link from "../../components/Link"
 import CustomModal from "../../components/Modal/CustomModal"
 import WarningModal from "../../components/Modal/WarningModal"
 
-import {auth} from '../../config/firebase'
+import { auth } from '../../config/firebase'
 
 function Login({ navigation }) {
     const [showCustomModal, setShowCustomModal] = useState(false)

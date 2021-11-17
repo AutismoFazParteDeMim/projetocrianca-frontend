@@ -1,14 +1,16 @@
-import React, { useContext } from "react"
+import React, { useState, useContext } from "react"
 import { Text, View, Image, TouchableOpacity, KeyboardAvoidingView } from "react-native"
 
 import styles from "./styles"
 import InputText from "../../components/Input/InputText"
 import SquareButton from "../../components/Button/SquareButton"
+import WarningModal from "../../components/Modal/WarningModal"
 
 import { AuthenticatedUserContext } from "../../navigation/AuthenticatedUserProvider"
 
 function Home({ navigation }) {
     const { user } = useContext(AuthenticatedUserContext);
+
     return (
         <KeyboardAvoidingView
             behavior={Platform.OS === "ios" ? "padding" : "height"}

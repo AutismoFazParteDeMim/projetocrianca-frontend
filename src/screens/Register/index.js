@@ -8,8 +8,9 @@ import InputPass from "../../components/Input/InputPass"
 import Button from "../../components/Button"
 import CustomModal from "../../components/Modal/CustomModal"
 import WarningModal from "../../components/Modal/WarningModal"
+import SuccessModal from "../../components/Modal/SuccessModal"
 
-import {auth} from '../../config/firebase'
+import { auth } from '../../config/firebase'
 
 function Register({ navigation }) {
     const [showModal, setShowModal] = useState(false)
@@ -36,8 +37,11 @@ function Register({ navigation }) {
                 setWarningModal(true)
             } else if (email !== "" && password !== "" && userName !== "") {
                 await auth.createUserWithEmailAndPassword(email, password).then((res) => {
-                    const user = firebase.auth().currentUser
+                    const user = res.user
                     user.updateProfile({ displayName: userName })
+
+                    user.sendEmailVerification()
+
                     handleSignOut()
                 })
             } else {
