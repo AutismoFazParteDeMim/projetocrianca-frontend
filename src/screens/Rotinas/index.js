@@ -1,15 +1,15 @@
-import React, { useState } from 'react';
-import { View, Text, Image } from 'react-native';
-import AppIntroSlider from 'react-native-app-intro-slider';
-import { SlidesRotina } from '../../components/Slides/Rotina';
-import styles from './styles';
-import Header from '../../components/Header';
-import { Icon } from '../../styles';
+import React, { useState } from 'react'
+import { View, Text, Image } from 'react-native'
+import styles from './styles'
+import Header from '../../components/Header'
+
+import Slider from '../../components/Slider'
+
+import SlidesRotina from "./data"
 
 function Rotinas({ navigation }) {
-    const [showHome, setShowHome] = useState(false);
 
-    function renderSlides({ item }) {
+    function render({ item }) {
         return (
             <View style={styles.globalContainer}>
                 <Header title="Rotinas" />
@@ -22,21 +22,9 @@ function Rotinas({ navigation }) {
         )
     }
 
-    if (showHome) {
-        return <View></View>
-    } else {
-        return (
-            <AppIntroSlider
-                renderItem={renderSlides}
-                data={SlidesRotina}
-                activeDotStyle={styles.botaoPaginacao}
-                renderNextButton={() => <Icon name="chevron-forward-outline" style={[styles.globalIcon, styles.icon]} />}
-                renderDoneButton={() => <Icon name="checkmark" style={[styles.globalIcon, styles.icon]} />}
-                onDone={() => navigation.navigate("Welcome")}
-            />
-        )
-    }
-
+    return (
+        <Slider navigation={navigation} data={SlidesRotina} render={render} />
+    )
 }
 
-export default Rotinas;
+export default Rotinas

@@ -25,7 +25,7 @@ function Routes() {
                 translucent={false}
                 hidden={false} />
 
-            <Stack.Navigator initialRouteName="Expressoes" screenOptions={{ headerShown: false }}>
+            <Stack.Navigator initialRouteName="Rotinas" screenOptions={{ headerShown: false }}>
                 <Stack.Screen name="Welcome" component={Welcome} />
                 <Stack.Screen name="Login" component={Login} />
                 <Stack.Screen name="Register" component={Register} />
