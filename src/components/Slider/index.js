@@ -2,7 +2,8 @@ import React, { useState } from 'react'
 import AppIntroSlider from 'react-native-app-intro-slider'
 
 import styles from "./styles"
-import { Icon } from '../../styles'
+
+import CloseButton from "../Button/CloseButton"
 
 
 function Slider(props) {
@@ -10,9 +11,10 @@ function Slider(props) {
         <AppIntroSlider
             renderItem={props.render}
             data={props.data}
-            activeDotStyle={styles.botaoPaginacao}
-            renderNextButton={() => <Icon name="chevron-forward-outline" style={[styles.globalIcon, styles.icon]} />}
-            renderDoneButton={() => <Icon name="checkmark" style={[styles.globalIcon, styles.icon]} />}
+            dotStyle={styles.dot}
+            activeDotStyle={styles.activeDot}
+            renderNextButton={() => <CloseButton icon="chevron-forward-outline" static={true} />}
+            renderDoneButton={() => <CloseButton icon="checkmark-outline" static={true} />}
             onDone={() => props.navigation.goBack()}
         />
     )

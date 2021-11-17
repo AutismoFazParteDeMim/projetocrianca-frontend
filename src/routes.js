@@ -9,8 +9,8 @@ import Login from "./screens/Login"
 import Register from "./screens/Register"
 import Settings from "./screens/Settings"
 import Profile from "./screens/Profile"
-import Rotinas from "./screens/Rotinas"
-import Expressoes from "./screens/Expressoes"
+import Routines from "./screens/Activities/Routines"
+import Expressions from "./screens/Activities/Expressions"
 
 
 const Stack = createNativeStackNavigator()
@@ -25,14 +25,14 @@ function Routes() {
                 translucent={false}
                 hidden={false} />
 
-            <Stack.Navigator initialRouteName="Rotinas" screenOptions={{ headerShown: false }}>
+            <Stack.Navigator initialRouteName="Welcome" screenOptions={{ headerShown: false }}>
                 <Stack.Screen name="Welcome" component={Welcome} />
                 <Stack.Screen name="Login" component={Login} />
                 <Stack.Screen name="Register" component={Register} />
                 <Stack.Screen name="Settings" component={Settings} />
                 <Stack.Screen name="Profile" component={Profile} />
-                <Stack.Screen name="Rotinas" component={Rotinas} />
-                <Stack.Screen name="Expressoes" component={Expressoes} />
+                <Stack.Screen name="Routines" component={Routines} />
+                <Stack.Screen name="Expressions" component={Expressions} />
             </Stack.Navigator>
         </NavigationContainer>
     )

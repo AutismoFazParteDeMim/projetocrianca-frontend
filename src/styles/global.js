@@ -12,6 +12,13 @@ const global = StyleSheet.create({
         backgroundColor: colors.background
     },
 
+    globalSliderContainer: {
+        flex: 1,
+        alignItems: "center",
+        justifyContent: "center",
+        backgroundColor: colors.background
+    },
+
     globalText: {
         fontFamily: fonts.text.font,
         fontSize: fonts.text.size,
@@ -25,7 +32,7 @@ const global = StyleSheet.create({
         paddingTop: fonts.title.paddingTop,
         color: colors.text
     },
-    globalSubtitle:{
+    globalSubtitle: {
         fontFamily: fonts.subTitle.font,
         fontSize: fonts.subTitle.size,
         paddingTop: fonts.subTitle.paddingTop,
