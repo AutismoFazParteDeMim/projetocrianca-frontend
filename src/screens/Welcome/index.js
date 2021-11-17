@@ -26,7 +26,7 @@ function Welcome({ navigation }) {
 
             <CustomModal visible={showModal} title="Cadastro" closeAction={() => setShowModal(false)}>
                 <ScrollView>
-                    <Text>
+                    <Text style={styles.globalText}>
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Adipiscing sed sapien auctor integer. Urna, eros sit accumsan ultricies pharetra eget interdum nibh. Sit mi consectetur pellentesque urna quis. Praesent commodo commodo, justo, turpis nisi, tristique arcu.
 
                         Auctor sem lacus, morbi vel. In blandit quam senectus ullamcorper. Tempor, quis vitae posuere vel, suspendisse ut bibendum at. Duis sed nullam tortor consectetur duis arcu. Consectetur massa et sagittis sit lacus consectetur lectus.

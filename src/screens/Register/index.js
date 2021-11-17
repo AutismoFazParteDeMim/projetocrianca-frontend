@@ -79,7 +79,7 @@ function Register({ navigation }) {
                 </View>
 
                 <CustomModal visible={showModal} title="Cadastro" closeAction={() => setShowModal(false)}>
-                    <Text>Qual o nome da criança? Essa informação será útil para personalizar a experiência!</Text>
+                    <Text style={styles.globalText}>Qual o nome da criança? Essa informação será útil para personalizar a experiência!</Text>
                     <InputText type="name" icon="person-circle-outline" placeholder="Insira o nome e sobrenome" autoCapitalize="words" />
                     <Button icon="checkmark-circle-outline" iconPosition="left" title="Concluído" onPress={() => onHandleSignup()} />
                 </CustomModal>

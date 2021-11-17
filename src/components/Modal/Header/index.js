@@ -9,7 +9,7 @@ function ModalHeader(props) {
         <View style={styles.container}>
             <Text style={[styles.globalTitle, styles.title, props.color &&  {color:props.color} ]}>{props.title}</Text>
             <View style={styles.button}>
-                <CloseButton onPress={props.closeAction} />
+                <CloseButton icon="close" onPress={props.closeAction} />
             </View>
         </View>
     )

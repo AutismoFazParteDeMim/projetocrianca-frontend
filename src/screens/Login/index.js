@@ -64,7 +64,7 @@ function Login({ navigation }) {
                 </View>
 
                 <CustomModal visible={showCustomModal} title="Redefinição de senha" closeAction={() => setShowCustomModal(false)}>
-                    <Text>Enviaremos um e-mail com todas as instruções para a redefinição de senha.</Text>
+                    <Text style={styles.globalText}>Enviaremos um e-mail com todas as instruções para a redefinição de senha.</Text>
                     <InputText type="email" icon="mail-outline" placeholder="Insira seu e-mail" />
                     <Button icon="send-outline" iconPosition="right" title="Enviar" onPress={() => setShowCustomModal(false)} />
                 </CustomModal>

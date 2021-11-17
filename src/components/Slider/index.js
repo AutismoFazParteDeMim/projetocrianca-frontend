@@ -13,8 +13,8 @@ function Slider(props) {
             data={props.data}
             dotStyle={styles.dot}
             activeDotStyle={styles.activeDot}
-            renderNextButton={() => <CloseButton icon="chevron-forward-outline" static={true} />}
-            renderDoneButton={() => <CloseButton icon="checkmark-outline" static={true} />}
+            renderNextButton={() => <CloseButton icon="chevron-forward" static={true} />}
+            renderDoneButton={() => <CloseButton icon="checkmark" static={true} />}
             onDone={() => props.navigation.goBack()}
         />
     )
