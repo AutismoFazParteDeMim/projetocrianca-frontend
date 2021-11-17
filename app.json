@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "ProjetoCriança",
+    "name": "Projeto Criança",
     "slug": "projetoCrianca",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -17,7 +17,8 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.yourcompany.yourappname"
     },
     "android": {
       "adaptiveIcon": {

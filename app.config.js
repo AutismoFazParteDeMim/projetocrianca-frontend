@@ -2,7 +2,7 @@ import 'dotenv/config'
 
 export default {
   expo: {
-    name: "ProjetoCriança",
+    name: "Projeto Criança",
     slug: "projetoCrianca",
     version: "1.0.0",
     orientation: "portrait",
@@ -19,7 +19,8 @@ export default {
       "**/*"
     ],
     ios: {
-      supportsTablet: true
+      supportsTablet: true,
+      bundleIdentifier: "com.yourcompany.yourappname",
     },
     android: {
       adaptiveIcon: {
