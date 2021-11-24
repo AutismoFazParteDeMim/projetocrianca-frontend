@@ -1,10 +1,8 @@
 import { StyleSheet } from "react-native"
-import { colors } from "../../../styles"
 import ModalStyle from "../styles"
 
-const styles = StyleSheet.create({
-    ...ModalStyle,
-
+const styles = (colors) => StyleSheet.create({
+    ...ModalStyle(colors),
     container_alt: {
         borderColor: colors.warning_shadow,
         backgroundColor: colors.warning,

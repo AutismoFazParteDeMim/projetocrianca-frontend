@@ -1,36 +1,37 @@
 import { StyleSheet } from "react-native"
-import {global, colors, metrics} from "../../styles"
+import { global, metrics } from "../../styles"
 
-const styles = StyleSheet.create({
-    ...global,
+const styles = (colors) => StyleSheet.create({
+    ...global(colors),
     container: {
         flex: 1,
     },
-    titulo:{
+    titulo: {
         marginBottom: metrics.padding,
         fontFamily: "medium",
     },
-    item:{
+    item: {
         paddingLeft: metrics.padding,
         paddingRight: metrics.padding,
         marginBottom: metrics.padding,
         height: metrics.button.height,
         width: "100%",
         borderRadius: metrics.button.borderRadius,
-        backgroundColor:colors.inputBackground,
+        backgroundColor: colors.inputBackground,
         flexDirection: "row",
         alignItems: "center",
         justifyContent: "space-between",
     },
-    itemTitle:{
+    itemTitle: {
         flexDirection: "row",
         alignItems: "center",
         justifyContent: "center"
     },
-    iconTitle:{
+    iconTitle: {
         marginRight: metrics.padding,
+        color: colors.text_alt_dark
     },
-    sessao:{
+    sessao: {
         marginBottom: 40,
     },
     buttonLogout: {

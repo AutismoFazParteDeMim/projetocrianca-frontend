@@ -1,7 +1,7 @@
 import { StyleSheet } from "react-native"
-import { colors, fonts } from "../../styles"
+import { fonts } from "../../styles"
 
-const styles = StyleSheet.create({
+const styles = (colors) => StyleSheet.create({
     text: {
         fontFamily: fonts.button.font,
         fontSize: fonts.text.size,

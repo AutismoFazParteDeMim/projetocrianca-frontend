@@ -1,8 +1,8 @@
 import { StyleSheet } from "react-native"
 import { global, metrics } from "../../styles"
 
-const styles = StyleSheet.create({
-    ...global,
+const styles = (colors) => StyleSheet.create({
+    ...global(colors),
     container: {
         flex: 1,
         alignItems: "center",
@@ -18,7 +18,7 @@ const styles = StyleSheet.create({
         marginBottom: metrics.padding
     },
 
-    link:{
+    link: {
         width: "100%",
         flexDirection: "row-reverse",
         marginBottom: metrics.padding

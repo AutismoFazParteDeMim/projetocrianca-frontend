@@ -1,10 +1,9 @@
 import { StyleSheet } from "react-native"
 
-import colors from "./colors"
 import metrics from "./metrics"
 import fonts from "./fonts"
 
-const global = StyleSheet.create({
+const global = (colors) => StyleSheet.create({
     globalContainer: {
         width: "100%",
         flex: 1,
@@ -42,7 +41,6 @@ const global = StyleSheet.create({
 
     globalIcon: {
         fontSize: 24,
-        color: colors.text,
     }
 })
 

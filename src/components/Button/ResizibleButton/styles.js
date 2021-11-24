@@ -1,10 +1,10 @@
 import { StyleSheet } from "react-native"
-import { colors, fonts, metrics } from "../../../styles"
+import { fonts, metrics } from "../../../styles"
 
-const styles = StyleSheet.create({
+const styles = (colors) => StyleSheet.create({
     container: {
-        width: metrics.rebutton.width*1.5,
-        height: metrics.rebutton.height*1.2,
+        width: metrics.rebutton.width * 1.5,
+        height: metrics.rebutton.height * 1.2,
         alignItems: "flex-start",
         justifyContent: "center",
         borderLeftWidth: 0.1,
@@ -27,7 +27,7 @@ const styles = StyleSheet.create({
 
     subtitle: {
         fontFamily: fonts.rebutton.font,
-        fontSize: 0.5*fonts.rebutton.size,
+        fontSize: 0.5 * fonts.rebutton.size,
         paddingTop: fonts.rebutton.paddingTop,
         marginLeft: metrics.padding,
         marginRight: metrics.padding,
@@ -53,8 +53,8 @@ const styles = StyleSheet.create({
     },
 
     buttonseparator: {
-        backgroundColor: '#fff', 
-        width: 1, 
+        backgroundColor: '#fff',
+        width: 1,
         height: 40,
     },
 

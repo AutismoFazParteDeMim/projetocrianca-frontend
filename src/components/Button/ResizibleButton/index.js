@@ -1,16 +1,20 @@
-import React from "react"
+import React, {useContext} from "react"
 import { Text, TouchableOpacity, Image, View } from "react-native"
 
 import styles from "./styles"
 
-function ResizibleButton(props){
-    let caminho = '../../../../assets/'+props.imagem
-    return(
-        
-        <TouchableOpacity onPress={props.onPress} style={[props.iconPosition == "right" ? { flexDirection: "row-reverse" } : { flexDirection: "row" }, props.type == "rebutton" ? [styles.container, styles.Container] : styles.container]}>
-            <Image source={require(caminho)} style={styles.imagem}/>
-            <Text style={[styles.title, styles.Title]}>props.title+"\n"</Text>
-            <Text style={[styles.subtitle, styles.Title]}>props.subtitle+"\n"</Text>
+import { ThemeContext } from "../../../styles/ThemeProvider"
+
+function ResizibleButton(props) {
+    const { colors } = useContext(ThemeContext)
+
+    let caminho = '../../../../assets/' + props.imagem
+    return (
+
+        <TouchableOpacity onPress={props.onPress} style={[props.iconPosition == "right" ? { flexDirection: "row-reverse" } : { flexDirection: "row" }, props.type == "rebutton" ? [styles(colors).container, styles(colors).Container] : styles(colors).container]}>
+            <Image source={require(caminho)} style={styles(colors).imagem} />
+            <Text style={[styles(colors).title, styles(colors).Title]}>props.title+"\n"</Text>
+            <Text style={[styles(colors).subtitle, styles(colors).Title]}>props.subtitle+"\n"</Text>
         </TouchableOpacity>
     )
 }

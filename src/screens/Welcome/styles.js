@@ -1,23 +1,24 @@
 import { StyleSheet } from "react-native"
-import { colors, global, metrics } from "../../styles"
+import { global, metrics } from "../../styles"
 
-const styles = StyleSheet.create({
-    ...global,
+const styles = (colors) => StyleSheet.create({
+    ...global(colors),
     container: {
         flex: 1,
         alignItems: "center",
-        justifyContent: "center"
+        justifyContent: "center",
+        backgroundColor: colors.background
     },
 
     text: {
         width: "80%",
         textAlign: "center",
-        color: colors.text_alt
+        color: colors.text_alt_light
     },
 
     title: {
         marginBottom: metrics.padding
-    }, 
+    },
 
     topSide: {
         width: "100%",

@@ -1,8 +1,8 @@
 import { StyleSheet } from "react-native"
-import { metrics, global, colors } from "../../styles"
+import { metrics, global } from "../../styles"
 
-const styles = StyleSheet.create({
-    ...global,
+const styles = (colors) => StyleSheet.create({
+    ...global(colors),
     modal: {
         alignItems: "center",
         justifyContent: "center",
@@ -24,12 +24,12 @@ const styles = StyleSheet.create({
         alignItems: "center",
         justifyContent: "space-evenly"
     },
-    icon:{
-        color: colors.text_alt,
+    icon: {
+        color: colors.text_alt_light,
         fontSize: 70
     },
     text: {
-        color: colors.text_alt,
+        color: colors.text_alt_light,
         textAlign: "center"
     }
 })

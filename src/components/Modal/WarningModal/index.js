@@ -1,13 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { Modal, View, Text } from 'react-native'
 import ModalHeader from '../Header';
-import { colors, Icon } from '../../../styles';
 import Icons from '@expo/vector-icons/Feather'  // novo import de outra biblioteca do expo
 
 import styles from './styles'
+import { ThemeContext } from "../../../styles/ThemeProvider"
 
 function WarningModal(props) {
     const [showModal, setShowModal] = useState(props.visible)
+    const { colors } = useContext(ThemeContext)
 
     React.useEffect(() => {
         toogleModal()
@@ -19,13 +20,13 @@ function WarningModal(props) {
 
     return (
         <Modal animationType="fade" transparent={true} visible={showModal}>
-            <View style={[styles.globalContainer, styles.modal]}>
+            <View style={[styles(colors).globalContainer, styles(colors).modal]}>
 
-                <View style={[styles.container, styles.container_alt]}>
+                <View style={[styles(colors).container, styles(colors).container_alt]}>
                     <ModalHeader closeAction={props.closeAction} color={colors.text_alt} title="Ops!" />
-                    <View style={styles.content}>
-                        <Icons name="alert-triangle" style={[styles.icon]} />
-                        <Text style={styles.text}>{props.text}</Text>
+                    <View style={styles(colors).content}>
+                        <Icons name="alert-triangle" style={[styles(colors).icon]} />
+                        <Text style={styles(colors).text}>{props.text}</Text>
                     </View>
                 </View>
             </View>

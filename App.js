@@ -1,8 +1,10 @@
-import React from "react"
+import React, { createContext } from "react"
 import AppLoading from "expo-app-loading"
-import { useFonts, Poppins_400Regular, Poppins_700Bold, Poppins_500Medium  } from "@expo-google-fonts/poppins"
+import { useFonts, Poppins_400Regular, Poppins_700Bold, Poppins_500Medium } from "@expo-google-fonts/poppins"
 
 import Routes from "./src/navigation"
+import { ThemeProvider } from "./src/styles/ThemeProvider"
+
 
 function App() {
     let [fontsLoaded] = useFonts({
@@ -14,7 +16,9 @@ function App() {
         return <AppLoading />
     } else {
         return (
-            <Routes />
+            <ThemeProvider>
+                <Routes />
+            </ThemeProvider>
         )
     }
 }

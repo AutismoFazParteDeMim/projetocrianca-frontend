@@ -1,7 +1,7 @@
 import { StyleSheet } from "react-native"
-import { colors, fonts, metrics } from "../../../styles"
+import { fonts, metrics } from "../../../styles"
 
-const styles = StyleSheet.create({
+const styles = (colors) => StyleSheet.create({
     container: {
         width: metrics.squareButton.width,
         height: metrics.squareButton.height,
@@ -22,7 +22,7 @@ const styles = StyleSheet.create({
         paddingTop: fonts.text.paddingTop,
         marginLeft: metrics.padding,
         marginRight: metrics.padding,
-        color: colors.text_alt,
+        color: colors.text_alt_light,
     },
 
     image: {
@@ -37,11 +37,11 @@ const styles = StyleSheet.create({
     },
 
     secondaryTitle: {
-        color: colors.text
+        color: colors.text_alt_dark
     },
 
     secondaryIcon: {
-        color: colors.text
+        color: colors.text_alt_dark
     }
 })
 

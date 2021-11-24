@@ -1,8 +1,8 @@
 import { StyleSheet } from "react-native"
 import { fonts, global, metrics } from "../../../styles"
 
-const styles = StyleSheet.create({
-    ...global,
+const styles = (colors) => StyleSheet.create({
+    ...global(colors),
     container: {
         width: "100%",
         flexDirection: "row",
@@ -12,7 +12,8 @@ const styles = StyleSheet.create({
     },
 
     title: {
-        fontSize: fonts.subTitle.size
+        fontSize: fonts.subTitle.size,
+        color: colors.text_alt_light
     },
 
     button: {

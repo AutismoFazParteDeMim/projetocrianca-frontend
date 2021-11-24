@@ -3,16 +3,17 @@ import { NavigationContainer } from "@react-navigation/native"
 import { View, ActivityIndicator } from "react-native"
 import { StatusBar } from "react-native"
 
-import {auth} from "../config/firebase"
+import { auth } from "../config/firebase"
 import { AuthenticatedUserContext } from "./AuthenticatedUserProvider"
 import AuthStack from "./routes/AuthStack"
 import NoAuthStack from "./routes/NoAuthStack"
 
-import { colors } from "../styles"
+import { ThemeContext } from "../styles/ThemeProvider"
 
 function RootNavigator() {
     const { user, setUser } = useContext(AuthenticatedUserContext)
     const [isLoading, setIsLoading] = useState(true)
+    const { colors, theme } = useContext(ThemeContext)
 
     useEffect(() => {
         const unsubscribeAuth = auth.onAuthStateChanged(async authenticatedUser => {
@@ -36,16 +37,17 @@ function RootNavigator() {
     }
 
     return (
-        <NavigationContainer>
+        <NavigationContainer theme={{ colors }}>
             <StatusBar
                 animated={true}
                 backgroundColor={colors.background}
-                barStyle="dark-content"
+                barStyle={theme === "light" ? "dark-content" : "light-content"}
                 translucent={false}
                 hidden={false} />
 
             {user ? <AuthStack /> : <NoAuthStack />}
         </NavigationContainer>
+
     )
 }
 

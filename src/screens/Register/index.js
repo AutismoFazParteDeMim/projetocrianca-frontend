@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useState, useContext } from "react"
 import { Text, View, Image, KeyboardAvoidingView } from "react-native"
 
 import styles from "./styles"
@@ -11,8 +11,10 @@ import WarningModal from "../../components/Modal/WarningModal"
 import SuccessModal from "../../components/Modal/SuccessModal"
 
 import { auth } from '../../config/firebase'
+import { ThemeContext } from "../../styles/ThemeProvider"
 
 function Register({ navigation }) {
+    const { colors } = useContext(ThemeContext)
     const [showModal, setShowModal] = useState(false)
     const [warningModal, setWarningModal] = useState(false)
 
@@ -67,19 +69,19 @@ function Register({ navigation }) {
         >
             <Header title="Cadastre-se" navigation={navigation} />
 
-            <View style={styles.globalContainer}>
-                <View style={[styles.container]}>
-                    <Image source={require('../../../assets/animais.png')} style={styles.image} />
+            <View style={styles(colors).globalContainer}>
+                <View style={[styles(colors).container]}>
+                    <Image source={require('../../../assets/animais.png')} style={styles(colors).image} />
 
-                    <InputText type="name" icon="person-circle-outline" placeholder="Insira seu nome e sobrenome" autoCapitalize="words" onChangeText={text => setUserName(text)} style={styles.input} />
-                    <InputText type="email" icon="mail-outline" placeholder="Insira seu e-mail" onChangeText={text => setEmail(text)} style={styles.input} />
-                    <InputPass type="password" icon="lock-closed-outline" placeholder="Crie uma senha" onChangeText={text => setPassword(text)} style={styles.input} />
+                    <InputText type="name" icon="person-circle-outline" placeholder="Insira seu nome e sobrenome" autoCapitalize="words" onChangeText={text => setUserName(text)} style={styles(colors).input} />
+                    <InputText type="email" icon="mail-outline" placeholder="Insira seu e-mail" onChangeText={text => setEmail(text)} style={styles(colors).input} />
+                    <InputPass type="password" icon="lock-closed-outline" placeholder="Crie uma senha" onChangeText={text => setPassword(text)} style={styles(colors).input} />
 
                     <Button icon="arrow-forward-outline" iconPosition="right" title="Próximo" onPress={() => setShowModal(true)} />
                 </View>
 
                 <CustomModal visible={showModal} title="Cadastro" closeAction={() => setShowModal(false)}>
-                    <Text style={styles.globalText}>Qual o nome da criança? Essa informação será útil para personalizar a experiência!</Text>
+                    <Text style={styles(colors).globalText}>Qual o nome da criança? Essa informação será útil para personalizar a experiência!</Text>
                     <InputText type="name" icon="person-circle-outline" placeholder="Insira o nome e sobrenome" autoCapitalize="words" />
                     <Button icon="checkmark-circle-outline" iconPosition="left" title="Concluído" onPress={() => onHandleSignup()} />
                 </CustomModal>

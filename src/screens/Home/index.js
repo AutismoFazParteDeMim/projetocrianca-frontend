@@ -4,12 +4,13 @@ import { Text, View, Image, TouchableOpacity, KeyboardAvoidingView } from "react
 import styles from "./styles"
 import InputText from "../../components/Input/InputText"
 import SquareButton from "../../components/Button/SquareButton"
-import WarningModal from "../../components/Modal/WarningModal"
 
 import { AuthenticatedUserContext } from "../../navigation/AuthenticatedUserProvider"
+import { ThemeContext } from "../../styles/ThemeProvider"
 
 function Home({ navigation }) {
-    const { user } = useContext(AuthenticatedUserContext);
+    const { user } = useContext(AuthenticatedUserContext)
+    const { colors } = useContext(ThemeContext)
 
     return (
         <KeyboardAvoidingView
@@ -17,25 +18,25 @@ function Home({ navigation }) {
             style={{ flex: 1 }}
         >
 
-            <View style={styles.headerHome}>
+            <View style={styles(colors).headerHome}>
                 <TouchableOpacity onPress={() => navigation.navigate("Profile")}>
-                    <Image style={styles.iconPerson} source={require('../../../assets/User.jpg')} />
+                    <Image style={styles(colors).iconPerson} source={require("../../../assets/User.jpg")} />
                 </TouchableOpacity>
-                <View style={styles.containerInputSearch}>
-                    <InputText placeholder='Pesquise aqui.' icon={'ios-search'} />
+                <View style={styles(colors).containerInputSearch}>
+                    <InputText placeholder="Pesquise aqui." icon={"ios-search"} />
                 </View>
             </View>
 
-            <View style={styles.globalContainer}>
-                <Text style={styles.globalSubtitle}>Bem-vindo(a)!! {"\n" + user.displayName}</Text>
-                <View style={styles.container}>
-                    <View style={styles.grid}>
-                        <SquareButton type='secondary' image={require('../../../assets/books.png')} title="Atividades" />
-                        <SquareButton type='secondary' image={require('../../../assets/parque-infantil.png')} title="Jogos" />
+            <View style={styles(colors).globalContainer}>
+                <Text style={styles(colors).globalSubtitle}>Bem-vindo(a)!! {"\n" + user.displayName}</Text>
+                <View style={styles(colors).container}>
+                    <View style={styles(colors).grid}>
+                        <SquareButton type="secondary" image={require("../../../assets/books.png")} title="Atividades" />
+                        <SquareButton type="secondary" image={require("../../../assets/parque-infantil.png")} title="Jogos" />
 
                     </View>
-                    <View style={styles.grid}>
-                        <SquareButton type='secondary' image={require('../../../assets/cogwheel.png')} title="Configurações" onPress={() => navigation.navigate("Settings")} />
+                    <View style={styles(colors).grid}>
+                        <SquareButton type="secondary" image={require("../../../assets/cogwheel.png")} title="Configurações" onPress={() => navigation.navigate("Settings")} />
                     </View>
                 </View>
             </View>

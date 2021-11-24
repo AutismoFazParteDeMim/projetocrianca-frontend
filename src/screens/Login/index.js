@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useState, useContext } from "react"
 import { Text, View, Image, KeyboardAvoidingView, Platform } from "react-native"
 
 import styles from "./styles"
@@ -11,8 +11,10 @@ import CustomModal from "../../components/Modal/CustomModal"
 import WarningModal from "../../components/Modal/WarningModal"
 
 import { auth } from '../../config/firebase'
+import { ThemeContext } from "../../styles/ThemeProvider"
 
 function Login({ navigation }) {
+    const { colors } = useContext(ThemeContext)
     const [showCustomModal, setShowCustomModal] = useState(false)
     const [warningModal, setWarningModal] = useState(false)
 
@@ -49,22 +51,22 @@ function Login({ navigation }) {
         >
             <Header title="Login" navigation={navigation} />
 
-            <View style={styles.globalContainer}>
-                <View style={styles.container}>
-                    <InputText type="email" icon="mail-outline" placeholder="Insira seu e-mail" onChangeText={text => setEmail(text)} style={styles.input} />
-                    <InputPass type="password" icon="lock-closed-outline" placeholder="Insira sua senha" onChangeText={text => setPassword(text)} style={styles.input} />
+            <View style={styles(colors).globalContainer}>
+                <View style={styles(colors).container}>
+                    <InputText type="email" icon="mail-outline" placeholder="Insira seu e-mail" onChangeText={text => setEmail(text)} style={styles(colors).input} />
+                    <InputPass type="password" icon="lock-closed-outline" placeholder="Insira sua senha" onChangeText={text => setPassword(text)} style={styles(colors).input} />
 
-                    <View style={styles.link} >
+                    <View style={styles(colors).link} >
                         <Link text="Esqueceu sua senha?" onPress={() => setShowCustomModal(true)} />
                     </View>
 
                     <Button icon="enter-outline" iconPosition="left" title="Entrar" onPress={() => onLogin()} />
 
-                    <Image source={require('../../../assets/animais.png')} style={styles.animals} />
+                    <Image source={require('../../../assets/animais.png')} style={styles(colors).animals} />
                 </View>
 
                 <CustomModal visible={showCustomModal} title="Redefinição de senha" closeAction={() => setShowCustomModal(false)}>
-                    <Text style={styles.globalText}>Enviaremos um e-mail com todas as instruções para a redefinição de senha.</Text>
+                    <Text style={styles(colors).globalText}>Enviaremos um e-mail com todas as instruções para a redefinição de senha.</Text>
                     <InputText type="email" icon="mail-outline" placeholder="Insira seu e-mail" />
                     <Button icon="send-outline" iconPosition="right" title="Enviar" onPress={() => setShowCustomModal(false)} />
                 </CustomModal>

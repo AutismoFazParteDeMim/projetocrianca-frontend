@@ -1,12 +1,11 @@
 import { StyleSheet } from "react-native"
-import { colors, global, metrics, fonts } from "../../styles"
+import { global, metrics, fonts } from "../../styles"
 
-const styles = StyleSheet.create({
-    ...global,
-    container:{
+const styles = (colors) => StyleSheet.create({
+    ...global(colors),
+    container: {
         width: "100%",
         height: metrics.button.height,
-        
     },
 
     wrapper: {
@@ -15,7 +14,7 @@ const styles = StyleSheet.create({
         paddingRight: metrics.padding,
         flexDirection: "row",
         borderRadius: metrics.button.borderRadius,
-        backgroundColor: colors.inputBackground
+        backgroundColor: colors.inputBackground,
     },
 
     iconWrapper: {
@@ -27,12 +26,12 @@ const styles = StyleSheet.create({
         borderRadius: metrics.button.borderRadius,
         //marginRight: metrics.padding,
         //backgroundColor: colors.inputBackground_shadow,
-        color: colors.text_alt
+        color: colors.text_alt_dark
     },
 
     icon: {
         fontSize: metrics.button.iconSize,
-        color: colors.text
+        color: colors.text_alt_dark
     },
 
     input: {
