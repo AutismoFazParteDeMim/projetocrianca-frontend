@@ -1,4 +1,6 @@
-import fireBase from 'firebase'
+import firebase from 'firebase'
+import "firebase/auth"
+import "@firebase/firestore"
 import Constants from 'expo-constants'
 
 // Initialize Firebase
@@ -12,13 +14,9 @@ const firebaseConfig = {
     measurementId: Constants.manifest.extra.measurementId
 }
 
-let firebase
-let auth
-let firestore
+firebase.initializeApp(firebaseConfig)
 
-if (fireBase.apps.length === 0) {
-    firebase = fireBase.initializeApp(firebaseConfig)
-    auth = fireBase.auth()
-}
+const firestore = firebase.firestore()
+const auth = firebase.auth()
 
-export {firebase, auth}
+export { firebase, firestore, auth }
