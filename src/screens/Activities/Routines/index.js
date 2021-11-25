@@ -23,7 +23,7 @@ function Routines({ navigation }) {
 
     return (
         <View style={styles.globalContainer}>
-            <Header title="Rotinas" />
+            <Header title="Rotinas" navigation={navigation} />
             <Slider navigation={navigation} data={data} render={render} />
         </View>
     )

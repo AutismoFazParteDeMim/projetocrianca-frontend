@@ -23,7 +23,7 @@ function Expressions({ navigation }) {
 
     return (
         <View style={styles.globalContainer}>
-            <Header title="Expressões" />
+            <Header title="Expressões" navigation={navigation}/>
             <Slider navigation={navigation} data={data} render={render} />
         </View>
     )

@@ -20,7 +20,7 @@ function Home({ navigation }) {
 
             <View style={styles(colors).headerHome}>
                 <TouchableOpacity onPress={() => navigation.navigate("Profile")}>
-                    <Image style={styles(colors).iconPerson} source={require("../../../assets/User.jpg")} />
+                    <Image style={styles(colors).iconPerson} source={require("../../../assets/icon.png")} />
                 </TouchableOpacity>
                 <View style={styles(colors).containerInputSearch}>
                     <InputText placeholder="Pesquise aqui." icon={"ios-search"} />
@@ -31,7 +31,7 @@ function Home({ navigation }) {
                 <Text style={styles(colors).globalSubtitle}>Bem-vindo(a)!! {"\n" + user.displayName}</Text>
                 <View style={styles(colors).container}>
                     <View style={styles(colors).grid}>
-                        <SquareButton type="secondary" image={require("../../../assets/books.png")} title="Atividades" />
+                        <SquareButton type="secondary" image={require("../../../assets/books.png")} title="Atividades" onPress={() => navigation.navigate("Activity")} />
                         <SquareButton type="secondary" image={require("../../../assets/parque-infantil.png")} title="Jogos" />
 
                     </View>

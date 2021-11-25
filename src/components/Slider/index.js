@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import AppIntroSlider from 'react-native-app-intro-slider'
 
 import styles from "./styles"

@@ -18,7 +18,7 @@ function Profile({ navigation }) {
                     <Header navigation={navigation} transparent={true} />
                 </ImageBackground>
                 <View style={styles(colors).infos}>
-                    <Image source={require("../../../assets/User.jpg")} style={styles(colors).profilePic} />
+                    <Image source={require("../../../assets/icon.png")} style={styles(colors).profilePic} />
                     <View style={styles(colors).userData}>
                         <Text style={[styles(colors).globalTitle, styles(colors).title]}>{user.displayName}</Text>
                         <Icon name="checkmark-circle-outline" style={[styles(colors).globalIcon, styles(colors).icon]} />
