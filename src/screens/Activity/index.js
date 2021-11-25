@@ -7,6 +7,7 @@ import Header from "../../components/Header"
 import Icon from "../../styles/icons";
 
 import { ThemeContext } from "../../styles/ThemeProvider"
+ 
 
 function Activity({ navigation }) {
     const { colors } = useContext(ThemeContext)
