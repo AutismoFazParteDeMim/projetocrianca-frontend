@@ -1,6 +1,4 @@
 import firebase from 'firebase'
-import "firebase/auth"
-import "@firebase/firestore"
 import Constants from 'expo-constants'
 
 // Initialize Firebase

@@ -8,7 +8,7 @@ import Header from "../../components/Header";
 import { AuthenticatedUserContext } from "../../navigation/AuthenticatedUserProvider"
 import { ThemeContext } from "../../styles/ThemeProvider"
 function Profile({ navigation }) {
-    const { user } = useContext(AuthenticatedUserContext)
+    const { child } = useContext(AuthenticatedUserContext)
     const { colors } = useContext(ThemeContext)
 
     return (
@@ -20,7 +20,7 @@ function Profile({ navigation }) {
                 <View style={styles(colors).infos}>
                     <Image source={require("../../../assets/icon.png")} style={styles(colors).profilePic} />
                     <View style={styles(colors).userData}>
-                        <Text style={[styles(colors).globalTitle, styles(colors).title]}>{user.displayName}</Text>
+                        <Text style={[styles(colors).globalTitle, styles(colors).title]}>{child.childsName}</Text>
                         <Icon name="checkmark-circle-outline" style={[styles(colors).globalIcon, styles(colors).icon]} />
                     </View>
                 </View>

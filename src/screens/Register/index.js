@@ -10,7 +10,7 @@ import CustomModal from "../../components/Modal/CustomModal"
 import WarningModal from "../../components/Modal/WarningModal"
 import SuccessModal from "../../components/Modal/SuccessModal"
 
-import { auth } from '../../config/firebase'
+import { auth, firestore } from '../../config/firebase'
 import { ThemeContext } from "../../styles/ThemeProvider"
 
 function Register({ navigation }) {
@@ -21,6 +21,7 @@ function Register({ navigation }) {
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
     const [userName, setUserName] = useState("")
+    const [childsName, setChildsName] = useState("")
     const [errorMessage, setErrorMessage] = useState("")
 
     async function handleSignOut() {
@@ -37,14 +38,25 @@ function Register({ navigation }) {
             if (userName.length < 3) {
                 setErrorMessage("O nome deve conter pelo menos 03 letras.")
                 setWarningModal(true)
-            } else if (email !== "" && password !== "" && userName !== "") {
+            } else if (email !== "" && password !== "" && userName !== "" && childsName !== "") {
                 await auth.createUserWithEmailAndPassword(email, password).then((res) => {
                     const user = res.user
-                    user.updateProfile({ displayName: userName })
 
-                    user.sendEmailVerification()
-
-                    handleSignOut()
+                    firestore.collection("users")
+                        .doc(user.uid).set({
+                            childsName: childsName,
+                            childsGender: "-",
+                            childsProfilePic: "-"
+                        })
+                        .then((docRef) => {
+                            user.updateProfile({ displayName: userName })
+                            user.sendEmailVerification()
+                            handleSignOut()
+                        })
+                        .catch((error) => {
+                            setErrorMessage(error)
+                            setWarningModal(true)
+                        })
                 })
             } else {
                 setErrorMessage("Nenhum campo pode estar vazio!")
@@ -82,7 +94,7 @@ function Register({ navigation }) {
 
                 <CustomModal visible={showModal} title="Cadastro" closeAction={() => setShowModal(false)}>
                     <Text style={styles(colors).globalText}>Qual o nome da criança? Essa informação será útil para personalizar a experiência!</Text>
-                    <InputText type="name" icon="person-circle-outline" placeholder="Insira o nome e sobrenome" autoCapitalize="words" />
+                    <InputText type="name" icon="person-circle-outline" placeholder="Insira o nome e sobrenome" onChangeText={text => setChildsName(text)} autoCapitalize="words" />
                     <Button icon="checkmark-circle-outline" iconPosition="left" title="Concluído" onPress={() => onHandleSignup()} />
                 </CustomModal>
                 <WarningModal visible={warningModal} closeAction={() => setWarningModal(false)} text={errorMessage} />

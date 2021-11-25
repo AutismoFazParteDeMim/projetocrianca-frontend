@@ -9,7 +9,7 @@ import { AuthenticatedUserContext } from "../../navigation/AuthenticatedUserProv
 import { ThemeContext } from "../../styles/ThemeProvider"
 
 function Home({ navigation }) {
-    const { user } = useContext(AuthenticatedUserContext)
+    const { user, child } = useContext(AuthenticatedUserContext)
     const { colors } = useContext(ThemeContext)
 
     return (
@@ -28,7 +28,7 @@ function Home({ navigation }) {
             </View>
 
             <View style={styles(colors).globalContainer}>
-                <Text style={styles(colors).globalSubtitle}>Bem-vindo(a)!! {"\n" + user.displayName}</Text>
+                <Text style={styles(colors).globalSubtitle}>Bem-vindo(a)!! {"\n" + child.childsName}</Text>
                 <View style={styles(colors).container}>
                     <View style={styles(colors).grid}>
                         <SquareButton type="secondary" image={require("../../../assets/books.png")} title="Atividades" onPress={() => navigation.navigate("Activity")} />

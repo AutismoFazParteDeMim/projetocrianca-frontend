@@ -3,7 +3,7 @@ import { NavigationContainer } from "@react-navigation/native"
 import { View, ActivityIndicator } from "react-native"
 import { StatusBar } from "react-native"
 
-import { auth } from "../config/firebase"
+import { auth, firestore } from "../config/firebase"
 import { AuthenticatedUserContext } from "./AuthenticatedUserProvider"
 import AuthStack from "./routes/AuthStack"
 import NoAuthStack from "./routes/NoAuthStack"
@@ -11,14 +11,30 @@ import NoAuthStack from "./routes/NoAuthStack"
 import { ThemeContext } from "../styles/ThemeProvider"
 
 function RootNavigator() {
-    const { user, setUser } = useContext(AuthenticatedUserContext)
+    const { user, setUser, setChild } = useContext(AuthenticatedUserContext)
     const [isLoading, setIsLoading] = useState(true)
     const { colors, theme } = useContext(ThemeContext)
 
     useEffect(() => {
-        const unsubscribeAuth = auth.onAuthStateChanged(async authenticatedUser => {
+        const unsubscribeAuth = auth.onAuthStateChanged(authenticatedUser => {
             try {
-                await (authenticatedUser ? setUser(authenticatedUser) : setUser(null))
+                if (authenticatedUser) {
+                    setUser(authenticatedUser)
+                    let docRef = firestore.collection("users").doc(authenticatedUser.uid);
+                    docRef.get().then((doc) => {
+                        if (doc.exists) {
+                            setChild(doc.data())
+                        } else {
+                            console.log("No such document!");
+                            setChild(null)
+                        }
+                    }).catch((error) => {
+                        console.log(error)
+                    })
+                } else {
+                    setUser(null)
+                    setChild(null)
+                }
                 setIsLoading(false)
             } catch (error) {
                 console.log(error)
