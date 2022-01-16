@@ -17,8 +17,8 @@ const lightTheme = {
         danger: "#EA4335",
         dangerShadow: "#B92013",
 
-        inputBackground: "#E5E5E5",
-        inputBackgroundShadow: "#979797",
+        card: "#E5E5E5",
+        cardShadow: "#979797",
 
         text: "#3D3D3D",
         textAlt: "#fff",
@@ -43,8 +43,8 @@ const darkTheme = {
         danger: "#EA4335",
         dangerShadow: "#B92013",
 
-        inputBackground: "#E5E5E5",
-        inputBackgroundShadow: "#979797",
+        card: "#E5E5E5",
+        cardShadow: "#979797",
 
         text: "#ffffff",
         textAltLight: "#fff",

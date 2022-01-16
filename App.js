@@ -11,6 +11,7 @@ import Profile from "./src/screens/Profile"
 import Activities from "./src/screens/Activities"
 import colorScheme from './src/theme/color-scheme'
 import { ThemeProvider } from 'styled-components/native'
+import Header from './src/components/Header'
 
 
 const Stack = createNativeStackNavigator()
@@ -29,9 +30,12 @@ export default function App() {
         return (
             <NavigationContainer theme={theme}>
                 <ThemeProvider theme={theme}>
-                    <StatusBar style="auto" />
-                    <Stack.Navigator initialRouteName="Home">
-                        <Stack.Screen name="Home" component={Home} options={{ title: "Início" }} />
+                    <StatusBar style="light" backgroundColor={theme.colors.background} translucent={false} />
+                    <Stack.Navigator
+                        initialRouteName="Home"
+                        screenOptions={{ header: props => (<Header title={props.options.title} />) }}
+                    >
+                        <Stack.Screen name="Home" component={Home} options={{ title: "Início", headerShown: false }} />
                         <Stack.Screen name="Settings" component={Settings} options={{ title: "Configurações" }} />
                         <Stack.Screen name="Profile" component={Profile} options={{ title: "Perfil" }} />
                         <Stack.Screen name="Games" component={Games} options={{ title: "Jogos" }} />
