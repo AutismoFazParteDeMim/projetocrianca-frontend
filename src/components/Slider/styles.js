@@ -5,7 +5,7 @@ const styles = (theme) => StyleSheet.create({
         width: 14,
         height: 14,
         borderRadius: 14,
-        backgroundColor: theme.colors.shadow,
+        backgroundColor: theme.colors.shadow
     },
     
     activeDot: {
