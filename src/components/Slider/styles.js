@@ -1,6 +1,6 @@
 import { StyleSheet } from "react-native"
 
-export default styles = (theme) => StyleSheet.create({
+const styles = (theme) => StyleSheet.create({
     dot: {
         width: 14,
         height: 14,
@@ -17,3 +17,5 @@ export default styles = (theme) => StyleSheet.create({
         backgroundColor: theme.colors.background
     }
 })
+
+export default styles
