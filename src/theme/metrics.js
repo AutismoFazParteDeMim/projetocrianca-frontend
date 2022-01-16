@@ -8,11 +8,11 @@ export default {
         web: { headerHeight: "100px", headerPadding: "0px" }
     }),
     button: {
-        width: 240,
-        height: 56,
-        borderBottomWidth: 4,
-        borderRadius: 12,
-        iconSize: 24
+        width: "240px",
+        height: "56px",
+        borderBottomWidth: "4px",
+        borderRadius: "12px",
+        iconSize: "24px"
     },
     circleButton: {
         width: "40px",

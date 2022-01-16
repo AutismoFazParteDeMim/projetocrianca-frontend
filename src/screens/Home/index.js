@@ -15,7 +15,7 @@ export default function Home({ navigation }) {
                     <SearchBar />
                 </SearchBarContainer>
             </Header>
-            
+
             <UserNameText>Bem vindo(a)! {"\n" + "Usuário"}</UserNameText>
 
             <Grid>
