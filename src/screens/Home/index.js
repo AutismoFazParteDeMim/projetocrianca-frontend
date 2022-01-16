@@ -20,7 +20,7 @@ export default function Home({ navigation }) {
 
             <Grid>
                 <GridRow>
-                    <SquareButton title="Atividades" image={require("../../../assets/icons/activities-icon.png")} onPress={() => navigation.navigate("Activities")} />
+                    <SquareButton title="Atividades" image={require("../../../assets/icons/activities-icon.png")} onPress={() => navigation.navigate("Activity")} />
                     <SquareButton title="Jogos" image={require("../../../assets/icons/games-icon.png")} onPress={() => navigation.navigate("Games")} />
                 </GridRow>
                 <GridRow>

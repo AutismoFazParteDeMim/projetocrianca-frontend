@@ -9,14 +9,14 @@ export default function Activities({ navigation }) {
             title: "Rotinas",
             description: "Trabalha estabelecer a relação do numero com a quantidade, percepção visual, etc.",
             image: require("../../../assets/icons/routines-icon.png"),
-            onPress: () => navigation.goBack()
+            onPress: () => navigation.navigate("Routines")
         },
         {
             key: 2,
             title: "Expressões",
             description: "Trabalha estabelecer a relação do numero com a quantidade, percepção visual, etc.",
             image: require("../../../assets/icons/expressions-icon.png"),
-            onPress: () => navigation.goBack()
+            onPress: () => navigation.navigate("Expressions")
         }
     ]
 

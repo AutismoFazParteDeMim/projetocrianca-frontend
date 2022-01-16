@@ -8,12 +8,14 @@ import Home from "./src/screens/Home"
 import Settings from "./src/screens/Settings"
 import Games from "./src/screens/Games"
 import Profile from "./src/screens/Profile"
-import Activities from "./src/screens/Activities"
+import Activity from "./src/screens/Activity"
 import colorScheme from './src/theme/color-scheme'
 import { ThemeProvider } from 'styled-components/native'
 import Header from './src/components/Header'
 import { SafeAreaProvider } from 'react-native-safe-area-context'
 import { ThemeProvider as RNEThemeProvider } from 'react-native-elements'
+import Routines from "./src/screens/Activities/Routines"
+import Expressions from "./src/screens/Activities/Expressions"
 
 const Stack = createNativeStackNavigator()
 export default function App() {
@@ -42,7 +44,9 @@ export default function App() {
                                 <Stack.Screen name="Settings" component={Settings} options={{ title: "Configurações" }} />
                                 <Stack.Screen name="Profile" component={Profile} options={{ title: "Perfil" }} />
                                 <Stack.Screen name="Games" component={Games} options={{ title: "Jogos" }} />
-                                <Stack.Screen name="Activities" component={Activities} options={{ title: "Atividades" }} />
+                                <Stack.Screen name="Activity" component={Activity} options={{ title: "Atividades" }} />
+                                <Stack.Screen name="Routines" component={Routines} options={{ title: "Rotinas" }} />
+                                <Stack.Screen name="Expressions" component={Expressions} options={{ title: "Expressões" }} />
                             </Stack.Navigator>
                         </RNEThemeProvider>
                     </ThemeProvider>
