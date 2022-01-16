@@ -21,7 +21,8 @@ const lightTheme = {
         cardShadow: "#979797",
 
         text: "#3D3D3D",
-        textAlt: "#fff",
+        textAltLight: "#fff",
+        textAltDark: "#3b3b3b",
 
         shadow: "#e5e5e5",
 

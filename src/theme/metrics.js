@@ -19,7 +19,7 @@ export default {
         height: "40px",
         borderBottomWidth: "4px",
         borderRadius: "40px",
-        iconSize: 24
+        iconSize: "24px"
     },
     squareButton: {
         width: 160,
@@ -27,5 +27,10 @@ export default {
         borderBottomWidth: 4,
         borderRadius: 25,
         imageSize: 64
+    },
+    input: {
+        height: "56px",
+        padding: "16px",
+        iconSize: "24px"
     }
 }
