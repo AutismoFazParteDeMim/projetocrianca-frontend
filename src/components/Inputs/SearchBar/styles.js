@@ -3,6 +3,7 @@ import styled from "styled-components/native"
 import metrics from "../../../theme/metrics"
 import { Ionicons } from "@expo/vector-icons"
 import { SearchBar as RNESearchBar } from 'react-native-elements';
+import fonts from "../../../theme/fonts"
 
 export const Container = styled.View`
     height: ${metrics.input.height};
@@ -12,4 +13,7 @@ export const Container = styled.View`
 `
 export const CustomSearchBar = styled(RNESearchBar)`
     height: 100%;
+    font-family: ${fonts.text.font};
+    font-size: ${fonts.text.size};
+    padding-top: 4px;
 `

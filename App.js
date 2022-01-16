@@ -32,7 +32,7 @@ export default function App() {
             <SafeAreaProvider>
                 <NavigationContainer theme={theme}>
                     <ThemeProvider theme={theme}>
-                        <RNEThemeProvider>
+                        <RNEThemeProvider useDark={theme.dark} theme={theme}>
                             <StatusBar style="light" backgroundColor={theme.colors.background} translucent={false} />
                             <Stack.Navigator
                                 initialRouteName="Home"

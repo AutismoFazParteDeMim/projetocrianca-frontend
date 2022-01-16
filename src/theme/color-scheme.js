@@ -44,8 +44,8 @@ const darkTheme = {
         danger: "#EA4335",
         dangerShadow: "#B92013",
 
-        card: "#E5E5E5",
-        cardShadow: "#979797",
+        card: "#979797",
+        cardShadow: "#3b3b3b",
 
         text: "#ffffff",
         textAltLight: "#fff",

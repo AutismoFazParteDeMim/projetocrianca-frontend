@@ -22,11 +22,11 @@ export default {
         iconSize: "24px"
     },
     squareButton: {
-        width: 160,
-        height: 160,
-        borderBottomWidth: 4,
-        borderRadius: 25,
-        imageSize: 64
+        width: "160px",
+        height: "160px",
+        borderBottomWidth: "4px",
+        borderRadius: "25px",
+        imageSize: "64px"
     },
     input: {
         height: "56px",

@@ -1,4 +1,5 @@
 import styled from "styled-components/native"
+import fonts from "../../theme/fonts"
 import metrics from "../../theme/metrics"
 import Text from "../Text"
 
@@ -13,8 +14,8 @@ export const Container = styled.View`
 `
 
 export const Title = styled(Text)`
-    font-family: "bold";
-    font-size: 34px;
+    font-family: ${fonts.title.font};
+    font-size: ${fonts.title.size};
 `
 
 export const BackButton = styled.View`
