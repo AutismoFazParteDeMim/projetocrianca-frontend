@@ -31,6 +31,7 @@ export default {
     input: {
         height: "56px",
         padding: "16px",
+        borderRadius: "16px",
         iconSize: "24px"
     }
 }
