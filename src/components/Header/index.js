@@ -7,7 +7,7 @@ export default function Header(props) {
     return (
         <Container>
             <BackButton>
-                <CircleButton icon="arrow-back-outline" onPress={() => props.navigation.goBack()} />
+                <CircleButton icon="chevron-back" onPress={() => props.navigation.goBack()} />
             </BackButton>
             <Title>{props.title}</Title>
         </Container>

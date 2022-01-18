@@ -35,14 +35,14 @@ export default function App() {
                 <NavigationContainer theme={theme}>
                     <ThemeProvider theme={theme}>
                         <RNEThemeProvider useDark={theme.dark} theme={theme}>
-                            <StatusBar style="light" backgroundColor={theme.colors.background} translucent={false} />
+                            <StatusBar style="auto" backgroundColor={theme.colors.background} translucent={false} />
                             <Stack.Navigator
                                 initialRouteName="Home"
                                 screenOptions={{ header: props => (<Header title={props.options.title} {...props} />) }}
                             >
                                 <Stack.Screen name="Home" component={Home} options={{ title: "Início", headerShown: false }} />
                                 <Stack.Screen name="Settings" component={Settings} options={{ title: "Configurações" }} />
-                                <Stack.Screen name="Profile" component={Profile} options={{ title: "Perfil" }} />
+                                <Stack.Screen name="Profile" component={Profile} options={{ title: "Perfil", headerShown: false }} />
                                 <Stack.Screen name="Games" component={Games} options={{ title: "Jogos" }} />
                                 <Stack.Screen name="Activity" component={Activity} options={{ title: "Atividades" }} />
                                 <Stack.Screen name="Routines" component={Routines} options={{ title: "Rotinas" }} />
