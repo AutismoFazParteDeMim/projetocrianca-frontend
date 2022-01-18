@@ -36,6 +36,8 @@ const darkTheme = {
         ...DarkTheme.colors,
         primary: "#71BA51",
         primaryShadow: "#3C7D1F",
+        secondary: "#e5e5e533",
+        secondaryShadow: "#979797",
 
         success: "#25D366",
         successShadow: "#1EAE54",

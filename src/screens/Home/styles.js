@@ -6,7 +6,7 @@ import fonts from "../../theme/fonts"
 
 export const Container = styled(KeyboardAvoidingView)`
     flex: 1;
-    padding: 0 ${metrics.padding} 0 ${metrics.padding};
+    padding: ${metrics.padding};
 `
 
 export const Header = styled.View`

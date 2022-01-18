@@ -2,10 +2,10 @@ import styled from "styled-components/native"
 import metrics from "../../theme/metrics"
 import Text from "../../components/Text"
 import fonts from "../../theme/fonts"
-import {Ionicons} from "@expo/vector-icons"
+import { Ionicons } from "@expo/vector-icons"
 
 export const Container = styled.View`
-    padding: 0 ${metrics.padding} 0 ${metrics.padding};
+    padding: ${metrics.padding};
 `
 
 export const Section = styled.View`
@@ -15,6 +15,11 @@ export const Section = styled.View`
 export const SectionTitle = styled(Text)`
     font-family: ${fonts.sectionTitle.font};
     font-size: ${fonts.sectionTitle.size};
+`
+
+export const SectionContent = styled.View`
+    align-items: center;
+    justify-content: center;
 `
 
 export const OptionContainer = styled.View`
@@ -27,7 +32,6 @@ export const OptionContainer = styled.View`
     justify-content: space-between;
     border-radius: ${metrics.input.borderRadius};
     background-color: ${props => props.theme.colors.card};
-
 `
 
 export const OptionIcon = styled(Ionicons)`
