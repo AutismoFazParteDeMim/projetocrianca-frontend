@@ -25,13 +25,13 @@ export const Container = styled.TouchableOpacity`
 
 export const ButtonIcon = styled(Ionicons)`
     font-size: ${metrics.button.iconSize};
-    color: ${props => props.textColor ? props.textColor : props.theme.colors.textAltLight};
+    color: ${props => props.textColor ? props.textColor : props.type != "secondary" ? props.theme.colors.textAltLight : props.theme.colors.text};
 `
 
 export const ButtonTitle = styled(Text)`
     font-family: ${fonts.button.font};
     font-size: ${fonts.button.size};
     padding-top: ${fonts.button.paddingTop};
-    color: ${props => props.textColor ? props.textColor : props.theme.colors.textAltLight};
+    color: ${props => props.textColor ? props.textColor : props.type != "secondary" ? props.theme.colors.textAltLight : props.theme.colors.text};
     margin: 0 ${metrics.padding} 0 ${metrics.padding};
 `

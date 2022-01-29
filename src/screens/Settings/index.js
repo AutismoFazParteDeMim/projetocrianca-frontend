@@ -6,10 +6,9 @@ import Tooltip from "../../components/Tooltip"
 import { TouchableOpacity } from "react-native"
 import Button from "../../components/Buttons/Button"
 
-export default function Settings() {
+export default function Settings({ navigation }) {
     const [darkMode, setDarkMode] = useState(false);
     const [colorblindMode, setColorblindMode] = useState(false);
-
 
     const toggleSwitch = () => {
         setChecked(!checked);
@@ -61,7 +60,7 @@ export default function Settings() {
                         </OptionContainer>
                     </TouchableOpacity>
 
-                    <Button type="danger" icon="log-out-outline" title="Sair da conta" />
+                    <Button type="danger" icon="log-out-outline" title="Sair da conta" onPress={() => navigation.navigate("Welcome")} />
                 </SectionContent>
             </Section>
         </Container>
