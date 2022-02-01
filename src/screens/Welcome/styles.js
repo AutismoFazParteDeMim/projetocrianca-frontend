@@ -37,3 +37,7 @@ export const ButtonsContainer = styled(BottomContainer)`
     height: 40%;
     justify-content: space-between;
 `
+
+export const PrivacyPolicyContainer = styled(Container)`
+padding: 0 0 ${metrics.padding} 0;
+`

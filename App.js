@@ -20,7 +20,7 @@ import Expressions from "./src/screens/Activities/Expressions"
 import Welcome from "./src/screens/Welcome"
 import Login from "./src/screens/Login"
 import Register from "./src/screens/Register"
-
+import Modal from './src/components/Modal'
 
 const Stack = createNativeStackNavigator()
 export default function App() {
@@ -55,6 +55,7 @@ export default function App() {
                                 <Stack.Screen name="Welcome" component={Welcome} options={{ title: "Bem-Vindo(a)!", headerShown: false }} />
                                 <Stack.Screen name="Login" component={Login} options={{ title: "Login" }} />
                                 <Stack.Screen name="Register" component={Register} options={{ title: "Cadastre-se" }} />
+                                <Stack.Screen name="Modal" component={Modal} options={{ title: "Modal", headerShown: false, presentation: "transparentModal" }} />
                             </Stack.Navigator>
                         </RNEThemeProvider>
                     </ThemeProvider>

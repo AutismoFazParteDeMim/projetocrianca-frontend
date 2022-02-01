@@ -14,13 +14,19 @@ export const Form = styled.View`
     justify-content: center;
 `
 
-export const ForgotPassContaier = styled.View`
+export const ForgotPassButtonContaier = styled.View`
     width: 100%;
     padding: 0 ${metrics.padding} 0 ${metrics.padding};
     margin-top: -${metrics.padding};
     margin-bottom: ${metrics.padding};
     align-items: flex-end;
     justify-content: center;
+`
+
+export const ForgotPassModalContainer = styled.View`
+    flex: 1;
+    align-items: center;
+    justify-content: space-between;
 `
 
 export const Image = styled.Image`
