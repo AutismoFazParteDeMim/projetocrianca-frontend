@@ -1,0 +1,24 @@
+import React from "react"
+import { createNativeStackNavigator } from "@react-navigation/native-stack"
+
+import Welcome from "../../screens/Welcome"
+import Login from "../../screens/Login"
+import Register from "../../screens/Register"
+import Modal from "../../components/Modal"
+
+import Header from "../../components/Header"
+
+const Stack = createNativeStackNavigator()
+export default function NonAuthStack() {
+    return (
+        <Stack.Navigator
+            initialRouteName="Welcome"
+            screenOptions={{ header: props => (<Header title={props.options.title} {...props} />) }}
+        >
+            <Stack.Screen name="Welcome" component={Welcome} options={{ title: "Bem-Vindo(a)!", headerShown: false }} />
+            <Stack.Screen name="Login" component={Login} options={{ title: "Login" }} />
+            <Stack.Screen name="Register" component={Register} options={{ title: "Cadastre-se" }} />
+            <Stack.Screen name="Modal" component={Modal} options={{ title: "Modal", headerShown: false, presentation: "transparentModal" }} />
+        </Stack.Navigator>
+    )
+}
