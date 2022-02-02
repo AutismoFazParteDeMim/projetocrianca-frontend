@@ -4,7 +4,6 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import AppLoading from 'expo-app-loading'
 import { useFonts, Poppins_400Regular, Poppins_500Medium, Poppins_700Bold } from '@expo-google-fonts/poppins'
 import { ThemeProvider } from 'styled-components/native'
-import { SafeAreaProvider } from 'react-native-safe-area-context'
 import { ThemeProvider as RNEThemeProvider } from 'react-native-elements'
 import colorScheme from './src/theme/color-scheme'
 
@@ -36,31 +35,29 @@ export default function App() {
         return <AppLoading />
     } else {
         return (
-            <SafeAreaProvider>
-                <NavigationContainer theme={theme}>
-                    <ThemeProvider theme={theme}>
-                        <RNEThemeProvider useDark={theme.dark} theme={theme}>
-                            <StatusBar style="auto" backgroundColor={theme.colors.background} translucent={false} />
-                            <Stack.Navigator
-                                initialRouteName="Welcome"
-                                screenOptions={{ header: props => (<Header title={props.options.title} {...props} />) }}
-                            >
-                                <Stack.Screen name="Home" component={Home} options={{ title: "Início", headerShown: false }} />
-                                <Stack.Screen name="Settings" component={Settings} options={{ title: "Configurações" }} />
-                                <Stack.Screen name="Profile" component={Profile} options={{ title: "Perfil", headerShown: false }} />
-                                <Stack.Screen name="Games" component={Games} options={{ title: "Jogos" }} />
-                                <Stack.Screen name="Activity" component={Activity} options={{ title: "Atividades" }} />
-                                <Stack.Screen name="Routines" component={Routines} options={{ title: "Rotinas" }} />
-                                <Stack.Screen name="Expressions" component={Expressions} options={{ title: "Expressões" }} />
-                                <Stack.Screen name="Welcome" component={Welcome} options={{ title: "Bem-Vindo(a)!", headerShown: false }} />
-                                <Stack.Screen name="Login" component={Login} options={{ title: "Login" }} />
-                                <Stack.Screen name="Register" component={Register} options={{ title: "Cadastre-se" }} />
-                                <Stack.Screen name="Modal" component={Modal} options={{ title: "Modal", headerShown: false, presentation: "transparentModal" }} />
-                            </Stack.Navigator>
-                        </RNEThemeProvider>
-                    </ThemeProvider>
-                </NavigationContainer>
-            </SafeAreaProvider>
+            <NavigationContainer theme={theme}>
+                <ThemeProvider theme={theme}>
+                    <RNEThemeProvider useDark={theme.dark} theme={theme}>
+                        <StatusBar style="auto" />
+                        <Stack.Navigator
+                            initialRouteName="Welcome"
+                            screenOptions={{ header: props => (<Header title={props.options.title} {...props} />) }}
+                        >
+                            <Stack.Screen name="Home" component={Home} options={{ title: "Início", headerShown: false }} />
+                            <Stack.Screen name="Settings" component={Settings} options={{ title: "Configurações" }} />
+                            <Stack.Screen name="Profile" component={Profile} options={{ title: "Perfil", headerShown: false }} />
+                            <Stack.Screen name="Games" component={Games} options={{ title: "Jogos" }} />
+                            <Stack.Screen name="Activity" component={Activity} options={{ title: "Atividades" }} />
+                            <Stack.Screen name="Routines" component={Routines} options={{ title: "Rotinas" }} />
+                            <Stack.Screen name="Expressions" component={Expressions} options={{ title: "Expressões" }} />
+                            <Stack.Screen name="Welcome" component={Welcome} options={{ title: "Bem-Vindo(a)!", headerShown: false }} />
+                            <Stack.Screen name="Login" component={Login} options={{ title: "Login" }} />
+                            <Stack.Screen name="Register" component={Register} options={{ title: "Cadastre-se" }} />
+                            <Stack.Screen name="Modal" component={Modal} options={{ title: "Modal", headerShown: false, presentation: "transparentModal" }} />
+                        </Stack.Navigator>
+                    </RNEThemeProvider>
+                </ThemeProvider>
+            </NavigationContainer>
         )
     }
 } 

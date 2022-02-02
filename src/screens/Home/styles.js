@@ -1,19 +1,20 @@
 import styled from "styled-components/native"
-import { KeyboardAvoidingView } from "react-native"
 import metrics from "../../theme/metrics"
 import Text from "../../components/Text"
 import fonts from "../../theme/fonts"
 
-export const Container = styled(KeyboardAvoidingView)`
+export const Container = styled.KeyboardAvoidingView`
     flex: 1;
-    padding: ${metrics.padding};
+    padding: 0 ${metrics.padding} 0 ${metrics.padding};
 `
 
 export const Header = styled.View`
     width: 100%;
-    height: 120px;
+    height: ${metrics.headerHeight};
+    padding: ${metrics.headerPadding} 0 0 0;
     flex-direction: row;
     align-items: center;
+    margin-bottom: ${metrics.padding};
     justify-content: space-between;
 `
 
@@ -29,7 +30,7 @@ export const ProfileButton = styled.TouchableOpacity`
 `
 
 export const SearchBarContainer = styled.View`
-    width: 240px;
+    width: 220px;
 `
 
 export const UserNameText = styled(Text)`

@@ -13,7 +13,7 @@ export const CoverContainer = styled.ImageBackground`
 export const BackButton = styled(CircleButton)`
     position: absolute;
     left: ${metrics.padding};
-    top: ${metrics.padding};
+    top: ${metrics.headerPadding};
 `
 
 export const InfoContainer = styled.View`

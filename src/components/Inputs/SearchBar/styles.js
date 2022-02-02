@@ -7,7 +7,6 @@ import fonts from "../../../theme/fonts"
 
 export const Container = styled.View`
     height: ${metrics.input.height};
-    padding: 0 ${metrics.input.padding} 0 ${metrics.input.padding};
     border-radius: ${metrics.input.padding};
     background-color: ${props => props.theme.colors.card};
 `

@@ -5,7 +5,7 @@ import Text from ".././Text"
 
 import { Ionicons } from "@expo/vector-icons"
 
-export const Container = styled.Pressable`
+export const Container = styled.View`
     flex: 1;
     padding: 0 ${metrics.padding} 0 ${metrics.padding};
     align-items: center;

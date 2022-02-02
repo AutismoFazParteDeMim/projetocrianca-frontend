@@ -6,11 +6,15 @@ import Text from "../Text"
 export const Container = styled.View`
     width: 100%;
     height: ${metrics.headerHeight};
-    padding: 0 ${metrics.padding} 0 ${metrics.padding};
+    padding: ${metrics.headerPadding} ${metrics.padding} 0 ${metrics.padding};
     flex-direction: row;
     align-items: center;
     justify-content: center;
     background-color: ${props => props.theme.colors.background};
+`
+
+export const Content = styled(Container)`
+    padding: 0px;
 `
 
 export const Title = styled(Text)`
@@ -20,5 +24,5 @@ export const Title = styled(Text)`
 
 export const BackButton = styled.View`
     position: absolute;
-    left: ${metrics.padding};
+    left: 0;
 `
