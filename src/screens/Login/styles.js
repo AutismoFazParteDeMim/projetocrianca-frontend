@@ -7,11 +7,11 @@ export const Container = styled.View`
     align-items: center;
     justify-content: space-between;
 `
-export const Form = styled.View`
+export const Form = styled.ScrollView.attrs({
+    contentContainerStyle: { alignItems: "center" }
+})`
     flex: 1;
     width: 100%;
-    align-items: center;
-    justify-content: center;
 `
 
 export const ForgotPassButtonContaier = styled.View`

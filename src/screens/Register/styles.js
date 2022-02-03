@@ -16,5 +16,10 @@ export const Form = styled.ScrollView.attrs(() => ({
 export const Image = styled.Image`
     height: 40%;
     resize-mode: contain;
-    margin-bottom: ${metrics.padding}
+    margin-bottom: ${metrics.padding};
+`
+
+export const ChildsModalContainer = styled(Container)`
+    padding: 0;
+    justify-content: center;
 `

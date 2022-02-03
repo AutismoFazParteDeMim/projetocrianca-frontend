@@ -5,7 +5,7 @@ import { BackButton, CoverContainer, InfoContainer, ProfileButton, ProfilePic, U
 import { AuthenticatedUserContext } from "../../navigation/AuthenticatedUserProvider"
 
 export default function Profile({ navigation }) {
-    const { user } = useContext(AuthenticatedUserContext)
+    const { child } = useContext(AuthenticatedUserContext)
 
     return (
         <View>
@@ -16,7 +16,7 @@ export default function Profile({ navigation }) {
                 <ProfileButton>
                     <ProfilePic source={{ uri: "https://www.shareicon.net/data/512x512/2016/06/26/786558_people_512x512.png" }} />
                 </ProfileButton>
-                <UserName>{user.displayName}</UserName>
+                <UserName>{child.childName}</UserName>
             </InfoContainer>
         </View>
     )

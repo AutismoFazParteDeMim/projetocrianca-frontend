@@ -42,6 +42,7 @@ export const Content = styled.View`
 
 export const Header = styled.View`
     width: 100%;
+    margin-bottom: ${metrics.padding};
     flex-direction: row;
     align-items: center;
     justify-content: center;

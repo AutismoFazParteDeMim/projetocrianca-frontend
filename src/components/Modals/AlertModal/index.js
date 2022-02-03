@@ -1,38 +1,37 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import { Modal as RNModal } from "react-native";
 import Text from "../../Text/index.js";
 
 import { Container, ModalView, Header, Title, Button, ButtonIcon, Icon, Content, WarningText } from "./styles.js"
 
-export default function AlertModal({ navigation, route }) {
-    const [modalVisible, setModalVisible] = useState(true);
+export default function AlertModal(props) {
+    const [modalVisible, setModalVisible] = useState(props.visible);
 
-    function closeModal() {
-        setModalVisible(!modalVisible);
-        navigation.goBack();
-    }
+    useEffect(() => {
+        props.visible ? setModalVisible(true) : setModalVisible(false)
+    }, [props.visible])
 
     return (
         <RNModal
             animationType="fade"
             transparent={true}
             visible={modalVisible}
-            onRequestClose={() => route.params.onRequestClose()}
+            onRequestClose={props.closeAction}
             hardwareAccelerated={true}
             statusBarTranslucent={true}
         >
             <Container>
-                <ModalView type={route.params.type} >
+                <ModalView type={props.type} >
                     <Header>
-                        <Title>{route.params.title}</Title>
-                        <Button onPress={() => closeModal()}>
+                        <Title>{props.title}</Title>
+                        <Button onPress={props.closeAction}>
                             <ButtonIcon name="close-circle-outline" />
                         </Button>
                     </Header>
 
                     <Content>
-                        <Icon name={route.params.icon} />
-                        <WarningText>{route.params.text}</WarningText>
+                        <Icon name={props.icon} />
+                        <WarningText>{props.text}</WarningText>
                     </Content>
                 </ModalView>
             </Container>

@@ -6,15 +6,34 @@ import { AuthenticatedUserContext } from "./AuthenticatedUserProvider"
 import AuthStack from "./Routes/AuthStack"
 import NonAuthStack from "./Routes/NonAuthStack"
 
+import { onAuthStateChanged } from "firebase/auth"
+import { firestore } from "../config/firebase"
+import { doc, getDoc } from "firebase/firestore"
+
 export default function RootNavigator() {
-    const { user, setUser } = useContext(AuthenticatedUserContext)
+    const { user, setUser, setChild } = useContext(AuthenticatedUserContext)
     const [isLoading, setIsLoading] = useState(true)
 
     useEffect(() => {
         // onAuthStateChanged returns an unsubscriber
-        const unsubscribeAuth = auth.onAuthStateChanged(async authenticatedUser => {
+        let unsubscribeAuth = onAuthStateChanged(auth, async authenticatedUser => {
             try {
-                await (authenticatedUser ? setUser(authenticatedUser) : setUser(null))
+                if (authenticatedUser) {
+                    let docRef = doc(firestore, "users", authenticatedUser.uid);
+                    let docSnap = await getDoc(docRef);
+
+                    if (docSnap.exists) {
+                        await setChild(docSnap.data())
+                        await setUser(authenticatedUser)
+                    } else {
+                        // doc.data() will be undefined in this case
+                        console.log("No such document!");
+                    }
+                } else {
+                    setUser(null)
+                    setChild(null)
+                }
+
                 setIsLoading(false)
             } catch (error) {
                 console.log(error)

@@ -1,35 +1,34 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import { Modal as RNModal } from "react-native";
 
 import { Container, ModalView, Header, Title, Button, Icon } from "./styles.js"
 
-export default function Modal({ navigation, route }) {
-    const [modalVisible, setModalVisible] = useState(true);
+export default function Modal(props) {
+    const [modalVisible, setModalVisible] = useState(props.visible);
 
-    function closeModal() {
-        setModalVisible(!modalVisible);
-        navigation.goBack();
-    }
+    useEffect(() => {
+        props.visible ? setModalVisible(true) : setModalVisible(false)
+    }, [props.visible])
 
     return (
         <RNModal
             animationType="fade"
             transparent={true}
             visible={modalVisible}
-            onRequestClose={() => closeModal()}
+            onRequestClose={props.closeAction}
             hardwareAccelerated={true}
             statusBarTranslucent={true}
         >
             <Container>
-                <ModalView size={route.params.size}>
+                <ModalView size={props.size}>
                     <Header>
-                        <Title>{route.params.title}</Title>
-                        <Button onPress={() => closeModal()}>
+                        <Title>{props.title}</Title>
+                        <Button onPress={props.closeAction}>
                             <Icon name="close-circle-outline" />
                         </Button>
                     </Header>
 
-                    {route.params.content}
+                    {props.children}
                 </ModalView>
             </Container>
         </RNModal>

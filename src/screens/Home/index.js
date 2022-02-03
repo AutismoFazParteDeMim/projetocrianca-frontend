@@ -8,7 +8,7 @@ import { Container, Header, ProfilePic, ProfileButton, SearchBarContainer, UserN
 import { AuthenticatedUserContext } from "../../navigation/AuthenticatedUserProvider"
 
 export default function Home({ navigation }) {
-    const { user } = useContext(AuthenticatedUserContext)
+    const { child } = useContext(AuthenticatedUserContext)
 
     return (
         <Container behavior={Platform.OS === "ios" ? "padding" : "height"}>
@@ -21,7 +21,7 @@ export default function Home({ navigation }) {
                 </SearchBarContainer>
             </Header>
 
-            <UserNameText>Bem vindo(a)! {"\n" + user.displayName}</UserNameText>
+            <UserNameText>Bem vind{child.childSex === "f" ? "a!" : "o!" + "\n" + child.childName}</UserNameText>
 
             <Grid>
                 <GridRow>

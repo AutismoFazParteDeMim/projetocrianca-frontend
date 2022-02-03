@@ -1,6 +1,7 @@
 import styled from "styled-components/native"
 import metrics from "../../../theme/metrics"
 import { Ionicons } from "@expo/vector-icons"
+import fonts from "../../../theme/fonts"
 
 export const Container = styled.View`
     width: 100%;
@@ -21,6 +22,10 @@ export const Input = styled.TextInput.attrs((props) => (
 ))`
     width: 80%;
     height: ${metrics.input.height};
+    font-family: ${fonts.text.font};
+    font-size: ${fonts.text.size};
+    padding-top: ${fonts.text.paddingTop};
+    padding-right: ${metrics.padding};
     color: ${props => props.theme.colors.text};
 `
 

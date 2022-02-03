@@ -1,21 +1,29 @@
-import React, { useState } from "react"
-import { Switch } from 'react-native-elements'
+import React, { useState, useEffect } from "react"
+import { Switch } from "react-native-elements"
+
 import { Container, OptionContainer, OptionIcon, Section, SectionTitle, TextContainer, SectionContent } from "./styles"
+
 import Text from "../../components/Text"
 import Tooltip from "../../components/Tooltip"
-import { TouchableOpacity } from "react-native"
+import { TouchableOpacity, Linking } from "react-native"
 import Button from "../../components/Buttons/Button"
+import colorScheme from '../../theme/color-scheme'
 
 import { signOut } from "firebase/auth"
 import { auth } from "../../config/firebase"
 
 export default function Settings({ navigation }) {
-    const [darkMode, setDarkMode] = useState(false);
+    const theme = colorScheme()
+    const [darkMode, setDarkMode] = useState(theme.dark);
     const [colorblindMode, setColorblindMode] = useState(false);
 
     const toggleSwitch = () => {
         setChecked(!checked);
     };
+
+    useEffect(() => {
+        setDarkMode(theme.dark)
+    }, [theme.dark])
 
     async function handleSignOut() {
         try {
@@ -61,7 +69,7 @@ export default function Settings({ navigation }) {
             <Section>
                 <SectionTitle>Aplicativo</SectionTitle>
                 <SectionContent>
-                    <TouchableOpacity style={{ width: "100%" }}>
+                    <TouchableOpacity style={{ width: "100%" }} onPress={() => { Linking.openURL("https://github.com/wuvinotre/ProjetoCrianca") }}>
                         <OptionContainer>
                             <TextContainer>
                                 <OptionIcon name="information-circle-outline" />

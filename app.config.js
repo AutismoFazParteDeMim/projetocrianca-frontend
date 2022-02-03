@@ -24,6 +24,7 @@ export default {
             userInterfaceStyle: "automatic"
         },
         android: {
+            package: "com.unisociesc.projetocrianca",
             adaptiveIcon: {
                 foregroundImage: "./assets/adaptive-icon.png",
                 backgroundColor: "#FFFFFF"

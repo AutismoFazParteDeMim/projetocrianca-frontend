@@ -22,6 +22,7 @@ export default function App() {
         return <AppLoading />
     } else {
         return (
+            
             <NavigationContainer theme={theme}>
                 <ThemeProvider theme={theme}>
                     <RNEThemeProvider useDark={theme.dark} theme={theme}>
