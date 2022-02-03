@@ -1,5 +1,5 @@
 import { initializeApp } from 'firebase/app';
-import Auth from 'firebase/auth';
+import { getAuth } from 'firebase/auth';
 
 import Constants from "expo-constants"
 
@@ -15,6 +15,7 @@ const firebaseConfig = {
     measurementId: Constants.manifest.extra.measurementId
 }
 
-const app = initializeApp(firebaseConfig);
-const auth = Auth
-export { app, auth }
+const firebase = initializeApp(firebaseConfig);
+const auth = getAuth()
+
+export { firebase, auth }

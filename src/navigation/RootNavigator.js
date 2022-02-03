@@ -1,11 +1,7 @@
 import React, { useContext, useEffect, useState } from "react"
-import { NavigationContainer } from "@react-navigation/native"
 import { View, ActivityIndicator } from "react-native"
-import { ThemeProvider } from 'styled-components/native'
-import { ThemeProvider as RNEThemeProvider } from 'react-native-elements'
-import colorScheme from '../theme/color-scheme'
 
-import {app, auth} from "../config/firebase"
+import { auth } from "../config/firebase"
 import { AuthenticatedUserContext } from "./AuthenticatedUserProvider"
 import AuthStack from "./Routes/AuthStack"
 import NonAuthStack from "./Routes/NonAuthStack"
@@ -13,7 +9,6 @@ import NonAuthStack from "./Routes/NonAuthStack"
 export default function RootNavigator() {
     const { user, setUser } = useContext(AuthenticatedUserContext)
     const [isLoading, setIsLoading] = useState(true)
-    const theme = colorScheme()
 
     useEffect(() => {
         // onAuthStateChanged returns an unsubscriber
@@ -39,13 +34,6 @@ export default function RootNavigator() {
     }
 
     return (
-        <NavigationContainer theme={theme}>
-            <ThemeProvider theme={theme}>
-                <RNEThemeProvider useDark={theme.dark} theme={theme}>
-                    <StatusBar style="auto" />
-                    {user ? <AuthStack /> : <NonAuthStack />}
-                </RNEThemeProvider>
-            </ThemeProvider>
-        </NavigationContainer>
+        user ? <AuthStack /> : <NonAuthStack />
     )
 }

@@ -8,7 +8,8 @@ import Profile from "../../screens/Profile"
 import Activity from "../../screens/Activity"
 import Routines from "../../screens/Activities/Routines"
 import Expressions from "../../screens/Activities/Expressions"
-import Modal from '../../components/Modal'
+import Modal from '../../components/Modals/Modal'
+import AlertModal from "../../components/Modals/AlertModal"
 
 import Header from '../../components/Header'
 
@@ -26,7 +27,8 @@ export default function AuthStack() {
             <Stack.Screen name="Activity" component={Activity} options={{ title: "Atividades" }} />
             <Stack.Screen name="Routines" component={Routines} options={{ title: "Rotinas" }} />
             <Stack.Screen name="Expressions" component={Expressions} options={{ title: "Expressões" }} />
-            <Stack.Screen name="Modal" component={Modal} options={{ title: "Modal", headerShown: false, presentation: "transparentModal" }} />
+            <Stack.Screen name="Modal" component={Modal} options={{ headerShown: false, presentation: "transparentModal" }} />
+            <Stack.Screen name="AlertModal" component={AlertModal} options={{ headerShown: false, presentation: "transparentModal" }} />
         </Stack.Navigator>
     )
 }

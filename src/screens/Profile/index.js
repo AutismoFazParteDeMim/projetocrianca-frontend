@@ -1,8 +1,12 @@
-import React from "react"
+import React, { useContext } from "react"
 import { View } from "react-native"
-import { BackButton, Container, CoverContainer, InfoContainer, ProfileButton, ProfilePic, UserName } from "./styles"
+import { BackButton, CoverContainer, InfoContainer, ProfileButton, ProfilePic, UserName } from "./styles"
+
+import { AuthenticatedUserContext } from "../../navigation/AuthenticatedUserProvider"
 
 export default function Profile({ navigation }) {
+    const { user } = useContext(AuthenticatedUserContext)
+
     return (
         <View>
             <CoverContainer source={{ uri: "https://eskipaper.com/images/kids-wallpaper-21.jpg" }}>
@@ -12,7 +16,7 @@ export default function Profile({ navigation }) {
                 <ProfileButton>
                     <ProfilePic source={{ uri: "https://www.shareicon.net/data/512x512/2016/06/26/786558_people_512x512.png" }} />
                 </ProfileButton>
-                <UserName>Nome do Usuário</UserName>
+                <UserName>{user.displayName}</UserName>
             </InfoContainer>
         </View>
     )

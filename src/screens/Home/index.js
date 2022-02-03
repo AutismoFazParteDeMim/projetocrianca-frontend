@@ -1,10 +1,15 @@
-import React from "react"
+import React, { useContext } from "react"
 import { Platform } from "react-native"
 import SquareButton from "../../components/Buttons/SquareButton"
 import SearchBar from "../../components/Inputs/SearchBar"
+
 import { Container, Header, ProfilePic, ProfileButton, SearchBarContainer, UserNameText, Grid, GridRow } from "./styles"
 
+import { AuthenticatedUserContext } from "../../navigation/AuthenticatedUserProvider"
+
 export default function Home({ navigation }) {
+    const { user } = useContext(AuthenticatedUserContext)
+
     return (
         <Container behavior={Platform.OS === "ios" ? "padding" : "height"}>
             <Header>
@@ -16,7 +21,7 @@ export default function Home({ navigation }) {
                 </SearchBarContainer>
             </Header>
 
-            <UserNameText>Bem vindo(a)! {"\n" + "Usuário"}</UserNameText>
+            <UserNameText>Bem vindo(a)! {"\n" + user.displayName}</UserNameText>
 
             <Grid>
                 <GridRow>

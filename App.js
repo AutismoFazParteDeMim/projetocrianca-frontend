@@ -1,10 +1,17 @@
 import React from 'react'
-import AppLoading from 'expo-app-loading'
 import { useFonts, Poppins_400Regular, Poppins_500Medium, Poppins_700Bold } from '@expo-google-fonts/poppins'
+import AppLoading from 'expo-app-loading'
+import { NavigationContainer } from "@react-navigation/native"
+import { ThemeProvider } from 'styled-components/native'
+import { ThemeProvider as RNEThemeProvider } from 'react-native-elements'
+import { StatusBar } from "expo-status-bar"
 
+import colorScheme from './src/theme/color-scheme'
 import Routes from "./src/navigation"
 
 export default function App() {
+    const theme = colorScheme()
+
     let [fontsLoaded] = useFonts({
         "regular": Poppins_400Regular,
         "medium": Poppins_500Medium,
@@ -15,7 +22,14 @@ export default function App() {
         return <AppLoading />
     } else {
         return (
-            <Routes />
+            <NavigationContainer theme={theme}>
+                <ThemeProvider theme={theme}>
+                    <RNEThemeProvider useDark={theme.dark} theme={theme}>
+                        <StatusBar style="auto" />
+                        <Routes />
+                    </RNEThemeProvider>
+                </ThemeProvider>
+            </NavigationContainer>
         )
     }
 } 
