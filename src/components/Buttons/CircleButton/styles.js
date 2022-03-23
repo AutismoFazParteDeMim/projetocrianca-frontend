@@ -3,8 +3,8 @@ import metrics from "../../../theme/metrics"
 import { Ionicons } from "@expo/vector-icons"
 
 export const Container = styled.TouchableOpacity`
-    width: ${metrics.circleButton.width}
-    height: ${metrics.circleButton.height}
+    width: ${metrics.circleButton.width};
+    height: ${metrics.circleButton.height};
     align-items: center;
     justify-content: center;
     border-radius: ${metrics.circleButton.borderRadius};
@@ -16,8 +16,8 @@ export const Container = styled.TouchableOpacity`
 `
 
 export const ContainerStatic = styled.View`
-    width: ${metrics.circleButton.width}
-    height: ${metrics.circleButton.height}
+    width: ${metrics.circleButton.width};
+    height: ${metrics.circleButton.height};
     align-items: center;
     justify-content: center;
     border-radius: ${metrics.circleButton.borderRadius};

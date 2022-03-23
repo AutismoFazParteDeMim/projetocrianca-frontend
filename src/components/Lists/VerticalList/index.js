@@ -22,6 +22,7 @@ export default function VerticalList(props) {
             data={props.data}
             renderItem={RenderItem}
             keyExtractor={item => item.key}
+            {...props}
         />
     )
 }
