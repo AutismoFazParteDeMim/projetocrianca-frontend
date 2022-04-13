@@ -7,7 +7,7 @@ export default function Activities({ navigation }) {
         {
             key: 1,
             title: "Rotinas",
-            description: "Trabalha estabelecer a relação do numero com a quantidade, percepção visual, etc.",
+            description: "Trabalha estabelecer a relação do numero com a quantidade e percepção visual, etc.",
             image: require("../../../assets/icons/routines-icon.png"),
             onPress: () => navigation.navigate("Routines")
         },
