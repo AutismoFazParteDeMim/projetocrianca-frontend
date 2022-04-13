@@ -38,19 +38,19 @@ export default [
     {
         key: '7',
         title: "Estudar",
-        text: 'Lorem ipsum urna potenti etiam praesentr fringilla aliquam, vestibulum curabiturkufy imperdiet turpis nisi semper, rutrum metus dipisci ng enim sagittis augue.',
+        text: 'Hora de fazer o dever de casa',
         image: require('./assets/7Estudar.png')
     },
     {
         key: '8',
         title: "Praticar Esportes",
-        text: 'Lorem ipsum urna potenti etiam praesentr fringilla aliquam, vestibulum curabiturkufy imperdiet turpis nisi semper, rutrum metus dipisci ng enim sagittis augue.',
+        text: 'Hora de brincar, gastar suas energias e se divertir',
         image: require('./assets/8PraticarEsportes.png')
     },
     {
         key: '9',
         title: "Ir Dormir",
-        text: 'Lorem ipsum urna potenti etiam praesentr fringilla aliquam, vestibulum curabiturkufy imperdiet turpis nisi semper, rutrum metus dipisci ng enim sagittis augue.',
+        text: 'Hora de dormir, ter uma boa noite de sono para o próximo dia',
         image: require('./assets/9Dormir.png')
     },
 ]
