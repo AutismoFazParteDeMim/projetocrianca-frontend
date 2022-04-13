@@ -1,7 +1,6 @@
 import React, { useState } from "react"
-import { View, ScrollView } from "react-native"
+import { ScrollView } from "react-native"
 import { BottomContainer, Container, Title, TopContainer, WelcomeText, ButtonsContainer, PrivacyPolicyContainer } from "./styles"
-import { WebView } from 'react-native-webview';
 import Button from "../../components/Buttons/Button"
 import Link from "../../components/Buttons/Link"
 import Text from "../../components/Text"
