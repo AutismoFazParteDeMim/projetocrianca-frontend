@@ -2,37 +2,37 @@ export default [
     {
         key: '1',
         title: "Acordar",
-        text: 'Lorem ipsum urna potenti etiam praesentr fringilla aliquam, vestibulum curabiturkufy imperdiet turpis nisi semper, rutrum metus dipisci ng enim sagittis augue.',
+        text: 'Está na hora de acordar e ter um excelente dia!',
         image: require('./assets/1Acordar.png')
     },
     {
         key: '2',
         title: "Escovar os Dentes",
-        text: 'Lorem ipsum urna potenti etiam praesentr fringilla aliquam, vestibulum curabiturkufy imperdiet turpis nisi semper, rutrum metus dipisci ng enim sagittis augue.',
+        text: 'Hora de escovar os dentes e manter sua boca saudável.',
         image: require('./assets/2EscovarOsDentes.png')
     },
     {
         key: '3',
         title: "Tomar Banho",
-        text: 'Lorem ipsum urna potenti etiam praesentr fringilla aliquam, vestibulum curabiturkufy imperdiet turpis nisi semper, rutrum metus dipisci ng enim sagittis augue.',
+        text: 'Hora de tomar banho e se manter limpinho.',
         image: require('./assets/3TomarBanho.png')
     },
     {
         key: '4',
         title: "Café da Manhã",
-        text: 'Lorem ipsum urna potenti etiam praesentr fringilla aliquam, vestibulum curabiturkufy imperdiet turpis nisi semper, rutrum metus dipisci ng enim sagittis augue.',
+        text: 'Hora de fazer uma refeição saudável e se manter bem alimentado',
         image: require('./assets/4CafeDaManha.png')
     },
     {
         key: '5',
         title: "Usar o Banheiro",
-        text: 'Lorem ipsum urna potenti etiam praesentr fringilla aliquam, vestibulum curabiturkufy imperdiet turpis nisi semper, rutrum metus dipisci ng enim sagittis augue.',
+        text: 'Fazer suas necessidades, não esqueça de lavar as mãos ',
         image: require('./assets/5UsarBanheiro.png')
     },
     {
         key: '6',
         title: "Ir para escola",
-        text: 'Lorem ipsum urna potenti etiam praesentr fringilla aliquam, vestibulum curabiturkufy imperdiet turpis nisi semper, rutrum metus dipisci ng enim sagittis augue.',
+        text: 'Hora de se arrumar e ir para escola aprender novas coisas e encontrar os amigos',
         image: require('./assets/6IrParaEscola.png')
     },
     {

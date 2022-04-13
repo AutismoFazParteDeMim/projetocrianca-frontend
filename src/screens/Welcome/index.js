@@ -1,7 +1,6 @@
 import React, { useState } from "react"
-import { View, ScrollView } from "react-native"
+import { ScrollView } from "react-native"
 import { BottomContainer, Container, Title, TopContainer, WelcomeText, ButtonsContainer, PrivacyPolicyContainer } from "./styles"
-import { WebView } from 'react-native-webview';
 import Button from "../../components/Buttons/Button"
 import Link from "../../components/Buttons/Link"
 import Text from "../../components/Text"
@@ -16,7 +15,7 @@ export default function Welcome({ navigation }) {
             <TopContainer>
                 <Title>Bem-Vindo(a)!</Title>
                 <WelcomeText>
-                    Lorem ipsum nunc primiskj suscipit dictumst, sociosqu vehicula morbi fermentumf litora, facilisis tristiquedwgj consectetur cubilia.
+                    Seja bem vindo ao aplicativo do projeto Autismo Faz Parte de Mim..
                 </WelcomeText>
             </TopContainer>
             <BottomContainer>

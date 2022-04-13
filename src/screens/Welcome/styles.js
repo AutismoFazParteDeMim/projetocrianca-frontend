@@ -39,5 +39,5 @@ export const ButtonsContainer = styled(BottomContainer)`
 `
 
 export const PrivacyPolicyContainer = styled(Container)`
-padding: 0 0 ${metrics.padding} 0;
+    padding: 0 0 ${metrics.padding} 0;
 `
