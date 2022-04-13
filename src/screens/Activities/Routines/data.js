@@ -2,7 +2,7 @@ export default [
     {
         key: '1',
         title: "Acordar",
-        text: 'Lorem ipsum urna potenti etiam praesentr fringilla aliquam, vestibulum curabiturkufy imperdiet turpis nisi semper, rutrum metus dipisci ng enim sagittis augue.',
+        text: 'Está na hora de acordar e ter um excelente dia',
         image: require('./assets/1Acordar.png')
     },
     {
