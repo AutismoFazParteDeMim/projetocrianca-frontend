@@ -7,8 +7,13 @@ import { Container, Header, ProfilePic, ProfileButton, SearchBarContainer, UserN
 
 import { AuthenticatedUserContext } from "../../navigation/AuthenticatedUserProvider"
 
+import { useSelector, useDispatch } from "react-redux"
+
 export default function Home({ navigation }) {
     const { child } = useContext(AuthenticatedUserContext)
+
+    const {theme} = useSelector((state) => state.settings)
+
 
     return (
         <Container behavior={Platform.OS === "ios" ? "padding" : "height"}>
@@ -21,7 +26,7 @@ export default function Home({ navigation }) {
                 </SearchBarContainer>
             </Header>
 
-            <UserNameText>Bem vind{child.childSex === "f" ? "a!" : "o!" + "\n" + child.childName}</UserNameText>
+            <UserNameText>Bem vind{child.childSex === "f" ? "a!" : "o!" + "\n" + child.childName} {"\n" + "\n"} dark: {theme.dark.toString()}</UserNameText>
 
             <Grid>
                 <GridRow>

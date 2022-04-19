@@ -9,6 +9,9 @@ import { StatusBar } from "expo-status-bar"
 import colorScheme from './src/theme/color-scheme'
 import Routes from "./src/navigation"
 
+import { Provider as StoreProvider } from 'react-redux'
+import store from './src/redux'
+
 export default function App() {
     const theme = colorScheme()
 
@@ -22,15 +25,16 @@ export default function App() {
         return <AppLoading />
     } else {
         return (
-            
-            <NavigationContainer theme={theme}>
-                <ThemeProvider theme={theme}>
-                    <RNEThemeProvider useDark={theme.dark} theme={theme}>
-                        <StatusBar style="auto" />
-                        <Routes />
-                    </RNEThemeProvider>
-                </ThemeProvider>
-            </NavigationContainer>
+            <StoreProvider store={store}>
+                <NavigationContainer theme={theme}>
+                    <ThemeProvider theme={theme}>
+                        <RNEThemeProvider useDark={theme.dark} theme={theme}>
+                            <StatusBar style="auto" />
+                            <Routes />
+                        </RNEThemeProvider>
+                    </ThemeProvider>
+                </NavigationContainer>
+            </StoreProvider>
         )
     }
 } 

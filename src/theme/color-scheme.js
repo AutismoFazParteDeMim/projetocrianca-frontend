@@ -1,8 +1,9 @@
 import { DarkTheme, DefaultTheme } from "@react-navigation/native"
 import { useColorScheme } from "react-native"
 
-const lightTheme = {
+export const lightTheme = {
     ...DefaultTheme,
+    dark: false,
     colors: {
         ...DefaultTheme.colors,
         primary: "#00A7DF",
@@ -30,8 +31,9 @@ const lightTheme = {
     }
 }
 
-const darkTheme = {
+export const darkTheme = {
     ...DarkTheme,
+    dark: true,
     colors: {
         ...DarkTheme.colors,
         primary: "#71BA51",
