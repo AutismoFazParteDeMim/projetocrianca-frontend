@@ -8,7 +8,7 @@ const INITIAL_STATE = {
 
 export default function settings(state = INITIAL_STATE, action) {
     switch (action.type) {
-        case types.SWITCH_THEME:
+        case types.THEME_SWITCH:
             return produce(state, (draft) => {
                 state.theme.dark ? draft.theme = lightTheme : draft.theme = darkTheme
             })

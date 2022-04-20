@@ -6,14 +6,17 @@ import { ThemeProvider } from 'styled-components/native'
 import { ThemeProvider as RNEThemeProvider } from 'react-native-elements'
 import { StatusBar } from "expo-status-bar"
 
-import colorScheme from './src/theme/color-scheme'
 import Routes from "./src/navigation"
 
 import { Provider as StoreProvider } from 'react-redux'
-import store from './src/redux'
+import { store, persistor } from './src/redux'
 
-export default function App() {
-    const theme = colorScheme()
+import { useSelector } from "react-redux"
+
+import { PersistGate } from "redux-persist/integration/react"
+
+function AppContent() {
+    const { theme } = useSelector((state) => state.settings)
 
     let [fontsLoaded] = useFonts({
         "regular": Poppins_400Regular,
@@ -25,16 +28,28 @@ export default function App() {
         return <AppLoading />
     } else {
         return (
-            <StoreProvider store={store}>
-                <NavigationContainer theme={theme}>
-                    <ThemeProvider theme={theme}>
-                        <RNEThemeProvider useDark={theme.dark} theme={theme}>
-                            <StatusBar style="auto" />
-                            <Routes />
-                        </RNEThemeProvider>
-                    </ThemeProvider>
-                </NavigationContainer>
-            </StoreProvider>
+            <NavigationContainer theme={theme}>
+                <ThemeProvider theme={theme}>
+                    <RNEThemeProvider useDark={theme.dark} theme={theme}>
+                        <StatusBar style={theme.dark ? "light" : "dark"} />
+                        <Routes />
+                    </RNEThemeProvider>
+                </ThemeProvider>
+            </NavigationContainer>
         )
     }
-} 
+}
+
+export default function App() {
+    return (
+        <StoreProvider store={store}>
+            <PersistGate loading={null} persistor={persistor}>
+                <AppContent />
+            </PersistGate>
+        </StoreProvider>
+    )
+}
+
+import { LogBox } from 'react-native';
+LogBox.ignoreLogs(['Setting a timer']);
+LogBox.ignoreLogs(['AsyncStorage']);

@@ -12,18 +12,16 @@ import colorScheme from '../../theme/color-scheme'
 import { signOut } from "firebase/auth"
 import { auth } from "../../config/firebase"
 
+
+import { useSelector, useDispatch } from "react-redux"
+import { switchTheme } from "../../redux/modules/settings/actions"
+
+
 export default function Settings({ navigation }) {
-    const theme = colorScheme()
-    const [darkMode, setDarkMode] = useState(theme.dark);
+    const { theme } = useSelector((state) => state.settings)
+    const dispatch = useDispatch()
+
     const [colorblindMode, setColorblindMode] = useState(false);
-
-    const toggleSwitch = () => {
-        setChecked(!checked);
-    };
-
-    useEffect(() => {
-        setDarkMode(theme.dark)
-    }, [theme.dark])
 
     async function handleSignOut() {
         try {
@@ -46,8 +44,8 @@ export default function Settings({ navigation }) {
                             </TextContainer>
                         </Tooltip>
                         <Switch
-                            value={darkMode}
-                            onValueChange={(value) => setDarkMode(value)}
+                            value={theme.dark}
+                            onValueChange={() => dispatch(switchTheme())}
                         />
                     </OptionContainer>
 

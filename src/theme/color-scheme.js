@@ -1,5 +1,4 @@
 import { DarkTheme, DefaultTheme } from "@react-navigation/native"
-import { useColorScheme } from "react-native"
 
 export const lightTheme = {
     ...DefaultTheme,
@@ -58,15 +57,5 @@ export const darkTheme = {
         shadow: "#e5e5e5",
 
         background: "#3E4651",
-    }
-}
-
-export default function colorScheme() {
-    const colorscheme = useColorScheme()
-
-    if (colorscheme === "light" || colorscheme === "no-preference") {
-        return lightTheme
-    } else {
-        return darkTheme
     }
 }

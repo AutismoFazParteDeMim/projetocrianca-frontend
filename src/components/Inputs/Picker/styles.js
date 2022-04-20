@@ -2,6 +2,7 @@ import styled from "styled-components/native"
 import metrics from "../../../theme/metrics"
 import { Ionicons } from "@expo/vector-icons"
 import fonts from "../../../theme/fonts"
+import { Picker as RNPicker } from "@react-native-picker/picker"
 
 export const Container = styled.View`
     width: 100%;
@@ -20,7 +21,7 @@ export const Icon = styled(Ionicons)`
     color: ${props => props.theme.colors.text};
 `
 
-export const Picker = styled.Picker`
+export const Picker = styled(RNPicker)`
     width: 90%;
     height: ${metrics.input.height};
     font-family: ${fonts.text.font};
