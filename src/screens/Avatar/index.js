@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from "react"
+import React, { useEffect, useState, useContext } from "react"
 import { Button, TouchableOpacity } from "react-native"
 const axios = require('axios').default
 import { SvgXml } from "react-native-svg"
 
-
-import { setDoc, doc } from "firebase/firestore"
+import { firestore } from "../../config/firebase"
+import { updateDoc, doc } from "firebase/firestore"
 import { AuthenticatedUserContext } from "../../navigation/AuthenticatedUserProvider"
 import { Container } from "./styles"
 
@@ -25,8 +25,7 @@ export default function Avatar({ navigation }) {
     function getAvatar() {
         axios.get(`https://avatars.dicebear.com/api/personas/male/avatar.svg`, {
             params: {
-                radius: 50,
-                background: seed.backgroundColor,
+                radius: 50, 
                 eyes: seed.eyes,
                 skinColor: seed.skinColor,
                 clothingColor: seed.clothingColor,
@@ -46,11 +45,11 @@ export default function Avatar({ navigation }) {
             });
     }
 
-    async function setChildPic(){
-        await setDoc(doc(firestore, "users", user.uid), {
+    async function setChildPic() {
+        await updateDoc(doc(firestore, "users", user.uid), {
             childPic: avatar
-        }).then(()=>{
-            navigation.navigate.goBack()
+        }).then(() => {
+            navigation.goBack()
         })
     }
 
@@ -63,7 +62,7 @@ export default function Avatar({ navigation }) {
             <TouchableOpacity style={{ borderRadius: 50 }}>
                 {avatar && <SvgXml width="150" height="150" xml={avatar} />}
             </TouchableOpacity>
-            <Button title="Obter Avatar" onPress={() => setSeed({ ...seed, backgroundColor: "#000000" })} />
+            <Button title="Obter Avatar" onPress={() => setChildPic()} />
         </Container>
     )
 }

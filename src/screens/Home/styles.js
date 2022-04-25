@@ -2,6 +2,7 @@ import styled from "styled-components/native"
 import metrics from "../../theme/metrics"
 import Text from "../../components/Text"
 import fonts from "../../theme/fonts"
+import { SvgXml } from "react-native-svg"
 
 export const Container = styled.KeyboardAvoidingView`
     flex: 1;
@@ -18,7 +19,7 @@ export const Header = styled.View`
     justify-content: space-between;
 `
 
-export const ProfilePic = styled.Image`
+export const ProfilePic = styled(SvgXml)`
     width: 60px;
     height: 60px;
     border-radius: 50px;

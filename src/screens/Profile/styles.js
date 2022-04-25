@@ -3,6 +3,7 @@ import CircleButton from "../../components/Buttons/CircleButton"
 import metrics from "../../theme/metrics"
 import Text from "../../components/Text"
 import fonts from "../../theme/fonts"
+import { SvgXml } from "react-native-svg"
 
 export const CoverContainer = styled.ImageBackground`
     width: 100%;
@@ -39,7 +40,7 @@ export const ProfileButton = styled.TouchableOpacity`
     background-color: ${props => props.theme.colors.text};
 `
 
-export const ProfilePic = styled.Image`
+export const ProfilePic = styled(SvgXml)`
     width: 100px;
     height: 100px;
     border-radius: 50px;
