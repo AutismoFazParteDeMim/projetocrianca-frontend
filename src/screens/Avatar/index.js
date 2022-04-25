@@ -18,7 +18,6 @@ export default function Avatar({ navigation }) {
     })
 
     function getAvatar() {
-        //const api = `https://avatars.dicebear.com/api/personas/${seed.sex}/:seed.svg?backgroundColor=${seed.backgroundColor}&eyes=${seed.eyes}&skinColor=${seed.skinColor}&clothingColor=${seed.clothingColor}&hair=${seed.hair}&hairColor=${seed.hairColor}`
         axios.get(`https://avatars.dicebear.com/api/personas/male/avatar.svg`, {
             params: {
                 radius: 50,
