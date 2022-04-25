@@ -10,12 +10,13 @@ import Routines from "../../screens/Activities/Routines"
 import Expressions from "../../screens/Activities/Expressions"
 
 import Header from '../../components/Header'
+import EscolhaSexo from '../../screens/Avatar/EscolhaSexo'
 
 const Stack = createNativeStackNavigator()
 export default function AuthStack() {
     return (
         <Stack.Navigator
-            initialRouteName="Home"
+            initialRouteName="EscolhaSexo"
             screenOptions={{ header: props => (<Header title={props.options.title} {...props} />) }}
         >
             <Stack.Screen name="Home" component={Home} options={{ title: "Início", headerShown: false }} />
@@ -25,6 +26,8 @@ export default function AuthStack() {
             <Stack.Screen name="Activity" component={Activity} options={{ title: "Atividades" }} />
             <Stack.Screen name="Routines" component={Routines} options={{ title: "Rotinas" }} />
             <Stack.Screen name="Expressions" component={Expressions} options={{ title: "Expressões" }} />
+            <Stack.Screen name="EscolhaSexo" component={EscolhaSexo} options={{ title: "Sexo da criança" }} />
+            {/* <Stack.Screen name="CustomAvatar" component={CustomAvatar} options={{ title: "Customize o avatar" }} /> */}
         </Stack.Navigator>
     )
 }
