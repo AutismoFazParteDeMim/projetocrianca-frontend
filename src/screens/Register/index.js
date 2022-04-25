@@ -85,7 +85,7 @@ export default function Register({ navigation }) {
                         <Picker.Item label="Feminino" value="f" />
                     </Picker>
 
-                    <Button icon="checkmark-circle-outline" title="Próximo" onPress={() => { setModalVisible(false); navigation.navigate("Avatar") }} />
+                    <Button icon="checkmark-circle-outline" title="Próximo" onPress={() => signIn()} />
                 </ChildsModalContainer>
             </Modal>
             <AlertModal visible={alertModalVisible} title="Ops!" text={errorMessage} type="warning" icon="warning-outline" closeAction={() => setAlertModalVisible(false)} />
