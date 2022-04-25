@@ -12,8 +12,9 @@ import AlertModal from "../../components/Modals/AlertModal"
 import { firestore, auth } from "../../config/firebase"
 import { createUserWithEmailAndPassword, updateProfile, signOut } from "firebase/auth"
 import { setDoc, doc } from "firebase/firestore"
+import { NavigationContainer } from "@react-navigation/native"
 
-export default function Register() {
+export default function Register({ navigation }) {
     const [name, setName] = useState("")
     const [childName, setChildName] = useState("")
     const [childSex, setChildSex] = useState("f")
@@ -84,7 +85,7 @@ export default function Register() {
                         <Picker.Item label="Feminino" value="f" />
                     </Picker>
 
-                    <Button icon="checkmark-circle-outline" title="Finalizar" onPress={() => signIn()} />
+                    <Button icon="checkmark-circle-outline" title="Próximo" onPress={() => { setModalVisible(false); navigation.navigate("Avatar") }} />
                 </ChildsModalContainer>
             </Modal>
             <AlertModal visible={alertModalVisible} title="Ops!" text={errorMessage} type="warning" icon="warning-outline" closeAction={() => setAlertModalVisible(false)} />
