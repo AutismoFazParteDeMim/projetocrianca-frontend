@@ -6,7 +6,7 @@ import Login from "../../screens/Login"
 import Register from "../../screens/Register"
 
 import Header from "../../components/Header"
-import Avatar from '../../screens/Avatar'
+
 
 const Stack = createNativeStackNavigator()
 export default function NonAuthStack() {
@@ -18,7 +18,7 @@ export default function NonAuthStack() {
             <Stack.Screen name="Welcome" component={Welcome} options={{ title: "Bem-Vindo(a)!", headerShown: false }} />
             <Stack.Screen name="Login" component={Login} options={{ title: "Login" }} />
             <Stack.Screen name="Register" component={Register} options={{ title: "Cadastre-se" }} />
-            <Stack.Screen name="Avatar" component={Avatar} options={{ title: "Avatar" }} />
+            
         </Stack.Navigator>
     )
 }

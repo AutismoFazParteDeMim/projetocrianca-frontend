@@ -8,6 +8,7 @@ import Profile from "../../screens/Profile"
 import Activity from "../../screens/Activity"
 import Routines from "../../screens/Activities/Routines"
 import Expressions from "../../screens/Activities/Expressions"
+import Avatar from '../../screens/Avatar'
 
 import Header from '../../components/Header'
 
@@ -25,6 +26,7 @@ export default function AuthStack() {
             <Stack.Screen name="Activity" component={Activity} options={{ title: "Atividades" }} />
             <Stack.Screen name="Routines" component={Routines} options={{ title: "Rotinas" }} />
             <Stack.Screen name="Expressions" component={Expressions} options={{ title: "Expressões" }} />
+            <Stack.Screen name="Avatar" component={Avatar} options={{ title: "Avatar" }} />
         </Stack.Navigator>
     )
 }

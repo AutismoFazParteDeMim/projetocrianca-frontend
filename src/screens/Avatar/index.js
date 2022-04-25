@@ -3,6 +3,9 @@ import { Button, TouchableOpacity } from "react-native"
 const axios = require('axios').default
 import { SvgXml } from "react-native-svg"
 
+
+import { setDoc, doc } from "firebase/firestore"
+import { AuthenticatedUserContext } from "../../navigation/AuthenticatedUserProvider"
 import { Container } from "./styles"
 
 export default function Avatar({ navigation }) {
@@ -16,6 +19,8 @@ export default function Avatar({ navigation }) {
         hairColor: "black",
         clothingColor: "blue"
     })
+
+    const { user } = useContext(AuthenticatedUserContext)
 
     function getAvatar() {
         axios.get(`https://avatars.dicebear.com/api/personas/male/avatar.svg`, {
@@ -39,6 +44,14 @@ export default function Avatar({ navigation }) {
             .then(function () {
                 // always executed
             });
+    }
+
+    async function setChildPic(){
+        await setDoc(doc(firestore, "users", user.uid), {
+            childPic: avatar
+        }).then(()=>{
+            navigation.navigate.goBack()
+        })
     }
 
     useEffect(() => {

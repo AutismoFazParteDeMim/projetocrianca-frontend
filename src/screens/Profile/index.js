@@ -13,7 +13,7 @@ export default function Profile({ navigation }) {
                 <BackButton icon="chevron-back" onPress={() => navigation.goBack()} />
             </CoverContainer>
             <InfoContainer>
-                <ProfileButton>
+                <ProfileButton onPress ={navigation.navigate("Avatar")}>
                     <ProfilePic source={{ uri: "https://www.shareicon.net/data/512x512/2016/06/26/786558_people_512x512.png" }} />
                 </ProfileButton>
                 <UserName>{child.childName}</UserName>
