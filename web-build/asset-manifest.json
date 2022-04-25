@@ -4,8 +4,8 @@
     "app.js.map": "/static/js/app.658a1159.chunk.js.map",
     "runtime~app.js": "/static/js/runtime~app.2e9f1821.js",
     "runtime~app.js.map": "/static/js/runtime~app.2e9f1821.js.map",
-    "static/js/2.84cbb584.chunk.js": "/static/js/2.84cbb584.chunk.js",
-    "static/js/2.84cbb584.chunk.js.map": "/static/js/2.84cbb584.chunk.js.map",
+    "static/js/2.58680a23.chunk.js": "/static/js/2.58680a23.chunk.js",
+    "static/js/2.58680a23.chunk.js.map": "/static/js/2.58680a23.chunk.js.map",
     "fonts/AntDesign.ttf": "/./fonts/AntDesign.ttf",
     "fonts/Entypo.ttf": "/./fonts/Entypo.ttf",
     "fonts/Feather.ttf": "/./fonts/Feather.ttf",
@@ -42,7 +42,7 @@
     "index.html": "/index.html",
     "manifest.json": "/manifest.json",
     "serve.json": "/serve.json",
-    "static/js/2.84cbb584.chunk.js.LICENSE.txt": "/static/js/2.84cbb584.chunk.js.LICENSE.txt",
+    "static/js/2.58680a23.chunk.js.LICENSE.txt": "/static/js/2.58680a23.chunk.js.LICENSE.txt",
     "static/media/1Acordar.png": "/static/media/1Acordar.d448c01d.png",
     "static/media/1Alegre.png": "/static/media/1Alegre.edd02862.png",
     "static/media/2Confuso.png": "/static/media/2Confuso.1ea05cbf.png",
@@ -74,7 +74,7 @@
   },
   "entrypoints": [
     "static/js/runtime~app.2e9f1821.js",
-    "static/js/2.84cbb584.chunk.js",
+    "static/js/2.58680a23.chunk.js",
     "static/js/app.658a1159.chunk.js"
   ]
 }
