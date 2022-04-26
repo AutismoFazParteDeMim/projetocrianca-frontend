@@ -1,20 +1,17 @@
-import React, { useCallback, useState, useContext, useEffect } from "react"
+import React, { useState, useEffect } from "react"
 import { Platform } from "react-native"
 import SquareButton from "../../components/Buttons/SquareButton"
 import SearchBar from "../../components/Inputs/SearchBar"
 
-import { Container, Header, ProfilePic, ProfileButton, SearchBarContainer, UserNameText, Grid, GridRow } from "./styles"
-
-import { AuthenticatedUserContext } from "../../navigation/AuthenticatedUserProvider"
-
 import { useSelector, useDispatch } from "react-redux"
 import { firstTime as firstTimeAction } from "../../redux/modules/settings/actions"
 
+import { Container, Header, ProfilePic, ProfileButton, SearchBarContainer, UserNameText, Grid, GridRow } from "./styles"
 
 export default function Home({ navigation }) {
     const dispatch = useDispatch()
     const { firstTime } = useSelector((state) => state.settings)
-    const { child } = useContext(AuthenticatedUserContext)
+    const { child } = useSelector((state) => state.user)
     const [first, setFirst] = useState(true)
 
     useEffect(() => {

@@ -1,11 +1,11 @@
-import React, { useContext } from "react"
+import React from "react"
 import { View } from "react-native"
 import { BackButton, CoverContainer, InfoContainer, ProfileButton, ProfilePic, UserName } from "./styles"
 
-import { AuthenticatedUserContext } from "../../navigation/AuthenticatedUserProvider"
+import { useSelector } from "react-redux"
 
 export default function Profile({ navigation }) {
-    const { child } = useContext(AuthenticatedUserContext)
+    const { child } = useSelector((state) => state.user)
 
     return (
         <View>

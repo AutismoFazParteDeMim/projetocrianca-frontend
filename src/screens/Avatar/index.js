@@ -5,13 +5,14 @@ import { SvgXml } from "react-native-svg"
 
 import { firestore } from "../../config/firebase"
 import { updateDoc, doc } from "firebase/firestore"
-import { AuthenticatedUserContext } from "../../navigation/AuthenticatedUserProvider"
-import { Container } from "./styles"
 
-import { useDispatch } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import { firstTime } from "../../redux/modules/settings/actions"
 
+import { Container } from "./styles"
+
 export default function Avatar({ navigation }) {
+    const { user } = useSelector((state) => state.user)
     const dispatch = useDispatch()
     const [avatar, setAvatar] = useState()
     const [seed, setSeed] = useState({
@@ -23,8 +24,6 @@ export default function Avatar({ navigation }) {
         hairColor: "black",
         clothingColor: "blue"
     })
-
-    const { user } = useContext(AuthenticatedUserContext)
 
     function getAvatar() {
         axios.get(`https://avatars.dicebear.com/api/personas/male/avatar.svg`, {
@@ -67,9 +66,9 @@ export default function Avatar({ navigation }) {
                 {avatar && <SvgXml width="150" height="150" xml={avatar} />}
             </TouchableOpacity>
             <View>
-                <Button title="Cabelo 1" onPress={() => setSeed({...seed, hair: "long"})} />
-                <Button title="Cabelo 2" onPress={() => setSeed({...seed, hair: "curly"})} />
-                <Button title="Cabelo 3" onPress={() => setSeed({...seed, hair: "bald"})} />
+                <Button title="Cabelo 1" onPress={() => setSeed({ ...seed, hair: "long" })} />
+                <Button title="Cabelo 2" onPress={() => setSeed({ ...seed, hair: "curly" })} />
+                <Button title="Cabelo 3" onPress={() => setSeed({ ...seed, hair: "bald" })} />
             </View>
             <Button title="Obter Avatar" onPress={() => setChildPic()} />
         </Container>
