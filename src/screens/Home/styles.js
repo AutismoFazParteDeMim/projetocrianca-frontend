@@ -27,7 +27,7 @@ export const ProfilePic = styled(SvgXml)`
 
 export const ProfileButton = styled.TouchableOpacity`
     border-radius: 50px;
-    background-color: ${props => props.theme.colors.text};
+    background-color: #E5E5E5;
 `
 
 export const SearchBarContainer = styled.View`

@@ -21,7 +21,7 @@ export const lightTheme = {
         cardShadow: "#979797",
 
         text: "#3D3D3D",
-        textAltLight: "#fff",
+        textAltLight: "#ffffff",
         textAltDark: "#3b3b3b",
 
         shadow: "#e5e5e5",
@@ -51,7 +51,7 @@ export const darkTheme = {
         cardShadow: "#979797",
 
         text: "#ffffff",
-        textAltLight: "#fff",
+        textAltLight: "#ffffff",
         textAltDark: "#3b3b3b",
 
         shadow: "#e5e5e5",

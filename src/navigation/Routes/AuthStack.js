@@ -12,8 +12,10 @@ import Avatar from '../../screens/Avatar'
 
 import Header from '../../components/Header'
 
+
 const Stack = createNativeStackNavigator()
 export default function AuthStack() {
+
     return (
         <Stack.Navigator
             initialRouteName="Home"

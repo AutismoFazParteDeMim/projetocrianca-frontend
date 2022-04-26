@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useContext } from "react"
-import { Button, TouchableOpacity } from "react-native"
+import { Button, TouchableOpacity, View } from "react-native"
 const axios = require('axios').default
 import { SvgXml } from "react-native-svg"
 
@@ -8,7 +8,11 @@ import { updateDoc, doc } from "firebase/firestore"
 import { AuthenticatedUserContext } from "../../navigation/AuthenticatedUserProvider"
 import { Container } from "./styles"
 
+import { useDispatch } from "react-redux"
+import { firstTime } from "../../redux/modules/settings/actions"
+
 export default function Avatar({ navigation }) {
+    const dispatch = useDispatch()
     const [avatar, setAvatar] = useState()
     const [seed, setSeed] = useState({
         backgroundColor: "#ffffff",
@@ -25,7 +29,7 @@ export default function Avatar({ navigation }) {
     function getAvatar() {
         axios.get(`https://avatars.dicebear.com/api/personas/male/avatar.svg`, {
             params: {
-                radius: 50, 
+                radius: 50,
                 eyes: seed.eyes,
                 skinColor: seed.skinColor,
                 clothingColor: seed.clothingColor,
@@ -34,7 +38,6 @@ export default function Avatar({ navigation }) {
             }
         })
             .then(function (response) {
-                console.log(response);
                 setAvatar(response.data)
             })
             .catch(function (error) {
@@ -49,6 +52,7 @@ export default function Avatar({ navigation }) {
         await updateDoc(doc(firestore, "users", user.uid), {
             childPic: avatar
         }).then(() => {
+            dispatch(firstTime(false))
             navigation.goBack()
         })
     }
@@ -62,6 +66,11 @@ export default function Avatar({ navigation }) {
             <TouchableOpacity style={{ borderRadius: 50 }}>
                 {avatar && <SvgXml width="150" height="150" xml={avatar} />}
             </TouchableOpacity>
+            <View>
+                <Button title="Cabelo 1" onPress={() => setSeed({...seed, hair: "long"})} />
+                <Button title="Cabelo 2" onPress={() => setSeed({...seed, hair: "curly"})} />
+                <Button title="Cabelo 3" onPress={() => setSeed({...seed, hair: "bald"})} />
+            </View>
             <Button title="Obter Avatar" onPress={() => setChildPic()} />
         </Container>
     )
