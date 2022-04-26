@@ -1,21 +1,32 @@
-import React, { useContext } from "react"
+import React, { useState, useEffect } from "react"
 import { Platform } from "react-native"
 import SquareButton from "../../components/Buttons/SquareButton"
 import SearchBar from "../../components/Inputs/SearchBar"
 
+import { useSelector, useDispatch } from "react-redux"
+import { firstTime as firstTimeAction } from "../../redux/modules/settings/actions"
+
 import { Container, Header, ProfilePic, ProfileButton, SearchBarContainer, UserNameText, Grid, GridRow } from "./styles"
 
-import { AuthenticatedUserContext } from "../../navigation/AuthenticatedUserProvider"
-
-
 export default function Home({ navigation }) {
-    const { child } = useContext(AuthenticatedUserContext)
+    const dispatch = useDispatch()
+    const { firstTime } = useSelector((state) => state.settings)
+    const { child } = useSelector((state) => state.user)
+    const [first, setFirst] = useState(true)
+
+    useEffect(() => {
+        if (firstTime) {
+            setFirst(false)
+            dispatch(firstTimeAction(first))
+            navigation.navigate("Avatar")
+        }
+    }, [first])
 
     return (
         <Container behavior={Platform.OS === "ios" ? "padding" : "height"}>
             <Header>
                 <ProfileButton onPress={() => navigation.navigate("Profile")}>
-                    <ProfilePic source={{ uri: "https://www.shareicon.net/data/512x512/2016/06/26/786558_people_512x512.png" }} />
+                    <ProfilePic xml={child.childPic} />
                 </ProfileButton>
                 <SearchBarContainer>
                     <SearchBar />

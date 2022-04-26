@@ -8,12 +8,15 @@ import Profile from "../../screens/Profile"
 import Activity from "../../screens/Activity"
 import Routines from "../../screens/Activities/Routines"
 import Expressions from "../../screens/Activities/Expressions"
+import Avatar from '../../screens/Avatar'
 
 import Header from '../../components/Header'
 import EscolhaSexo from '../../screens/Avatar/EscolhaSexo'
 
+
 const Stack = createNativeStackNavigator()
 export default function AuthStack() {
+
     return (
         <Stack.Navigator
             initialRouteName="EscolhaSexo"
@@ -28,6 +31,7 @@ export default function AuthStack() {
             <Stack.Screen name="Expressions" component={Expressions} options={{ title: "Expressões" }} />
             <Stack.Screen name="EscolhaSexo" component={EscolhaSexo} options={{ title: "Sexo da criança" }} />
             {/* <Stack.Screen name="CustomAvatar" component={CustomAvatar} options={{ title: "Customize o avatar" }} /> */}
+            <Stack.Screen name="Avatar" component={Avatar} options={{ title: "Avatar" }} />
         </Stack.Navigator>
     )
 }

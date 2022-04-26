@@ -1,11 +1,11 @@
-import React, { useContext } from "react"
+import React from "react"
 import { View } from "react-native"
 import { BackButton, CoverContainer, InfoContainer, ProfileButton, ProfilePic, UserName } from "./styles"
 
-import { AuthenticatedUserContext } from "../../navigation/AuthenticatedUserProvider"
+import { useSelector } from "react-redux"
 
 export default function Profile({ navigation }) {
-    const { child } = useContext(AuthenticatedUserContext)
+    const { child } = useSelector((state) => state.user)
 
     return (
         <View>
@@ -13,8 +13,8 @@ export default function Profile({ navigation }) {
                 <BackButton icon="chevron-back" onPress={() => navigation.goBack()} />
             </CoverContainer>
             <InfoContainer>
-                <ProfileButton>
-                    <ProfilePic source={{ uri: "https://www.shareicon.net/data/512x512/2016/06/26/786558_people_512x512.png" }} />
+                <ProfileButton onPress={() => navigation.navigate("Avatar")}>
+                    <ProfilePic xml={child.childPic} />
                 </ProfileButton>
                 <UserName>{child.childName}</UserName>
             </InfoContainer>

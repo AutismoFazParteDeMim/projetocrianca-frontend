@@ -1,16 +1,64 @@
-import React from "react"
+import React, { useEffect, useState } from "react"
+import { View, ActivityIndicator } from "react-native"
 
-import { AuthenticatedUserProvider } from "./AuthenticatedUserProvider"
-import RootNavigator from "./RootNavigator"
+import { auth } from "../config/firebase"
+import AuthStack from "./Routes/AuthStack"
+import NonAuthStack from "./Routes/NonAuthStack"
 
-/**
- * Wrap all providers here
- */
+import { onAuthStateChanged } from "firebase/auth"
+import { firestore } from "../config/firebase"
+import { doc, onSnapshot } from "firebase/firestore"
 
-export default function Routes() {
+import { useDispatch, useSelector } from "react-redux"
+import { setUserAction, setChildAction } from "../redux/modules/user/actions"
+
+export default function RootNavigator() {
+    const dispatch = useDispatch()
+    const { user } = useSelector((state) => state.user)
+    const [isLoading, setIsLoading] = useState(true)
+
+    useEffect(() => {
+        let unsubscribeAuth = onAuthStateChanged(auth, async authenticatedUser => {
+            try {
+                if (authenticatedUser) {
+                    let docRef = doc(firestore, "users", authenticatedUser.uid);
+                    onSnapshot(docRef, (doc) => {
+                        if (doc.exists) {
+                            dispatch(setUserAction(authenticatedUser))
+                            dispatch(setChildAction(doc.data()))
+                        } else {
+                            // doc.data() will be undefined in this case
+                            console.log("No such document!");
+                        }
+                    });
+                } else {
+                    dispatch(setUserAction(null))
+                    dispatch(setChildAction(null))
+                }
+
+                setIsLoading(false)
+            } catch (error) {
+                console.log(error)
+            }
+        })
+
+        return unsubscribeAuth
+    }, [])
+
+    if (isLoading) {
+        return (
+            <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
+                <ActivityIndicator size="large" />
+            </View>
+        )
+    }
+
     return (
-        <AuthenticatedUserProvider>
-            <RootNavigator />
-        </AuthenticatedUserProvider>
+        isLoading &&
+        <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
+            <ActivityIndicator size="large" />
+        </View>,
+
+        user ? <AuthStack /> : <NonAuthStack />
     )
 }

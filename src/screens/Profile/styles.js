@@ -3,11 +3,11 @@ import CircleButton from "../../components/Buttons/CircleButton"
 import metrics from "../../theme/metrics"
 import Text from "../../components/Text"
 import fonts from "../../theme/fonts"
+import { SvgXml } from "react-native-svg"
 
 export const CoverContainer = styled.ImageBackground`
     width: 100%;
     height: 250px;
-    resize-mode: contain;
 `
 
 export const BackButton = styled(CircleButton)`
@@ -36,10 +36,10 @@ export const ProfileButton = styled.TouchableOpacity`
     height: 100px;
     border-radius: 50px;
     margin-right: ${metrics.padding};
-    background-color: ${props => props.theme.colors.text};
+    background-color: #E5E5E5;
 `
 
-export const ProfilePic = styled.Image`
+export const ProfilePic = styled(SvgXml)`
     width: 100px;
     height: 100px;
     border-radius: 50px;

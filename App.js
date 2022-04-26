@@ -6,14 +6,11 @@ import { ThemeProvider } from 'styled-components/native'
 import { ThemeProvider as RNEThemeProvider } from 'react-native-elements'
 import { StatusBar } from "expo-status-bar"
 
-import Routes from "./src/navigation"
-
-import { Provider as StoreProvider } from 'react-redux'
+import { Provider as StoreProvider, useSelector } from 'react-redux'
 import { store, persistor } from './src/redux'
-
-import { useSelector } from "react-redux"
-
 import { PersistGate } from "redux-persist/integration/react"
+
+import Routes from "./src/navigation"
 
 function AppContent() {
     const { theme } = useSelector((state) => state.settings)

@@ -14,7 +14,7 @@ import { auth } from "../../config/firebase"
 
 
 import { useSelector, useDispatch } from "react-redux"
-import { switchTheme } from "../../redux/modules/settings/actions"
+import { switchTheme, reset } from "../../redux/modules/settings/actions"
 
 
 export default function Settings({ navigation }) {
@@ -25,6 +25,7 @@ export default function Settings({ navigation }) {
 
     async function handleSignOut() {
         try {
+            dispatch(reset())
             await signOut(auth)
         } catch (error) {
             navigation.navigate("AlertModal", { title: "Ops!", text: error.code + ": " + error.message, type: "danger", icon: "warning-outline" })
