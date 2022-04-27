@@ -10,5 +10,4 @@ export function switchTheme() {
 
 export function reset() {
     return { type: types.RESET }
-
 }
