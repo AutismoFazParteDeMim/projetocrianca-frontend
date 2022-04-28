@@ -2,7 +2,7 @@ import types from "./types"
 import produce from "immer"
 
 const INITIAL_STATE = {
-    user: {},
+    user: { logged: false },
     child: {}
 }
 

@@ -24,7 +24,7 @@ export default function RootNavigator() {
                     let docRef = doc(firestore, "users", authenticatedUser.uid);
                     onSnapshot(docRef, (doc) => {
                         if (doc.exists) {
-                            dispatch(setUserAction(authenticatedUser))
+                            dispatch(setUserAction({ logged: true, ...authenticatedUser }))
                             dispatch(setChildAction(doc.data()))
                         } else {
                             // doc.data() will be undefined in this case
@@ -32,8 +32,8 @@ export default function RootNavigator() {
                         }
                     });
                 } else {
-                    dispatch(setUserAction(null))
-                    dispatch(setChildAction(null))
+                    dispatch(setUserAction({ logged: false }))
+                    dispatch(setChildAction({}))
                 }
 
                 setIsLoading(false)
@@ -54,11 +54,6 @@ export default function RootNavigator() {
     }
 
     return (
-        isLoading &&
-        <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-            <ActivityIndicator size="large" />
-        </View>,
-
-        user ? <AuthStack /> : <NonAuthStack />
+        user.logged ? <AuthStack /> : <NonAuthStack />
     )
 }

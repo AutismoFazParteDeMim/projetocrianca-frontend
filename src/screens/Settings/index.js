@@ -25,7 +25,7 @@ export default function Settings({ navigation }) {
 
     async function handleSignOut() {
         try {
-            dispatch(reset())
+            //dispatch(reset())
             await signOut(auth)
         } catch (error) {
             navigation.navigate("AlertModal", { title: "Ops!", text: error.code + ": " + error.message, type: "danger", icon: "warning-outline" })
