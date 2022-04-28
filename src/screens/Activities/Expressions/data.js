@@ -1,4 +1,4 @@
-export default [
+export const data = [
     {
         key: '1',
         title: "Alegre",

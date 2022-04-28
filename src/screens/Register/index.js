@@ -1,55 +1,56 @@
 import React, { useState } from "react"
-import { Platform } from "react-native"
+import { Platform, TouchableOpacity, View } from "react-native"
 
-import { Container, Form, Image, ChildsModalContainer } from "./styles"
+import { Container, Form, Image, ChildsModalContainer, SexPickerContainer, SexPickerItem, SexPickerItemImage } from "./styles"
 
 import TextInput from "../../components/Inputs/TextInput"
 import Button from "../../components/Buttons/Button"
-import Picker from "../../components/Inputs/Picker"
 import Modal from "../../components/Modals/Modal"
 import AlertModal from "../../components/Modals/AlertModal"
 
 import { firestore, auth } from "../../config/firebase"
-import { createUserWithEmailAndPassword, updateProfile, signOut } from "firebase/auth"
+import { createUserWithEmailAndPassword, updateProfile, signOut, sendEmailVerification } from "firebase/auth"
 import { setDoc, doc } from "firebase/firestore"
+import Text from "../../components/Text"
 
 export default function Register() {
-    const [name, setName] = useState("")
-    const [childName, setChildName] = useState("")
-    const [childSex, setChildSex] = useState("f")
-    const [email, setEmail] = useState("")
-    const [password, setPassword] = useState("")
-    const [confirmPassword, setConfirmPassword] = useState("")
-    const [errorMessage, setErrorMessage] = useState("")
+    const [input, setInput] = useState({
+        name: "",
+        email: "",
+        password: "",
+        confirmPassword: "",
+        childName: "",
+        childSex: ""
+    })
 
-    const [modalVisible, setModalVisible] = useState(false)
-    const [alertModalVisible, setAlertModalVisible] = useState(false)
+    const [modal, setModal] = useState({
+        modalVisible: false,
+        alertModalVisible: false,
+        alertMessage: ""
+    })
 
     async function signIn() {
-        if (name === "" || email === "" || password === "" || confirmPassword === "" || childName === "" || childSex === "") {
-            setErrorMessage("Nenhum campo pode estar vazio!")
-            setAlertModalVisible(true)
-        } else if (password.length < 8) {
-            setErrorMessage("A senha deve conter pelo menos 08 caracteres!")
-            setAlertModalVisible(true)
-        } else if (password != confirmPassword) {
-            setErrorMessage("Senhas não conferem. Verifique e tente novamente!")
-            setAlertModalVisible(true)
+        if (input.name === "" || input.email === "" || input.password === "" || input.confirmPassword === "" || input.childName === "" || input.childSex === "") {
+            setModal({ ...modal, alertMessage: "Nenhum campo pode estar vazio!", alertModalVisible: true })
+        } else if (input.password.length < 8) {
+            setModal({ ...modal, alertMessage: "A senha deve conter pelo menos 08 caracteres!", alertModalVisible: true })
+        } else if (input.password != input.confirmPassword) {
+            setModal({ ...modal, alertMessage: "Senhas não conferem. Verifique e tente novamente!", alertModalVisible: true })
         } else {
             try {
-                await createUserWithEmailAndPassword(auth, email, password).then(async (res) => {
+                await createUserWithEmailAndPassword(auth, input.email, input.password).then(async (res) => {
                     await setDoc(doc(firestore, "users", res.user.uid), {
-                        childName: childName,
-                        childSex: childSex,
+                        childName: input.childName,
+                        childSex: input.childSex,
                         childPic: "default"
                     }).then(() => {
-                        updateProfile(res.user, { displayName: name })
+                        updateProfile(res.user, { displayName: input.name })
+                        sendEmailVerification(res.user)
                         handleSignOut()
                     })
                 })
             } catch (error) {
-                setErrorMessage(error.code + ": " + error.message)
-                setAlertModalVisible(true)
+                setModal({ ...modal, alertMessage: error.code + ": " + error.message, alertModalVisible: true })
             }
         }
     }
@@ -58,8 +59,7 @@ export default function Register() {
         try {
             await signOut(auth)
         } catch (error) {
-            setErrorMessage(error.code + ": " + error.message)
-            setAlertModalVisible(true)
+            setModal({ ...modal, alertMessage: error.code + ": " + error.message, alertModalVisible: true })
         }
     }
 
@@ -67,27 +67,33 @@ export default function Register() {
         <Container behavior={Platform.OS === "ios" ? "padding" : "height"}>
             <Image source={require("../../../assets/icons/animals-image.png")} />
             <Form>
-                <TextInput type="text" icon="person-outline" placeholder="Insira seu nome completo" autoComplete="name" autoCapitalize="words" returnKeyType="next" onChangeText={setName} />
-                <TextInput type="email" icon="mail-outline" placeholder="Insira seu email" returnKeyType="next" onChangeText={setEmail} />
-                <TextInput type="password" icon="lock-closed-outline" placeholder="Insira sua senha" returnKeyType="next" onChangeText={setPassword} />
-                <TextInput type="password" icon="lock-closed-outline" placeholder="Confirme sua senha" returnKeyType="done" onChangeText={setConfirmPassword} />
+                <TextInput type="text" icon="person-outline" placeholder="Insira seu nome completo" autoComplete="name" autoCapitalize="words" returnKeyType="next" value={input.name} onChangeText={text => setInput({ ...input, name: text })} />
+                <TextInput type="email" icon="mail-outline" placeholder="Insira seu email" returnKeyType="next" value={input.email} onChangeText={text => setInput({ ...input, email: text })} />
+                <TextInput type="password" icon="lock-closed-outline" placeholder="Insira sua senha" returnKeyType="next" value={input.password} onChangeText={text => setInput({ ...input, password: text })} />
+                <TextInput type="password" icon="lock-closed-outline" placeholder="Confirme sua senha" returnKeyType="done" value={input.confirmPassword} onChangeText={text => setInput({ ...input, confirmPassword: text })} />
 
-                <Button icon="arrow-forward" title="Próximo" onPress={() => setModalVisible(true)} inverted />
+                <Button icon="arrow-forward" title="Próximo" onPress={() => setModal({ ...modal, modalVisible: true })} inverted />
             </Form>
 
-            <Modal visible={modalVisible} title="Cadastro da Criança" size="default" closeAction={() => setModalVisible(false)}>
+            <Modal visible={modal.modalVisible} title="Cadastro da Criança" size="medium" closeAction={() => setModal({ ...modal, modalVisible: false })}>
                 <ChildsModalContainer>
-                    <TextInput type="text" icon="person-outline" placeholder="Insira seu nome completo" autoComplete="name" autoCapitalize="words" returnKeyType="next" onChangeText={setChildName} />
+                    <TextInput type="text" icon="person-outline" placeholder="Insira o nome da criança" autoComplete="name" autoCapitalize="words" returnKeyType="next" value={input.childName} onChangeText={text => setInput({ ...input, childName: text })} />
 
-                    <Picker icon="male-female-outline" selectedValue={childSex} onValueChange={(itemValue) => setChildSex(itemValue)}>
-                        <Picker.Item label="Masculino" value="m" />
-                        <Picker.Item label="Feminino" value="f" />
-                    </Picker>
+                    <SexPickerContainer>
+                        <SexPickerItem onPress={() => setInput({ ...input, childSex: "female" })} >
+                            <SexPickerItemImage source={require("../../../assets/icons/female.png")} active={input.childSex === "female" ? true : false} />
+                            <Text>Feminino</Text>
+                        </SexPickerItem>
+                        <SexPickerItem onPress={() => setInput({ ...input, childSex: "male" })}>
+                            <SexPickerItemImage source={require("../../../assets/icons/male.png")} active={input.childSex === "male" ? true : false} />
+                            <Text>Masculino</Text>
+                        </SexPickerItem>
+                    </SexPickerContainer>
 
                     <Button icon="checkmark-circle-outline" title="Finalizar" onPress={() => signIn()} />
                 </ChildsModalContainer>
             </Modal>
-            <AlertModal visible={alertModalVisible} title="Ops!" text={errorMessage} type="warning" icon="warning-outline" closeAction={() => setAlertModalVisible(false)} />
+            <AlertModal visible={modal.alertModalVisible} title="Ops!" text={modal.alertMessage} type="warning" icon="warning-outline" closeAction={() => setModal({ ...modal, alertModalVisible: false })} />
         </Container>
     )
 }

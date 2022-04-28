@@ -22,7 +22,7 @@ export default function Home({ navigation }) {
                 </SearchBarContainer>
             </Header>
 
-            <UserNameText>Bem vind{child.childSex === "f" ? "a!" : "o!" + "\n" + child.childName}</UserNameText>
+            <UserNameText>Bem vind{child.childSex === "female" ? "a!" : "o!" + "\n" + child.childName}</UserNameText>
 
             <Grid>
                 <GridRow>
