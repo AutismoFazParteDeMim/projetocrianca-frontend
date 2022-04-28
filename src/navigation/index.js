@@ -10,7 +10,8 @@ import { firestore } from "../config/firebase"
 import { doc, onSnapshot } from "firebase/firestore"
 
 import { useDispatch, useSelector } from "react-redux"
-import { setUserAction, setChildAction } from "../redux/modules/user/actions"
+import { reset } from "../redux/modules/settings/actions"
+import { setUserAction, setChildAction, resetAction } from "../redux/modules/user/actions"
 
 export default function RootNavigator() {
     const dispatch = useDispatch()
@@ -27,15 +28,13 @@ export default function RootNavigator() {
                             dispatch(setUserAction({ logged: true, ...authenticatedUser }))
                             dispatch(setChildAction(doc.data()))
                         } else {
-                            // doc.data() will be undefined in this case
                             console.log("No such document!");
                         }
                     });
                 } else {
-                    dispatch(setUserAction({ logged: false }))
-                    dispatch(setChildAction({}))
+                    dispatch(reset())
+                    dispatch(resetAction())
                 }
-
                 setIsLoading(false)
             } catch (error) {
                 console.log(error)

@@ -14,7 +14,7 @@ export default function Profile({ navigation }) {
             </CoverContainer>
             <InfoContainer>
                 <ProfileButton onPress={() => navigation.navigate("Avatar")}>
-                    <ProfilePic xml={child.childPic} />
+                    {child.childPic && <ProfilePic xml={child.childPic} />}
                 </ProfileButton>
                 <UserName>{child.childName}</UserName>
             </InfoContainer>

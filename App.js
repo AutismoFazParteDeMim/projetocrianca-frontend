@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useFonts, Poppins_400Regular, Poppins_500Medium, Poppins_700Bold } from '@expo-google-fonts/poppins'
 import AppLoading from 'expo-app-loading'
 import { NavigationContainer } from "@react-navigation/native"
@@ -38,6 +38,7 @@ function AppContent() {
 }
 
 export default function App() {
+
     return (
         <StoreProvider store={store}>
             <PersistGate loading={null} persistor={persistor}>

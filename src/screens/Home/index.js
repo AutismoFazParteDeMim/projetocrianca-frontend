@@ -26,14 +26,14 @@ export default function Home({ navigation }) {
         <Container behavior={Platform.OS === "ios" ? "padding" : "height"}>
             <Header>
                 <ProfileButton onPress={() => navigation.navigate("Profile")}>
-                    <ProfilePic xml={child.childPic} />
+                    {child.childPic && <ProfilePic xml={child.childPic} />}
                 </ProfileButton>
                 <SearchBarContainer>
                     <SearchBar />
                 </SearchBarContainer>
             </Header>
 
-            <UserNameText>Bem vind{child.childSex === "female" ? "a!" : "o!" + "\n" + child.childName}</UserNameText>
+            <UserNameText>Bem vind{child.childSex === "female" ? "a!" : "o!"}{"\n" + child.childName}</UserNameText>
 
             <Grid>
                 <GridRow>

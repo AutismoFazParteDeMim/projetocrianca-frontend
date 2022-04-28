@@ -7,15 +7,13 @@ import Text from "../../components/Text"
 import Tooltip from "../../components/Tooltip"
 import { TouchableOpacity, Linking } from "react-native"
 import Button from "../../components/Buttons/Button"
-import colorScheme from '../../theme/color-scheme'
 
 import { signOut } from "firebase/auth"
 import { auth } from "../../config/firebase"
 
-
 import { useSelector, useDispatch } from "react-redux"
 import { switchTheme, reset } from "../../redux/modules/settings/actions"
-
+import { resetAction } from "../../redux/modules/user/actions"
 
 export default function Settings({ navigation }) {
     const { theme } = useSelector((state) => state.settings)
@@ -25,7 +23,6 @@ export default function Settings({ navigation }) {
 
     async function handleSignOut() {
         try {
-            //dispatch(reset())
             await signOut(auth)
         } catch (error) {
             navigation.navigate("AlertModal", { title: "Ops!", text: error.code + ": " + error.message, type: "danger", icon: "warning-outline" })

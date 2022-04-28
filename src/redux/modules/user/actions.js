@@ -7,3 +7,7 @@ export function setUserAction(payload) {
 export function setChildAction(payload) {
     return { type: types.SET_CHILD, payload: payload }
 }
+
+export function resetAction() {
+    return { type: types.RESET }
+}

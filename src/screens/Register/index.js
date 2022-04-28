@@ -1,5 +1,5 @@
 import React, { useState } from "react"
-import { Platform, TouchableOpacity, View } from "react-native"
+import { Platform } from "react-native"
 
 import { Container, Form, Image, ChildsModalContainer, SexPickerContainer, SexPickerItem, SexPickerItemImage } from "./styles"
 
@@ -9,7 +9,7 @@ import Modal from "../../components/Modals/Modal"
 import AlertModal from "../../components/Modals/AlertModal"
 
 import { firestore, auth } from "../../config/firebase"
-import { createUserWithEmailAndPassword, updateProfile, signOut, sendEmailVerification } from "firebase/auth"
+import { createUserWithEmailAndPassword, updateProfile, sendEmailVerification } from "firebase/auth"
 import { setDoc, doc } from "firebase/firestore"
 import Text from "../../components/Text"
 
@@ -46,20 +46,11 @@ export default function Register() {
                     }).then(() => {
                         updateProfile(res.user, { displayName: input.name })
                         sendEmailVerification(res.user)
-                        handleSignOut()
-                    })
+                    }).catch(error => console.log(error))
                 })
             } catch (error) {
                 setModal({ ...modal, alertMessage: error.code + ": " + error.message, alertModalVisible: true })
             }
-        }
-    }
-
-    async function handleSignOut() {
-        try {
-            await signOut(auth)
-        } catch (error) {
-            setModal({ ...modal, alertMessage: error.code + ": " + error.message, alertModalVisible: true })
         }
     }
 

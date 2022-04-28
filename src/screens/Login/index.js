@@ -11,7 +11,12 @@ import AlertModal from "../../components/Modals/AlertModal"
 import { auth } from "../../config/firebase"
 import { sendPasswordResetEmail, signInWithEmailAndPassword } from "firebase/auth"
 
+import { useSelector, useDispatch } from "react-redux"
+import { setUserAction } from "../../redux/modules/user/actions"
+
 export default function Login() {
+    const dispatch = useDispatch()
+
     const [input, setInput] = useState({
         email: "",
         password: "",

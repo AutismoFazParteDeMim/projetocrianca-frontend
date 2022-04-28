@@ -16,6 +16,11 @@ export default function user(state = INITIAL_STATE, action) {
             return produce(state, (draft) => {
                 draft.child = { ...state.child, ...action.payload }
             })
+        case types.RESET:
+            return produce(state, (draft) => {
+                draft.user = INITIAL_STATE.user
+                draft.child = INITIAL_STATE.child
+            })
         default:
             return state
     }
