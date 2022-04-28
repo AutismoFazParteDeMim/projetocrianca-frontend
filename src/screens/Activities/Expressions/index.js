@@ -2,7 +2,7 @@ import React from 'react'
 import { Image, Descrição, Item, Container, Title } from './styles'
 
 import Slider from '../../../components/Slider'
-import data from "./data"
+import {data} from "./data"
 
 export default function Expressions({ navigation }) {
     const RenderItem = ({ item }) => (

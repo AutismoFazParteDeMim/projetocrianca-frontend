@@ -9,40 +9,60 @@ import Modal from "../../components/Modals/Modal"
 import AlertModal from "../../components/Modals/AlertModal"
 
 import { auth } from "../../config/firebase"
-import { signInWithEmailAndPassword } from "firebase/auth"
+import { sendPasswordResetEmail, signInWithEmailAndPassword } from "firebase/auth"
 
-export default function Login({ navigation }) {
-    const [email, setEmail] = useState("")
-    const [password, setPassword] = useState("")
-    const [errorMessage, setErrorMessage] = useState("")
+export default function Login() {
+    const [input, setInput] = useState({
+        email: "",
+        password: "",
+    })
 
-    const [modalVisible, setModalVisible] = useState(false)
-    const [alertModalVisible, setAlertModalVisible] = useState(false)
-
+    const [modal, setModal] = useState({
+        modalVisible: false,
+        alertWarningVisible: false,
+        alertSuccessVisible: false,
+        alertMessage: ""
+    })
 
     async function logIn() {
-        if (email === "" || password === "") {
-            setErrorMessage("Nenhum campo pode estar vazio!")
-            setAlertModalVisible(true)
-        } else if (password.length < 8) {
-            setErrorMessage("A senha deve conter pelo menos 08 caracteres!")
-            setAlertModalVisible(true)
+        if (input.email === "" || input.password === "") {
+            setModal({ ...modal, alertMessage: "Nenhum campo pode estar vazio!", alertWarningVisible: true })
+        } else if (input.password.length < 8) {
+            setModal({ ...modal, alertMessage: "A senha deve conter pelo menos 08 caracteres!", alertWarningVisible: true })
         } else {
             try {
-                await signInWithEmailAndPassword(auth, email, password);
+                await signInWithEmailAndPassword(auth, input.email, input.password);
             } catch (error) {
                 if (error.code === "auth/invalid-email") {
-                    setErrorMessage("Email inválido. Verifique e tente novamente!")
+                    setModal({ ...modal, alertMessage: "Email inválido. Verifique e tente novamente!", alertWarningVisible: true })
                 } else if (error.code === "auth/user-not-found") {
-                    setErrorMessage("Este email não está cadastrado. Tente novamente!")
+                    setModal({ ...modal, alertMessage: "Este email não está cadastrado. Tente novamente!", alertWarningVisible: true })
                 } else if (error.code === "auth/wrong-password") {
-                    setErrorMessage("Senha incorreta. Tente novamente!")
+                    setModal({ ...modal, alertMessage: "Senha incorreta. Tente novamente!", alertWarningVisible: true })
 
                 } else {
-                    setErrorMessage(error.code + ": " + error.message)
+                    setModal({ ...modal, alertMessage: error.code + ": " + error.message, alertWarningVisible: true })
                 }
+            }
+        }
+    }
 
-                setAlertModalVisible(true)
+    async function resetPass() {
+        if (input.email === "") {
+            setModal({ ...modal, alertMessage: "O campo não pode estar vazio!", alertWarningVisible: true })
+        } else {
+            try {
+                await sendPasswordResetEmail(auth, input.email).then(() => {
+                    setModal({ ...modal, alertMessage: "Email de recuperação de senha enviado. Verifique sua caixa de entrada.", alertSuccessVisible: true })
+                })
+            } catch (error) {
+                if (error.code === "auth/invalid-email") {
+                    setModal({ ...modal, alertMessage: "Email inválido. Verifique e tente novamente!", alertWarningVisible: true })
+                } else if (error.code === "auth/user-not-found") {
+                    setModal({ ...modal, alertMessage: "Este email não está cadastrado. Tente novamente!", alertWarningVisible: true })
+                } else {
+                    setModal({ ...modal, alertMessage: error.code + ": " + error.message, alertWarningVisible: true })
+                }
             }
         }
     }
@@ -50,10 +70,10 @@ export default function Login({ navigation }) {
     return (
         <Container>
             <Form>
-                <TextInput type="email" icon="mail-outline" placeholder="Insira seu email" returnKeyType="next" onChangeText={setEmail} />
-                <TextInput type="password" icon="lock-closed-outline" placeholder="Insira sua senha" returnKeyType="done" onChangeText={setPassword} />
+                <TextInput type="email" icon="mail-outline" placeholder="Insira seu email" returnKeyType="next" value={input.email} onChangeText={text => setInput({ ...input, email: text })} />
+                <TextInput type="password" icon="lock-closed-outline" placeholder="Insira sua senha" returnKeyType="done" value={input.password} onChangeText={text => setInput({ ...input, password: text })} />
                 <ForgotPassButtonContaier>
-                    <Link title="Esqueceu sua senha?" onPress={() => setModalVisible(true)} />
+                    <Link title="Esqueceu sua senha?" onPress={() => setModal({ ...modal, modalVisible: true })} />
                 </ForgotPassButtonContaier>
 
                 <Button icon="log-in-outline" title="Entrar" onPress={() => logIn()} />
@@ -61,14 +81,16 @@ export default function Login({ navigation }) {
 
             <Image source={require("../../../assets/icons/animals-image.png")} />
 
-            <Modal visible={modalVisible} title="Redefinir Senha" size="default" closeAction={() => setModalVisible(false)}>
+            <Modal visible={modal.modalVisible} title="Redefinir Senha" size="default" closeAction={() => setModal({ ...modal, modalVisible: false })}>
                 <ForgotPassModalContainer>
                     <Text>Enviaremos um e-mail com todas as instruções para a redefinição de senha.</Text>
-                    <TextInput type="email" icon="mail-outline" placeholder="Insira seu email" returnKeyType="next" />
-                    <Button icon="log-in-outline" title="Entrar" onPress={() => navigation.navigate("Home")} />
+                    <TextInput type="email" icon="mail-outline" placeholder="Insira seu email" returnKeyType="done" value={input.email} onChangeText={text => setInput({ ...input, email: text })} />
+                    <Button icon="send" title="Enviar email" onPress={() => resetPass()} inverted />
                 </ForgotPassModalContainer>
             </Modal>
-            <AlertModal visible={alertModalVisible} title="Ops!" text={errorMessage} type="warning" icon="warning-outline" closeAction={() => setAlertModalVisible(false)} />
+
+            <AlertModal visible={modal.alertWarningVisible} title="Ops!" text={modal.alertMessage} type="warning" icon="warning-outline" closeAction={() => setModal({ ...modal, alertWarningVisible: false })} />
+            <AlertModal visible={modal.alertSuccessVisible} title="Sucesso!" text={modal.alertMessage} type="success" icon="checkmark-circle-outline" closeAction={() => setModal({ ...modal, alertSuccessVisible: false, modalVisible: false })} />
         </Container>
     )
 }

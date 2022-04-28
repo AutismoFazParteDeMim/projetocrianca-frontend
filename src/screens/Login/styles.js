@@ -31,5 +31,4 @@ export const ForgotPassModalContainer = styled.View`
 
 export const Image = styled.Image`
     height: 40%;
-    resize-mode: contain;
 `
