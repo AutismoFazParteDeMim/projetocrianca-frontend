@@ -4,14 +4,17 @@ import { SvgXml } from "react-native-svg"
 
 import Button from "../../components/Buttons/Button"
 
-import { Container, StyleItem, StylesContainer, StylesRow } from "./styles"
+import { Container, StyleItem, StylesContainer, StylesRow, HairImage } from "./styles"
 import Text from "../../components/Text"
 import { getAvatar } from "./api"
 
 export default function Avatar({ navigation }) {
-    const [avatar, setAvatar] = useState()
+    const [avatar, setAvatar] = useState() //svg do avatar
     const [seed, setSeed] = useState({
+        accessories: "glasses",
+        accessoriesProbability: 0,
         eyes: "normal",
+        mouth: "openedSmile",
         skinColor: "variant01",
         hair: "shortHair",
         hairColor: "variant01",
@@ -36,19 +39,19 @@ export default function Avatar({ navigation }) {
                 { name: "variant04", color: "#e2ba87" },
                 { name: "variant05", color: "#c99c62" },
                 { name: "variant07", color: "#8c5a2b" },
-                { name: "variant08", color: "#643d19" }
+                { name: "variant08", color: "#643d19" },
             ],
         },
         {
             name: "Tipos de Cabelo",
             param: "hair",
             colors: [
-                { name: "shortHair" },
-                { name: "mohawk" },
-                { name: "wavyBob" },
-                { name: "bowlCutHair" },
-                { name: "curlyBob" },
-                { name: "straightHair" },
+                { name: "froBun", image: require("./assets/hair/froBun.png") },
+                { name: "straightHair", image: require("./assets/hair/straightHair.png") },
+                { name: "wavyBob", image: require("./assets/hair/wavyBob.png") },
+                { name: "curlyShortHair", image: require("./assets/hair/shortHairCurly.png") },
+                { name: "shortHair", image: require("./assets/hair/shortHair.png") },
+                { name: "bowlCutHair", image: require("./assets/hair/bowlCutHair.png") },
             ]
         },
         {
@@ -67,28 +70,33 @@ export default function Avatar({ navigation }) {
 
     return (
         <Container>
-            {avatar && <SvgXml width="150" height="150" xml={avatar} />}
+            {avatar && <SvgXml width="160" height="160" xml={avatar} />}
             {
                 categorias.map(categoria =>
-                    <StylesContainer>
+                    <StylesContainer key={categoria.name}>
                         <Text>{categoria.name}</Text>
                         <StylesRow>
                             {
                                 categoria.colors.map(item =>
-                                    <StyleItem color={item.color} onPress={() => setSeed({
+                                    <StyleItem key={item.param} color={item.color} image={item.image} onPress={() => setSeed({
                                         ...seed,
                                         ...categoria.param === "skin" ? { skinColor: item.name }
                                             : categoria.param === "hair" ? { hair: item.name }
                                                 : categoria.param === "hairColor" ? { hairColor: item.name }
                                                     : null
-                                    })} />
+                                    })}>
+                                        {
+
+                                            categoria.param === "hair" && <HairImage source={item.image} />
+                                        }
+                                    </StyleItem>
                                 )
                             }
                         </StylesRow>
                     </StylesContainer>
                 )
             }
-            <Button title="Próximo" onPress={() => navigation.navigate("CustomAvatar", { params: categorias })} icon="arrow-forward" inverted />
+            <Button title="Próximo" onPress={() => navigation.navigate("CustomAvatar", { params: seed })} icon="arrow-forward" inverted />
         </Container>
     )
 }

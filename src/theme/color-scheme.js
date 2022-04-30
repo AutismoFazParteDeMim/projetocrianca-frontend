@@ -47,7 +47,7 @@ export const darkTheme = {
         danger: "#EA4335",
         dangerShadow: "#B92013",
 
-        card: "#e5e5e533",
+        card: "#60666F",
         cardShadow: "#979797",
 
         text: "#ffffff",

@@ -72,11 +72,11 @@ export default function Register() {
 
                     <SexPickerContainer>
                         <SexPickerItem onPress={() => setInput({ ...input, childSex: "female" })} >
-                            <SexPickerItemImage source={require("../../../assets/icons/female.png")} active={input.childSex === "female" ? true : false} />
+                            <SexPickerItemImage source={require("../../../assets/icons/AvatarF.png")} active={input.childSex === "female" ? true : false} />
                             <Text>Feminino</Text>
                         </SexPickerItem>
                         <SexPickerItem onPress={() => setInput({ ...input, childSex: "male" })}>
-                            <SexPickerItemImage source={require("../../../assets/icons/male.png")} active={input.childSex === "male" ? true : false} />
+                            <SexPickerItemImage source={require("../../../assets/icons/AvatarM.png")} active={input.childSex === "male" ? true : false} />
                             <Text>Masculino</Text>
                         </SexPickerItem>
                     </SexPickerContainer>

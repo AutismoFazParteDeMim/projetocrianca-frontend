@@ -36,7 +36,7 @@ export const ProfileButton = styled.TouchableOpacity`
     height: 100px;
     border-radius: 50px;
     margin-right: ${metrics.padding};
-    background-color: #E5E5E5;
+    background-color: ${({ theme }) => theme.colors.card};
 `
 
 export const ProfilePic = styled(SvgXml)`

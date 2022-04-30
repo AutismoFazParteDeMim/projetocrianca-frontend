@@ -12,15 +12,23 @@ export const StylesContainer = styled.View`
 `
 
 export const StylesRow = styled.View`
-    width: 80%;
+    width: 90%;
     flex-direction: row;
     align-items: center;
-    justify-content: space-around;
+    justify-content: space-evenly;
 `
 
 export const StyleItem = styled.TouchableOpacity`
-    width: 40px;
-    height: 40px;
+    width: ${props => props.image ? 50 : 40}px;
+    height:  ${props => props.image ? 50 : 40}px;
+    margin-top: 12px;
+    align-items: center;
+    justify-content: center;
     border-radius: 12px;
-    background-color: ${item => item.color != null ? item.color : item.theme.colors.card};
+    ${props => props.color && "background-color:" + props.color}
+`
+
+export const HairImage = styled.Image`
+    width: 60px;
+    height: 70px;
 `
