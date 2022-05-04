@@ -10,6 +10,8 @@ import Routines from "../../screens/Activities/Routines"
 import Expressions from "../../screens/Activities/Expressions"
 import Avatar from '../../screens/Avatar'
 import CustomAvatar from '../../screens/Avatar/CustomAvatar'
+import JogoDaMemoria from '../../screens/Games/JogoDaMemoria'
+
 import Header from '../../components/Header'
 
 const Stack = createNativeStackNavigator()
@@ -29,6 +31,7 @@ export default function AuthStack() {
             <Stack.Screen name="Expressions" component={Expressions} options={{ title: "Expressões" }} />
             <Stack.Screen name="CustomAvatar" component={CustomAvatar} options={{ title: "Criar Avatar" }} />
             <Stack.Screen name="Avatar" component={Avatar} options={{ title: "Criar Avatar" }} />
+            <Stack.Screen name="JogoDaMemoria" component={JogoDaMemoria} options={{ title: "Jogo da Memoria" }} />
         </Stack.Navigator>
     )
 }
