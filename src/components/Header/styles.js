@@ -10,16 +10,18 @@ export const Container = styled.View`
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    background-color: ${props => props.theme.colors.background};
+    background-color: ${props => props.backgroundColor ?? props.theme.colors.background};
 `
 
 export const Content = styled(Container)`
     padding: 0px;
+    background-color: transparent;
 `
 
 export const Title = styled(Text)`
     font-family: ${fonts.title.font};
     font-size: ${fonts.title.size};
+    color: ${props => props.titleColor ?? props.theme.colors.text};
 `
 
 export const BackButton = styled.View`

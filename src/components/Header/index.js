@@ -5,12 +5,12 @@ import { View } from "react-native"
 
 export default function Header(props) {
     return (
-        <Container>
+        <Container backgroundColor={props.backgroundColor}>
             <Content>
                 <BackButton>
                     <CircleButton icon="chevron-back" onPress={() => props.navigation.goBack()} />
                 </BackButton>
-                <Title>{props.title}</Title>
+                <Title titleColor={props.titleColor}>{props.title}</Title>
             </Content>
         </Container>
     )

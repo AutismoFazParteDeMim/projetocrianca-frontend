@@ -31,7 +31,7 @@ export default function AuthStack() {
             <Stack.Screen name="Expressions" component={Expressions} options={{ title: "Expressões" }} />
             <Stack.Screen name="CustomAvatar" component={CustomAvatar} options={{ title: "Criar Avatar" }} />
             <Stack.Screen name="Avatar" component={Avatar} options={{ title: "Criar Avatar" }} />
-            <Stack.Screen name="JogoDaMemoria" component={JogoDaMemoria} options={{ title: "Jogo da Memoria" }} />
+            <Stack.Screen name="JogoDaMemoria" component={JogoDaMemoria} options={{ title: "Jogo da Memoria", headerShown: false }} />
         </Stack.Navigator>
     )
 }
