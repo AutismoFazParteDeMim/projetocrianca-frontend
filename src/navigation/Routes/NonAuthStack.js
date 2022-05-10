@@ -5,7 +5,7 @@ import Welcome from "../../screens/Welcome"
 import Login from "../../screens/Login"
 import Register from "../../screens/Register"
 
-import Header from "../../components/Header"
+import {Header} from "../../components"
 
 
 const Stack = createNativeStackNavigator()

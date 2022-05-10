@@ -1,9 +1,8 @@
 import styled from "styled-components/native"
-import metrics from "../../theme/metrics"
 
 export const Container = styled.KeyboardAvoidingView`
     flex: 1;
-    padding: ${metrics.padding};
+    padding: ${props => props.theme.metrics.padding};
     align-items: center;
     justify-content: space-between;
 `
@@ -15,7 +14,7 @@ export const Form = styled.ScrollView.attrs(() => ({
 
 export const Image = styled.Image`
     height: 40%;
-    margin-bottom: ${metrics.padding};
+    margin-bottom: ${props => props.theme.metrics.padding};
 `
 
 export const ChildsModalContainer = styled(Container)`

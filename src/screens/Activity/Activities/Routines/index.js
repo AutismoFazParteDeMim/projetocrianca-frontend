@@ -1,10 +1,10 @@
 import React from 'react'
 import { Image, Descrição, Item, Container, Title } from './styles'
 
-import Slider from '../../../components/Slider'
-import {data} from "./data"
+import { Slider } from '../../../../components'
+import { data } from "./data"
 
-export default function Expressions({ navigation }) {
+export default function Routines({ navigation }) {
     const RenderItem = ({ item }) => (
         <Item>
             <Image source={item.image} />

@@ -1,13 +1,11 @@
 import styled from "styled-components/native"
-import metrics from "../../../theme/metrics"
-import Text from "../../../components/Text"
-import fonts from "../../../theme/fonts"
+import { Text } from "../../../../components"
 
 export const Container = styled.View`
     flex: 1;
     width: 100%;
     height: 100%;
-    padding: 0 ${metrics.padding} 0 ${metrics.padding};
+    padding: 0 ${props => props.theme.metrics.padding} 0 ${props => props.theme.metrics.padding};
 `
 
 export const Item = styled.View`
@@ -21,12 +19,12 @@ export const Image = styled.Image`
     width: 200px;
     height: 200px;
     resize-mode: contain;
-    margin-bottom: ${metrics.padding};
+    margin-bottom: ${props => props.theme.metrics.padding};
 `
 
 export const Title = styled(Text)`
-    font-family: ${fonts.subTitle.font};
-    font-size: ${fonts.subTitle.size};
+    font-family: ${props => props.theme.fonts.subTitle.font};
+    font-size: ${props => props.theme.fonts.subTitle.size};
     text-transform: capitalize;
     text-align: center;
 `

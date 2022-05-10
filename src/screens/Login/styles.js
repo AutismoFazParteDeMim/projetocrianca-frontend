@@ -1,9 +1,8 @@
 import styled from "styled-components/native"
-import metrics from "../../theme/metrics"
 
 export const Container = styled.View`
     flex: 1;
-    padding: ${metrics.padding};
+    padding: ${props => props.theme.metrics.padding};
     align-items: center;
     justify-content: space-between;
 `
@@ -16,9 +15,9 @@ export const Form = styled.ScrollView.attrs({
 
 export const ForgotPassButtonContaier = styled.View`
     width: 100%;
-    padding: 0 ${metrics.padding} 0 ${metrics.padding};
-    margin-top: -${metrics.padding};
-    margin-bottom: ${metrics.padding};
+    padding: 0 ${props => props.theme.metrics.padding} 0 ${props => props.theme.metrics.padding};
+    margin-top: -${props => props.theme.metrics.padding};
+    margin-bottom: ${props => props.theme.metrics.padding};
     align-items: flex-end;
     justify-content: center;
 `

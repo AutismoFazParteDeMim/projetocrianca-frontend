@@ -8,7 +8,7 @@ export default function Header(props) {
         <Container backgroundColor={props.backgroundColor}>
             <Content>
                 <BackButton>
-                    <CircleButton icon="chevron-back" onPress={() => props.navigation.goBack()} />
+                    <CircleButton icon="chevron-back" onPress={() => props.backAction ?? props.navigation.goBack()} />
                 </BackButton>
                 <Title titleColor={props.titleColor}>{props.title}</Title>
             </Content>

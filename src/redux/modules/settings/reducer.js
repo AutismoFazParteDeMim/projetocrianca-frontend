@@ -1,10 +1,10 @@
 import types from "./types"
 import produce from "immer"
-import { darkTheme, lightTheme } from "../../../theme/color-scheme"
+import getTheme from "../../../theme"
 
 const INITIAL_STATE = {
     firstTime: true,
-    theme: lightTheme
+    theme: getTheme()
 }
 
 export default function settings(state = INITIAL_STATE, action) {
@@ -15,7 +15,7 @@ export default function settings(state = INITIAL_STATE, action) {
             })
         case types.THEME_SWITCH:
             return produce(state, (draft) => {
-                state.theme.dark ? draft.theme = lightTheme : draft.theme = darkTheme
+                state.theme.dark ? draft.theme = getTheme(false) : draft.theme = getTheme(true)
             })
         case types.RESET:
             return produce(state, (draft) => {

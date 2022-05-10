@@ -1,12 +1,13 @@
 import styled from "styled-components/native"
-import metrics from "../../../theme/metrics"
-import Header from "../../../components/Header"
+import { Header } from "../../../components"
 
 export const Container = styled.View`
     flex: 1;
     width: 100%;
     height: 100%;
-    padding: ${metrics.padding};
+    align-items: center;
+    justify-content: space-between;
+    padding: ${props => props.theme.metrics.padding};
     background-color: ${props => props.theme.colors.primary};
 `
 

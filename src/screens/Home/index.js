@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from "react"
 import { Platform } from "react-native"
-import SquareButton from "../../components/Buttons/SquareButton"
-import SearchBar from "../../components/Inputs/SearchBar"
+import { SquareButton, SearchBar } from "../../components"
 
 import { useSelector, useDispatch } from "react-redux"
-import { firstTime as firstTimeAction } from "../../redux/modules/settings/actions"
+import { firstTime as firstTimeAction, reset } from "../../redux/modules/settings/actions"
 
 import { Container, Header, ProfilePic, ProfileButton, SearchBarContainer, UserNameText, Grid, GridRow } from "./styles"
 

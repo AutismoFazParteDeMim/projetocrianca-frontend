@@ -6,13 +6,14 @@ import Settings from "../../screens/Settings"
 import Games from "../../screens/Games"
 import Profile from "../../screens/Profile"
 import Activity from "../../screens/Activity"
-import Routines from "../../screens/Activities/Routines"
-import Expressions from "../../screens/Activities/Expressions"
+import Routines from "../../screens/Activity/Activities/Routines"
+import Expressions from "../../screens/Activity/Activities/Expressions"
 import Avatar from '../../screens/Avatar'
 import CustomAvatar from '../../screens/Avatar/CustomAvatar'
-import JogoDaMemoria from '../../screens/Games/JogoDaMemoria'
+import MemoryGame from '../../screens/Games/MemoryGame'
+import MemoryGame2 from '../../screens/Games/MemoryGame/MemoryGame2'
 
-import Header from '../../components/Header'
+import { Header } from '../../components'
 
 const Stack = createNativeStackNavigator()
 export default function AuthStack() {
@@ -31,7 +32,8 @@ export default function AuthStack() {
             <Stack.Screen name="Expressions" component={Expressions} options={{ title: "Expressões" }} />
             <Stack.Screen name="CustomAvatar" component={CustomAvatar} options={{ title: "Criar Avatar" }} />
             <Stack.Screen name="Avatar" component={Avatar} options={{ title: "Criar Avatar" }} />
-            <Stack.Screen name="JogoDaMemoria" component={JogoDaMemoria} options={{ title: "Jogo da Memoria", headerShown: false }} />
+            <Stack.Screen name="MemoryGame" component={MemoryGame} options={{ title: "Jogo da Memoria", headerShown: false }} />
+            <Stack.Screen name="MemoryGame2" component={MemoryGame2} options={{ title: "Jogo da Memoria", headerShown: false }} />
         </Stack.Navigator>
     )
 }

@@ -1,21 +1,19 @@
+import { Platform } from "react-native"
 import styled from "styled-components/native"
-import metrics from "../../../theme/metrics"
-import fonts from "../../../theme/fonts"
 import Text from "../../Text"
 import { Ionicons } from "@expo/vector-icons"
-import { Platform } from "react-native"
 
 export const Item = styled.TouchableOpacity`
     width: 100%;
     height: 140px;
-    padding: 0 ${metrics.padding} 0 ${metrics.padding};
-    margin-bottom: ${metrics.padding};
+    padding: 0 ${props => props.theme.metrics.padding} 0 ${props => props.theme.metrics.padding};
+    margin-bottom: ${props => props.theme.metrics.padding};
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
     border-left-width: 0.1px;
     border-right-width: 0.1px;
-    border-bottom-width: ${metrics.squareButton.borderBottomWidth};
+    border-bottom-width: ${props => props.theme.metrics.squareButton.borderBottomWidth};
     border-radius: 24px;
     border-color: ${props => props.theme.colors.cardShadow};
     background-color: ${props => props.theme.colors.card};
@@ -24,12 +22,12 @@ export const Item = styled.TouchableOpacity`
 export const Image = styled.Image`
     width: 60px;
     height: 60px;
-    margin-right: ${metrics.padding};
+    margin-right: ${props => props.theme.metrics.padding};
 `
 
 export const Title = styled(Text)`
-    font-family: ${fonts.button.font};
-    font-size: ${fonts.button.size};
+    font-family: ${props => props.theme.fonts.button.font};
+    font-size: ${props => props.theme.fonts.button.size};
     margin-bottom: -4px;
 `
 

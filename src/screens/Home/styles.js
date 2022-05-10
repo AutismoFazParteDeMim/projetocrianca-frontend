@@ -1,21 +1,19 @@
 import styled from "styled-components/native"
-import metrics from "../../theme/metrics"
-import Text from "../../components/Text"
-import fonts from "../../theme/fonts"
+import { Text } from "../../components"
 import { SvgXml } from "react-native-svg"
 
 export const Container = styled.KeyboardAvoidingView`
     flex: 1;
-    padding: 0 ${metrics.padding} 0 ${metrics.padding};
+    padding: 0 ${props => props.theme.metrics.padding} 0 ${props => props.theme.metrics.padding};
 `
 
 export const Header = styled.View`
     width: 100%;
-    height: ${metrics.headerHeight};
-    padding: ${metrics.headerPadding} 0 0 0;
+    height: ${props => props.theme.metrics.headerHeight};
+    padding: ${props => props.theme.metrics.headerPadding} 0 0 0;
     flex-direction: row;
     align-items: center;
-    margin-bottom: ${metrics.padding};
+    margin-bottom: ${props => props.theme.metrics.padding};
     justify-content: space-between;
 `
 
@@ -35,8 +33,8 @@ export const SearchBarContainer = styled.View`
 `
 
 export const UserNameText = styled(Text)`
-    font-family: ${fonts.subTitle.font};
-    font-size: ${fonts.subTitle.size};
+    font-family: ${props => props.theme.fonts.subTitle.font};
+    font-size: ${props => props.theme.fonts.subTitle.size};
 `
 
 export const Grid = styled.View`
@@ -50,5 +48,5 @@ export const GridRow = styled.View`
     flex-direction: row;
     align-items: center;
     justify-content: space-around;
-    margin-bottom: ${metrics.padding};
+    margin-bottom: ${props => props.theme.metrics.padding};
 `

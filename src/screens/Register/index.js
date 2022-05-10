@@ -1,17 +1,13 @@
 import React, { useState } from "react"
 import { Platform } from "react-native"
 
-import { Container, Form, Image, ChildsModalContainer, SexPickerContainer, SexPickerItem, SexPickerItemImage } from "./styles"
-
-import TextInput from "../../components/Inputs/TextInput"
-import Button from "../../components/Buttons/Button"
-import Modal from "../../components/Modals/Modal"
-import AlertModal from "../../components/Modals/AlertModal"
-
 import { firestore, auth } from "../../config/firebase"
 import { createUserWithEmailAndPassword, updateProfile, sendEmailVerification } from "firebase/auth"
 import { setDoc, doc } from "firebase/firestore"
-import Text from "../../components/Text"
+import { Text, TextInput, Button, Modal, AlertModal } from "../../components"
+
+import { Container, Form, Image, ChildsModalContainer, SexPickerContainer, SexPickerItem, SexPickerItemImage } from "./styles"
+
 
 export default function Register() {
     const [input, setInput] = useState({

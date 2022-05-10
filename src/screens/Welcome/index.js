@@ -1,11 +1,10 @@
 import React, { useState } from "react"
 import { ScrollView } from "react-native"
+import { Button, Link, Text, Modal } from "../../components"
+import PrivacyPolicy from "./privacyPolicy"
+
 import { BottomContainer, Container, Title, TopContainer, WelcomeText, ButtonsContainer, PrivacyPolicyContainer } from "./styles"
-import Button from "../../components/Buttons/Button"
-import Link from "../../components/Buttons/Link"
-import Text from "../../components/Text"
-import PrivacyPolicy from "./privacyPolicy";
-import Modal from "../../components/Modals/Modal";
+
 
 export default function Welcome({ navigation }) {
     const [modalVisible, setModalVisible] = useState(false);

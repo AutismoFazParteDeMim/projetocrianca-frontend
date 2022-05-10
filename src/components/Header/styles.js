@@ -1,12 +1,10 @@
 import styled from "styled-components/native"
-import fonts from "../../theme/fonts"
-import metrics from "../../theme/metrics"
 import Text from "../Text"
 
 export const Container = styled.View`
     width: 100%;
-    height: ${metrics.headerHeight};
-    padding: ${metrics.headerPadding} ${metrics.padding} 0 ${metrics.padding};
+    height: ${props => props.theme.metrics.headerHeight};
+    padding: ${props => props.theme.metrics.headerPadding} ${props => props.theme.metrics.padding} 0 ${props => props.theme.metrics.padding};
     flex-direction: row;
     align-items: center;
     justify-content: center;
@@ -19,8 +17,8 @@ export const Content = styled(Container)`
 `
 
 export const Title = styled(Text)`
-    font-family: ${fonts.title.font};
-    font-size: ${fonts.title.size};
+    font-family: ${props => props.theme.fonts.title.font};
+    font-size: ${props => props.theme.fonts.title.size};
     color: ${props => props.titleColor ?? props.theme.colors.text};
 `
 

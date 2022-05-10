@@ -1,7 +1,5 @@
 import styled from "styled-components/native"
-import Text from "../../components/Text"
-import fonts from "../../theme/fonts"
-import metrics from "../../theme/metrics"
+import { Text } from "../../components"
 
 export const Container = styled.View`
     flex: 1;
@@ -9,7 +7,7 @@ export const Container = styled.View`
 
 export const TopContainer = styled.View`
     height: 50%;
-    padding: 0 ${metrics.padding} 0 ${metrics.padding};
+    padding: 0 ${props => props.theme.metrics.padding} 0 ${props => props.theme.metrics.padding};
     flex-direction: column;
     align-items: center;
     justify-content: center;
@@ -21,16 +19,16 @@ export const BottomContainer = styled(TopContainer)`
 `
 
 export const Title = styled(Text)`
-    font-family: ${fonts.title.font};
-    font-size:  ${fonts.title.size};
+    font-family: ${props => props.theme.fonts.title.font};
+    font-size:  ${props => props.theme.fonts.title.size};
     text-align: center;
-    margin-bottom: ${metrics.padding};
+    margin-bottom: ${props => props.theme.metrics.padding};
     color: ${props => props.theme.colors.textAltLight};
 `
 
 export const WelcomeText = styled(Title)`
-    font-family: ${fonts.subTitle.font};
-    font-size: ${fonts.subTitle.size};
+    font-family: ${props => props.theme.fonts.subTitle.font};
+    font-size: ${props => props.theme.fonts.subTitle.size};
 `
 
 export const ButtonsContainer = styled(BottomContainer)`
@@ -39,5 +37,5 @@ export const ButtonsContainer = styled(BottomContainer)`
 `
 
 export const PrivacyPolicyContainer = styled(Container)`
-    padding: 0 0 ${metrics.padding} 0;
+    padding: 0 0 ${props => props.theme.metrics.padding} 0;
 `

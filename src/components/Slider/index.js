@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react'
+import React, { useContext } from 'react'
 import AppIntroSlider from 'react-native-app-intro-slider'
 import { ThemeContext } from 'styled-components/native'
 

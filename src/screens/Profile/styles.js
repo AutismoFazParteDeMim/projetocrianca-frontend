@@ -1,8 +1,5 @@
 import styled from "styled-components/native"
-import CircleButton from "../../components/Buttons/CircleButton"
-import metrics from "../../theme/metrics"
-import Text from "../../components/Text"
-import fonts from "../../theme/fonts"
+import { Text, CircleButton } from "../../components"
 import { SvgXml } from "react-native-svg"
 
 export const CoverContainer = styled.ImageBackground`
@@ -12,8 +9,8 @@ export const CoverContainer = styled.ImageBackground`
 
 export const BackButton = styled(CircleButton)`
     position: absolute;
-    left: ${metrics.padding};
-    top: ${metrics.headerPadding};
+    left: ${props => props.theme.metrics.padding};
+    top: ${props => props.theme.metrics.headerPadding};
 `
 
 export const InfoContainer = styled.View`
@@ -21,22 +18,22 @@ export const InfoContainer = styled.View`
     height: 100px;
     flex-direction: row;
     align-items: flex-end;
-    padding: 0 ${metrics.padding} 0 ${metrics.padding};
+    padding: 0 ${props => props.theme.metrics.padding} 0 ${props => props.theme.metrics.padding};
     position: absolute;
     bottom: -50px;
 `
 
 export const UserName = styled(Text)`
-    font-family: ${fonts.subTitle.font};
-    font-size: ${fonts.subTitle.size};
+    font-family: ${props => props.theme.fonts.subTitle.font};
+    font-size: ${props => props.theme.fonts.subTitle.size};
 `
 
 export const ProfileButton = styled.TouchableOpacity`
     width: 100px;
     height: 100px;
     border-radius: 50px;
-    margin-right: ${metrics.padding};
-    background-color: ${({ theme }) => theme.colors.card};
+    margin-right: ${props => props.theme.metrics.padding};
+    background-color: ${props => props.theme.colors.card};
 `
 
 export const ProfilePic = styled(SvgXml)`

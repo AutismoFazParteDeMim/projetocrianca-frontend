@@ -1,19 +1,16 @@
-import React, { useState, useEffect } from "react"
+import React, { useState } from "react"
 import { Switch } from "react-native-elements"
 
 import { Container, OptionContainer, OptionIcon, Section, SectionTitle, TextContainer, SectionContent } from "./styles"
 
-import Text from "../../components/Text"
-import Tooltip from "../../components/Tooltip"
+import { Text, Tooltip, Button } from "../../components"
 import { TouchableOpacity, Linking } from "react-native"
-import Button from "../../components/Buttons/Button"
 
 import { signOut } from "firebase/auth"
 import { auth } from "../../config/firebase"
 
 import { useSelector, useDispatch } from "react-redux"
-import { switchTheme, reset } from "../../redux/modules/settings/actions"
-import { resetAction } from "../../redux/modules/user/actions"
+import { switchTheme } from "../../redux/modules/settings/actions"
 
 export default function Settings({ navigation }) {
     const { theme } = useSelector((state) => state.settings)

@@ -1,20 +1,18 @@
 import styled from "styled-components/native"
-import metrics from "../../theme/metrics"
-import Text from "../../components/Text"
-import fonts from "../../theme/fonts"
+import { Text } from "../../components"
 import { Ionicons } from "@expo/vector-icons"
 
 export const Container = styled.View`
-    padding: ${metrics.padding};
+    padding: ${props => props.theme.metrics.padding};
 `
 
 export const Section = styled.View`
-    margin-bottom: ${metrics.padding};
+    margin-bottom: ${props => props.theme.metrics.padding};
 `
 
 export const SectionTitle = styled(Text)`
-    font-family: ${fonts.sectionTitle.font};
-    font-size: ${fonts.sectionTitle.size};
+    font-family: ${props => props.theme.fonts.sectionTitle.font};
+    font-size: ${props => props.theme.fonts.sectionTitle.size};
 `
 
 export const SectionContent = styled.View`
@@ -24,20 +22,20 @@ export const SectionContent = styled.View`
 
 export const OptionContainer = styled.View`
     width: 100%;
-    height: ${metrics.input.height};
-    padding: 0 ${metrics.padding} 0 ${metrics.padding};
-    margin-bottom: ${metrics.padding};
+    height: ${props => props.theme.metrics.input.height};
+    padding: 0 ${props => props.theme.metrics.padding} 0 ${props => props.theme.metrics.padding};
+    margin-bottom: ${props => props.theme.metrics.padding};
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    border-radius: ${metrics.input.borderRadius};
+    border-radius: ${props => props.theme.metrics.input.borderRadius};
     background-color: ${props => props.theme.colors.card};
 `
 
 export const OptionIcon = styled(Ionicons)`
-    font-size: ${metrics.input.iconSize};
+    font-size: ${props => props.theme.metrics.input.iconSize};
     color: ${props => props.theme.colors.text};
-    margin-right: ${metrics.padding};
+    margin-right: ${props => props.theme.metrics.padding};
 `
 
 export const TextContainer = styled.View`

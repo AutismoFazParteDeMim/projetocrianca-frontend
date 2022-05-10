@@ -1,11 +1,9 @@
 import React, { useEffect, useState } from "react"
-import { TouchableOpacity, View } from "react-native"
 import { SvgXml } from "react-native-svg"
 
-import Button from "../../components/Buttons/Button"
+import { Button, Text } from "../../components"
 
 import { Container, StyleItem, StylesContainer, StylesRow, HairImage } from "./styles"
-import Text from "../../components/Text"
 import { getAvatar } from "./api"
 
 export default function Avatar({ navigation }) {

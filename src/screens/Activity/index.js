@@ -1,5 +1,5 @@
 import React from "react"
-import VerticalList from "../../components/Lists/VerticalList"
+import { VerticalList } from "../../components"
 import { Container } from "./styles"
 
 export default function Activities({ navigation }) {

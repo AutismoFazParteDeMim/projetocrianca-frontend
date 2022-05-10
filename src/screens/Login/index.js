@@ -3,19 +3,14 @@ import TextInput from "../../components/Inputs/TextInput"
 import Button from "../../components/Buttons/Button"
 import Link from "../../components/Buttons/Link"
 
-import { Container, ForgotPassModalContainer, ForgotPassButtonContaier, Form, Image } from "./styles"
-import Text from "../../components/Text"
-import Modal from "../../components/Modals/Modal"
-import AlertModal from "../../components/Modals/AlertModal"
+import { Modal, AlertModal, Text } from "../../components/Modals/Modal"
 
 import { auth } from "../../config/firebase"
 import { sendPasswordResetEmail, signInWithEmailAndPassword } from "firebase/auth"
 
-import { useSelector, useDispatch } from "react-redux"
-import { setUserAction } from "../../redux/modules/user/actions"
+import { Container, ForgotPassModalContainer, ForgotPassButtonContaier, Form, Image } from "./styles"
 
 export default function Login() {
-    const dispatch = useDispatch()
 
     const [input, setInput] = useState({
         email: "",

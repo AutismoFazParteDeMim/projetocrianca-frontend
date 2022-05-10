@@ -1,14 +1,13 @@
 import styled from "styled-components/native"
-import metrics from "../../../theme/metrics"
 import { Ionicons } from "@expo/vector-icons"
 
 export const Container = styled.TouchableOpacity`
-    width: ${metrics.circleButton.width};
-    height: ${metrics.circleButton.height};
+    width: ${props => props.theme.metrics.circleButton.width};
+    height: ${props => props.theme.metrics.circleButton.height};
     align-items: center;
     justify-content: center;
-    border-radius: ${metrics.circleButton.borderRadius};
-    border-bottom-width: ${metrics.circleButton.borderBottomWidth};
+    border-radius: ${props => props.theme.metrics.circleButton.borderRadius};
+    border-bottom-width: ${props => props.theme.metrics.circleButton.borderBottomWidth};
     border-left-width: 0.3px;
     border-right-width: 0.3px;
     border-color: ${props => props.theme.colors.cardShadow};
@@ -16,12 +15,12 @@ export const Container = styled.TouchableOpacity`
 `
 
 export const ContainerStatic = styled.View`
-    width: ${metrics.circleButton.width};
-    height: ${metrics.circleButton.height};
+    width: ${props => props.theme.metrics.circleButton.width};
+    height: ${props => props.theme.metrics.circleButton.height};
     align-items: center;
     justify-content: center;
-    border-radius: ${metrics.circleButton.borderRadius};
-    border-bottom-width: ${metrics.circleButton.borderBottomWidth};
+    border-radius: ${props => props.theme.metrics.circleButton.borderRadius};
+    border-bottom-width: ${props => props.theme.metrics.circleButton.borderBottomWidth};
     border-left-width: 0.3px;
     border-right-width: 0.3px;
     border-color: ${props => props.theme.colors.cardShadow};
@@ -29,6 +28,6 @@ export const ContainerStatic = styled.View`
 `
 
 export const Icon = styled(Ionicons)`
-    font-size: ${metrics.circleButton.iconSize};
+    font-size: ${props => props.theme.metrics.circleButton.iconSize};
     color: ${props => props.theme.colors.text};
 `
