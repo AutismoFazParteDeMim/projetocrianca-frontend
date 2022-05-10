@@ -1,6 +1,5 @@
 import styled from "styled-components/native"
 import { Text } from "../../components"
-import { SvgXml } from "react-native-svg"
 
 export const Container = styled.KeyboardAvoidingView`
     flex: 1;
@@ -15,12 +14,6 @@ export const Header = styled.View`
     align-items: center;
     margin-bottom: ${props => props.theme.metrics.padding};
     justify-content: space-between;
-`
-
-export const ProfilePic = styled(SvgXml)`
-    width: 60px;
-    height: 60px;
-    border-radius: 50px;
 `
 
 export const ProfileButton = styled.TouchableOpacity`

@@ -12,7 +12,7 @@
   "dependencies": {
     "@expo-google-fonts/poppins": "^0.2.2",
     "@react-native-async-storage/async-storage": "~1.15.0",
-    "@react-native-picker/picker": "^2.4.1",
+    "@react-native-picker/picker": "2.2.1",
     "@react-navigation/native": "^6.0.6",
     "@react-navigation/native-stack": "^6.2.5",
     "@types/styled-components": "^5.1.20",
@@ -37,7 +37,8 @@
     "react-native-safe-area-context": "3.3.2",
     "react-native-screens": "~3.10.1",
     "react-native-super-grid": "^4.4.0",
-    "react-native-svg": "^12.3.0",
+    "react-native-svg": "12.1.1",
+    "react-native-svg-web": "^1.0.9",
     "react-native-web": "0.17.1",
     "react-native-webview": "11.15.0",
     "react-redux": "^8.0.0",

@@ -3,7 +3,7 @@ import TextInput from "../../components/Inputs/TextInput"
 import Button from "../../components/Buttons/Button"
 import Link from "../../components/Buttons/Link"
 
-import { Modal, AlertModal, Text } from "../../components/Modals/Modal"
+import { Modal, AlertModal, Text } from "../../components"
 
 import { auth } from "../../config/firebase"
 import { sendPasswordResetEmail, signInWithEmailAndPassword } from "firebase/auth"

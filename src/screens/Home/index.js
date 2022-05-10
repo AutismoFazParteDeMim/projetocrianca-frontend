@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react"
 import { Platform } from "react-native"
 import { SquareButton, SearchBar } from "../../components"
+import { SvgXml } from "react-native-svg"
 
 import { useSelector, useDispatch } from "react-redux"
-import { firstTime as firstTimeAction, reset } from "../../redux/modules/settings/actions"
+import { firstTime as firstTimeAction } from "../../redux/modules/settings/actions"
 
-import { Container, Header, ProfilePic, ProfileButton, SearchBarContainer, UserNameText, Grid, GridRow } from "./styles"
+import { Container, Header, ProfileButton, SearchBarContainer, UserNameText, Grid, GridRow } from "./styles"
 
 export default function Home({ navigation }) {
     const dispatch = useDispatch()
@@ -25,7 +26,7 @@ export default function Home({ navigation }) {
         <Container behavior={Platform.OS === "ios" ? "padding" : "height"}>
             <Header>
                 <ProfileButton onPress={() => navigation.navigate("Profile")}>
-                    {child.childPic && <ProfilePic xml={child.childPic} />}
+                    {child.childPic && Platform.OS === "web" ? <svg xmlns={child.childPic} width={60} height={60} /> : <SvgXml xml={child.childPic} width={60} height={60} />}
                 </ProfileButton>
                 <SearchBarContainer>
                     <SearchBar />

@@ -1,6 +1,5 @@
 import styled from "styled-components/native"
 import { Text, CircleButton } from "../../components"
-import { SvgXml } from "react-native-svg"
 
 export const CoverContainer = styled.ImageBackground`
     width: 100%;
@@ -34,10 +33,4 @@ export const ProfileButton = styled.TouchableOpacity`
     border-radius: 50px;
     margin-right: ${props => props.theme.metrics.padding};
     background-color: ${props => props.theme.colors.card};
-`
-
-export const ProfilePic = styled(SvgXml)`
-    width: 100px;
-    height: 100px;
-    border-radius: 50px;
 `

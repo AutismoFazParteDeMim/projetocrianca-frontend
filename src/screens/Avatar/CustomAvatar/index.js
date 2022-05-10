@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react"
 import { SvgXml } from "react-native-svg"
+import { Platform } from "react-native"
 
 import { Button, Text } from "../../../components"
 
@@ -77,7 +78,7 @@ export default function Avatar({ route, navigation }) {
 
     return (
         <Container>
-            {avatar && <SvgXml width="160" height="160" xml={avatar} />}
+            {avatar && Platform.OS === "web" ? <svg xmlns={avatar} width={160} height={160} /> : <SvgXml xml={avatar} width={160} height={160} />}
             {
                 categorias.map(categoria =>
                     <StylesContainer key={categoria.name}>

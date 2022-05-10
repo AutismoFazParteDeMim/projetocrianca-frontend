@@ -1,7 +1,7 @@
 import React from "react"
-import { View } from "react-native"
+import { View, Platform } from "react-native"
 import { BackButton, CoverContainer, InfoContainer, ProfileButton, ProfilePic, UserName } from "./styles"
-
+import { SvgXml } from "react-native-svg"
 import { useSelector } from "react-redux"
 
 export default function Profile({ navigation }) {
@@ -14,7 +14,7 @@ export default function Profile({ navigation }) {
             </CoverContainer>
             <InfoContainer>
                 <ProfileButton onPress={() => navigation.navigate("Avatar")}>
-                    {child.childPic && <ProfilePic xml={child.childPic} />}
+                    {child.childPic && Platform.OS === "web" ? <svg xmlns={child.childPic} width={100} height={100} /> : <SvgXml xml={child.childPic} width={100} height={100} />}
                 </ProfileButton>
                 <UserName>{child.childName}</UserName>
             </InfoContainer>
