@@ -78,7 +78,7 @@ export default function Avatar({ route, navigation }) {
 
     return (
         <Container>
-            {avatar && Platform.OS === "web" ? <svg xmlns={avatar} width={160} height={160} /> : <SvgXml xml={avatar} width={160} height={160} />}
+            {avatar && Platform.OS === "web" ? <svg xmlns={avatar} width={160} height={160} /> : avatar && <SvgXml xml={avatar} width={160} height={160} />}
             {
                 categorias.map(categoria =>
                     <StylesContainer key={categoria.name}>
