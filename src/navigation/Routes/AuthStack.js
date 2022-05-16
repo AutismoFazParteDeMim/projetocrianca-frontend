@@ -12,6 +12,7 @@ import Avatar from '../../screens/Avatar'
 import CustomAvatar from '../../screens/Avatar/CustomAvatar'
 import MemoryGame from '../../screens/Games/MemoryGame'
 import MemoryGame2 from '../../screens/Games/MemoryGame/MemoryGame2'
+import About from "../../screens/About"
 
 import { Header } from '../../components'
 
@@ -34,6 +35,7 @@ export default function AuthStack() {
             <Stack.Screen name="Avatar" component={Avatar} options={{ title: "Criar Avatar" }} />
             <Stack.Screen name="MemoryGame" component={MemoryGame} options={{ title: "Jogo da Memoria", headerShown: false }} />
             <Stack.Screen name="MemoryGame2" component={MemoryGame2} options={{ title: "Jogo da Memoria", headerShown: false }} />
+            <Stack.Screen name="About" component={About} options={{ title: "Sobre o projeto"}} />
         </Stack.Navigator>
     )
 }

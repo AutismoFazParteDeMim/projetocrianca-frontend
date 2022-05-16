@@ -62,7 +62,7 @@ export default function Settings({ navigation }) {
             <Section>
                 <SectionTitle>Aplicativo</SectionTitle>
                 <SectionContent>
-                    <TouchableOpacity style={{ width: "100%" }} onPress={() => { Linking.openURL("https://github.com/wuvinotre/ProjetoCrianca") }}>
+                    <TouchableOpacity style={{ width: "100%" }} onPress={() => navigation.navigate("About")}>
                         <OptionContainer>
                             <TextContainer>
                                 <OptionIcon name="information-circle-outline" />
