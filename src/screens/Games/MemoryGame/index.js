@@ -10,6 +10,7 @@ export default function MemoryGame({ navigation }) {
     const [round, setRound] = useState([]);
     const [shuffledCards, setShuffledCards] = useState([]);
     const [counter, setCounter] = useState(0);
+    const [blockPress, setBlockPress] = useState(false);
     const cards = [
         {
             key: 0,
@@ -43,15 +44,17 @@ export default function MemoryGame({ navigation }) {
         }
     ]
 
+
+
     useEffect(() => {
         const duplicateCards = [...cards, ...cards]
         setShuffledCards(shuffleArray(duplicateCards))
     }, [])
 
     useEffect(() => {
+
         let first = shuffledCards[openedCards[openedCards.length < 2 ? 0 : openedCards.length - 2]];
         let second = shuffledCards[openedCards[openedCards.length < 2 ? 1 : openedCards.length - 1]];
-
         if (second && first.key === second.key) {
             setRound([...round, first])
             setCounter(counter + 1)
@@ -60,18 +63,29 @@ export default function MemoryGame({ navigation }) {
 
         if (first !== second) {
             if (openedCards.length % 2 === 0) {
-                setTimeout(() => setOpenedCards(openedCards.slice(0, -2)), 1000);
+                setBlockPress(true)
+                setTimeout(() => {setOpenedCards(openedCards.slice(0, -2)), setBlockPress(false)}, 1000);
                 setCounter(counter + 1)
             }
         }
         if (openedCards.length === cards.length * 2) {
             navigation.navigate("MemoryGame2")
         }
+        
     }, [openedCards])
+    
+    
 
     function handleClick(index) {
+        if (blockPress === true) {
+            return
+        }
+    
         setOpenedCards((open) => [...open, index]);
+        
+        
     };
+
 
     function renderItem({ item, index }) {
         return (
