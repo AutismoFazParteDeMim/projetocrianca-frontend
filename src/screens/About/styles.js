@@ -9,7 +9,7 @@ export const Container = styled.View`
    
 `
 export const GitHubButton = styled(Button).attrs((props)=> ({
-    backgroundColor : props.theme.colors.text, 
+    backgroundColor : "#3D3D3D", 
     textColor : props.theme.colors.textAltLight,
 
 }))``
