@@ -1,15 +1,16 @@
 import styled from "styled-components/native"
+import { Button } from "../../components"
 
 export const Container = styled.KeyboardAvoidingView`
     flex: 1;
     padding: ${props => props.theme.metrics.padding};
+    display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-evenly;
 `
-export const Form = styled.ScrollView.attrs(() => ({
-    contentContainerStyle: { alignItems: "center" }
-}))`
+export const Form = styled.View`
     width: 100%;
+    align-items: center;
 `
 
 export const Image = styled.Image`
@@ -40,4 +41,8 @@ export const SexPickerItemImage = styled.Image`
     height: 80px;
     border-radius: 50px;
     border: ${props => props.active ? "2px solid " + props.theme.colors.primary : "none"};
+`
+export const GoogleButton = styled(Button)`
+    border-color: gray;
+    background-color: white;
 `

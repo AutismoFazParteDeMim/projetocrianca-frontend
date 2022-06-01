@@ -26,7 +26,7 @@ export default function Home({ navigation }) {
         <Container behavior={Platform.OS === "ios" ? "padding" : "height"}>
             <Header>
                 <ProfileButton onPress={() => navigation.navigate("Profile")}>
-                    {child.childPic && Platform.OS === "web" ? <svg xmlns={child.childPic} width={60} height={60} /> : <SvgXml xml={child.childPic} width={60} height={60} />}
+                    {child.childPic && Platform.OS === "web" ? child.childPic && <svg xmlns={child.childPic} width={60} height={60} /> : child.childPic && <SvgXml xml={child.childPic} width={60} height={60} />}
                 </ProfileButton>
                 <SearchBarContainer>
                     <SearchBar />

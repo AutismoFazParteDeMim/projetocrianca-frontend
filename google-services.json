@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "156087953461",
+    "firebase_url": "https://projeto-crianca-default-rtdb.firebaseio.com",
+    "project_id": "projeto-crianca",
+    "storage_bucket": "projeto-crianca.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:156087953461:android:5f73f107839497c9b9297c",
+        "android_client_info": {
+          "package_name": "com.unisociesc.projetocrianca"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "156087953461-j1p2tj1o2bk75lg9cq35647dgknghk5n.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.unisociesc.projetocrianca",
+            "certificate_hash": "5116f74fcfb4e57ef7e5ab243a875b8a4597c0c7"
+          }
+        },
+        {
+          "client_id": "156087953461-u43kgs4n2esf37m88fq8tjkvlvoo37tc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBM59ZcK8FcALal2Ph_Jb9XjQmKOw3Rpz4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "156087953461-u43kgs4n2esf37m88fq8tjkvlvoo37tc.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

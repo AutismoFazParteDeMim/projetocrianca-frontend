@@ -1,6 +1,6 @@
 import { initializeApp } from "firebase/app"
 import { getAuth } from "firebase/auth"
-import { getFirestore } from "firebase/firestore"
+import { getFirestore, initializeFirestore } from "firebase/firestore"
 
 import Constants from "expo-constants"
 
@@ -17,7 +17,11 @@ const firebaseConfig = {
 }
 
 const firebase = initializeApp(firebaseConfig)
-const firestore = getFirestore()
+const firestore = initializeFirestore(firebase, {
+    experimentalForceLongPolling: true,
+    useFetchStreams: false,
+})
+
 const auth = getAuth()
 
 export { firebase, firestore, auth }
