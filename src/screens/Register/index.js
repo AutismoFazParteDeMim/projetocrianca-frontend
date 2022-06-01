@@ -9,7 +9,7 @@ import {
     GoogleSignin,
 } from '@react-native-google-signin/google-signin'
 
-import { Container, Form, ChildsModalContainer, SexPickerContainer, SexPickerItem, SexPickerItemImage, GoogleButton } from "./styles"
+import { Container, Form, ChildsModalContainer, SexPickerContainer, SexPickerItem, SexPickerItemImage, GoogleButton, FacebookButton } from "./styles"
 
 
 export default function Register() {
@@ -26,6 +26,7 @@ export default function Register() {
         modalVisible: false,
         alertModalVisible: false,
         googleSignIn: false,
+        facebookSignIn: false,
         alertMessage: ""
     })
 
@@ -34,6 +35,7 @@ export default function Register() {
             scopes: ['https://www.googleapis.com/auth/drive.readonly'], // [Android] what API you want to access on behalf of the user, default is email and profile
             webClientId: '156087953461-u43kgs4n2esf37m88fq8tjkvlvoo37tc.apps.googleusercontent.com', // client ID of type WEB for your server (needed to verify user ID and offline access)
             offlineAccess: true,
+            hostedDomain: ""
         })
     }, [])
 
@@ -68,10 +70,7 @@ export default function Register() {
         }
     }
 
-
-
     async function signInWithGoogle() {
-
         try {
             GoogleSignin.hasPlayServices({ showPlayServicesUpdateDialog: true }).then(async () => {
                 const { idToken } = await GoogleSignin.signIn()
@@ -86,8 +85,9 @@ export default function Register() {
 
     return (
         <Container behavior={Platform.OS === "ios" ? "padding" : "height"}>
-            <View>
-                <GoogleButton title="Google" onPress={() => setModal({ ...modal, googleSignIn: true, modalVisible: true })} />
+            <View style={{ width: "100%" }}>
+                <GoogleButton title="Cadastrar com o Google" icon="logo-google" onPress={() => setModal({ ...modal, facebookSignIn: false, googleSignIn: true, modalVisible: true })} />
+                <FacebookButton title="Cadastrar com o Facebook" icon="logo-facebook" onPress={() => setModal({ ...modal, googleSignIn: false, facebookSignIn: true, modalVisible: true })} />
             </View>
             <Text>OU</Text>
             <Form>

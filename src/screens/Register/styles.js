@@ -42,7 +42,19 @@ export const SexPickerItemImage = styled.Image`
     border-radius: 50px;
     border: ${props => props.active ? "2px solid " + props.theme.colors.primary : "none"};
 `
-export const GoogleButton = styled(Button)`
+
+export const GoogleButton = styled(Button).attrs(({ theme }) => ({
+    textColor: theme.colors.textAltDark
+}))`
+    width: 100%;
+    margin-bottom: 16px;
     border-color: gray;
-    background-color: white;
+    background-color: whitesmoke;
+`
+
+export const FacebookButton = styled(GoogleButton).attrs(({ theme }) => ({
+    textColor: theme.colors.textAltLight
+}))`
+    border-color: #0B5AC1;
+    background-color: #1877F2;
 `
