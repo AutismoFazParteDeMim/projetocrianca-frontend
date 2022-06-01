@@ -1,11 +1,10 @@
 {
   "name": "projetocrianca",
   "version": "1.0.0",
-  "main": "node_modules/expo/AppEntry.js",
   "scripts": {
-    "start": "expo start",
-    "android": "expo start --android",
-    "ios": "expo start --ios",
+    "start": "react-native start",
+    "android": "react-native run-android",
+    "ios": "react-native run-ios",
     "web": "expo start --web",
     "eject": "expo eject"
   },
@@ -24,6 +23,7 @@
     "expo-constants": "~13.0.1",
     "expo-firebase-analytics": "~6.0.0",
     "expo-font": "~10.0.4",
+    "expo-splash-screen": "~0.14.1",
     "expo-status-bar": "~1.2.0",
     "expo-system-ui": "~1.1.0",
     "firebase": "^9.6.5",
@@ -34,6 +34,7 @@
     "react-native-app-intro-slider": "^4.0.4",
     "react-native-easy-grid": "^0.2.2",
     "react-native-elements": "^3.4.2",
+    "react-native-fbsdk-next": "^8.0.5",
     "react-native-safe-area-context": "3.3.2",
     "react-native-screens": "~3.10.1",
     "react-native-super-grid": "^4.4.0",
