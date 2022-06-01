@@ -29,11 +29,18 @@ export default {
                 foregroundImage: "./assets/adaptive-icon.png",
                 backgroundColor: "#FFFFFF"
             },
-            userInterfaceStyle: "automatic"
+            userInterfaceStyle: "automatic",
+            googleServicesFile: "./google-services.json",
+            config: {
+                googleSignIn: {
+                    certificateHash: "5116f74fcfb4e57ef7e5ab243a875b8a4597c0c7"
+                }
+            }
         },
         web: {
             favicon: "./assets/favicon.png"
         },
+        plugins: ["@react-native-google-signin/google-signin"],   
         extra: {
             apiKey: process.env.API_KEY,
             authDomain: process.env.AUTH_DOMAIN,

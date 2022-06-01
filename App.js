@@ -1,3 +1,4 @@
+import "expo-dev-client" 
 import React from 'react'
 import { useFonts, Poppins_400Regular, Poppins_500Medium, Poppins_700Bold } from '@expo-google-fonts/poppins'
 import AppLoading from 'expo-app-loading'
