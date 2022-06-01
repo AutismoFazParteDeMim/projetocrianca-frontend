@@ -1,5 +1,6 @@
 package com.unisociesc.projetocrianca;
 
+import com.facebook.reactnative.androidsdk.FBSDKPackage;
 import android.app.Application;
 import android.content.Context;
 import android.content.res.Configuration;
@@ -34,14 +35,16 @@ public class MainApplication extends Application implements ReactApplication {
       @SuppressWarnings("UnnecessaryLocalVariable")
       List<ReactPackage> packages = new PackageList(this).getPackages();
       // Packages that cannot be autolinked yet can be added manually here, for example:
-      // packages.add(new MyReactNativePackage());
+      packages.add(new FBSDKPackage());
       return packages;
     }
+    
 
     @Override
     protected String getJSMainModuleName() {
       return "index";
     }
+}
   });
 
   @Override

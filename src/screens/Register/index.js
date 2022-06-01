@@ -1,6 +1,7 @@
 import React, { useState } from "react"
 import { Platform } from "react-native"
 
+import { Settings, Profile } from "react-native-fbsdk-next"
 import { firestore, auth } from "../../config/firebase"
 import { createUserWithEmailAndPassword, updateProfile, sendEmailVerification } from "firebase/auth"
 import { setDoc, doc } from "firebase/firestore"
@@ -24,6 +25,21 @@ export default function Register() {
         alertModalVisible: false,
         alertMessage: ""
     })
+
+    Settings.setAppID("1204445570094088")
+    Settings.initializeSDK();
+
+    const currentProfile = Profile.getCurrentProfile().then(
+        function(currentProfile) {
+          if (currentProfile) {
+            console.log("The current logged user is: " +
+              currentProfile.name
+              + ". His profile id is: " +
+              currentProfile.userID
+            );
+          }
+        }
+      ); //info do profile da pessoa
 
     async function signIn() {
         if (input.name === "" || input.email === "" || input.password === "" || input.confirmPassword === "" || input.childName === "" || input.childSex === "") {
@@ -61,6 +77,25 @@ export default function Register() {
 
                 <Button icon="arrow-forward" title="Próximo" onPress={() => setModal({ ...modal, modalVisible: true })} inverted />
             </Form>
+
+            <LoginButton
+          onLoginFinished={
+            (error, result) => {
+              if (error) {
+                console.log("login has error: " + result.error);
+              } else if (result.isCancelled) {
+                console.log("login is cancelled.");
+              } else {
+                AccessToken.getCurrentAccessToken().then(
+                  (data) => {
+                    console.log(data.accessToken.toString())
+                  }
+                )
+              }
+            }
+          }
+          onLogoutFinished={() => console.log("logout.")}/> 
+        {/* ^ botao de login do facebook */}
 
             <Modal visible={modal.modalVisible} title="Cadastro da Criança" size="medium" closeAction={() => setModal({ ...modal, modalVisible: false })}>
                 <ChildsModalContainer>
