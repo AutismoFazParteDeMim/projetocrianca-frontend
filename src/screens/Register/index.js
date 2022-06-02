@@ -31,8 +31,7 @@ export default function Register() {
         alertMessage: ""
     })
 
-    Settings.setAppID("1204445570094088")
-    Settings.initializeSDK();
+
 
     useEffect(() => {
         GoogleSignin.configure({
@@ -41,6 +40,9 @@ export default function Register() {
             offlineAccess: true,
             hostedDomain: ""
         })
+        Settings.setAppID("1204445570094088")
+        Settings.initializeSDK()
+        LoginManager.setLoginBehavior("web_only")
     }, [])
 
 
@@ -89,7 +91,6 @@ export default function Register() {
     }
 
     async function signInWithFacebook() {
-        
         try {
             await LoginManager.logInWithPermissions(["public_profile"]).then(async (res) => {
                 if (res.isCancelled) {
@@ -111,7 +112,7 @@ export default function Register() {
             <View style={{ width: "100%" }}>
                 <GoogleButton title="Cadastrar com o Google" icon="logo-google" onPress={() => setModal({ ...modal, facebookSignIn: false, googleSignIn: true, modalVisible: true })} />
                 <FacebookButton title="Cadastrar com o Facebook" icon="logo-facebook" onPress={() => setModal({ ...modal, googleSignIn: false, facebookSignIn: true, modalVisible: true })} />
-                
+
             </View>
             <Text>OU</Text>
             <Form>
