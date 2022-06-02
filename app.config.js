@@ -40,7 +40,18 @@ export default {
         web: {
             favicon: "./assets/favicon.png"
         },
-        plugins: ["@react-native-google-signin/google-signin"],   
+        plugins: [
+            "@react-native-google-signin/google-signin",
+           [ "react-native-fbsdk-next",
+            {
+                "appID": "1204445570094088",
+                "clientToken": "a5187e79fcbd970321b1f6a8e9b36788",
+                "displayName": "Projeto Criança",
+                "advertiserIDCollectionEnabled": false,
+                "autoLogAppEventsEnabled": false,
+                "isAutoInitEnabled": true
+            }]
+        ],
         extra: {
             apiKey: process.env.API_KEY,
             authDomain: process.env.AUTH_DOMAIN,
