@@ -29,7 +29,6 @@ export default {
                 foregroundImage: "./assets/adaptive-icon.png",
                 backgroundColor: "#FFFFFF"
             },
-            userInterfaceStyle: "automatic",
             googleServicesFile: "./google-services.json",
             config: {
                 googleSignIn: {
