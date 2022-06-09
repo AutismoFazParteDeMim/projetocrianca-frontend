@@ -27,6 +27,7 @@ export const Image = styled.Image`
 
 export const ChildsModalContainer = styled(Container)`
     padding: 0;
+    align-items: center;
     justify-content: space-evenly;
 `
 

@@ -1,5 +1,5 @@
 import styled from "styled-components/native"
-import {Button, Text} from "../../components"
+import { Button, Text } from "../../components"
 
 export const Container = styled.View`
     flex : 1;
@@ -8,9 +8,9 @@ export const Container = styled.View`
     justify-content : space-between; 
    
 `
-export const GitHubButton = styled(Button).attrs((props)=> ({
-    backgroundColor : "#3D3D3D", 
-    textColor : props.theme.colors.textAltLight,
+export const GitHubButton = styled(Button).attrs((props) => ({
+    backgroundColor: "#3D3D3D",
+    textColor: props.theme.colors.textAltLight,
 
 }))``
 
@@ -18,7 +18,7 @@ export const Image = styled.Image`
     width : 80px;
     height : 80px; 
     border-radius : 50px;
-    margin-right : ${props => props.theme.metrics.padding}
+    margin-right : ${props => props.theme.metrics.padding};
 `
 
 export const View = styled.View`
@@ -27,9 +27,5 @@ export const View = styled.View`
 `
 
 export const TextAbout = styled(Text)`
-text-align : justify
+text-align : justify;
 `
-export const ScrollView = styled.ScrollView.attrs((props) =>({
-    contentContainerStyle : { width : "100%"}
-
-}))``

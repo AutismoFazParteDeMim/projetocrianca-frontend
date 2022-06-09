@@ -1,4 +1,4 @@
-import "expo-dev-client" 
+import "expo-dev-client"
 import React from 'react'
 import { useFonts, Poppins_400Regular, Poppins_500Medium, Poppins_700Bold } from '@expo-google-fonts/poppins'
 import AppLoading from 'expo-app-loading'
@@ -13,9 +13,10 @@ import { PersistGate } from "redux-persist/integration/react"
 
 import Routes from "./src/navigation"
 
+import { LogBox } from 'react-native'
+
 function AppContent() {
     const { theme } = useSelector((state) => state.settings)
-
     let [fontsLoaded] = useFonts({
         "regular": Poppins_400Regular,
         "medium": Poppins_500Medium,
@@ -48,6 +49,6 @@ export default function App() {
     )
 }
 
-import { LogBox } from 'react-native';
-LogBox.ignoreLogs(['Setting a timer']);
-LogBox.ignoreLogs(['AsyncStorage']);
+
+LogBox.ignoreLogs(['Setting a timer'])
+LogBox.ignoreLogs(['AsyncStorage'])

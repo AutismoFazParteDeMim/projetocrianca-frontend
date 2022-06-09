@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react"
-import { Linking } from "react-native"
-import { Container, GitHubButton, Image, View, TextAbout, ScrollView } from "./styles"
+import { Linking, ScrollView } from "react-native"
+import { Container, GitHubButton, Image, View, TextAbout } from "./styles"
 import { getGitData } from "./api"
 import { Text } from "../../components"
 
@@ -52,18 +52,10 @@ export default function About({ navigation }) {
                     {data.map((item, index) => (
                         <Image key={index} source={{ uri: item.avatar_url }} />
                     ))}
-
                 </ScrollView>
             </View>
 
-
-
-
             <GitHubButton title="GitHub" icon="logo-github" type="Custom" onPress={() => Linking.openURL("https://github.com/AutismoFazParteDeMim/ProjetoCrianca")} />
-
         </Container>
-
     )
-
-
 }

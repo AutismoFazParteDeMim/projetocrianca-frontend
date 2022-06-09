@@ -33,7 +33,7 @@ export default function Avatar({ route, navigation }) {
             childPic: avatar
         }).then(() => {
             dispatch(firstTime(false))
-            navigation.navigate("Profile")
+            navigation.navigate("Home")
         })
     }
 
