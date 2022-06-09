@@ -4,7 +4,7 @@ export default {
     expo: {
         name: "ProjetoCrianca",
         slug: "ProjetoCrianca",
-        version: "1.0.0",
+        version: "0.0.2",
         orientation: "portrait",
         userInterfaceStyle: "automatic",
         icon: "./assets/icon.png",
@@ -21,7 +21,8 @@ export default {
         ],
         ios: {
             supportsTablet: true,
-            userInterfaceStyle: "automatic"
+            userInterfaceStyle: "automatic",
+            bundleIdentifier: "com.unisociesc.projetocrianca"
         },
         android: {
             package: "com.unisociesc.projetocrianca",
@@ -41,15 +42,15 @@ export default {
         },
         plugins: [
             "@react-native-google-signin/google-signin",
-           [ "react-native-fbsdk-next",
-            {
-                "appID": "1204445570094088",
-                "clientToken": "a5187e79fcbd970321b1f6a8e9b36788",
-                "displayName": "Projeto Criança",
-                "advertiserIDCollectionEnabled": false,
-                "autoLogAppEventsEnabled": false,
-                "isAutoInitEnabled": true
-            }]
+            ["react-native-fbsdk-next",
+                {
+                    "appID": "1204445570094088",
+                    "clientToken": "a5187e79fcbd970321b1f6a8e9b36788",
+                    "displayName": "Projeto Criança",
+                    "advertiserIDCollectionEnabled": false,
+                    "autoLogAppEventsEnabled": false,
+                    "isAutoInitEnabled": true
+                }]
         ],
         extra: {
             apiKey: process.env.API_KEY,
