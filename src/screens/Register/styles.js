@@ -1,16 +1,23 @@
 import styled from "styled-components/native"
 import { Button } from "../../components"
 
-export const Container = styled.KeyboardAvoidingView`
+export const Container = styled.KeyboardAvoidingView.attrs(() => ({
+    contentContainerStyle: {
+        alignItems: "center",
+    }
+}))`
     flex: 1;
-    padding: ${props => props.theme.metrics.padding};
-    display: flex;
-    align-items: center;
-    justify-content: space-evenly;
-`
-export const Form = styled.View`
     width: 100%;
-    align-items: center;
+    padding: ${props => props.theme.metrics.padding};
+    justify-content: center;
+`
+
+export const Form = styled.ScrollView.attrs(() => ({
+    contentContainerStyle: {
+        alignItems: "center"
+    }
+}))`
+    width: 100%;
 `
 
 export const Image = styled.Image`

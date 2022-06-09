@@ -1,4 +1,5 @@
 package com.unisociesc.projetocrianca;
+import expo.modules.devlauncher.DevLauncherController;
 
 import com.facebook.reactnative.androidsdk.FBSDKPackage;
 import android.app.Application;
@@ -56,6 +57,7 @@ public class MainApplication extends Application implements ReactApplication {
     super.onCreate();
     SoLoader.init(this, /* native exopackage */ false);
 
+    DevLauncherController.initialize(this, getReactNativeHost());
     initializeFlipper(this, getReactNativeHost().getReactInstanceManager());
     ApplicationLifecycleDispatcher.onApplicationCreate(this);
   }

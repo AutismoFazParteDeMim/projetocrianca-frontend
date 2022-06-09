@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react"
 import { Platform, View } from "react-native"
 
-import { Settings, Profile, LoginButton, LoginManager, AccessToken } from "react-native-fbsdk-next"
+import { Settings, LoginManager, AccessToken } from "react-native-fbsdk-next"
 import { firestore, auth } from "../../config/firebase"
 import { createUserWithEmailAndPassword, updateProfile, sendEmailVerification, signInWithCredential, GoogleAuthProvider, FacebookAuthProvider } from "firebase/auth"
 import { setDoc, doc } from "firebase/firestore"
@@ -30,7 +30,6 @@ export default function Register() {
         facebookSignIn: false,
         alertMessage: ""
     })
-
 
 
     useEffect(() => {
@@ -108,13 +107,15 @@ export default function Register() {
     }
 
     return (
-        <Container behavior={Platform.OS === "ios" ? "padding" : "height"}>
+        <Container behavior={Platform.OS === "ios" ? "padding" : "position"} keyboardVerticalOffset={-160}>
             <View style={{ width: "100%" }}>
                 <GoogleButton title="Cadastrar com o Google" icon="logo-google" onPress={() => setModal({ ...modal, facebookSignIn: false, googleSignIn: true, modalVisible: true })} />
                 <FacebookButton title="Cadastrar com o Facebook" icon="logo-facebook" onPress={() => setModal({ ...modal, googleSignIn: false, facebookSignIn: true, modalVisible: true })} />
 
             </View>
-            <Text>OU</Text>
+
+            <Text style={{ marginBottom: 16, marginTop: 16 }}>OU</Text>
+            
             <Form>
                 <TextInput type="text" icon="person-outline" placeholder="Insira seu nome completo" autoComplete="name" autoCapitalize="words" returnKeyType="next" value={input.name} onChangeText={text => setInput({ ...input, name: text })} />
                 <TextInput type="email" icon="mail-outline" placeholder="Insira seu email" returnKeyType="next" value={input.email} onChangeText={text => setInput({ ...input, email: text })} />
