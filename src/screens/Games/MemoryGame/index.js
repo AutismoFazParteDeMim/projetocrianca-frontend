@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { FlatGrid } from 'react-native-super-grid';
+import { TouchableOpacity } from "react-native";
 import { Text } from "../../../components";
 import { shuffleArray } from "../../../utils";
+import {Ionicons} from "@expo/vector-icons"
+import {data} from "./data"
 
 import { Container, Card, CustomHeader, CardImage } from "./styles";
 
@@ -99,7 +102,11 @@ export default function MemoryGame({ navigation }) {
 
     return (
         <>
-            <CustomHeader navigation={navigation} title="Jogo da Memória" />
+            <CustomHeader navigation={navigation} title="Jogo da Memória"> 
+                <TouchableOpacity onPress={()=> navigation.navigate("Tutorial", {data:data})}> 
+                    <Ionicons name="information-circle-outline" style={{fontSize: 30, color:"white"}} />
+                </TouchableOpacity>
+            </CustomHeader>
             <Container>
                 <Text>Nível 1</Text>
                 <Text>Tentativas: {counter}</Text>
