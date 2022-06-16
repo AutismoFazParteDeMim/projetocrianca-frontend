@@ -21,7 +21,7 @@ export default function AuthStack() {
 
     return (
         <Stack.Navigator
-            initialRouteName="Home"
+            initialRouteName="Games"
             screenOptions={{ header: props => (<Header title={props.options.title} {...props} />) }}
         >
             <Stack.Screen name="Home" component={Home} options={{ title: "Início", headerShown: false }} />

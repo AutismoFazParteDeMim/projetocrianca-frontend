@@ -11,5 +11,6 @@ import Modal from "./Modals/Modal"
 import AlertModal from "./Modals/AlertModal"
 import Slider from "./Slider"
 import Tooltip from "./Tooltip"
+import AvatarChat from "./AvatarChat"
 
-export { Button, SquareButton, CircleButton, Link, Text, Header, SearchBar, TextInput, VerticalList, Modal, AlertModal, Slider, Tooltip }
+export { Button, SquareButton, CircleButton, Link, Text, Header, SearchBar, TextInput, VerticalList, Modal, AlertModal, Slider, Tooltip, AvatarChat }

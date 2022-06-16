@@ -17,8 +17,8 @@ export const CustomHeader = styled(Header).attrs((props) => ({
 }))``
 
 export const Card = styled.TouchableOpacity`
-    width: 100px;
-    height: 130px;
+    width: 100%;
+    height: 100px;
     align-items: center;
     justify-content: center;
     border-radius: 12px;
@@ -27,6 +27,6 @@ export const Card = styled.TouchableOpacity`
 
 export const CardImage = styled.Image`
     width: 60px;
-    height: 120px;
+    height: 100px;
     resize-mode: contain;
 `

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { FlatGrid } from 'react-native-super-grid';
-import { Text } from "../../../components";
+import { AvatarChat, Text } from "../../../components";
 import { shuffleArray } from "../../../utils";
 
 import { Container, Card, CustomHeader, CardImage } from "./styles";
@@ -44,8 +44,6 @@ export default function MemoryGame({ navigation }) {
         }
     ]
 
-
-
     useEffect(() => {
         const duplicateCards = [...cards, ...cards]
         setShuffledCards(shuffleArray(duplicateCards))
@@ -64,28 +62,25 @@ export default function MemoryGame({ navigation }) {
         if (first !== second) {
             if (openedCards.length % 2 === 0) {
                 setBlockPress(true)
-                setTimeout(() => {setOpenedCards(openedCards.slice(0, -2)), setBlockPress(false)}, 1000);
+                setTimeout(() => { setOpenedCards(openedCards.slice(0, -2)), setBlockPress(false) }, 1000);
                 setCounter(counter + 1)
             }
         }
         if (openedCards.length === cards.length * 2) {
             navigation.navigate("MemoryGame2")
         }
-        
+
     }, [openedCards])
-    
-    
 
     function handleClick(index) {
         if (blockPress === true) {
             return
         }
-    
-        setOpenedCards((open) => [...open, index]);
-        
-        
-    };
 
+        setOpenedCards((open) => [...open, index]);
+
+
+    };
 
     function renderItem({ item, index }) {
         return (
@@ -101,14 +96,18 @@ export default function MemoryGame({ navigation }) {
         <>
             <CustomHeader navigation={navigation} title="Jogo da Memória" />
             <Container>
-                <Text>Nível 1</Text>
-                <Text>Tentativas: {counter}</Text>
+                <AvatarChat text="Vamos jogar?" />
                 <FlatGrid
                     data={shuffledCards}
                     renderItem={renderItem}
-                    spacing={6}
-                    itemDimension={100}
+                    itemDimension={16}
+                    spacing={16}
                     maxItemsPerRow={3}
+                    contentContainerStyle={{
+                        flex: 1,
+                        alignItems: "center",
+                        justifyContent: "flex-end"
+                    }}
                 />
             </Container>
         </>
