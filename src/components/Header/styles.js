@@ -26,3 +26,9 @@ export const BackButton = styled.View`
     position: absolute;
     left: 0;
 `
+
+export const OptionsContainer = styled.View`
+    position: absolute;
+    right: 0;
+    
+`

@@ -13,8 +13,10 @@ import CustomAvatar from '../../screens/Avatar/CustomAvatar'
 import MemoryGame from '../../screens/Games/MemoryGame'
 import MemoryGame2 from '../../screens/Games/MemoryGame/MemoryGame2'
 import About from "../../screens/About"
+import Tutorial from '../../screens/Tutorial'
 
 import { Header } from '../../components'
+
 
 const Stack = createNativeStackNavigator()
 export default function AuthStack() {
@@ -36,6 +38,7 @@ export default function AuthStack() {
             <Stack.Screen name="MemoryGame" component={MemoryGame} options={{ title: "Jogo da Memoria", headerShown: false }} />
             <Stack.Screen name="MemoryGame2" component={MemoryGame2} options={{ title: "Jogo da Memoria", headerShown: false }} />
             <Stack.Screen name="About" component={About} options={{ title: "Sobre o projeto"}} />
+            <Stack.Screen name="Tutorial" component={Tutorial} options={{ title: "Tutorial", headerShown:false}} />
         </Stack.Navigator>
     )
 }
