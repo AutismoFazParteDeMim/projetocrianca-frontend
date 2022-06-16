@@ -17,13 +17,12 @@ import Tutorial from '../../screens/Tutorial'
 
 import { Header } from '../../components'
 
-
 const Stack = createNativeStackNavigator()
 export default function AuthStack() {
 
     return (
         <Stack.Navigator
-            initialRouteName="Games"
+            initialRouteName="Home"
             screenOptions={{ header: props => (<Header title={props.options.title} {...props} />) }}
         >
             <Stack.Screen name="Home" component={Home} options={{ title: "Início", headerShown: false }} />
@@ -37,8 +36,8 @@ export default function AuthStack() {
             <Stack.Screen name="Avatar" component={Avatar} options={{ title: "Criar Avatar" }} />
             <Stack.Screen name="MemoryGame" component={MemoryGame} options={{ title: "Jogo da Memoria", headerShown: false }} />
             <Stack.Screen name="MemoryGame2" component={MemoryGame2} options={{ title: "Jogo da Memoria", headerShown: false }} />
-            <Stack.Screen name="About" component={About} options={{ title: "Sobre o projeto"}} />
-            <Stack.Screen name="Tutorial" component={Tutorial} options={{ title: "Tutorial", headerShown:false}} />
+            <Stack.Screen name="About" component={About} options={{ title: "Sobre o projeto" }} />
+            <Stack.Screen name="Tutorial" component={Tutorial} options={{ title: "Tutorial", headerShown: false }} />
         </Stack.Navigator>
     )
 }
