@@ -6,13 +6,10 @@ import { NavigationContainer } from "@react-navigation/native"
 import { ThemeProvider } from 'styled-components/native'
 import { ThemeProvider as RNEThemeProvider } from 'react-native-elements'
 import { StatusBar } from "expo-status-bar"
-
 import { Provider as StoreProvider, useSelector } from 'react-redux'
 import { store, persistor } from './src/redux'
 import { PersistGate } from "redux-persist/integration/react"
-
 import Routes from "./src/navigation"
-
 import { LogBox } from 'react-native'
 
 function AppContent() {
@@ -48,7 +45,6 @@ export default function App() {
         </StoreProvider>
     )
 }
-
 
 LogBox.ignoreLogs(['Setting a timer'])
 LogBox.ignoreLogs(['AsyncStorage'])
