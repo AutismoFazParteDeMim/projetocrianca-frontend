@@ -1,16 +1,16 @@
 import { Container, ContainerStatic, Icon } from "./styles"
 
-export default function CircleButton({ ...props }) {
-    if (props.static) {
+export default function CircleButton({ icon, isStatic, ...props }) {
+    if (isStatic) {
         return (
             <ContainerStatic {...props}>
-                <Icon name={props.icon} />
+                <Icon name={icon} />
             </ContainerStatic>
         )
     } else {
         return (
             <Container {...props}>
-                <Icon name={props.icon} />
+                <Icon name={icon} />
             </Container>
         )
     }

@@ -2,7 +2,7 @@ import { useState } from "react"
 
 import { Button, Container, Icon, Input, ButtonIcon } from "./styles"
 
-export default function TextInput(props) {
+export default function TextInput({ icon, type, ...props }) {
     const [passVisibility, setPassVisibility] = useState({ icon: "eye-outline", hidePassword: true })
 
     function showPass() {
@@ -15,17 +15,17 @@ export default function TextInput(props) {
 
     return (
         <Container>
-            {props.icon && <Icon name={props.icon} />}
+            {icon && <Icon name={icon} />}
             {
-                props.type === "password"
+                type === "password"
                     ?
                     <Input {...props} autoCorrect={false} autoComplete="password" autoCapitalize="none" secureTextEntry={passVisibility.hidePassword} />
-                    : props.type === "email"
+                    : type === "email"
                         ? <Input {...props} autoCorrect={false} autoComplete="email" autoCapitalize="none" keyboardType="email-address" />
                         : <Input {...props} />
             }
             {
-                props.type === "password" &&
+                type === "password" &&
                 <Button onPress={() => showPass()}>
                     <ButtonIcon name={passVisibility.icon} />
                 </Button>

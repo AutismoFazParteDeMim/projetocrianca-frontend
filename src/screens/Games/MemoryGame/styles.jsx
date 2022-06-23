@@ -5,10 +5,10 @@ export const Container = styled.View`
     flex: 1;
     width: 100%;
     height: 100%;
+    padding: ${({ theme }) => theme.metrics.padding}px;
     align-items: center;
     justify-content: space-between;
-    padding: ${props => props.theme.metrics.padding};
-    background-color: ${props => props.theme.colors.primary};
+    background-color: ${({ theme }) => theme.colors.primary};
 `
 
 export const CustomHeader = styled(Header).attrs((props) => ({
@@ -25,8 +25,9 @@ export const Card = styled.TouchableOpacity`
     background-color: #fff;
 `
 
-export const CardImage = styled.Image`
+export const CardImage = styled.Image.attrs(() => ({
+    resizeMode: "contain"
+}))`
     width: 60px;
     height: 100px;
-    resize-mode: contain;
 `

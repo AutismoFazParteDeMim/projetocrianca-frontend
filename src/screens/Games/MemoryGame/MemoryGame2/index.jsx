@@ -1,8 +1,9 @@
 import { useState, useEffect } from "react"
 import { FlatGrid } from 'react-native-super-grid'
-import { AlertModal } from "../../../../components"
+import { AlertModal, AvatarChat } from "../../../../components"
 import { shuffleArray } from "../../../../utils"
 import { TouchableOpacity } from "react-native"
+import { Ionicons } from "@expo/vector-icons"
 import data from "../data"
 
 import { Container, Card, CustomHeader, CardImage } from "../styles"
@@ -102,12 +103,17 @@ export default function MemoryGame2({ navigation }) {
                 <FlatGrid
                     data={shuffledCards}
                     renderItem={renderItem}
-                    spacing={6}
-                    itemDimension={100}
+                    itemDimension={16}
+                    spacing={16}
                     maxItemsPerRow={3}
+                    contentContainerStyle={{
+                        flex: 1,
+                        alignItems: "center",
+                        justifyContent: "flex-end"
+                    }}
                 />
-                <AlertModal visible={modal.alertModalVisible} title="Parabéns!" text={modal.alertMessage} type="success" icon="checkmark-circle-outline" closeAction={() => { setModal({ ...modal, alertModalVisible: false }), navigation.navigate("Games") }} />
             </Container>
+            <AlertModal visible={modal.alertModalVisible} title="Parabéns!" text={modal.alertMessage} type="success" icon="checkmark-circle-outline" closeAction={() => { setModal({ ...modal, alertModalVisible: false }), navigation.navigate("Games") }} />
         </>
     )
 }

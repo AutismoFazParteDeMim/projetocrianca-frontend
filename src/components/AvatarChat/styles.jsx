@@ -10,7 +10,7 @@ export const Container = styled.View`
 export const ChatContainer = styled.View`
     width: 60%;
     min-height: 60px;
-    padding: ${({ theme }) => theme.metrics.padding};
-    border-radius: ${({ theme }) => theme.metrics.padding};
+    padding: ${({ theme }) => theme.metrics.padding}px;
+    border-radius: ${({ theme }) => theme.metrics.padding}px;
     background-color: ${({ theme }) => theme.colors.background};
 `

@@ -3,7 +3,7 @@ import Text from "../../Text"
 
 import { Item, Image, Title, Icon, LeftSide, TextContainer } from "./styles"
 
-export default function VerticalList(props) {
+export default function VerticalList({ data, ...props }) {
     const RenderItem = ({ item }) => (
         <Item onPress={item.onPress}>
             <LeftSide>
@@ -19,7 +19,7 @@ export default function VerticalList(props) {
 
     return (
         <FlatList
-            data={props.data}
+            data={data}
             renderItem={RenderItem}
             keyExtractor={item => item.key}
             {...props}

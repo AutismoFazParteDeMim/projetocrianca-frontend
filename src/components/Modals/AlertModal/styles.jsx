@@ -1,35 +1,34 @@
 import styled from "styled-components/native"
 import Text from "../../Text"
-
 import { Ionicons } from "@expo/vector-icons"
 
 export const Container = styled.View`
     flex: 1;
-    padding: 0 ${props => props.theme.metrics.padding} 0 ${props => props.theme.metrics.padding};
+    padding: 0px ${({ theme }) => theme.metrics.padding}px;
     align-items: center;
     justify-content: center;
-    background-color: rgba(0,0,0,0.6);
+    background-color: ${({ theme }) => theme.colors.backdropColor};
 `
 
 export const ModalView = styled.View`
     width: 100%;
     height: 200px;
-    padding: ${props => props.theme.metrics.padding};
+    padding: ${({ theme }) => theme.metrics.padding}px;
     border-left-width: 0.1px;
     border-right-width: 0.1px;
-    border-bottom-width: ${props => props.theme.metrics.squareButton.borderBottomWidth};
-    border-radius: ${props => props.theme.metrics.squareButton.borderRadius};
-    border-color: ${props => props.theme.colors.cardShadow};
+    border-bottom-width: ${({ theme }) => theme.metrics.squareButton.borderBottomWidth}px;
+    border-radius: ${({ theme }) => theme.metrics.squareButton.borderRadius}px;
+    border-color: ${({ theme }) => theme.colors.cardShadow};
     
     /*background and border color*/
-    ${props =>
-        props.type === "success"
-            ? `background-color: ${props.theme.colors.success}; border-color: ${props.theme.colors.successShadow}`
-            : props.type === "warning"
-                ? `background-color: ${props.theme.colors.warning}; border-color: ${props.theme.colors.warningShadow}`
-                : props.type === "danger"
-                    ? `background-color: ${props.theme.colors.danger}; border-color: ${props.theme.colors.dangerShadow}`
-                    : `background-color: ${props.theme.colors.card}; border-color: ${props.theme.colors.cardShadow}`
+    ${({ theme, type }) =>
+        type === "success"
+            ? `background-color: ${theme.colors.success}; border-color: ${theme.colors.successShadow}`
+            : type === "warning"
+                ? `background-color: ${theme.colors.warning}; border-color: ${theme.colors.warningShadow}`
+                : type === "danger"
+                    ? `background-color: ${theme.colors.danger}; border-color: ${theme.colors.dangerShadow}`
+                    : `background-color: ${theme.colors.card}; border-color: ${theme.colors.cardShadow}`
     }
 `
 
@@ -41,7 +40,7 @@ export const Content = styled.View`
 
 export const Header = styled.View`
     width: 100%;
-    margin-bottom: ${props => props.theme.metrics.padding};
+    margin-bottom: ${({ theme }) => theme.metrics.padding}px;
     flex-direction: row;
     align-items: center;
     justify-content: center;
@@ -49,12 +48,12 @@ export const Header = styled.View`
 
 export const Button = styled.TouchableOpacity`
     position: absolute;
-    right: 0;
+    right: 0px;
 `
 
 export const ButtonIcon = styled(Ionicons)`
-    font-size: ${props => props.theme.metrics.button.iconSize};
-    color: ${props => props.theme.colors.text};
+    font-size: ${({ theme }) => theme.metrics.button.iconSize}px;
+    color: ${({ theme }) => theme.colors.text};
 `
 
 export const Icon = styled(ButtonIcon)`
@@ -62,8 +61,8 @@ export const Icon = styled(ButtonIcon)`
 `
 
 export const Title = styled(Text)`
-    font-family: ${props => props.theme.fonts.subTitle.font};
-    font-size: ${props => props.theme.fonts.subTitle.size};
+    font-family: ${({ theme }) => theme.fonts.subTitle.font};
+    font-size: ${({ theme }) => theme.fonts.subTitle.size}px;
 `
 
 export const WarningText = styled(Text)`

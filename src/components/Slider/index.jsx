@@ -3,20 +3,20 @@ import AppIntroSlider from 'react-native-app-intro-slider'
 import { ThemeContext } from 'styled-components/native'
 import CircleButton from "../Buttons/CircleButton"
 
-import styles from "./styles"
+import { classicStyles } from "./styles"
 
-export default function Slider(props) {
+export default function Slider({ data, renderItem, navigation }) {
     const theme = useContext(ThemeContext)
 
     return (
         <AppIntroSlider
-            renderItem={props.renderItem}
-            data={props.data}
-            dotStyle={styles(theme).dot}
-            activeDotStyle={styles(theme).activeDot}
-            renderNextButton={() => <CircleButton icon="chevron-forward" static={true} />}
-            renderDoneButton={() => <CircleButton icon="checkmark" static={true} />}
-            onDone={() => props.navigation.goBack()}
+            renderItem={renderItem}
+            data={data}
+            dotStyle={classicStyles(theme).dot}
+            activeDotStyle={classicStyles(theme).activeDot}
+            renderNextButton={() => <CircleButton icon="chevron-forward" isStatic />}
+            renderDoneButton={() => <CircleButton icon="checkmark" isStatic />}
+            onDone={() => navigation.goBack()}
         />
     )
 }

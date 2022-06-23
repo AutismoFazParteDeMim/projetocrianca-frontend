@@ -103,24 +103,25 @@ export default function Login() {
     }, [])
 
     return (
-        <Container behavior={Platform.OS === "ios" ? "padding" : "position"} keyboardVerticalOffset={-160}>
-            <View style={{ width: "100%" }}>
-                <GoogleButton title="Login com o Google" icon="logo-google" onPress={() => signInWithGoogle()} />
-                <FacebookButton title="Login com o Facebook" icon="logo-facebook" onPress={() => signInWithFacebook()} />
-            </View>
+        <>
+            <Container behavior={Platform.OS === "ios" ? "padding" : "position"} keyboardVerticalOffset={-160}>
+                <View style={{ width: "100%" }}>
+                    <GoogleButton title="Login com o Google" icon="logo-google" onPress={() => signInWithGoogle()} />
+                    <FacebookButton title="Login com o Facebook" icon="logo-facebook" onPress={() => signInWithFacebook()} />
+                </View>
 
-            <Text style={{ marginBottom: 16, marginTop: 16 }}>OU</Text>
+                <Text style={{ marginBottom: 16, marginTop: 16 }}>OU</Text>
 
-            <Form>
-                <TextInput type="email" icon="mail-outline" placeholder="Insira seu email" returnKeyType="next" value={input.email} onChangeText={text => setInput({ ...input, email: text })} />
-                <TextInput type="password" icon="lock-closed-outline" placeholder="Insira sua senha" returnKeyType="done" value={input.password} onChangeText={text => setInput({ ...input, password: text })} />
-                <ForgotPassButtonContaier>
-                    <Link title="Esqueceu sua senha?" onPress={() => setModal({ ...modal, modalVisible: true })} />
-                </ForgotPassButtonContaier>
+                <Form>
+                    <TextInput type="email" icon="mail-outline" placeholder="Insira seu email" returnKeyType="next" value={input.email} onChangeText={text => setInput({ ...input, email: text })} />
+                    <TextInput type="password" icon="lock-closed-outline" placeholder="Insira sua senha" returnKeyType="done" value={input.password} onChangeText={text => setInput({ ...input, password: text })} />
+                    <ForgotPassButtonContaier>
+                        <Link title="Esqueceu sua senha?" onPress={() => setModal({ ...modal, modalVisible: true })} />
+                    </ForgotPassButtonContaier>
 
-                <Button icon="log-in-outline" title="Entrar" onPress={() => logIn()} />
-            </Form>
-
+                    <Button icon="log-in-outline" title="Entrar" onPress={() => logIn()} />
+                </Form>
+            </Container>
             <Modal visible={modal.modalVisible} title="Redefinir Senha" size="default" closeAction={() => setModal({ ...modal, modalVisible: false })}>
                 <ForgotPassModalContainer>
                     <Text>Enviaremos um e-mail com todas as instruções para a redefinição de senha.</Text>
@@ -128,9 +129,8 @@ export default function Login() {
                     <Button icon="send" title="Enviar email" onPress={() => resetPass()} inverted />
                 </ForgotPassModalContainer>
             </Modal>
-
             <AlertModal visible={modal.alertWarningVisible} title="Ops!" text={modal.alertMessage} type="warning" icon="warning-outline" closeAction={() => setModal({ ...modal, alertWarningVisible: false })} />
             <AlertModal visible={modal.alertSuccessVisible} title="Sucesso!" text={modal.alertMessage} type="success" icon="checkmark-circle-outline" closeAction={() => setModal({ ...modal, alertSuccessVisible: false, modalVisible: false })} />
-        </Container>
+        </>
     )
 }

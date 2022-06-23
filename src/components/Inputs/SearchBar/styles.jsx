@@ -1,14 +1,24 @@
 import styled from "styled-components/native"
 import { SearchBar as RNESearchBar } from 'react-native-elements';
+import { StyleSheet } from 'react-native';
 
 export const Container = styled.View`
-    height: ${props => props.theme.metrics.input.height};
-    border-radius: ${props => props.theme.metrics.input.padding};
-    background-color: ${props => props.theme.colors.card};
+    height: ${({ theme }) => theme.metrics.input.height}px;
+    border-radius: ${({ theme }) => theme.metrics.input.padding}px;
+    background-color: ${({ theme }) => theme.colors.card};
 `
+
 export const CustomSearchBar = styled(RNESearchBar)`
     height: 100%;
-    font-family: ${props => props.theme.fonts.text.font};
-    font-size: ${props => props.theme.fonts.text.size};
+    font-family: ${({ theme }) => theme.fonts.text.font};
+    font-size: ${({ theme }) => theme.fonts.text.size}px;
     padding-top: 4px;
 `
+
+export const classicStyles = StyleSheet.create({
+    inputContainerStyle: {
+        height: "100%",
+        borderRadius: 16,
+        backgroundColor: "transparent"
+    }
+})

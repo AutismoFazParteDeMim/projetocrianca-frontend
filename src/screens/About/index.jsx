@@ -24,7 +24,7 @@ export default function About({ navigation }) {
             </TextAbout>
 
             <View>
-                <Text>Desenvolvedores: </Text>
+                <Text style={{ marginBottom: 16 }}>Desenvolvedores: </Text>
                 <ScrollView horizontal={true}>
                     {data.map((item, index) => (
                         <Image key={index} source={{ uri: item.avatar_url }} />

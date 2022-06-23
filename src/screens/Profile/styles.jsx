@@ -8,29 +8,29 @@ export const CoverContainer = styled.ImageBackground`
 
 export const BackButton = styled(CircleButton)`
     position: absolute;
-    left: ${props => props.theme.metrics.padding};
-    top: ${props => props.theme.metrics.headerPadding};
+    left: ${({ theme }) => theme.metrics.padding}px;
+    top: ${({ theme }) => theme.metrics.headerPadding}px;
 `
 
 export const InfoContainer = styled.View`
     width: 100%;
     height: 100px;
+    padding: 0px ${({ theme }) => theme.metrics.padding}px;
     flex-direction: row;
     align-items: flex-end;
-    padding: 0 ${props => props.theme.metrics.padding} 0 ${props => props.theme.metrics.padding};
     position: absolute;
     bottom: -50px;
 `
 
 export const UserName = styled(Text)`
-    font-family: ${props => props.theme.fonts.subTitle.font};
-    font-size: ${props => props.theme.fonts.subTitle.size};
+    font-family: ${({ theme }) => theme.fonts.subTitle.font};
+    font-size: ${({ theme }) => theme.fonts.subTitle.size}px;
 `
 
 export const ProfileButton = styled.TouchableOpacity`
     width: 100px;
     height: 100px;
     border-radius: 50px;
-    margin-right: ${props => props.theme.metrics.padding};
-    background-color: ${props => props.theme.colors.card};
+    margin-right: ${({ theme }) => theme.metrics.padding}px;
+    background-color: ${({ theme }) => theme.colors.card};
 `

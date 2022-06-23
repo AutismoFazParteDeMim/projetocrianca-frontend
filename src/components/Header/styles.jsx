@@ -3,12 +3,13 @@ import Text from "../Text"
 
 export const Container = styled.View`
     width: 100%;
-    height: ${props => props.theme.metrics.headerHeight};
-    padding: ${props => props.theme.metrics.headerPadding} ${props => props.theme.metrics.padding} 0 ${props => props.theme.metrics.padding};
+    height: ${({ theme }) => theme.metrics.headerHeight}px;
+    padding: ${({ theme }) => theme.metrics.headerPadding}px ${({ theme }) => theme.metrics.padding}px;
+    padding-bottom: 0px;
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    background-color: ${props => props.backgroundColor ?? props.theme.colors.background};
+    background-color: ${({ theme, backgroundColor }) => backgroundColor ?? theme.colors.background};
 `
 
 export const Content = styled(Container)`
@@ -17,18 +18,17 @@ export const Content = styled(Container)`
 `
 
 export const Title = styled(Text)`
-    font-family: ${props => props.theme.fonts.title.font};
-    font-size: ${props => props.theme.fonts.title.size};
-    color: ${props => props.titleColor ?? props.theme.colors.text};
+    font-family: ${({ theme }) => theme.fonts.title.font};
+    font-size: ${({ theme }) => theme.fonts.title.size}px;
+    color: ${({ theme, titleColor }) => titleColor ?? theme.colors.text};
 `
 
 export const BackButton = styled.View`
     position: absolute;
-    left: 0;
+    left: 0px;
 `
 
 export const OptionsContainer = styled.View`
     position: absolute;
-    right: 0;
-    
+    right: 0px;
 `

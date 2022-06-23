@@ -3,16 +3,16 @@ import CircleButton from "../Buttons/CircleButton"
 import { Container, Title, BackButton, Content, OptionsContainer } from "./styles"
 
 
-export default function Header(props) {
+export default function Header({ title, backgroundColor, titleColor, backAction, children, navigation, ...props }) {
     return (
-        <Container backgroundColor={props.backgroundColor}>
+        <Container backgroundColor={backgroundColor} {...props}>
             <Content>
                 <BackButton>
-                    <CircleButton icon="chevron-back" onPress={() => props.backAction ?? props.navigation.goBack()} />
+                    <CircleButton icon="chevron-back" onPress={() => backAction ?? navigation.goBack()} />
                 </BackButton>
-                <Title titleColor={props.titleColor}>{props.title}</Title>
+                <Title titleColor={titleColor}>{title}</Title>
                 <OptionsContainer>
-                    {props.children}
+                    {children}
                 </OptionsContainer>
             </Content>
         </Container>

@@ -7,28 +7,28 @@ export const Container = styled.View`
 
 export const TopContainer = styled.View`
     height: 50%;
-    padding: 0 ${props => props.theme.metrics.padding} 0 ${props => props.theme.metrics.padding};
+    padding: 0px ${({ theme }) => theme.metrics.padding}px;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background-color: ${props => props.theme.colors.primary};
+    background-color: ${({ theme }) => theme.colors.primary};
 `
 
 export const BottomContainer = styled(TopContainer)`
-    background-color: ${props => props.theme.colors.background};
+    background-color: ${({ theme }) => theme.colors.background};
 `
 
 export const Title = styled(Text)`
-    font-family: ${props => props.theme.fonts.title.font};
-    font-size:  ${props => props.theme.fonts.title.size};
+    font-family: ${({ theme }) => theme.fonts.title.font};
+    font-size:  ${({ theme }) => theme.fonts.title.size}px;
     text-align: center;
-    margin-bottom: ${props => props.theme.metrics.padding};
-    color: ${props => props.theme.colors.textAltLight};
+    margin-bottom: ${({ theme }) => theme.metrics.padding}px;
+    color: ${({ theme }) => theme.colors.textAltLight};
 `
 
 export const WelcomeText = styled(Title)`
-    font-family: ${props => props.theme.fonts.subTitle.font};
-    font-size: ${props => props.theme.fonts.subTitle.size};
+    font-family: ${({ theme }) => theme.fonts.subTitle.font};
+    font-size: ${({ theme }) => theme.fonts.subTitle.size}px;
 `
 
 export const ButtonsContainer = styled(BottomContainer)`
@@ -37,5 +37,5 @@ export const ButtonsContainer = styled(BottomContainer)`
 `
 
 export const PrivacyPolicyContainer = styled(Container)`
-    padding: 0 0 ${props => props.theme.metrics.padding} 0;
+    padding: 0px 0px ${({ theme }) => theme.metrics.padding}px 0px;
 `

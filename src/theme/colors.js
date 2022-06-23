@@ -27,6 +27,7 @@ export const lightTheme = {
         shadow: "#e5e5e5",
 
         background: "#FFFFFF",
+        backdropColor: "rgba(0, 0, 0, 0.6)",
     }
 }
 
@@ -57,5 +58,6 @@ export const darkTheme = {
         shadow: "#e5e5e5",
 
         background: "#3E4651",
+        backdropColor: "rgba(0, 0, 0, 0.6)",
     }
 }

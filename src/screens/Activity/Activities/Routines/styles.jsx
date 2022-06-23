@@ -5,7 +5,7 @@ export const Container = styled.View`
     flex: 1;
     width: 100%;
     height: 100%;
-    padding: 0 ${props => props.theme.metrics.padding} 0 ${props => props.theme.metrics.padding};
+    padding: 0px ${props => props.theme.metrics.padding}px;
 `
 
 export const Item = styled.View`
@@ -15,16 +15,17 @@ export const Item = styled.View`
     justify-content: center;
 `
 
-export const Image = styled.Image`
+export const Image = styled.Image.attrs(() => ({
+    resizeMode: "contain"
+}))`
     width: 200px;
     height: 200px;
-    resize-mode: contain;
-    margin-bottom: ${props => props.theme.metrics.padding};
+    margin-bottom: ${props => props.theme.metrics.padding}px;
 `
 
 export const Title = styled(Text)`
     font-family: ${props => props.theme.fonts.subTitle.font};
-    font-size: ${props => props.theme.fonts.subTitle.size};
+    font-size: ${props => props.theme.fonts.subTitle.size}px;
     text-transform: capitalize;
     text-align: center;
 `

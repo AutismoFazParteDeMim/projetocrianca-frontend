@@ -1,18 +1,19 @@
-import { useContext } from "react"
-import { Platform } from "react-native"
 import { Tooltip as RNETooltip } from 'react-native-elements'
-import { ThemeContext } from 'styled-components/native'
+import { useTheme } from 'styled-components/native'
 import Text from "../Text"
+import { Platform } from "react-native"
 
-export default function Tooltip({ children, ...props }) {
-    const theme = useContext(ThemeContext)
+import { classicStyles } from "./styles"
+
+export default function Tooltip({ children, text }) {
+    const theme = useTheme()
 
     return (
         <RNETooltip
-            containerStyle={{ width: 145, height: 130 }}
+            containerStyle={classicStyles(theme).tooltipContainer}
             backgroundColor={Platform.OS === "web" ? "#fff" : theme.colors.background}
-            overlayColor="#000000e6"
-            popover={<Text style={Platform.OS === "web" && { color: "#3D3D3D" }}>{props.text}</Text>}
+            overlayColor={theme.colors.backdropColor}
+            popover={<Text style={classicStyles(theme).popoverText}>{text}</Text>}
         >
             {children}
         </RNETooltip>

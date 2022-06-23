@@ -1,10 +1,10 @@
 import { TouchableOpacity } from "react-native"
 import { LinkText } from "./style"
 
-export default function Link(props) {
+export default function Link({ title, onPress, ...props }) {
     return (
-        <TouchableOpacity onPress={props.onPress}>
-            <LinkText>{props.title}</LinkText>
+        <TouchableOpacity onPress={onPress} {...props}>
+            <LinkText>{title}</LinkText>
         </TouchableOpacity>
     )
 }

@@ -22,7 +22,7 @@ export default function Home({ navigation }) {
     }, [first])
 
     return (
-        <Container behavior={Platform.OS === "ios" ? "padding" : "height"}>
+        <>
             <Header>
                 <ProfileButton onPress={() => navigation.navigate("Profile")}>
                     {child.childPic && Platform.OS === "web" ? child.childPic && <svg xmlns={child.childPic} width={60} height={60} /> : child.childPic && <SvgXml xml={child.childPic} width={60} height={60} />}
@@ -31,21 +31,25 @@ export default function Home({ navigation }) {
                     <SearchBar />
                 </SearchBarContainer>
             </Header>
+            <Container behavior={Platform.OS === "ios" ? "padding" : "height"}>
 
-            <UserNameText>
-                Bem vind{child.childSex === "female" ? "a!" : "o!"}
-                {"\n" + child.childName}
-            </UserNameText>
 
-            <Grid>
-                <GridRow>
-                    <SquareButton title="Atividades" image={require("../../../assets/icons/activities-icon.png")} onPress={() => navigation.navigate("Activity")} />
-                    <SquareButton title="Jogos" image={require("../../../assets/icons/games-icon.png")} onPress={() => navigation.navigate("Games")} />
-                </GridRow>
-                <GridRow>
-                    <SquareButton title="Configurações" image={require("../../../assets/icons/settings-icon.png")} onPress={() => navigation.navigate("Settings")} />
-                </GridRow>
-            </Grid>
-        </Container>
+                <UserNameText>
+                    Bem vind{child.childSex === "female" ? "a!" : "o!"}
+                    {"\n" + child.childName}
+                </UserNameText>
+
+                <Grid>
+                    <GridRow>
+                        <SquareButton title="Atividades" image={require("../../../assets/icons/activities-icon.png")} onPress={() => navigation.navigate("Activity")} />
+                        <SquareButton title="Jogos" image={require("../../../assets/icons/games-icon.png")} onPress={() => navigation.navigate("Games")} />
+                    </GridRow>
+                    <GridRow>
+                        <SquareButton title="Configurações" image={require("../../../assets/icons/settings-icon.png")} onPress={() => navigation.navigate("Settings")} />
+                    </GridRow>
+                </Grid>
+            </Container>
+        </>
+
     )
 }

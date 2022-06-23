@@ -3,13 +3,13 @@ import { Ionicons } from "@expo/vector-icons"
 
 export const Container = styled.View`
     width: 100%;
-    height: ${props => props.theme.metrics.input.height};
-    padding: 0 ${props => props.theme.metrics.padding} 0 ${props => props.theme.metrics.padding};
+    height: ${({ theme }) => theme.metrics.input.height}px;
+    padding: 0px ${({ theme }) => theme.metrics.padding}px;
     flex-direction: row;
     align-items: center;
-    margin-bottom: ${props => props.theme.metrics.padding};
-    border-radius: ${props => props.theme.metrics.input.borderRadius};
-    background-color: ${props => props.theme.colors.card};
+    margin-bottom: ${({ theme }) => theme.metrics.padding}px;
+    border-radius: ${({ theme }) => theme.metrics.input.borderRadius}px;
+    background-color: ${({ theme }) => theme.colors.card};
 `
 
 export const Input = styled.TextInput.attrs((props) => (
@@ -19,25 +19,25 @@ export const Input = styled.TextInput.attrs((props) => (
     }
 ))`
     width: 80%;
-    height: ${props => props.theme.metrics.input.height};
-    font-family: ${props => props.theme.fonts.text.font};
-    font-size: ${props => props.theme.fonts.text.size};
-    padding-top: ${props => props.theme.fonts.text.paddingTop};
-    padding-right: ${props => props.theme.metrics.padding};
-    color: ${props => props.theme.colors.text};
+    height: ${({ theme }) => theme.metrics.input.height}px;
+    font-family: ${({ theme }) => theme.fonts.text.font};
+    font-size: ${({ theme }) => theme.fonts.text.size}px;
+    padding-top: ${({ theme }) => theme.fonts.text.paddingTop}px;
+    padding-right: ${({ theme }) => theme.metrics.padding}px;
+    color: ${({ theme }) => theme.colors.text};
 `
 
 export const Icon = styled(Ionicons)`
-    font-size: ${props => props.theme.metrics.input.iconSize};
-    margin-right: ${props => props.theme.metrics.padding};
-    color: ${props => props.theme.colors.text};
+    font-size: ${({ theme }) => theme.metrics.input.iconSize}px;
+    margin-right: ${({ theme }) => theme.metrics.padding}px;
+    color: ${({ theme }) => theme.colors.text};
 `
 
 export const Button = styled.TouchableOpacity`
     position: absolute;
-    right: ${props => props.theme.metrics.padding};
+    right: ${({ theme }) => theme.metrics.padding}px;
 `
 
 export const ButtonIcon = styled(Icon)`
-    margin: 0;
+    margin: 0px;
 `

@@ -2,7 +2,7 @@ import { VerticalList } from "../../components"
 import { Container } from "./styles"
 
 export default function Games({ navigation }) {
-    const dataa = [
+    const data = [
         {
             key: 1,
             title: "Jogo da Memória",
@@ -14,7 +14,7 @@ export default function Games({ navigation }) {
 
     return (
         <Container>
-            <VerticalList data={dataa} />
+            <VerticalList data={data} />
         </Container>
     )
 }

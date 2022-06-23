@@ -2,32 +2,32 @@ import styled from "styled-components/native"
 import { Ionicons } from "@expo/vector-icons"
 
 export const Container = styled.TouchableOpacity`
-    width: ${props => props.theme.metrics.circleButton.width};
-    height: ${props => props.theme.metrics.circleButton.height};
+    width: ${({ theme }) => theme.metrics.circleButton.width}px;
+    height: ${({ theme }) => theme.metrics.circleButton.height}px;
     align-items: center;
     justify-content: center;
-    border-radius: ${props => props.theme.metrics.circleButton.borderRadius};
-    border-bottom-width: ${props => props.theme.metrics.circleButton.borderBottomWidth};
+    border-radius: ${({ theme }) => theme.metrics.circleButton.borderRadius}px;
+    border-bottom-width: ${({ theme }) => theme.metrics.circleButton.borderBottomWidth}px;
     border-left-width: 0.3px;
     border-right-width: 0.3px;
-    border-color: ${props => props.theme.colors.cardShadow};
-    background-color: ${props => props.theme.colors.background};
+    border-color: ${({ theme }) => theme.colors.cardShadow};
+    background-color: ${({ theme }) => theme.colors.background};
 `
 
 export const ContainerStatic = styled.View`
-    width: ${props => props.theme.metrics.circleButton.width};
-    height: ${props => props.theme.metrics.circleButton.height};
+    width: ${({ theme }) => theme.metrics.circleButton.width}px;
+    height: ${({ theme }) => theme.metrics.circleButton.height}px;
     align-items: center;
     justify-content: center;
-    border-radius: ${props => props.theme.metrics.circleButton.borderRadius};
-    border-bottom-width: ${props => props.theme.metrics.circleButton.borderBottomWidth};
+    border-radius: ${({ theme }) => theme.metrics.circleButton.borderRadius}px;
+    border-bottom-width: ${({ theme }) => theme.metrics.circleButton.borderBottomWidth}px;
     border-left-width: 0.3px;
     border-right-width: 0.3px;
-    border-color: ${props => props.theme.colors.cardShadow};
-    background-color: ${props => props.theme.colors.background};
+    border-color: ${({ theme }) => theme.colors.cardShadow};
+    background-color: ${({ theme }) => theme.colors.background};
 `
 
 export const Icon = styled(Ionicons)`
-    font-size: ${props => props.theme.metrics.circleButton.iconSize};
-    color: ${props => props.theme.colors.text};
+    font-size: ${({ theme }) => theme.metrics.circleButton.iconSize}px;
+    color: ${({ theme }) => theme.colors.text};
 `

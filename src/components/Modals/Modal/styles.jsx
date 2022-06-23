@@ -4,26 +4,26 @@ import { Ionicons } from "@expo/vector-icons"
 
 export const Container = styled.View`
     flex: 1;
-    padding: 0 ${props => props.theme.metrics.padding} 0 ${props => props.theme.metrics.padding};
+    padding: 0px ${({ theme }) => theme.metrics.padding}px;
     align-items: center;
     justify-content: center;
-    background-color: rgba(0,0,0,0.6);
+    background-color: ${({ theme }) => theme.colors.backdropColor};
 `
 export const ModalView = styled.View`
     width: 100%;
-    height: ${props => props.size === "medium" ? "400px" : props.size === "large" ? "500px" : "300px"};
-    padding: ${props => props.theme.metrics.padding};
+    height: ${({ size }) => size === "medium" ? "400px" : size === "large" ? "500px" : "300px"};
+    padding: ${({ theme }) => theme.metrics.padding}px;
     border-left-width: 0.1px;
     border-right-width: 0.1px;
-    border-bottom-width: ${props => props.theme.metrics.squareButton.borderBottomWidth};
-    border-radius: ${props => props.theme.metrics.squareButton.borderRadius};
-    border-color: ${props => props.theme.colors.cardShadow};
-    background-color: ${props => props.theme.colors.background};
+    border-bottom-width: ${({ theme }) => theme.metrics.squareButton.borderBottomWidth}px;
+    border-radius: ${({ theme }) => theme.metrics.squareButton.borderRadius}px;
+    border-color: ${({ theme }) => theme.colors.cardShadow};
+    background-color: ${({ theme }) => theme.colors.background};
 `
 
 export const Header = styled.View`
     width: 100%;
-    margin-bottom: ${props => props.theme.metrics.padding};
+    margin-bottom: ${({ theme }) => theme.metrics.padding}px;
     flex-direction: row;
     align-items: center;
     justify-content: center;
@@ -35,11 +35,11 @@ export const Button = styled.TouchableOpacity`
 `
 
 export const Icon = styled(Ionicons)`
-    font-size: ${props => props.theme.metrics.button.iconSize};
-    color: ${props => props.theme.colors.text};
+    font-size: ${({ theme }) => theme.metrics.button.iconSize}px;
+    color: ${({ theme }) => theme.colors.text};
 `
 
 export const Title = styled(Text)`
-    font-family: ${props => props.theme.fonts.subTitle.font};
-    font-size: ${props => props.theme.fonts.subTitle.size};
+    font-family: ${({ theme }) => theme.fonts.subTitle.font};
+    font-size: ${({ theme }) => theme.fonts.subTitle.size}px;
 `

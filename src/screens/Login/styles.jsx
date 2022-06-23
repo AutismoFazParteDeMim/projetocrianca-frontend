@@ -8,7 +8,7 @@ export const Container = styled.KeyboardAvoidingView.attrs(() => ({
 }))`
     flex: 1;
     width: 100%;
-    padding: ${props => props.theme.metrics.padding};
+    padding: ${({ theme }) => theme.metrics.padding}px;
     justify-content: center;
 `
 
@@ -19,9 +19,9 @@ export const Form = styled.View`
 
 export const ForgotPassButtonContaier = styled.View`
     width: 100%;
-    padding: 0 ${props => props.theme.metrics.padding} 0 ${props => props.theme.metrics.padding};
-    margin-top: -${props => props.theme.metrics.padding};
-    margin-bottom: ${props => props.theme.metrics.padding};
+    padding: 0px ${({ theme }) => theme.metrics.padding}px;
+    margin-top: -${({ theme }) => theme.metrics.padding}px;
+    margin-bottom: ${({ theme }) => theme.metrics.padding}px;
     align-items: flex-end;
     justify-content: center;
 `

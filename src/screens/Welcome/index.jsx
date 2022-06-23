@@ -9,23 +9,25 @@ export default function Welcome({ navigation }) {
     const [modalVisible, setModalVisible] = useState(false);
 
     return (
-        <Container>
-            <TopContainer>
-                <Title>Bem-Vindo(a)!</Title>
-                <WelcomeText>
-                    Seja bem vindo ao aplicativo do projeto Autismo Faz Parte de Mim.
-                </WelcomeText>
-            </TopContainer>
-            <BottomContainer>
-                <ButtonsContainer>
-                    <Button title="Fazer Login" onPress={() => navigation.navigate("Login")} icon="log-in-outline" />
-                    <Button type="secondary" title="Cadastrar" onPress={() => navigation.navigate("Register")} />
-                    <Link
-                        title="Política de Privacidade"
-                        onPress={() => setModalVisible(true)}
-                    />
-                </ButtonsContainer>
-            </BottomContainer>
+        <>
+            <Container>
+                <TopContainer>
+                    <Title>Bem-Vindo(a)!</Title>
+                    <WelcomeText>
+                        Seja bem vindo ao aplicativo do projeto Autismo Faz Parte de Mim.
+                    </WelcomeText>
+                </TopContainer>
+                <BottomContainer>
+                    <ButtonsContainer>
+                        <Button title="Fazer Login" onPress={() => navigation.navigate("Login")} icon="log-in-outline" />
+                        <Button type="secondary" title="Cadastrar" onPress={() => navigation.navigate("Register")} />
+                        <Link
+                            title="Política de Privacidade"
+                            onPress={() => setModalVisible(true)}
+                        />
+                    </ButtonsContainer>
+                </BottomContainer>
+            </Container>
             <Modal visible={modalVisible} title="Política de Privacidade" size="medium" closeAction={() => setModalVisible(false)}>
                 <PrivacyPolicyContainer>
                     <ScrollView>
@@ -33,6 +35,6 @@ export default function Welcome({ navigation }) {
                     </ScrollView>
                 </PrivacyPolicyContainer>
             </Modal>
-        </Container>
+        </>
     )
 }

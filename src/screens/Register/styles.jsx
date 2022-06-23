@@ -8,7 +8,7 @@ export const Container = styled.KeyboardAvoidingView.attrs(() => ({
 }))`
     flex: 1;
     width: 100%;
-    padding: ${props => props.theme.metrics.padding};
+    padding: ${({ theme }) => theme.metrics.padding}px;
     justify-content: center;
 `
 
@@ -22,11 +22,11 @@ export const Form = styled.ScrollView.attrs(() => ({
 
 export const Image = styled.Image`
     height: 40%;
-    margin-bottom: ${props => props.theme.metrics.padding};
+    margin-bottom: ${({ theme }) => theme.metrics.padding}px;
 `
 
 export const ChildsModalContainer = styled(Container)`
-    padding: 0;
+    padding: 0px;
     align-items: center;
     justify-content: space-evenly;
 `
@@ -48,7 +48,7 @@ export const SexPickerItemImage = styled.Image`
     width: 80px;
     height: 80px;
     border-radius: 50px;
-    border: ${props => props.active ? "2px solid " + props.theme.colors.primary : "none"};
+    border: ${({ theme, active }) => active ? "2px solid " + theme.colors.primary : "none"};
 `
 
 export const GoogleButton = styled(Button).attrs(({ theme }) => ({

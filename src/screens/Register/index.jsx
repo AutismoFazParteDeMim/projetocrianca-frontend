@@ -101,24 +101,25 @@ export default function Register() {
     }, [])
 
     return (
-        <Container behavior={Platform.OS === "ios" ? "padding" : "position"} keyboardVerticalOffset={-160}>
-            <View style={{ width: "100%" }}>
-                <GoogleButton title="Cadastrar com o Google" icon="logo-google" onPress={() => setModal({ ...modal, facebookSignIn: false, googleSignIn: true, modalVisible: true })} />
-                <FacebookButton title="Cadastrar com o Facebook" icon="logo-facebook" onPress={() => setModal({ ...modal, googleSignIn: false, facebookSignIn: true, modalVisible: true })} />
+        <>
+            <Container behavior={Platform.OS === "ios" ? "padding" : "position"} keyboardVerticalOffset={-160}>
+                <View style={{ width: "100%" }}>
+                    <GoogleButton title="Cadastrar com o Google" icon="logo-google" onPress={() => setModal({ ...modal, facebookSignIn: false, googleSignIn: true, modalVisible: true })} />
+                    <FacebookButton title="Cadastrar com o Facebook" icon="logo-facebook" onPress={() => setModal({ ...modal, googleSignIn: false, facebookSignIn: true, modalVisible: true })} />
 
-            </View>
+                </View>
 
-            <Text style={{ marginBottom: 16, marginTop: 16 }}>OU</Text>
+                <Text style={{ marginBottom: 16, marginTop: 16 }}>OU</Text>
 
-            <Form>
-                <TextInput type="text" icon="person-outline" placeholder="Insira seu nome completo" autoComplete="name" autoCapitalize="words" returnKeyType="next" value={input.name} onChangeText={text => setInput({ ...input, name: text })} />
-                <TextInput type="email" icon="mail-outline" placeholder="Insira seu email" returnKeyType="next" value={input.email} onChangeText={text => setInput({ ...input, email: text })} />
-                <TextInput type="password" icon="lock-closed-outline" placeholder="Insira sua senha" returnKeyType="next" value={input.password} onChangeText={text => setInput({ ...input, password: text })} />
-                <TextInput type="password" icon="lock-closed-outline" placeholder="Confirme sua senha" returnKeyType="done" value={input.confirmPassword} onChangeText={text => setInput({ ...input, confirmPassword: text })} />
+                <Form>
+                    <TextInput type="text" icon="person-outline" placeholder="Insira seu nome completo" autoComplete="name" autoCapitalize="words" returnKeyType="next" value={input.name} onChangeText={text => setInput({ ...input, name: text })} />
+                    <TextInput type="email" icon="mail-outline" placeholder="Insira seu email" returnKeyType="next" value={input.email} onChangeText={text => setInput({ ...input, email: text })} />
+                    <TextInput type="password" icon="lock-closed-outline" placeholder="Insira sua senha" returnKeyType="next" value={input.password} onChangeText={text => setInput({ ...input, password: text })} />
+                    <TextInput type="password" icon="lock-closed-outline" placeholder="Confirme sua senha" returnKeyType="done" value={input.confirmPassword} onChangeText={text => setInput({ ...input, confirmPassword: text })} />
 
-                <Button icon="arrow-forward" title="Próximo" onPress={() => setModal({ ...modal, modalVisible: true })} inverted />
-            </Form>
-
+                    <Button icon="arrow-forward" title="Próximo" onPress={() => setModal({ ...modal, modalVisible: true })} inverted />
+                </Form>
+            </Container>
             <Modal visible={modal.modalVisible} title="Cadastro da Criança" size="medium" closeAction={() => setModal({ ...modal, modalVisible: false })}>
                 <ChildsModalContainer>
                     <TextInput type="text" icon="person-outline" placeholder="Insira o nome da criança" autoComplete="name" autoCapitalize="words" returnKeyType="next" value={input.childName} onChangeText={text => setInput({ ...input, childName: text })} />
@@ -138,6 +139,6 @@ export default function Register() {
                 </ChildsModalContainer>
             </Modal>
             <AlertModal visible={modal.alertModalVisible} title="Ops!" text={modal.alertMessage} type="warning" icon="warning-outline" closeAction={() => setModal({ ...modal, alertModalVisible: false })} />
-        </Container>
+        </>
     )
 }

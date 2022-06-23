@@ -1,37 +1,37 @@
 import { Platform } from "react-native"
 
 export default {
-    padding: "16px",
+    padding: 16,
     ...Platform.select({
-        ios: { headerHeight: "120px", headerPadding: "60px" },
-        android: { headerHeight: "120px", headerPadding: "40px" },
-        web: { headerHeight: "100px", headerPadding: "16px" }
+        ios: { headerHeight: 120, headerPadding: 60 },
+        android: { headerHeight: 120, headerPadding: 40 },
+        web: { headerHeight: 100, headerPadding: 16 }
     }),
     button: {
-        width: "240px",
-        height: "56px",
-        borderBottomWidth: "4px",
-        borderRadius: "12px",
-        iconSize: "24px"
+        width: 240,
+        height: 56,
+        borderBottomWidth: 4,
+        borderRadius: 12,
+        iconSize: 24
     },
     circleButton: {
-        width: "40px",
-        height: "40px",
-        borderBottomWidth: "4px",
-        borderRadius: "40px",
-        iconSize: "24px"
+        width: 40,
+        height: 40,
+        borderBottomWidth: 4,
+        borderRadius: 40,
+        iconSize: 24
     },
     squareButton: {
-        width: "160px",
-        height: "160px",
-        borderBottomWidth: "4px",
-        borderRadius: "25px",
-        imageSize: "64px"
+        width: 160,
+        height: 160,
+        borderBottomWidth: 4,
+        borderRadius: 24,
+        imageSize: 64
     },
     input: {
-        height: "56px",
-        padding: "16px",
-        borderRadius: "16px",
-        iconSize: "24px"
+        height: 56,
+        padding: 16,
+        borderRadius: 16,
+        iconSize: 24
     }
 }

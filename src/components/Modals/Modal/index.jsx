@@ -3,32 +3,32 @@ import { Modal as RNModal } from "react-native"
 
 import { Container, ModalView, Header, Title, Button, Icon } from "./styles"
 
-export default function Modal(props) {
-    const [modalVisible, setModalVisible] = useState(props.visible);
+export default function Modal({ visible, title, closeAction, children, size }) {
+    const [modalVisible, setModalVisible] = useState(visible);
 
     useEffect(() => {
-        props.visible ? setModalVisible(true) : setModalVisible(false)
-    }, [props.visible])
+        visible ? setModalVisible(true) : setModalVisible(false)
+    }, [visible])
 
     return (
         <RNModal
             animationType="fade"
             transparent={true}
             visible={modalVisible}
-            onRequestClose={props.closeAction}
+            onRequestClose={closeAction}
             hardwareAccelerated={true}
             statusBarTranslucent={true}
         >
             <Container>
-                <ModalView size={props.size}>
+                <ModalView size={size}>
                     <Header>
-                        <Title>{props.title}</Title>
-                        <Button onPress={props.closeAction}>
+                        <Title>{title}</Title>
+                        <Button onPress={closeAction}>
                             <Icon name="close-circle-outline" />
                         </Button>
                     </Header>
 
-                    {props.children}
+                    {children}
                 </ModalView>
             </Container>
         </RNModal>

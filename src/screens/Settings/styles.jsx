@@ -3,16 +3,16 @@ import { Text } from "../../components"
 import { Ionicons } from "@expo/vector-icons"
 
 export const Container = styled.View`
-    padding: ${props => props.theme.metrics.padding};
+    padding: ${({ theme }) => theme.metrics.padding}px;
 `
 
 export const Section = styled.View`
-    margin-bottom: ${props => props.theme.metrics.padding};
+    margin-bottom: ${({ theme }) => theme.metrics.padding}px;
 `
 
 export const SectionTitle = styled(Text)`
-    font-family: ${props => props.theme.fonts.sectionTitle.font};
-    font-size: ${props => props.theme.fonts.sectionTitle.size};
+    font-family: ${({ theme }) => theme.fonts.sectionTitle.font};
+    font-size: ${({ theme }) => theme.fonts.sectionTitle.size}px;
 `
 
 export const SectionContent = styled.View`
@@ -22,20 +22,20 @@ export const SectionContent = styled.View`
 
 export const OptionContainer = styled.View`
     width: 100%;
-    height: ${props => props.theme.metrics.input.height};
-    padding: 0 ${props => props.theme.metrics.padding} 0 ${props => props.theme.metrics.padding};
-    margin-bottom: ${props => props.theme.metrics.padding};
+    height: ${({ theme }) => theme.metrics.input.height}px;
+    padding: 0px ${({ theme }) => theme.metrics.padding}px;
+    margin-bottom: ${({ theme }) => theme.metrics.padding}px;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    border-radius: ${props => props.theme.metrics.input.borderRadius};
-    background-color: ${props => props.theme.colors.card};
+    border-radius: ${({ theme }) => theme.metrics.input.borderRadius}px;
+    background-color: ${({ theme }) => theme.colors.card};
 `
 
 export const OptionIcon = styled(Ionicons)`
-    font-size: ${props => props.theme.metrics.input.iconSize};
-    color: ${props => props.theme.colors.text};
-    margin-right: ${props => props.theme.metrics.padding};
+    font-size: ${({ theme }) => theme.metrics.input.iconSize}px;
+    color: ${({ theme }) => theme.colors.text};
+    margin-right: ${({ theme }) => theme.metrics.padding}px;
 `
 
 export const TextContainer = styled.View`

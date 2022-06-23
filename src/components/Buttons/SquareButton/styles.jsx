@@ -2,24 +2,24 @@ import styled from "styled-components/native"
 import Text from "../../Text"
 
 export const Container = styled.TouchableOpacity`
-    width: ${props => props.theme.metrics.squareButton.width};
-    height: ${props => props.theme.metrics.squareButton.height};
+    width: ${({ theme }) => theme.metrics.squareButton.width}px;
+    height: ${({ theme }) => theme.metrics.squareButton.height}px;
     align-items: center;
     justify-content: center;
     border-left-width: 0.1px;
     border-right-width: 0.1px;
-    border-bottom-width: ${props => props.theme.metrics.squareButton.borderBottomWidth};
-    border-radius: ${props => props.theme.metrics.squareButton.borderRadius};
-    border-color: ${props => props.theme.colors.cardShadow};
-    background-color: ${props => props.theme.colors.card};
+    border-bottom-width: ${({ theme }) => theme.metrics.squareButton.borderBottomWidth}px;
+    border-radius: ${({ theme }) => theme.metrics.squareButton.borderRadius}px;
+    border-color: ${({ theme }) => theme.colors.cardShadow};
+    background-color: ${({ theme }) => theme.colors.card};
 `
 
 export const Image = styled.Image`
-    width: ${props => props.theme.metrics.squareButton.imageSize};
-    height: ${props => props.theme.metrics.squareButton.imageSize};
+    width: ${({ theme }) => theme.metrics.squareButton.imageSize}px;
+    height: ${({ theme }) => theme.metrics.squareButton.imageSize}px;
     margin-bottom: 10px;
 `
 
 export const Title = styled(Text)`
-    color: ${props => props.theme.colors.text};
+    color: ${({ theme }) => theme.colors.text};
 `

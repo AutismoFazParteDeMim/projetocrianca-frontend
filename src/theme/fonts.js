@@ -1,31 +1,31 @@
 export default {
     title: {
-        size: "24px",
+        size: 24,
         font: "bold",
-        paddingTop: "4px"
+        paddingTop: 4
     },
 
     subTitle: {
-        size: "18px",
+        size: 18,
         font: "bold",
-        paddingTop: "4px"
+        paddingTop: 4
     },
 
     text: {
-        size: "14px",
+        size: 14,
         font: "regular",
-        paddingTop: "4px"
+        paddingTop: 4
     },
 
     sectionTitle: {
-        size: "14px",
+        size: 14,
         font: "medium",
-        paddingTop: "4px"
+        paddingTop: 4
     },
     
     button: {
-        size: "16px",
+        size: 16,
         font: "bold",
-        paddingTop: "5px"
+        paddingTop: 5
     }
 }
