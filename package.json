@@ -37,6 +37,7 @@
     "react-native-easy-grid": "^0.2.2",
     "react-native-elements": "^3.4.2",
     "react-native-fbsdk-next": "^8.0.5",
+    "react-native-game-engine": "^1.2.0",
     "react-native-keyboard-aware-scroll-view": "^0.9.5",
     "react-native-safe-area-context": "3.3.2",
     "react-native-screens": "~3.10.1",
