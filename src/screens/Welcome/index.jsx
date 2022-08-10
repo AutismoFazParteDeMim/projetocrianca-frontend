@@ -14,7 +14,7 @@ export default function Welcome({ navigation }) {
                 <TopContainer>
                     <Title>Bem-Vindo(a)!</Title>
                     <WelcomeText>
-                        Seja bem vindo ao aplicativo do projeto Autismo Faz Parte de Mim.
+                        Seja bem-vindo ao aplicativo do projeto Autismo Faz Parte de Mim.
                     </WelcomeText>
                 </TopContainer>
                 <BottomContainer>
