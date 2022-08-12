@@ -28,7 +28,8 @@ Para desenvolver o projeto, nossa equipe decidiu usar um kit básico de ferramen
 
 ## 🤝🏼 》Parcerias
 Abaixo temos uma lista dos atuais parceiros do projeto. 
-- Unisociesc 
+- Unisociesc
+- O Farol
 
 
 ## 📷 》Imagens do projeto
