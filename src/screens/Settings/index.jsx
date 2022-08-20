@@ -10,10 +10,9 @@ import { switchTheme } from "../../redux/modules/settings/actions"
 import { Container, OptionContainer, OptionIcon, Section, SectionTitle, TextContainer, SectionContent } from "./styles"
 
 export default function Settings({ navigation }) {
-    const { theme } = useSelector((state) => state.settings)
     const dispatch = useDispatch()
-
-    const [colorblindMode, setColorblindMode] = useState(false);
+    const { theme } = useSelector((state) => state.settings)
+    const [ colorblindMode, setColorblindMode ] = useState(false);
 
     async function handleSignOut() {
         try {

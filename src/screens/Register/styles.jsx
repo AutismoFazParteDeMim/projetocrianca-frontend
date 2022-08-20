@@ -52,17 +52,16 @@ export const SexPickerItemImage = styled.Image`
 `
 
 export const GoogleButton = styled(Button).attrs(({ theme }) => ({
-    textColor: theme.colors.textAltDark
+    textColor: theme.colors.textAltDark,
+    backgroundColor: "whitesmoke",
+    borderColor: "gray",
 }))`
     width: 100%;
     margin-bottom: 16px;
-    border-color: gray;
-    background-color: whitesmoke;
 `
 
 export const FacebookButton = styled(GoogleButton).attrs(({ theme }) => ({
-    textColor: theme.colors.textAltLight
-}))`
-    border-color: #0B5AC1;
-    background-color: #1877F2;
-`
+    textColor: theme.colors.textAltLight,
+    borderColor: "#0B5AC1",
+    backgroundColor: "#1877F2",
+}))``

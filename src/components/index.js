@@ -13,4 +13,19 @@ import Slider from "./Slider"
 import Tooltip from "./Tooltip"
 import AvatarChat from "./AvatarChat"
 
-export { Button, SquareButton, CircleButton, Link, Text, Header, SearchBar, TextInput, VerticalList, Modal, AlertModal, Slider, Tooltip, AvatarChat }
+export {
+    Button,
+    SquareButton,
+    CircleButton,
+    Link,
+    Text,
+    Header,
+    SearchBar,
+    TextInput,
+    VerticalList,
+    Modal,
+    AlertModal,
+    Slider,
+    Tooltip,
+    AvatarChat,
+}

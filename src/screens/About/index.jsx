@@ -3,15 +3,16 @@ import { Linking, ScrollView } from "react-native"
 import { getGitData } from "./api"
 import { Text } from "../../components"
 
-import { Container, GitHubButton, Image, View, TextAbout } from "./styles"
+import { Container, GitHubButton, Image, View, TextAbout, DeveloperContainer } from "./styles"
 
 export default function About({ navigation }) {
-    const [data, setData] = useState([{}])
+    const [ data, setData ] = useState([ {} ])
 
     useEffect(() => {
         const getData = async () => {
             let data = await getGitData()
             setData(data.data)
+            console.log(data.data)
         }
         getData()
     }, [])
@@ -27,12 +28,15 @@ export default function About({ navigation }) {
                 <Text style={{ marginBottom: 16 }}>Desenvolvedores: </Text>
                 <ScrollView horizontal={true}>
                     {data.map((item, index) => (
-                        <Image key={index} source={{ uri: item.avatar_url }} />
+                        <DeveloperContainer onPress={() => Linking.openURL(item.html_url)}>
+                            <Image key={index} source={{ uri: item.avatar_url }} />
+                            <Text>{item.login}</Text>
+                        </DeveloperContainer>
                     ))}
                 </ScrollView>
             </View>
 
-            <GitHubButton title="GitHub" icon="logo-github" type="Custom" onPress={() => Linking.openURL("https://github.com/AutismoFazParteDeMim/ProjetoCrianca")} />
+            <GitHubButton title="GitHub" icon="logo-github" onPress={() => Linking.openURL("https://github.com/AutismoFazParteDeMim/ProjetoCrianca")} />
         </Container>
     )
 }

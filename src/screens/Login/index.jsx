@@ -9,11 +9,11 @@ import { sendPasswordResetEmail, signInWithEmailAndPassword, signInWithCredentia
 import { Container, ForgotPassModalContainer, ForgotPassButtonContaier, Form, Image, GoogleButton, FacebookButton } from "./styles"
 
 export default function Login() {
-    const [input, setInput] = useState({
+    const [ input, setInput ] = useState({
         email: "",
         password: "",
     })
-    const [modal, setModal] = useState({
+    const [ modal, setModal ] = useState({
         modalVisible: false,
         alertWarningVisible: false,
         alertSuccessVisible: false,
@@ -56,7 +56,7 @@ export default function Login() {
 
     async function signInWithFacebook() {
         try {
-            await LoginManager.logInWithPermissions(["public_profile"]).then(async (res) => {
+            await LoginManager.logInWithPermissions([ "public_profile" ]).then(async (res) => {
                 if (res.isCancelled) {
                     console.log("Login cancelled");
                 } else {
@@ -92,7 +92,7 @@ export default function Login() {
 
     useEffect(() => {
         GoogleSignin.configure({
-            scopes: ['https://www.googleapis.com/auth/drive.readonly'], // [Android] what API you want to access on behalf of the user, default is email and profile
+            scopes: [ 'https://www.googleapis.com/auth/drive.readonly' ], // [Android] what API you want to access on behalf of the user, default is email and profile
             webClientId: '156087953461-u43kgs4n2esf37m88fq8tjkvlvoo37tc.apps.googleusercontent.com', // client ID of type WEB for your server (needed to verify user ID and offline access)
             offlineAccess: true,
             hostedDomain: ""

@@ -8,16 +8,18 @@ export const Container = styled.View`
     justify-content : space-between; 
    
 `
-export const GitHubButton = styled(Button).attrs((props) => ({
-    backgroundColor: "#3D3D3D",
-    textColor: props.theme.colors.textAltLight,
-}))``
+
+export const DeveloperContainer = styled.TouchableOpacity`
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-right : ${({ theme }) => theme.metrics.padding}px;
+`
 
 export const Image = styled.Image`
     width : 80px;
     height : 80px; 
     border-radius : 50px;
-    margin-right : ${({ theme }) => theme.metrics.padding}px;
 `
 
 export const View = styled.View`
@@ -28,3 +30,9 @@ export const View = styled.View`
 export const TextAbout = styled(Text)`
     text-align : justify;
 `
+
+export const GitHubButton = styled(Button).attrs((props) => ({
+    textColor: props.theme.colors.textAltLight,
+    backgroundColor: "#3D3D3D",
+    borderColor: "#282828",
+}))``

@@ -50,6 +50,5 @@ export default function Home({ navigation }) {
                 </Grid>
             </Container>
         </>
-
     )
 }

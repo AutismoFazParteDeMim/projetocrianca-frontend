@@ -4,17 +4,11 @@ import { Modal as RNModal } from "react-native"
 import { Container, ModalView, Header, Title, Button, ButtonIcon, Icon, Content, WarningText } from "./styles"
 
 export default function AlertModal({ visible, closeAction, title, icon, type, text }) {
-    const [modalVisible, setModalVisible] = useState(visible);
-
-    useEffect(() => {
-        visible ? setModalVisible(true) : setModalVisible(false)
-    }, [visible])
-
     return (
         <RNModal
             animationType="fade"
             transparent={true}
-            visible={modalVisible}
+            visible={visible}
             onRequestClose={closeAction}
             hardwareAccelerated={true}
             statusBarTranslucent={true}
@@ -22,15 +16,15 @@ export default function AlertModal({ visible, closeAction, title, icon, type, te
             <Container>
                 <ModalView type={type} >
                     <Header>
-                        <Title>{title}</Title>
+                        <Title type={type}>{title}</Title>
                         <Button onPress={closeAction}>
-                            <ButtonIcon name="close-circle-outline" />
+                            <ButtonIcon name="close-circle-outline" type={type} />
                         </Button>
                     </Header>
 
                     <Content>
-                        <Icon name={icon} />
-                        <WarningText>{text}</WarningText>
+                        <Icon name={icon} type={type} />
+                        <WarningText type={type}>{text}</WarningText>
                     </Content>
                 </ModalView>
             </Container>
