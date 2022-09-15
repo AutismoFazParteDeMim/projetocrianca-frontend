@@ -1,0 +1,83 @@
+{
+  "project_info": {
+    "project_number": "654760512004",
+    "firebase_url": "https://projetocrianca-ae4a3-default-rtdb.firebaseio.com",
+    "project_id": "projetocrianca-ae4a3",
+    "storage_bucket": "projetocrianca-ae4a3.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:654760512004:android:4cd006bb569f71ff568351",
+        "android_client_info": {
+          "package_name": "br.com.unisociesc.projeto_crianca"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "654760512004-a2vl4fki9bd11t6mo5u1hmvirrs0igjm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAdZPkx8S1BrdPrs1SHnxqQ56_VddgYGO4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "654760512004-a2vl4fki9bd11t6mo5u1hmvirrs0igjm.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "654760512004-dveppbiluckg0o19csv90u196k375iq4.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "br.com.unisociesc.projetocrianca.projetoCrianca"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:654760512004:android:0ccda26a7d958ae7568351",
+        "android_client_info": {
+          "package_name": "br.com.unisociesc.projetocrianca.projeto_crianca"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "654760512004-a2vl4fki9bd11t6mo5u1hmvirrs0igjm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAdZPkx8S1BrdPrs1SHnxqQ56_VddgYGO4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "654760512004-a2vl4fki9bd11t6mo5u1hmvirrs0igjm.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "654760512004-dveppbiluckg0o19csv90u196k375iq4.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "br.com.unisociesc.projetocrianca.projetoCrianca"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
