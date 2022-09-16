@@ -1,11 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:projeto_crianca/ui/theme/theme_extensions.dart';
 
 class AppTheme {
   final _theme = ThemeData(
-    colorScheme: ColorScheme.fromSeed(seedColor: const Color(0xFF00A7DF)),
+    colorScheme: ColorScheme.fromSeed(
+      seedColor: const Color(0xFF00A7DF),
+    ).copyWith(
+      primary: const Color(0xFF00A7DF),
+      error: const Color(0xFFEA4335),
+      background: const Color(0xFFFFFFFF),
+    ),
+    primaryColor: const Color(0xFF00A7DF),
     scaffoldBackgroundColor: const Color(0xFFFFFFFF),
     brightness: Brightness.light,
     useMaterial3: false,
@@ -22,13 +28,14 @@ class AppTheme {
           bodyColor: const Color(0xFF3D3D3D),
           displayColor: const Color(0xFF3D3D3D),
         ),
-    extensions: const <ThemeExtension<dynamic>>[
+    extensions: <ThemeExtension<dynamic>>[
       ThemeMetrics(
-        padding: EdgeInsets.all(16),
+        padding: const EdgeInsets.all(16),
         gap: 16,
         headerHeight: 100,
+        borderRadius: BorderRadius.circular(12),
       ),
-      ThemeColors(
+      const ThemeColors(
         primary: Color(0xFF00A7DF),
         primaryShadow: Color(0xFF0093C4),
         onPrimary: Color(0xFFFFFFFF),
@@ -52,14 +59,18 @@ class AppTheme {
     final ThemeColors colors = _theme.extension<ThemeColors>()!;
 
     return _theme.copyWith(
-      appBarTheme: AppBarTheme(
-        toolbarHeight: metrics.headerHeight,
-        backgroundColor: colors.background,
-        centerTitle: true,
-        elevation: 0,
-        titleTextStyle: _theme.textTheme.titleSmall?.copyWith(fontSize: 24),
-        foregroundColor: colors.text,
-        systemOverlayStyle: SystemUiOverlayStyle.dark,
+      inputDecorationTheme: InputDecorationTheme(
+        contentPadding: const EdgeInsets.symmetric(vertical: 18),
+        filled: true,
+        fillColor: colors.secondary,
+        border: OutlineInputBorder(
+          borderRadius: metrics.borderRadius,
+          borderSide: BorderSide(color: colors.secondary),
+        ),
+        enabledBorder: OutlineInputBorder(
+          borderRadius: metrics.borderRadius,
+          borderSide: BorderSide(color: colors.secondary),
+        ),
       ),
     );
   }

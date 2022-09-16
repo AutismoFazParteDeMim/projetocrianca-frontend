@@ -20,6 +20,7 @@ class LinkButtonComponent extends StatelessWidget {
       style: TextButton.styleFrom(
         foregroundColor: colors.primary,
         textStyle: const TextStyle(fontWeight: FontWeight.w700),
+        elevation: 0,
       ),
       child: Text(text),
     );

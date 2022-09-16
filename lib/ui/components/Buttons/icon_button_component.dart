@@ -11,18 +11,31 @@ class IconButtonComponent extends StatelessWidget {
   Widget build(BuildContext context) {
     final ThemeColors colors = Theme.of(context).extension<ThemeColors>()!;
 
-    return RawMaterialButton(
-      onPressed: onPressed,
-      constraints: const BoxConstraints(
-        minWidth: 50,
-        minHeight: 50,
-        maxWidth: 50,
-        maxHeight: 50,
+    return Container(
+      width: 40,
+      height: 40,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(50),
+        boxShadow: [
+          BoxShadow(
+            blurRadius: 0,
+            color: colors.secondaryShadow,
+            offset: const Offset(0, 4),
+          )
+        ],
       ),
-      fillColor: colors.secondary,
-      elevation: 0,
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(50)),
-      child: Icon(icon),
+      child: RawMaterialButton(
+        onPressed: onPressed,
+        fillColor: colors.background,
+        elevation: 0,
+        highlightElevation: 0,
+        hoverElevation: 0,
+        focusElevation: 0,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(40),
+        ),
+        child: Icon(icon),
+      ),
     );
   }
 }

@@ -4,14 +4,16 @@ import 'package:flutter/material.dart';
 
 @immutable
 class ThemeMetrics extends ThemeExtension<ThemeMetrics> {
-  final EdgeInsets? padding;
-  final double? gap;
-  final double? headerHeight;
+  final EdgeInsets padding;
+  final double gap;
+  final double headerHeight;
+  final BorderRadius borderRadius;
 
   const ThemeMetrics({
     required this.padding,
     required this.gap,
     required this.headerHeight,
+    required this.borderRadius,
   });
 
   @override
@@ -19,11 +21,13 @@ class ThemeMetrics extends ThemeExtension<ThemeMetrics> {
     EdgeInsets? padding,
     double? gap,
     double? headerHeight,
+    BorderRadius? borderRadius,
   }) {
     return ThemeMetrics(
       padding: padding ?? this.padding,
       gap: gap ?? this.gap,
       headerHeight: headerHeight ?? this.headerHeight,
+      borderRadius: borderRadius ?? this.borderRadius,
     );
   }
 
@@ -34,9 +38,10 @@ class ThemeMetrics extends ThemeExtension<ThemeMetrics> {
     }
 
     return ThemeMetrics(
-      padding: EdgeInsets.lerp(padding, other.padding, t),
-      gap: lerpDouble(gap, other.gap, t),
-      headerHeight: lerpDouble(headerHeight, other.headerHeight, t),
+      padding: EdgeInsets.lerp(padding, other.padding, t)!,
+      gap: lerpDouble(gap, other.gap, t)!,
+      headerHeight: lerpDouble(headerHeight, other.headerHeight, t)!,
+      borderRadius: BorderRadius.lerp(borderRadius, other.borderRadius, t)!,
     );
   }
 
@@ -47,20 +52,20 @@ class ThemeMetrics extends ThemeExtension<ThemeMetrics> {
 
 @immutable
 class ThemeColors extends ThemeExtension<ThemeColors> {
-  final Color? primary;
-  final Color? primaryShadow;
-  final Color? onPrimary;
-  final Color? secondary;
-  final Color? secondaryShadow;
-  final Color? onSecondary;
-  final Color? error;
-  final Color? errorShadow;
-  final Color? success;
-  final Color? sucessShadow;
-  final Color? warning;
-  final Color? warningShadow;
-  final Color? text;
-  final Color? background;
+  final Color primary;
+  final Color primaryShadow;
+  final Color onPrimary;
+  final Color secondary;
+  final Color secondaryShadow;
+  final Color onSecondary;
+  final Color error;
+  final Color errorShadow;
+  final Color success;
+  final Color sucessShadow;
+  final Color warning;
+  final Color warningShadow;
+  final Color text;
+  final Color background;
 
   const ThemeColors({
     required this.primary,
@@ -121,20 +126,20 @@ class ThemeColors extends ThemeExtension<ThemeColors> {
     }
 
     return ThemeColors(
-      primary: Color.lerp(primary, other.primary, t),
-      primaryShadow: Color.lerp(primaryShadow, other.primaryShadow, t),
-      onPrimary: Color.lerp(onPrimary, other.onPrimary, t),
-      secondary: Color.lerp(secondary, other.secondary, t),
-      secondaryShadow: Color.lerp(secondaryShadow, other.secondaryShadow, t),
-      onSecondary: Color.lerp(onSecondary, other.onSecondary, t),
-      error: Color.lerp(error, other.error, t),
-      errorShadow: Color.lerp(errorShadow, other.errorShadow, t),
-      success: Color.lerp(success, other.success, t),
-      sucessShadow: Color.lerp(sucessShadow, other.sucessShadow, t),
-      warning: Color.lerp(warning, other.warning, t),
-      warningShadow: Color.lerp(warningShadow, other.warningShadow, t),
-      text: Color.lerp(text, other.text, t),
-      background: Color.lerp(background, other.background, t),
+      primary: Color.lerp(primary, other.primary, t)!,
+      primaryShadow: Color.lerp(primaryShadow, other.primaryShadow, t)!,
+      onPrimary: Color.lerp(onPrimary, other.onPrimary, t)!,
+      secondary: Color.lerp(secondary, other.secondary, t)!,
+      secondaryShadow: Color.lerp(secondaryShadow, other.secondaryShadow, t)!,
+      onSecondary: Color.lerp(onSecondary, other.onSecondary, t)!,
+      error: Color.lerp(error, other.error, t)!,
+      errorShadow: Color.lerp(errorShadow, other.errorShadow, t)!,
+      success: Color.lerp(success, other.success, t)!,
+      sucessShadow: Color.lerp(sucessShadow, other.sucessShadow, t)!,
+      warning: Color.lerp(warning, other.warning, t)!,
+      warningShadow: Color.lerp(warningShadow, other.warningShadow, t)!,
+      text: Color.lerp(text, other.text, t)!,
+      background: Color.lerp(background, other.background, t)!,
     );
   }
 }

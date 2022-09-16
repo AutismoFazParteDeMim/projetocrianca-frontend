@@ -33,7 +33,7 @@ class WelcomePage extends GetView {
                     style: theme.textTheme.headlineMedium
                         ?.copyWith(color: colors.onPrimary),
                   ),
-                  SizedBox(height: metrics.gap! * 2),
+                  SizedBox(height: metrics.gap * 2),
                   Text(
                     "Seja bem-vindo ao aplicativo do projeto Autismo Faz Parte de Mim.",
                     textAlign: TextAlign.center,

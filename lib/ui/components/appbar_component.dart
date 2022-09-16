@@ -24,11 +24,12 @@ class AppBarComponent extends StatelessWidget with PreferredSizeWidget {
 
     return Container(
       height: metrics.headerHeight,
-      color: colors.primary,
+      color: colors.background,
       alignment: Alignment.bottomCenter,
       padding: metrics.padding,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        crossAxisAlignment: CrossAxisAlignment.end,
         children: [
           IconButtonComponent(
             icon: Ionicons.arrow_back,
@@ -37,7 +38,7 @@ class AppBarComponent extends StatelessWidget with PreferredSizeWidget {
           Text(
             title ?? "",
             textAlign: TextAlign.center,
-            style: theme.textTheme.titleLarge,
+            style: theme.textTheme.headlineSmall,
           ),
           const SizedBox(width: 50),
         ],
