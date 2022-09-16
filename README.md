@@ -20,9 +20,9 @@ O projeto foi pensado para rodar nas mais diversas plataformas e sistemas operac
 
 ## 🧰 》Tecnologias usadas
 Para desenvolver o projeto, nossa equipe decidiu usar um kit básico de ferramentas para o desenvolvimento mobile, pensando em atender os dois sistemas mais utilizados no mundo hoje (Android e IOS). 
-- React Native 
-- Node.js  
-- Expo 
+- Flutter 
+- Dart 
+- Getx 
 - Firebase
 - Git
 
