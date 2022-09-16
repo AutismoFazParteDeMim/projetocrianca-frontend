@@ -78,8 +78,9 @@ class LoginPage extends GetView<LoginPageController> {
               children: [
                 Column(
                   children: [
-                    const GoogleButtonComponent(
+                    GoogleButtonComponent(
                       text: "Entrar com o Google",
+                      onPress: () => controller.loginWithGoogle(),
                     ),
                     SizedBox(height: metrics.gap),
                     const FacebookButtonComponent(
@@ -123,8 +124,7 @@ class LoginPage extends GetView<LoginPageController> {
                             text: "Esqueceu a senha?",
                             onPressed: () => showDialog(
                               context: context,
-                              builder: (BuildContext context) =>
-                                  ModalComponent(
+                              builder: (BuildContext context) => ModalComponent(
                                 title: "Recuperação de senha",
                                 child: _ForgotPasswordModal(),
                               ),
@@ -139,7 +139,10 @@ class LoginPage extends GetView<LoginPageController> {
                 ButtonComponent(
                   text: "Entrar",
                   icon: Ionicons.enter_outline,
-                  onPress: () => controller.formKey.currentState?.validate(),
+                  onPress: () => {
+                    if (controller.formKey.currentState!.validate())
+                      {controller.loginWithEmailAndPass()}
+                  },
                 ),
               ],
             ),

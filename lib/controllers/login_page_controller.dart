@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:projeto_crianca/data/repositorys/auth_repository.dart';
 
 class LoginPageController extends GetxController {
+  final AuthRepository repository;
+
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   final GlobalKey<FormState> _forgotPassFormKey = GlobalKey<FormState>();
 
@@ -13,6 +16,8 @@ class LoginPageController extends GetxController {
 
   TextEditingController get emailFieldController => _emailFieldController;
   TextEditingController get passFieldController => _passFieldController;
+
+  LoginPageController(this.repository);
 
   @override
   void onClose() {
@@ -39,5 +44,16 @@ class LoginPageController extends GetxController {
     }
 
     return null;
+  }
+
+  Future<void> loginWithEmailAndPass() async {
+    await repository.loginWithEmailAndPass(
+      _emailFieldController.text,
+      passFieldController.text,
+    );
+  }
+
+  Future<void> loginWithGoogle() async {
+    await repository.loginWithGoogle();
   }
 }
