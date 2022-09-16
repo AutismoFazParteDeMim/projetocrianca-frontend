@@ -6,6 +6,7 @@ class ButtonComponent extends StatelessWidget {
   final String text;
   final IconData? icon;
   final String? type;
+  final bool? reverse;
 
   const ButtonComponent({
     super.key,
@@ -13,6 +14,7 @@ class ButtonComponent extends StatelessWidget {
     this.onPress,
     this.type,
     this.icon,
+    this.reverse,
   });
 
   @override
@@ -68,15 +70,25 @@ class ButtonComponent extends StatelessWidget {
           fontSize: 18,
           fontWeight: FontWeight.bold,
         ),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            if (icon != null) Icon(icon),
-            if (icon != null) SizedBox(width: metrics.gap),
-            Text(text),
-          ],
-        ),
+        child: reverse == true
+            ? Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Text(text),
+                  if (icon != null) SizedBox(width: metrics.gap),
+                  if (icon != null) Icon(icon),
+                ],
+              )
+            : Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  if (icon != null) Icon(icon),
+                  if (icon != null) SizedBox(width: metrics.gap),
+                  Text(text),
+                ],
+              ),
       ),
     );
   }

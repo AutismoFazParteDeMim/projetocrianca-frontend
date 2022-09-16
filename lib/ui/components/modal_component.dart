@@ -3,11 +3,17 @@ import 'package:get/get.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:projeto_crianca/ui/theme/theme_extensions.dart';
 
-class DialogComponent extends StatelessWidget {
+class ModalComponent extends StatelessWidget {
   final Widget child;
   final String? title;
+  final String? size;
 
-  const DialogComponent({super.key, required this.child, this.title});
+  const ModalComponent({
+    super.key,
+    required this.child,
+    this.title,
+    this.size,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -15,13 +21,23 @@ class DialogComponent extends StatelessWidget {
     final ThemeColors colors = theme.extension<ThemeColors>()!;
     final ThemeMetrics metrics = theme.extension<ThemeMetrics>()!;
 
+    double getSize() {
+      switch (size) {
+        case "small":
+          return 300;
+        case "medium":
+          return 420;
+        case "large":
+          return 600;
+        default:
+          return 300;
+      }
+    }
+
     return Dialog(
       insetPadding: metrics.padding,
       child: Container(
-        constraints: const BoxConstraints(
-          minHeight: 200,
-          maxHeight: 500,
-        ),
+        height: getSize(),
         decoration: BoxDecoration(
           borderRadius: metrics.borderRadius,
           color: colors.background,

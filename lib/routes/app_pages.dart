@@ -1,4 +1,6 @@
 import 'package:get/get.dart';
+import 'package:projeto_crianca/bindings/login_page_binding.dart';
+import 'package:projeto_crianca/bindings/register_page_binding.dart';
 import 'package:projeto_crianca/routes/app_routes.dart';
 import 'package:projeto_crianca/ui/pages/home_page.dart';
 import 'package:projeto_crianca/ui/pages/login_page.dart';
@@ -18,10 +20,12 @@ abstract class AppPages {
     GetPage(
       name: AppRoutes.login,
       page: () => const LoginPage(),
+      binding: LoginPageBinding(),
     ),
     GetPage(
       name: AppRoutes.register,
-      page: () => RegisterPage(),
+      page: () => const RegisterPage(),
+      binding: RegisterPageBinding(),
     ),
   ];
 }

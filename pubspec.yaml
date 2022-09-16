@@ -38,6 +38,8 @@ flutter:
     - assets/icon.png
     - assets/adaptive-icon.png
     - assets/login.png
+    - assets/icons/avatarM.png
+    - assets/icons/avatarF.png
 
 flutter_icons:
   android: "launcher_icon"

@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:projeto_crianca/routes/app_routes.dart';
 import 'package:projeto_crianca/ui/components/Buttons/button_component.dart';
 import 'package:projeto_crianca/ui/components/Buttons/link_button_component.dart';
-import 'package:projeto_crianca/ui/components/dialog_component.dart';
+import 'package:projeto_crianca/ui/components/modal_component.dart';
 import 'package:projeto_crianca/ui/theme/theme_extensions.dart';
 
 class WelcomePage extends GetView {
@@ -67,8 +67,9 @@ class WelcomePage extends GetView {
                     text: "Política de privacidade",
                     onPressed: () => showDialog(
                       context: context,
-                      builder: (BuildContext context) => const DialogComponent(
+                      builder: (BuildContext context) => const ModalComponent(
                         title: "Política de privacidade",
+                        size: "large",
                         child: Center(
                           child: SingleChildScrollView(
                             child: Text(privacyPolicy),
