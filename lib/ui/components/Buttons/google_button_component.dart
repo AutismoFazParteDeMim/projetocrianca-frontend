@@ -31,7 +31,7 @@ class GoogleButtonComponent extends StatelessWidget {
       ),
       child: RawMaterialButton(
         onPressed: onPress,
-        fillColor: const Color(0xFFFCFCFC),
+        fillColor: const Color(0xFFF0F0F0),
         padding: metrics.padding,
         elevation: 0,
         highlightElevation: 0,

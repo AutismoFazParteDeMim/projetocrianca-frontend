@@ -13,6 +13,7 @@ class AppTheme {
     ),
     primaryColor: const Color(0xFF00A7DF),
     scaffoldBackgroundColor: const Color(0xFFFFFFFF),
+    dialogBackgroundColor: const Color(0xFFFFFFFF),
     brightness: Brightness.light,
     useMaterial3: false,
     textTheme: GoogleFonts.poppinsTextTheme(ThemeData.light().textTheme)
@@ -65,11 +66,18 @@ class AppTheme {
         fillColor: colors.secondary,
         border: OutlineInputBorder(
           borderRadius: metrics.borderRadius,
-          borderSide: BorderSide(color: colors.secondary),
+          borderSide: BorderSide(color: colors.secondaryShadow),
         ),
         enabledBorder: OutlineInputBorder(
           borderRadius: metrics.borderRadius,
-          borderSide: BorderSide(color: colors.secondary),
+          borderSide: BorderSide(color: colors.secondaryShadow),
+        ),
+      ),
+      dialogTheme: DialogTheme(
+        elevation: 0,
+        shadowColor: Colors.transparent,
+        shape: RoundedRectangleBorder(
+          borderRadius: metrics.borderRadius,
         ),
       ),
     );

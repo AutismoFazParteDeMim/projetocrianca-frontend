@@ -5,6 +5,7 @@ class TextInputComponent extends StatelessWidget {
   final Function onChange;
   final IconData? icon;
   final TextInputType? type;
+  final TextInputAction? action;
 
   const TextInputComponent({
     super.key,
@@ -12,6 +13,7 @@ class TextInputComponent extends StatelessWidget {
     required this.onChange,
     this.icon,
     this.type,
+    this.action,
   });
 
   @override
@@ -19,6 +21,7 @@ class TextInputComponent extends StatelessWidget {
     return TextField(
       onChanged: (String value) => onChange(value),
       keyboardType: type ?? TextInputType.text,
+      textInputAction: action ?? TextInputAction.next,
       decoration: InputDecoration(
         hintText: placeholder,
         prefixIcon: icon != null ? Icon(icon) : null,

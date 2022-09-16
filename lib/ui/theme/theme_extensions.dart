@@ -45,7 +45,7 @@ class ThemeMetrics extends ThemeExtension<ThemeMetrics> {
     );
   }
 
-  double? toInt(EdgeInsets? padding) {
+  double? toDouble(EdgeInsets? padding) {
     return padding?.top.toDouble();
   }
 }

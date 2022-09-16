@@ -73,7 +73,7 @@ class ButtonComponent extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             if (icon != null) Icon(icon),
-            SizedBox(width: metrics.gap),
+            if (icon != null) SizedBox(width: metrics.gap),
             Text(text),
           ],
         ),
