@@ -26,6 +26,7 @@ dependencies:
   ionicons: ^0.2.1
   google_sign_in: ^5.4.1
   flutter_svg: ^1.1.5
+  url_launcher: ^6.1.5
 
 dev_dependencies:
   flutter_test:
@@ -46,6 +47,28 @@ flutter:
     - assets/icons/games-icon.png
     - assets/icons/settings-icon.png
     - assets/icons/local-icon.png
+
+  fonts:
+    - family: Noto
+      fonts:
+        - asset: assets/fonts/NotoSans-Black.ttf
+        - asset: assets/fonts/NotoSans-BlackItalic.ttf
+        - asset: assets/fonts/NotoSans-Bold.ttf
+        - asset: assets/fonts/NotoSans-BoldItalic.ttf
+        - asset: assets/fonts/NotoSans-ExtraBold.ttf
+        - asset: assets/fonts/NotoSans-ExtraBoldItalic.ttf
+        - asset: assets/fonts/NotoSans-ExtraLight.ttf
+        - asset: assets/fonts/NotoSans-ExtraLightItalic.ttf
+        - asset: assets/fonts/NotoSans-Italic.ttf
+        - asset: assets/fonts/NotoSans-Light.ttf
+        - asset: assets/fonts/NotoSans-LightItalic.ttf
+        - asset: assets/fonts/NotoSans-Medium.ttf
+        - asset: assets/fonts/NotoSans-MediumItalic.ttf
+        - asset: assets/fonts/NotoSans-Regular.ttf
+        - asset: assets/fonts/NotoSans-SemiBold.ttf
+        - asset: assets/fonts/NotoSans-SemiBoldItalic.ttf
+        - asset: assets/fonts/NotoSans-Thin.ttf
+        - asset: assets/fonts/NotoSans-ThinItalic.ttf
 
 flutter_icons:
   android: "launcher_icon"

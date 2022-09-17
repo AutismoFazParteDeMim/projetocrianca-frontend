@@ -32,7 +32,9 @@ class MyApp extends StatelessWidget {
       title: 'Projeto Criança',
       getPages: AppPages.pages,
       initialRoute: AppRoutes.initial,
-      theme: AppTheme().getTheme(),
+      theme: AppTheme(isDark: false).getTheme(),
+      darkTheme: AppTheme(isDark: true).getTheme(),
+      themeMode: ThemeMode.light,
       debugShowCheckedModeBanner: false,
     );
   }

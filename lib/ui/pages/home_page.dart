@@ -82,8 +82,8 @@ class HomePage extends GetView<HomePageController> {
       body: Center(
         child: GridView.count(
           crossAxisCount: 2,
-          crossAxisSpacing: metrics.gap,
-          mainAxisSpacing: metrics.gap,
+          crossAxisSpacing: metrics.gap * 2,
+          mainAxisSpacing: metrics.gap * 2,
           shrinkWrap: true,
           padding: metrics.padding,
           children: [
