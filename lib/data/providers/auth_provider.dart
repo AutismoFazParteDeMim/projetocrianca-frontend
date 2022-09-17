@@ -3,20 +3,18 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
 class AuthProvider {
-  static final instance = FirebaseAuth.instance;
+  static final FirebaseAuth _instance = FirebaseAuth.instance;
+
+  FirebaseAuth get getInstance => _instance;
 
   Future<void> loginWithEmailAndPass(String email, String password) async {
     try {
-      await instance.signInWithEmailAndPassword(
+      await _instance.signInWithEmailAndPassword(
         email: email,
         password: password,
       );
-    } on FirebaseAuthException catch (e) {
-      if (e.code == 'user-not-found') {
-        log('No user found for that email.');
-      } else if (e.code == 'wrong-password') {
-        log('Wrong password provided for that user.');
-      }
+    } catch (e) {
+      log(e.toString());
     }
   }
 
@@ -32,7 +30,15 @@ class AuthProvider {
         idToken: googleAuth?.idToken,
       );
 
-      await instance.signInWithCredential(credential);
+      await _instance.signInWithCredential(credential);
+    } catch (e) {
+      log(e.toString());
+    }
+  }
+
+  Future<void> logOut() async {
+    try {
+      await _instance.signOut();
     } catch (e) {
       log(e.toString());
     }

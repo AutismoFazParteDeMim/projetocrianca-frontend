@@ -50,7 +50,7 @@ class _ForgotPasswordModal extends StatelessWidget {
           text: "Enviar email",
           icon: Ionicons.send_outline,
           reverse: true,
-          onPress: () => {},
+          onPressed: () => {},
         ),
       ],
     );
@@ -80,7 +80,7 @@ class LoginPage extends GetView<LoginPageController> {
                   children: [
                     GoogleButtonComponent(
                       text: "Entrar com o Google",
-                      onPress: () => controller.loginWithGoogle(),
+                      onPressed: () => controller.loginWithGoogle(),
                     ),
                     SizedBox(height: metrics.gap),
                     const FacebookButtonComponent(
@@ -139,7 +139,7 @@ class LoginPage extends GetView<LoginPageController> {
                 ButtonComponent(
                   text: "Entrar",
                   icon: Ionicons.enter_outline,
-                  onPress: () => {
+                  onPressed: () => {
                     if (controller.formKey.currentState!.validate())
                       {controller.loginWithEmailAndPass()}
                   },

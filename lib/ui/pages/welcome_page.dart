@@ -54,13 +54,13 @@ class WelcomePage extends GetView {
                 children: [
                   ButtonComponent(
                     text: "Fazer login",
-                    onPress: () => Get.toNamed(AppRoutes.login),
+                    onPressed: () => Get.toNamed(AppRoutes.login),
                   ),
                   SizedBox(height: metrics.gap),
                   ButtonComponent(
                     text: "Cadastre-se",
                     type: "secondary",
-                    onPress: () => Get.toNamed(AppRoutes.register),
+                    onPressed: () => Get.toNamed(AppRoutes.register),
                   ),
                   SizedBox(height: metrics.gap),
                   LinkButtonComponent(

@@ -79,7 +79,7 @@ class _Modal extends StatelessWidget {
         ButtonComponent(
           text: "Finalizar",
           icon: Ionicons.checkmark_circle_outline,
-          onPress: () => controller.childFormKey.currentState!.validate(),
+          onPressed: () => controller.childFormKey.currentState!.validate(),
         ),
       ],
     );
@@ -172,7 +172,7 @@ class RegisterPage extends GetView<RegisterPageController> {
                   text: "Próximo",
                   icon: Ionicons.arrow_forward_outline,
                   reverse: true,
-                  onPress: () => {
+                  onPressed: () => {
                     if (controller.formKey.currentState!.validate())
                       showDialog(
                         context: context,

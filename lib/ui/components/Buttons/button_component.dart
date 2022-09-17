@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:projeto_crianca/ui/theme/theme_extensions.dart';
 
 class ButtonComponent extends StatelessWidget {
-  final VoidCallback? onPress;
+  final VoidCallback? onPressed;
   final String text;
   final IconData? icon;
   final String? type;
@@ -11,7 +11,7 @@ class ButtonComponent extends StatelessWidget {
   const ButtonComponent({
     super.key,
     required this.text,
-    this.onPress,
+    this.onPressed,
     this.type,
     this.icon,
     this.reverse,
@@ -37,6 +37,21 @@ class ButtonComponent extends StatelessWidget {
         borderColor = colors.secondaryShadow;
         textColor = colors.onSecondary;
         break;
+      case "danger":
+        backgroundColor = colors.error;
+        borderColor = colors.errorShadow;
+        textColor = colors.onPrimary;
+        break;
+      case "warning":
+        backgroundColor = colors.warning;
+        borderColor = colors.warningShadow;
+        textColor = colors.onPrimary;
+        break;
+      case "success":
+        backgroundColor = colors.success;
+        borderColor = colors.sucessShadow;
+        textColor = colors.onPrimary;
+        break;
       default:
         backgroundColor = colors.primary;
         borderColor = colors.primaryShadow;
@@ -57,7 +72,7 @@ class ButtonComponent extends StatelessWidget {
         ],
       ),
       child: RawMaterialButton(
-        onPressed: onPress,
+        onPressed: onPressed,
         fillColor: backgroundColor,
         padding: metrics.padding,
         elevation: 0,

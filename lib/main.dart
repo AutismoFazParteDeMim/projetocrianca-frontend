@@ -1,6 +1,9 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:projeto_crianca/controllers/auth_controller.dart';
+import 'package:projeto_crianca/data/providers/auth_provider.dart';
+import 'package:projeto_crianca/data/repositorys/auth_repository.dart';
 import 'package:projeto_crianca/firebase_options.dart';
 import 'package:projeto_crianca/routes/app_routes.dart';
 import 'package:projeto_crianca/routes/app_pages.dart';
@@ -8,7 +11,14 @@ import 'package:projeto_crianca/ui/theme/app_theme.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform)
+      .then(
+    (value) => Get.put(
+      AuthController(
+        AuthRepository(AuthProvider()),
+      ),
+    ),
+  );
 
   runApp(const MyApp());
 }

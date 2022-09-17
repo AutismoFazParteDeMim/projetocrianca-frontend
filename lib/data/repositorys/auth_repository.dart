@@ -12,4 +12,8 @@ class AuthRepository {
   Future<void> loginWithGoogle() async {
     await provider.loginWithGoogle();
   }
+
+  Future<void> logOut() async {
+    await provider.logOut();
+  }
 }

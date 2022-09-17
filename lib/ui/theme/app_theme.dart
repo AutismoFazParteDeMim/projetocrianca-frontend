@@ -34,7 +34,7 @@ class AppTheme {
         padding: const EdgeInsets.all(16),
         gap: 16,
         headerHeight: 100,
-        borderRadius: BorderRadius.circular(12),
+        borderRadius: BorderRadius.circular(16),
       ),
       const ThemeColors(
         primary: Color(0xFF00A7DF),
