@@ -1,11 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:projeto_crianca/ui/theme/theme_extensions.dart';
 
+enum ButtonComponentType {
+  primary,
+  secondary,
+  danger,
+  warning,
+  success,
+}
+
 class ButtonComponent extends StatelessWidget {
   final VoidCallback? onPressed;
   final String text;
   final IconData? icon;
-  final String? type;
+  final ButtonComponentType? type;
   final bool? reverse;
 
   const ButtonComponent({
@@ -27,27 +35,27 @@ class ButtonComponent extends StatelessWidget {
     Color textColor = colors.onPrimary;
 
     switch (type) {
-      case "primary":
+      case ButtonComponentType.primary:
         backgroundColor = colors.primary;
         borderColor = colors.primaryShadow;
         textColor = colors.onPrimary;
         break;
-      case "secondary":
+      case ButtonComponentType.secondary:
         backgroundColor = colors.secondary;
         borderColor = colors.secondaryShadow;
         textColor = colors.onSecondary;
         break;
-      case "danger":
+      case ButtonComponentType.danger:
         backgroundColor = colors.error;
         borderColor = colors.errorShadow;
         textColor = colors.onPrimary;
         break;
-      case "warning":
+      case ButtonComponentType.warning:
         backgroundColor = colors.warning;
         borderColor = colors.warningShadow;
         textColor = colors.onPrimary;
         break;
-      case "success":
+      case ButtonComponentType.success:
         backgroundColor = colors.success;
         borderColor = colors.sucessShadow;
         textColor = colors.onPrimary;
