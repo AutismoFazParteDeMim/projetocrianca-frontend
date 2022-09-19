@@ -1,0 +1,10 @@
+{
+  "hostType": "tunnel",
+  "lanType": "ip",
+  "devClient": true,
+  "dev": true,
+  "minify": false,
+  "urlRandomness": "hb-s3c",
+  "https": false,
+  "scheme": "com.unisociesc.projetocrianca"
+}

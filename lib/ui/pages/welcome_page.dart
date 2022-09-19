@@ -59,7 +59,7 @@ class WelcomePage extends GetView {
                   SizedBox(height: metrics.gap),
                   ButtonComponent(
                     text: "Cadastre-se",
-                    type: ButtonComponentType.secondary,
+                    type: ButtonComponentType.secoundary,
                     onPressed: () => Get.toNamed(AppRoutes.register),
                   ),
                   SizedBox(height: metrics.gap),

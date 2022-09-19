@@ -3,7 +3,7 @@ import 'package:projeto_crianca/ui/theme/theme_extensions.dart';
 
 enum ButtonComponentType {
   primary,
-  secondary,
+  secoundary,
   danger,
   warning,
   success,
@@ -40,7 +40,7 @@ class ButtonComponent extends StatelessWidget {
         borderColor = colors.primaryShadow;
         textColor = colors.onPrimary;
         break;
-      case ButtonComponentType.secondary:
+      case ButtonComponentType.secoundary:
         backgroundColor = colors.secondary;
         borderColor = colors.secondaryShadow;
         textColor = colors.onSecondary;
