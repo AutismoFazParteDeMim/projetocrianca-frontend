@@ -12,6 +12,6 @@ class UserRepository {
   }
 
   Future<ChildModel?> getCurrentChild() async {
-    return provider.getCurrentChild();
+    return await provider.getCurrentChild();
   }
 }

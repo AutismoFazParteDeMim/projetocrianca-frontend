@@ -70,30 +70,37 @@ enum AvatarModelHairColor {
 }
 
 class AvatarModel {
-  final AvatarModelMouth? mouth;
-  final AvatarModelEye? eye;
-  final AvatarModelHairType? hair;
-  final AvatarModelAccessories? accessories;
-  final AvatarModelSkinColor? skinColor;
-  final AvatarModelHairColor? hairColor;
+  late AvatarModelMouth mouth;
+  late AvatarModelEye eye;
+  late AvatarModelHairType hair;
+  late AvatarModelAccessories accessories;
+  late AvatarModelSkinColor skinColor;
+  late AvatarModelHairColor hairColor;
 
   AvatarModel({
-    this.mouth,
-    this.eye,
-    this.hair,
-    this.accessories,
-    this.skinColor,
-    this.hairColor,
-  });
+    AvatarModelMouth? mouth,
+    AvatarModelEye? eye,
+    AvatarModelHairType? hair,
+    AvatarModelAccessories? accessories,
+    AvatarModelSkinColor? skinColor,
+    AvatarModelHairColor? hairColor,
+  }) {
+    this.mouth = mouth ?? AvatarModelMouth.awkwardSmile;
+    this.eye = eye ?? AvatarModelEye.angry;
+    this.hair = hair ?? AvatarModelHairType.bangs;
+    this.accessories = accessories ?? AvatarModelAccessories.catEars;
+    this.skinColor = skinColor ?? AvatarModelSkinColor.variant01;
+    this.hairColor = hairColor ?? AvatarModelHairColor.variant01;
+  }
 
   factory AvatarModel.fromJson(Map<String, dynamic> json) {
     return AvatarModel(
-      mouth: json['mouth'],
-      eye: json['eye'],
-      hair: json['hair'],
-      accessories: json['accessories'],
-      skinColor: json['skinColor'],
-      hairColor: json['hairColor'],
+      mouth: json['mouth'] ?? AvatarModelMouth.awkwardSmile,
+      eye: json['eye'] ?? AvatarModelEye.angry,
+      hair: json['hair'] ?? AvatarModelHairType.bangs,
+      accessories: json['accessories'] ?? AvatarModelAccessories.catEars,
+      skinColor: json['skinColor'] ?? AvatarModelSkinColor.variant01,
+      hairColor: json['hairColor'] ?? AvatarModelHairColor.variant01,
     );
   }
 }

@@ -1,33 +1,30 @@
 import 'dart:async';
 import 'dart:developer';
-import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class SVGComponent extends StatelessWidget {
-  final String rawSvg;
+  final String? rawSvg;
   final double width;
   final double height;
 
   const SVGComponent({
     super.key,
-    required this.rawSvg,
+    this.rawSvg,
     required this.width,
     required this.height,
   });
 
-  Future<RawImage?> getSVG() async {
+  Future<SvgPicture?> getSVG() async {
     try {
-      final DrawableRoot svgRoot = await svg.fromSvgString(rawSvg, rawSvg);
-      final Picture picture = svgRoot.toPicture();
-
-      return RawImage(
+      final picture = SvgPicture.string(
+        rawSvg!,
         width: width,
         height: height,
-        filterQuality: FilterQuality.high,
         alignment: Alignment.center,
-        image: await picture.toImage(width.toInt(), height.toInt()),
       );
+
+      return picture;
     } catch (e) {
       log(e.toString());
     }
@@ -37,7 +34,7 @@ class SVGComponent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder<RawImage?>(
+    return FutureBuilder<SvgPicture?>(
       future: getSVG(),
       builder: (BuildContext context, snapshot) {
         if (snapshot.hasData) {

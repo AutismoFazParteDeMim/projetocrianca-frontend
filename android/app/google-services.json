@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "654760512004-hubg2vlnmffib4u6lorp3dn124282a31.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "br.com.unisociesc.projeto_crianca",
+            "certificate_hash": "8b1102b3e305473fca58b47111ef208a094c037f"
+          }
+        },
+        {
           "client_id": "654760512004-a2vl4fki9bd11t6mo5u1hmvirrs0igjm.apps.googleusercontent.com",
           "client_type": 3
         }

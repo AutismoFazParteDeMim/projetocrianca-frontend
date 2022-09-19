@@ -13,6 +13,10 @@ class AuthRepository {
     await provider.loginWithGoogle();
   }
 
+  Future<void> loginWithFacebook() async {
+    await provider.loginWithFacebook();
+  }
+
   Future<void> logOut() async {
     await provider.logOut();
   }

@@ -87,6 +87,10 @@ class AppTheme {
         contentPadding: const EdgeInsets.symmetric(vertical: 18),
         filled: true,
         fillColor: colors.secondary,
+        hintStyle: TextStyle(
+          color: colors.onSecondary.withOpacity(0.6),
+          fontWeight: FontWeight.w500,
+        ),
         border: OutlineInputBorder(
           borderRadius: metrics.borderRadius,
           borderSide: BorderSide(color: colors.secondaryShadow),

@@ -6,9 +6,9 @@ class ChildModel {
   String? photoURL;
 
   ChildModel({
-    required this.name,
-    required this.sex,
-    required this.photoURL,
+    this.name,
+    this.sex,
+    this.photoURL,
   });
 
   ChildModel.fromDocumentSnapshot({

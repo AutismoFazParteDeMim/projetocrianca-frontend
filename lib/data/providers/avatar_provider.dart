@@ -1,25 +1,30 @@
+import 'dart:developer';
 import 'package:dio/dio.dart';
-import 'package:http/http.dart' as http;
 import 'package:projeto_crianca/data/models/avatar_model.dart';
 
 class AvatarProvider {
-  final Dio dio = Dio();
+  final Dio _instance = Dio();
 
   static const String baseUrl =
       "https://avatars.dicebear.com/api/big-smile/:seed.svg";
 
   Future<String?> getAvatar(AvatarModel avatar) async {
     final Map<String, dynamic> params = {
-      "mouth": avatar.mouth,
-      "eye": avatar.eye,
-      "hair": avatar.hair,
-      "accessories": avatar.accessories,
-      "skinColor": avatar.skinColor,
-      "hairColor": avatar.hairColor,
+      "mouth": avatar.mouth.name,
+      "eye": avatar.eye.name,
+      "hair": avatar.hair.name,
+      "accessories": avatar.accessories.name,
+      "skinColor": avatar.skinColor.name,
+      "hairColor": avatar.hairColor.name,
     };
 
-    return await dio
-        .get(baseUrl, queryParameters: params)
-        .then((value) => value.data);
+    try {
+      final response = await _instance.get(baseUrl, queryParameters: params);
+      return response.data.toString();
+    } catch (e) {
+      log(e.toString());
+    }
+
+    return null;
   }
 }

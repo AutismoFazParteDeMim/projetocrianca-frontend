@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:projeto_crianca/controllers/home_page_controller.dart';
 import 'package:projeto_crianca/routes/app_routes.dart';
@@ -35,7 +34,7 @@ class _CustomAppBar extends StatelessWidget with PreferredSizeWidget {
                   () => SVGComponent(
                     width: 60,
                     height: 60,
-                    rawSvg: controller.getCurrentChild!.photoURL!,
+                    rawSvg: controller.getCurrentChild?.photoURL,
                   ),
                 ),
               ),
@@ -47,15 +46,15 @@ class _CustomAppBar extends StatelessWidget with PreferredSizeWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                controller.getCurrentChild!.sex! == "f" ||
-                        controller.getCurrentChild!.sex! == "female"
+                controller.getCurrentChild?.sex == "f" ||
+                        controller.getCurrentChild?.sex == "female"
                     ? "Bem vinda"
                     : "Bem vindo",
                 style: theme.textTheme.titleSmall,
               ),
               Obx(
                 () => Text(
-                  "${controller.getCurrentChild!.name!}!",
+                  "${controller.getCurrentChild?.name}!",
                   style: theme.textTheme.titleLarge,
                 ),
               ),

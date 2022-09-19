@@ -1,4 +1,3 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 class UserModel {
@@ -9,10 +8,10 @@ class UserModel {
   String? photoURL;
 
   UserModel({
-    required this.uid,
-    required this.name,
-    required this.email,
-    required this.isEmailVerified,
+    this.uid,
+    this.name,
+    this.email,
+    this.isEmailVerified,
   });
 
   UserModel.fromFirebaseUser({required User user}) {

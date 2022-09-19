@@ -26,7 +26,7 @@ class IconButtonComponent extends StatelessWidget {
       ),
       child: RawMaterialButton(
         onPressed: onPressed,
-        fillColor: Colors.white,
+        fillColor: colors.secondary,
         elevation: 0,
         highlightElevation: 0,
         hoverElevation: 0,

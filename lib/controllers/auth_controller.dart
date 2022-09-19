@@ -15,7 +15,7 @@ class AuthController extends GetxController {
   void onReady() {
     super.onReady();
     _user = Rx<User?>(_instance.currentUser);
-    _user.bindStream(_instance.userChanges());
+    _user.bindStream(_instance.authStateChanges());
     ever(_user, _toInitialPage);
   }
 

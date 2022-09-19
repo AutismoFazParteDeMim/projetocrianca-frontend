@@ -38,8 +38,8 @@ class GoogleButtonComponent extends StatelessWidget {
         hoverElevation: 0,
         focusElevation: 0,
         shape: RoundedRectangleBorder(borderRadius: metrics.borderRadius),
-        textStyle: TextStyle(
-          color: colors.text,
+        textStyle: const TextStyle(
+          color: Colors.black,
           fontSize: 18,
           fontWeight: FontWeight.bold,
         ),

@@ -83,8 +83,9 @@ class LoginPage extends GetView<LoginPageController> {
                       onPressed: () => controller.loginWithGoogle(),
                     ),
                     SizedBox(height: metrics.gap),
-                    const FacebookButtonComponent(
+                    FacebookButtonComponent(
                       text: "Entrar com Facebook",
+                      onPressed: () => controller.loginWithFacebook(),
                     ),
                   ],
                 ),

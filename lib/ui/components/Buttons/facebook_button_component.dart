@@ -3,13 +3,13 @@ import 'package:ionicons/ionicons.dart';
 import 'package:projeto_crianca/ui/theme/theme_extensions.dart';
 
 class FacebookButtonComponent extends StatelessWidget {
-  final VoidCallback? onPress;
+  final VoidCallback? onPressed;
   final String text;
 
   const FacebookButtonComponent({
     super.key,
     required this.text,
-    this.onPress,
+    this.onPressed,
   });
 
   @override
@@ -30,7 +30,7 @@ class FacebookButtonComponent extends StatelessWidget {
         ],
       ),
       child: RawMaterialButton(
-        onPressed: onPress,
+        onPressed: onPressed,
         fillColor: const Color(0xFF4267B2),
         padding: metrics.padding,
         elevation: 0,

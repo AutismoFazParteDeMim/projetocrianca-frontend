@@ -73,6 +73,7 @@ class DefaultFirebaseOptions {
     projectId: 'projetocrianca-ae4a3',
     databaseURL: 'https://projetocrianca-ae4a3-default-rtdb.firebaseio.com',
     storageBucket: 'projetocrianca-ae4a3.appspot.com',
+    androidClientId: '654760512004-hubg2vlnmffib4u6lorp3dn124282a31.apps.googleusercontent.com',
     iosClientId: '654760512004-o63pc4al417fdf0jc62olltdr71g6bog.apps.googleusercontent.com',
     iosBundleId: 'br.com.unisociesc.projetoCrianca',
   );
