@@ -60,10 +60,13 @@ class ThemeColors extends ThemeExtension<ThemeColors> {
   final Color onSecondary;
   final Color error;
   final Color errorShadow;
+  final Color onError;
   final Color success;
   final Color sucessShadow;
+  final Color onSuccess;
   final Color warning;
   final Color warningShadow;
+  final Color onWarning;
   final Color text;
   final Color background;
 
@@ -76,10 +79,13 @@ class ThemeColors extends ThemeExtension<ThemeColors> {
     required this.onSecondary,
     required this.error,
     required this.errorShadow,
+    required this.onError,
     required this.success,
     required this.sucessShadow,
+    required this.onSuccess,
     required this.warning,
     required this.warningShadow,
+    required this.onWarning,
     required this.text,
     required this.background,
   });
@@ -94,10 +100,13 @@ class ThemeColors extends ThemeExtension<ThemeColors> {
     Color? onSecondary,
     Color? error,
     Color? errorShadow,
+    Color? onError,
     Color? success,
     Color? sucessShadow,
+    Color? onSuccess,
     Color? warning,
     Color? warningShadow,
+    Color? onWarning,
     Color? text,
     Color? background,
   }) {
@@ -110,10 +119,13 @@ class ThemeColors extends ThemeExtension<ThemeColors> {
       onSecondary: onSecondary ?? this.onSecondary,
       error: error ?? this.error,
       errorShadow: errorShadow ?? this.errorShadow,
+      onError: onError ?? this.onError,
       success: success ?? this.success,
       sucessShadow: sucessShadow ?? this.sucessShadow,
+      onSuccess: onSuccess ?? this.onSuccess,
       warning: warning ?? this.warning,
       warningShadow: warningShadow ?? this.warningShadow,
+      onWarning: onWarning ?? this.onWarning,
       text: text ?? this.text,
       background: background ?? this.background,
     );
@@ -134,10 +146,13 @@ class ThemeColors extends ThemeExtension<ThemeColors> {
       onSecondary: Color.lerp(onSecondary, other.onSecondary, t)!,
       error: Color.lerp(error, other.error, t)!,
       errorShadow: Color.lerp(errorShadow, other.errorShadow, t)!,
+      onError: Color.lerp(onError, other.onError, t)!,
       success: Color.lerp(success, other.success, t)!,
       sucessShadow: Color.lerp(sucessShadow, other.sucessShadow, t)!,
+      onSuccess: Color.lerp(onSuccess, other.onSuccess, t)!,
       warning: Color.lerp(warning, other.warning, t)!,
       warningShadow: Color.lerp(warningShadow, other.warningShadow, t)!,
+      onWarning: Color.lerp(onWarning, other.onWarning, t)!,
       text: Color.lerp(text, other.text, t)!,
       background: Color.lerp(background, other.background, t)!,
     );

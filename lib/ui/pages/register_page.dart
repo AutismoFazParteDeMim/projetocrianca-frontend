@@ -178,7 +178,7 @@ class RegisterPage extends GetView<RegisterPageController> {
                         context: context,
                         builder: (BuildContext context) => ModalComponent(
                           title: "Cadastro da criança",
-                          size: "medium",
+                          size: ModalComponentSize.medium,
                           child: _Modal(),
                         ),
                       ),

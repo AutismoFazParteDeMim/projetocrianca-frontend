@@ -3,10 +3,16 @@ import 'package:get/get.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:projeto_crianca/ui/theme/theme_extensions.dart';
 
+enum ModalComponentSize {
+  small,
+  medium,
+  large,
+}
+
 class ModalComponent extends StatelessWidget {
   final Widget child;
   final String? title;
-  final String? size;
+  final ModalComponentSize? size;
 
   const ModalComponent({
     super.key,
@@ -23,11 +29,11 @@ class ModalComponent extends StatelessWidget {
 
     double getSize() {
       switch (size) {
-        case "small":
+        case ModalComponentSize.small:
           return 300;
-        case "medium":
+        case ModalComponentSize.medium:
           return 420;
-        case "large":
+        case ModalComponentSize.large:
           return 600;
         default:
           return 300;

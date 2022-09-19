@@ -1,9 +1,26 @@
-import 'dart:developer';
-
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:projeto_crianca/data/repositorys/auth_repository.dart';
+import 'package:projeto_crianca/ui/components/alert_modal_component.dart';
+
+void _showAlertModal(
+  String message,
+  AlertModalComponentType type,
+) {
+  Get.generalDialog(
+    pageBuilder: (
+      context,
+      animation,
+      secondaryAnimation,
+    ) =>
+        AlertModalComponent(
+      type: AlertModalComponentType.warning,
+      title: "Ops!",
+      message: message,
+    ),
+  );
+}
 
 class LoginPageController extends GetxController {
   final AuthRepository repository;
@@ -68,16 +85,28 @@ class LoginPageController extends GetxController {
     } on FirebaseAuthException catch (e) {
       switch (e.code) {
         case "user-not-found":
-          log("Usuário não encontrado!");
+          _showAlertModal(
+            "Parece que este email não está cadastrado. Verifique e tente novamente!",
+            AlertModalComponentType.warning,
+          );
           break;
         case "wrong-password":
-          log("Email ou senha incorretos!");
+          _showAlertModal(
+            "Email ou senha digitados estão incorretos! Verifique e tente novamente",
+            AlertModalComponentType.warning,
+          );
           break;
         default:
-          log(e.code);
+          _showAlertModal(
+            e.code,
+            AlertModalComponentType.warning,
+          );
       }
     } catch (e) {
-      log(e.toString());
+      _showAlertModal(
+        e.toString(),
+        AlertModalComponentType.error,
+      );
     }
   }
 
@@ -86,18 +115,15 @@ class LoginPageController extends GetxController {
     try {
       await repository.loginWithGoogle();
     } on FirebaseAuthException catch (e) {
-      switch (e.code) {
-        case "user-not-found":
-          log("Usuário não encontrado!");
-          break;
-        case "wrong-password":
-          log("Email ou senha incorretos!");
-          break;
-        default:
-          log(e.code);
-      }
+      _showAlertModal(
+        e.code,
+        AlertModalComponentType.warning,
+      );
     } catch (e) {
-      log(e.toString());
+      _showAlertModal(
+        e.toString(),
+        AlertModalComponentType.error,
+      );
     }
   }
 
@@ -106,18 +132,15 @@ class LoginPageController extends GetxController {
     try {
       await repository.loginWithFacebook();
     } on FirebaseAuthException catch (e) {
-      switch (e.code) {
-        case "user-not-found":
-          log("Usuário não encontrado!");
-          break;
-        case "wrong-password":
-          log("Email ou senha incorretos!");
-          break;
-        default:
-          log(e.code);
-      }
+      _showAlertModal(
+        e.code,
+        AlertModalComponentType.warning,
+      );
     } catch (e) {
-      log(e.toString());
+      _showAlertModal(
+        e.toString(),
+        AlertModalComponentType.error,
+      );
     }
   }
 }

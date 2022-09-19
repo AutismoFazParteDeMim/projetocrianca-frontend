@@ -69,7 +69,7 @@ class WelcomePage extends GetView {
                       context: context,
                       builder: (BuildContext context) => const ModalComponent(
                         title: "Política de privacidade",
-                        size: "large",
+                        size: ModalComponentSize.large,
                         child: Center(
                           child: SingleChildScrollView(
                             child: Text(privacyPolicy),
