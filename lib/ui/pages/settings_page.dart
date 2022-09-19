@@ -121,7 +121,7 @@ class SettingsPage extends StatelessWidget {
               SizedBox(height: metrics.gap),
               ButtonComponent(
                 text: "Sair da conta",
-                type: "danger",
+                type: ButtonComponentType.danger,
                 icon: Ionicons.log_out_outline,
                 reverse: true,
                 onPressed: () => authController.logOut(),
