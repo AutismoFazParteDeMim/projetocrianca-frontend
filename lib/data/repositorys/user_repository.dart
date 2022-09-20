@@ -14,4 +14,8 @@ class UserRepository {
   Future<ChildModel?> getCurrentChild() async {
     return await provider.getCurrentChild();
   }
+
+  Stream<ChildModel>? getChildStream() {
+    return provider.getChildStream();
+  }
 }

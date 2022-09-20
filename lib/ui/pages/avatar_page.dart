@@ -239,10 +239,11 @@ class AvatarPage extends GetView<AvatarPageController> {
               ),
             ),
             SizedBox(height: metrics.gap),
-            const ButtonComponent(
+            ButtonComponent(
               text: "Salvar",
               icon: Ionicons.save_outline,
               type: ButtonComponentType.success,
+              onPressed: () => controller.saveAvatar(),
             ),
           ],
         ),

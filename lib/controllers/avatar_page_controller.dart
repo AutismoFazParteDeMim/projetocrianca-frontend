@@ -1,17 +1,25 @@
 import 'package:get/get.dart';
 import 'package:projeto_crianca/data/models/avatar_model.dart';
+import 'package:projeto_crianca/data/models/child_model.dart';
 import 'package:projeto_crianca/data/repositorys/avatar_repository.dart';
 import 'package:projeto_crianca/ui/components/alert_modal_component.dart';
 
 class AvatarPageController extends GetxController {
   final AvatarRepository repository;
-  final AvatarModel _avatar = AvatarModel();
 
+  final AvatarModel _avatar = AvatarModel();
   final Rx<String?> _avatarSvg = Rx(null);
 
   String? get getAvatarSvg => _avatarSvg.value;
 
   AvatarPageController(this.repository);
+
+  @override
+  Future<void> onReady() async {
+    super.onReady();
+    final child = await repository.getCurrentChild();
+    _avatarSvg.value = child?.photoURL;
+  }
 
   Future<void> getAvatar(dynamic seed) async {
     if (seed is AvatarModelEye) {
@@ -27,6 +35,22 @@ class AvatarPageController extends GetxController {
     try {
       final avatarSvg = await repository.getAvatar(_avatar);
       _avatarSvg.value = avatarSvg;
+    } catch (e) {
+      Get.generalDialog(
+        pageBuilder: (context, animation, secondaryAnimation) =>
+            AlertModalComponent(
+          title: "Ops!",
+          message: e.toString(),
+        ),
+      );
+    }
+  }
+
+  Future<void> saveAvatar() async {
+    final child = ChildModel(photoURL: _avatarSvg.value);
+    try {
+      await repository.saveAvatar(child);
+      Get.back();
     } catch (e) {
       Get.generalDialog(
         pageBuilder: (context, animation, secondaryAnimation) =>

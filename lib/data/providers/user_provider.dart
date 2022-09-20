@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:get/get.dart';
 import 'package:projeto_crianca/data/models/child_model.dart';
 import 'package:projeto_crianca/data/models/user_model.dart';
 
@@ -34,5 +35,37 @@ class UserProvider {
     }
 
     return null;
+  }
+
+  Stream<ChildModel>? getChildStream() {
+    final String? userUID = _authInstance.currentUser?.uid;
+
+    if (userUID != null) {
+      final Stream stream =
+          _databaseInstance.collection("users").doc(userUID).snapshots();
+
+      return stream.map(
+        (value) => ChildModel(
+          name: value["childName"],
+          sex: value["childSex"],
+          photoURL: value["childPic"],
+        ),
+      );
+    }
+
+    return null;
+  }
+
+  Future<void> updateCurrentChild(ChildModel child) async {
+    final String? userUID = _authInstance.currentUser?.uid;
+    final Map<String, dynamic> data = {};
+
+    data.addIf(child.name != null, "childName", child.name);
+    data.addIf(child.sex != null, "childSex", child.sex);
+    data.addIf(child.photoURL != null, "childPic", child.photoURL);
+
+    if (userUID != null) {
+      await _databaseInstance.collection("users").doc(userUID).update(data);
+    }
   }
 }
