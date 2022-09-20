@@ -28,38 +28,20 @@ class ActivitiesPage extends StatelessWidget {
                     children: [
                       SizedBox(height: metrics.gap),
                       MenuButtonComponent(
+                        title: "Rotinas",
+                        text: "Descricao",
+                        image: const AssetImage("assets/login.png"),
+                        onPressed: () => Get.toNamed(AppRoutes.routines), //TEMP
+                      ),
+                      SizedBox(height: metrics.gap),
+                      MenuButtonComponent(
                         title: "titulo",
                         text: "Descricao",
                         image: const AssetImage("assets/login.png"),
-                        onPressed: () => Get.toNamed(AppRoutes.home), //TEMP
-                      ),
-                      SizedBox(height: metrics.gap),
-                      ButtonComponent(
-                        text: "Sobre o projeto",
-                        type: ButtonComponentType.secoundary,
-                        icon: Ionicons.information_circle_outline,
-                        onPressed: () => Get.toNamed(AppRoutes.home), //TEMP
+                        onPressed: () =>
+                            Get.toNamed(AppRoutes.expressions), //TEMP
                       ),
                     ],
-                  ),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      SizedBox(height: metrics.gap),
-                      ButtonComponent(
-                        text: "Sobre o projeto",
-                        type: ButtonComponentType.secoundary,
-                        icon: Ionicons.information_circle_outline,
-                        onPressed: () => Get.toNamed(AppRoutes.home), //TEMP
-                      ),
-                    ],
-                  ),
-                  SizedBox(height: metrics.gap),
-                  ButtonComponent(
-                    text: "Sobre o projeto",
-                    type: ButtonComponentType.secoundary,
-                    icon: Ionicons.information_circle_outline,
-                    onPressed: () => Get.toNamed(AppRoutes.home), //TEMP
                   ),
                 ],
               ))),

@@ -6,12 +6,14 @@ import 'package:projeto_crianca/bindings/register_page_binding.dart';
 import 'package:projeto_crianca/routes/app_routes.dart';
 import 'package:projeto_crianca/ui/pages/about_page.dart';
 import 'package:projeto_crianca/ui/pages/activities_page.dart';
+import 'package:projeto_crianca/ui/pages/expressions_page.dart';
 import 'package:projeto_crianca/ui/pages/games_page.dart';
 import 'package:projeto_crianca/ui/pages/home_page.dart';
 import 'package:projeto_crianca/ui/pages/localize_page.dart';
 import 'package:projeto_crianca/ui/pages/login_page.dart';
 import 'package:projeto_crianca/ui/pages/profile_page.dart';
 import 'package:projeto_crianca/ui/pages/register_page.dart';
+import 'package:projeto_crianca/ui/pages/routines_page.dart';
 import 'package:projeto_crianca/ui/pages/settings_page.dart';
 import 'package:projeto_crianca/ui/pages/welcome_page.dart';
 
@@ -60,6 +62,14 @@ abstract class AppPages {
     GetPage(
       name: AppRoutes.about,
       page: () => const AboutPage(),
+    ),
+    GetPage(
+      name: AppRoutes.routines,
+      page: () => const RoutinesPage(),
+    ),
+    GetPage(
+      name: AppRoutes.expressions,
+      page: () => const ExpressionsPage(),
     ),
   ];
 }
