@@ -171,7 +171,7 @@ class RegisterPage extends GetView<RegisterPageController> {
                 ButtonComponent(
                   text: "Próximo",
                   icon: Ionicons.arrow_forward_outline,
-                  reverse: true,
+                  reversed: true,
                   onPressed: () => {
                     if (controller.formKey.currentState!.validate())
                       showDialog(

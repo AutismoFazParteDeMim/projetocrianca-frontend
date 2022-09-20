@@ -44,7 +44,8 @@ enum AvatarModelAccessories {
   sleepMask,
   sunglasses,
   faceMask,
-  mustache
+  mustache,
+  none,
 }
 
 enum AvatarModelSkinColor {
@@ -85,22 +86,11 @@ class AvatarModel {
     AvatarModelSkinColor? skinColor,
     AvatarModelHairColor? hairColor,
   }) {
-    this.mouth = mouth ?? AvatarModelMouth.awkwardSmile;
-    this.eye = eye ?? AvatarModelEye.angry;
-    this.hair = hair ?? AvatarModelHairType.bangs;
-    this.accessories = accessories ?? AvatarModelAccessories.catEars;
+    this.mouth = mouth ?? AvatarModelMouth.unimpressed;
+    this.eye = eye ?? AvatarModelEye.normal;
+    this.hair = hair ?? AvatarModelHairType.shavedHead;
+    this.accessories = accessories ?? AvatarModelAccessories.none;
     this.skinColor = skinColor ?? AvatarModelSkinColor.variant01;
     this.hairColor = hairColor ?? AvatarModelHairColor.variant01;
-  }
-
-  factory AvatarModel.fromJson(Map<String, dynamic> json) {
-    return AvatarModel(
-      mouth: json['mouth'] ?? AvatarModelMouth.awkwardSmile,
-      eye: json['eye'] ?? AvatarModelEye.angry,
-      hair: json['hair'] ?? AvatarModelHairType.bangs,
-      accessories: json['accessories'] ?? AvatarModelAccessories.catEars,
-      skinColor: json['skinColor'] ?? AvatarModelSkinColor.variant01,
-      hairColor: json['hairColor'] ?? AvatarModelHairColor.variant01,
-    );
   }
 }

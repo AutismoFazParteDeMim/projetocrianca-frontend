@@ -1,5 +1,5 @@
-import 'dart:developer';
 import 'package:dio/dio.dart';
+import 'package:get/get.dart';
 import 'package:projeto_crianca/data/models/avatar_model.dart';
 
 class AvatarProvider {
@@ -11,20 +11,25 @@ class AvatarProvider {
   Future<String?> getAvatar(AvatarModel avatar) async {
     final Map<String, dynamic> params = {
       "mouth": avatar.mouth.name,
-      "eye": avatar.eye.name,
+      "eyes": avatar.eye.name,
       "hair": avatar.hair.name,
-      "accessories": avatar.accessories.name,
       "skinColor": avatar.skinColor.name,
       "hairColor": avatar.hairColor.name,
     };
 
-    try {
-      final response = await _instance.get(baseUrl, queryParameters: params);
-      return response.data.toString();
-    } catch (e) {
-      log(e.toString());
-    }
+    params.addIf(
+      avatar.accessories != AvatarModelAccessories.none,
+      "accessories",
+      avatar.accessories.name,
+    );
 
-    return null;
+    params.addIf(
+      avatar.accessories == AvatarModelAccessories.none,
+      "accessoriesProbability",
+      0,
+    );
+
+    final response = await _instance.get(baseUrl, queryParameters: params);
+    return response.data.toString();
   }
 }

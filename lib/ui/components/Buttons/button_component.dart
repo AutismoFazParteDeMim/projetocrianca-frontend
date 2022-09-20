@@ -14,7 +14,7 @@ class ButtonComponent extends StatelessWidget {
   final String text;
   final IconData? icon;
   final ButtonComponentType? type;
-  final bool? reverse;
+  final bool? reversed;
 
   const ButtonComponent({
     super.key,
@@ -22,7 +22,7 @@ class ButtonComponent extends StatelessWidget {
     this.onPressed,
     this.type,
     this.icon,
-    this.reverse,
+    this.reversed,
   });
 
   @override
@@ -66,6 +66,12 @@ class ButtonComponent extends StatelessWidget {
         textColor = colors.onPrimary;
     }
 
+    final List<Widget> content = [
+      if (icon != null) Icon(icon),
+      if (icon != null) SizedBox(width: metrics.gap),
+      Text(text),
+    ];
+
     return Container(
       width: 250,
       height: 56,
@@ -93,25 +99,12 @@ class ButtonComponent extends StatelessWidget {
           fontSize: 18,
           fontWeight: FontWeight.bold,
         ),
-        child: reverse == true
-            ? Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Text(text),
-                  if (icon != null) SizedBox(width: metrics.gap),
-                  if (icon != null) Icon(icon),
-                ],
-              )
-            : Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  if (icon != null) Icon(icon),
-                  if (icon != null) SizedBox(width: metrics.gap),
-                  Text(text),
-                ],
-              ),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          verticalDirection: VerticalDirection.up,
+          children: reversed == true ? content.reversed.toList() : content,
+        ),
       ),
     );
   }

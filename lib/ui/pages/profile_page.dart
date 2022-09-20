@@ -65,7 +65,7 @@ class ProfilePage extends GetView<ProfilePageController> {
                         child: ColoredBox(
                           color: colors.secondary,
                           child: InkWell(
-                            onTap: () => Get.toNamed(AppRoutes.profile),
+                            onTap: () => Get.toNamed(AppRoutes.avatar),
                             borderRadius: BorderRadius.circular(60),
                             child: Obx(
                               () => SVGComponent(

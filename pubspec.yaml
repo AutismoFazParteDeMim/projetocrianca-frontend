@@ -30,6 +30,7 @@ dependencies:
   http: ^0.13.5
   dio: ^4.0.6
   flutter_facebook_auth: ^4.4.1+1
+  flutter_layout_grid: ^2.0.1
 
 dev_dependencies:
   flutter_test:
@@ -41,15 +42,45 @@ flutter:
   uses-material-design: true
 
   assets:
+    # app launch icons
     - assets/icon.png
     - assets/adaptive-icon.png
     - assets/login.png
+    # app icons
     - assets/icons/avatarM.png
     - assets/icons/avatarF.png
     - assets/icons/activities-icon.png
     - assets/icons/games-icon.png
     - assets/icons/settings-icon.png
     - assets/icons/local-icon.png
+      # avatar icons - eyes
+    - assets/avatar/eye/cheeryEyes.png
+    - assets/avatar/eye/confusedEyes.png
+    - assets/avatar/eye/normalEyes.png
+    - assets/avatar/eye/sleepyEyes.png
+    - assets/avatar/eye/starstruckEyes.png
+    - assets/avatar/eye/winkingEyes.png
+    # avatar icons - hair
+    - assets/avatar/hair/bowlCutHair.png
+    - assets/avatar/hair/froBun.png
+    - assets/avatar/hair/shortHair.png
+    - assets/avatar/hair/shortHairCurly.png
+    - assets/avatar/hair/straightHair.png
+    - assets/avatar/hair/wavyBob.png
+    # avatar icons - accessories
+    - assets/avatar/objects/catEars.png
+    - assets/avatar/objects/clownNose.png
+    - assets/avatar/objects/faceMask.png
+    - assets/avatar/objects/glasses.png
+    - assets/avatar/objects/sailormoonCrown.png
+    - assets/avatar/objects/sunglasses.png
+    # avatar icons - mouth
+    - assets/avatar/smile/awkwardSmile.png
+    - assets/avatar/smile/braces.png
+    - assets/avatar/smile/gapSmile.png
+    - assets/avatar/smile/kawaii.png
+    - assets/avatar/smile/openedSmile.png
+    - assets/avatar/smile/teethSmile.png
 
   fonts:
     - family: Noto

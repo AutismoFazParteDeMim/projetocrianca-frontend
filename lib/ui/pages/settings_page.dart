@@ -123,7 +123,7 @@ class SettingsPage extends StatelessWidget {
                 text: "Sair da conta",
                 type: ButtonComponentType.danger,
                 icon: Ionicons.log_out_outline,
-                reverse: true,
+                reversed: true,
                 onPressed: () => authController.logOut(),
               ),
             ],

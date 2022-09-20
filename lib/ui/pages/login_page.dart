@@ -49,7 +49,7 @@ class _ForgotPasswordModal extends StatelessWidget {
         ButtonComponent(
           text: "Enviar email",
           icon: Ionicons.send_outline,
-          reverse: true,
+          reversed: true,
           onPressed: () => {},
         ),
       ],
