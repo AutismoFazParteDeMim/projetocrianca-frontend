@@ -50,8 +50,8 @@ class ProfilePage extends GetView<ProfilePageController> {
                 const Image(
                   height: 240,
                   fit: BoxFit.cover,
-                  image: NetworkImage(
-                    "https://eskipaper.com/images/kids-wallpaper-21.jpg",
+                  image: AssetImage(
+                    "assets/profile-cover.jpg",
                   ),
                 ),
                 Positioned(

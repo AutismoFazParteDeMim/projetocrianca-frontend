@@ -4,6 +4,24 @@ import 'package:projeto_crianca/data/models/child_model.dart';
 import 'package:projeto_crianca/data/repositorys/avatar_repository.dart';
 import 'package:projeto_crianca/ui/components/alert_modal_component.dart';
 
+void _showAlertModal(
+  String message,
+  AlertModalComponentType type,
+) {
+  Get.generalDialog(
+    pageBuilder: (
+      context,
+      animation,
+      secondaryAnimation,
+    ) =>
+        AlertModalComponent(
+      type: AlertModalComponentType.warning,
+      title: "Ops!",
+      message: message,
+    ),
+  );
+}
+
 class AvatarPageController extends GetxController {
   final AvatarRepository repository;
 
@@ -36,13 +54,7 @@ class AvatarPageController extends GetxController {
       final avatarSvg = await repository.getAvatar(_avatar);
       _avatarSvg.value = avatarSvg;
     } catch (e) {
-      Get.generalDialog(
-        pageBuilder: (context, animation, secondaryAnimation) =>
-            AlertModalComponent(
-          title: "Ops!",
-          message: e.toString(),
-        ),
-      );
+      _showAlertModal(e.toString(), AlertModalComponentType.warning);
     }
   }
 
@@ -52,13 +64,7 @@ class AvatarPageController extends GetxController {
       await repository.saveAvatar(child);
       Get.back();
     } catch (e) {
-      Get.generalDialog(
-        pageBuilder: (context, animation, secondaryAnimation) =>
-            AlertModalComponent(
-          title: "Ops!",
-          message: e.toString(),
-        ),
-      );
+      _showAlertModal(e.toString(), AlertModalComponentType.warning);
     }
   }
 }

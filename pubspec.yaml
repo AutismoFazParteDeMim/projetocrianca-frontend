@@ -81,6 +81,8 @@ flutter:
     - assets/avatar/smile/kawaii.png
     - assets/avatar/smile/openedSmile.png
     - assets/avatar/smile/teethSmile.png
+    # other images
+    - assets/profile-cover.jpg
 
   fonts:
     - family: Noto

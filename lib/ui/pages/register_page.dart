@@ -12,8 +12,17 @@ import 'package:projeto_crianca/ui/components/image_checkbox_component.dart';
 import 'package:projeto_crianca/ui/components/modal_component.dart';
 import 'package:projeto_crianca/ui/theme/theme_extensions.dart';
 
+enum _LoginType {
+  google,
+  facebook,
+  emailAndPass,
+}
+
 class _Modal extends StatelessWidget {
+  final _LoginType loginType;
   final RegisterPageController controller = Get.find<RegisterPageController>();
+
+  _Modal({required this.loginType});
 
   @override
   Widget build(BuildContext context) {
@@ -38,6 +47,7 @@ class _Modal extends StatelessWidget {
                   placeholder: "Digite o nome da criança",
                   icon: Ionicons.person_outline,
                   controller: controller.childFieldController,
+                  action: TextInputAction.done,
                   validador: (String value) => controller.nameValidador(value),
                 ),
               ),
@@ -79,7 +89,17 @@ class _Modal extends StatelessWidget {
         ButtonComponent(
           text: "Finalizar",
           icon: Ionicons.checkmark_circle_outline,
-          onPressed: () => controller.childFormKey.currentState!.validate(),
+          onPressed: () {
+            if (controller.childFormKey.currentState!.validate()) {
+              if (loginType == _LoginType.emailAndPass) {
+                controller.registerWithEmailAndPass();
+              } else if (loginType == _LoginType.google) {
+                controller.registerWithGoogle();
+              } else if (loginType == _LoginType.facebook) {
+                controller.registerWithFacebook();
+              }
+            }
+          },
         ),
       ],
     );
@@ -107,12 +127,32 @@ class RegisterPage extends GetView<RegisterPageController> {
               children: [
                 Column(
                   children: [
-                    const GoogleButtonComponent(
+                    GoogleButtonComponent(
                       text: "Cadastrar com o Google",
+                      onPressed: () => showDialog(
+                        context: context,
+                        builder: (BuildContext context) => ModalComponent(
+                          title: "Cadastro da criança",
+                          size: ModalComponentSize.medium,
+                          child: _Modal(
+                            loginType: _LoginType.google,
+                          ),
+                        ),
+                      ),
                     ),
                     SizedBox(height: metrics.gap),
-                    const FacebookButtonComponent(
+                    FacebookButtonComponent(
                       text: "Cadastrar com Facebook",
+                      onPressed: () => showDialog(
+                        context: context,
+                        builder: (BuildContext context) => ModalComponent(
+                          title: "Cadastro da criança",
+                          size: ModalComponentSize.medium,
+                          child: _Modal(
+                            loginType: _LoginType.facebook,
+                          ),
+                        ),
+                      ),
                     ),
                   ],
                 ),
@@ -179,7 +219,9 @@ class RegisterPage extends GetView<RegisterPageController> {
                         builder: (BuildContext context) => ModalComponent(
                           title: "Cadastro da criança",
                           size: ModalComponentSize.medium,
-                          child: _Modal(),
+                          child: _Modal(
+                            loginType: _LoginType.emailAndPass,
+                          ),
                         ),
                       ),
                   },

@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
+import 'package:projeto_crianca/data/models/child_model.dart';
 
 class AuthProvider {
   static final FirebaseAuth _instance = FirebaseAuth.instance;
@@ -12,7 +13,7 @@ class AuthProvider {
     );
   }
 
-  Future<void> loginWithGoogle() async {
+  Future<User?> loginWithGoogle() async {
     final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
 
     final GoogleSignInAuthentication? googleAuth =
@@ -23,10 +24,12 @@ class AuthProvider {
       idToken: googleAuth?.idToken,
     );
 
-    await _instance.signInWithCredential(credential);
+    return await _instance.signInWithCredential(credential).then(
+          (value) => value.user,
+        );
   }
 
-  Future<void> loginWithFacebook() async {
+  Future<User?> loginWithFacebook() async {
     final LoginResult loginResult = await FacebookAuth.instance.login();
 
     final OAuthCredential facebookAuthCredential =
@@ -34,10 +37,21 @@ class AuthProvider {
       loginResult.accessToken!.token,
     );
 
-    await _instance.signInWithCredential(facebookAuthCredential);
+    return await _instance.signInWithCredential(facebookAuthCredential).then(
+          (value) => value.user,
+        );
   }
 
   Future<void> logOut() async {
     await _instance.signOut();
+  }
+
+  Future<User?> register(String email, String password) async {
+    return await _instance
+        .createUserWithEmailAndPassword(
+          email: email,
+          password: password,
+        )
+        .then((value) => value.user);
   }
 }

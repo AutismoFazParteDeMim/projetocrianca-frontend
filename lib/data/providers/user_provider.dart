@@ -56,6 +56,42 @@ class UserProvider {
     return null;
   }
 
+  Future<void> createChild(User userInstance, ChildModel child) async {
+    final String userUID = userInstance.uid;
+    final Map<String, dynamic> data = {
+      "childName": child.name ?? "",
+      "childSex": child.sex ?? "",
+      "childPic": child.photoURL ?? "",
+    };
+
+    if (data.isNotEmpty) {
+      await _databaseInstance.collection("users").doc(userUID).set(data);
+    }
+  }
+
+  Future<void> updateUser(User userInstance, UserModel user) async {
+    final Map<String, dynamic> data = {};
+
+    data.addIf(user.name != null, "displayName", user.name);
+
+    if (data.isNotEmpty) {
+      await userInstance.updateDisplayName(data["displayName"]);
+    }
+  }
+
+  Future<void> updateChild(User userInstance, ChildModel child) async {
+    final String userUID = userInstance.uid;
+    final Map<String, dynamic> data = {};
+
+    data.addIf(child.name != null, "childName", child.name);
+    data.addIf(child.sex != null, "childSex", child.sex);
+    data.addIf(child.photoURL != null, "childPic", child.photoURL);
+
+    if (data.isNotEmpty) {
+      await _databaseInstance.collection("users").doc(userUID).update(data);
+    }
+  }
+
   Future<void> updateCurrentChild(ChildModel child) async {
     final String? userUID = _authInstance.currentUser?.uid;
     final Map<String, dynamic> data = {};
