@@ -51,13 +51,20 @@ class _SectionComponent extends StatelessWidget {
                     child: Ink(
                       decoration: BoxDecoration(
                         borderRadius: metrics.borderRadius,
-                        color: colors.secondary,
+                        color: e["asset"] == null
+                            ? Color(int.parse(e["color"]))
+                            : colors.secondary,
                       ),
-                      child: Image(
-                        width: 60,
-                        height: 60,
-                        image: AssetImage(e["asset"]!),
-                      ),
+                      child: e["asset"] != null
+                          ? Image(
+                              width: 60,
+                              height: 60,
+                              image: AssetImage(e["asset"]!),
+                            )
+                          : const SizedBox(
+                              width: 60,
+                              height: 60,
+                            ),
                     ),
                   ),
                 ),
@@ -178,6 +185,76 @@ class AvatarPage extends GetView<AvatarPageController> {
     }
   ];
 
+  static final List<Map<String, dynamic>> _hairColor = [
+    {
+      "style": AvatarModelHairColor.variant01,
+      "color": "0xFF220F00",
+    },
+    {
+      "style": AvatarModelHairColor.variant02,
+      "color": "0xFF3A1A00",
+    },
+    {
+      "style": AvatarModelHairColor.variant03,
+      "color": "0xFF71472D",
+    },
+    {
+      "style": AvatarModelHairColor.variant04,
+      "color": "0xFFE2BA87",
+    },
+    {
+      "style": AvatarModelHairColor.variant05,
+      "color": "0xFF605DE4",
+    },
+    {
+      "style": AvatarModelHairColor.variant06,
+      "color": "0xFF238D80",
+    },
+    {
+      "style": AvatarModelHairColor.variant07,
+      "color": "0xFFD56C0C",
+    },
+    {
+      "style": AvatarModelHairColor.variant08,
+      "color": "0xFFE9B729",
+    },
+  ];
+
+  static final List<Map<String, dynamic>> _skinColor = [
+    {
+      "style": AvatarModelSkinColor.variant01,
+      "color": "0xFFFFE4C0",
+    },
+    {
+      "style": AvatarModelSkinColor.variant02,
+      "color": "0xFFF5D7B1",
+    },
+    {
+      "style": AvatarModelSkinColor.variant03,
+      "color": "0xFFEFCC9F",
+    },
+    {
+      "style": AvatarModelSkinColor.variant04,
+      "color": "0xFFE2BA87",
+    },
+    {
+      "style": AvatarModelSkinColor.variant05,
+      "color": "0xFFC99C62",
+    },
+    {
+      "style": AvatarModelSkinColor.variant06,
+      "color": "0xFFA47539",
+    },
+    {
+      "style": AvatarModelSkinColor.variant07,
+      "color": "0xFF8C5A2B",
+    },
+    {
+      "style": AvatarModelSkinColor.variant08,
+      "color": "0xFF643D19",
+    },
+  ];
+
   const AvatarPage({super.key});
 
   @override
@@ -233,15 +310,15 @@ class AvatarPage extends GetView<AvatarPageController> {
                     child: Column(
                       children: [
                         _SectionComponent(
-                          title: "Estilos de cabelo",
+                          title: "Estilo do cabelo",
                           data: _hairStyles,
                         ),
                         _SectionComponent(
-                          title: "Estilos de olhos",
+                          title: "Estilo dos olhos",
                           data: _eyeStyles,
                         ),
                         _SectionComponent(
-                          title: "Estilos de boca",
+                          title: "Estilo da boca",
                           data: _mouthStyles,
                         ),
                         _SectionComponent(
@@ -251,28 +328,18 @@ class AvatarPage extends GetView<AvatarPageController> {
                       ],
                     ),
                   ),
-                  Expanded(
-                    child: SingleChildScrollView(
-                      child: Column(
-                        children: [
-                          _SectionComponent(
-                            title: "Estilos de cabelo",
-                            data: _hairStyles,
-                          ),
-                          _SectionComponent(
-                            title: "Estilos de olhos",
-                            data: _eyeStyles,
-                          ),
-                          _SectionComponent(
-                            title: "Estilos de boca",
-                            data: _mouthStyles,
-                          ),
-                          _SectionComponent(
-                            title: "Acessórios",
-                            data: _accessories,
-                          ),
-                        ],
-                      ),
+                  SingleChildScrollView(
+                    child: Column(
+                      children: [
+                        _SectionComponent(
+                          title: "Cor da pele",
+                          data: _skinColor,
+                        ),
+                        _SectionComponent(
+                          title: "Cor do cabelo",
+                          data: _hairColor,
+                        ),
+                      ],
                     ),
                   ),
                 ],

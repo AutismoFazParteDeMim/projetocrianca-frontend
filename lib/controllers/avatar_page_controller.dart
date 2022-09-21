@@ -48,6 +48,10 @@ class AvatarPageController extends GetxController {
       _avatar.mouth = seed;
     } else if (seed is AvatarModelAccessories) {
       _avatar.accessories = seed;
+    } else if (seed is AvatarModelHairColor) {
+      _avatar.hairColor = seed;
+    } else if (seed is AvatarModelSkinColor) {
+      _avatar.skinColor = seed;
     }
 
     try {
