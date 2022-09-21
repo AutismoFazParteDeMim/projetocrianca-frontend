@@ -18,8 +18,9 @@ class MenuButtonComponent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final ThemeColors colors = Theme.of(context).extension<ThemeColors>()!;
-    final ThemeMetrics metrics = Theme.of(context).extension<ThemeMetrics>()!;
+    final ThemeData theme = Theme.of(context);
+    final ThemeColors colors = theme.extension<ThemeColors>()!;
+    final ThemeMetrics metrics = theme.extension<ThemeMetrics>()!;
 
     return SizedBox(
       height: 100,
@@ -56,7 +57,10 @@ class MenuButtonComponent extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(title),
+                    Text(
+                      title,
+                      style: theme.textTheme.titleMedium,
+                    ),
                     Text(text),
                   ],
                 ),
