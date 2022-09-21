@@ -27,15 +27,18 @@ class ActivitiesPage extends StatelessWidget {
                   SizedBox(height: metrics.gap),
                   MenuButtonComponent(
                     title: "Rotinas",
-                    text: "Descricao",
-                    image: const AssetImage("assets/login.png"),
+                    text:
+                        "Trabalha estabelecer a relação do numero com a quantidade e percepção visual, etc.",
+                    image: const AssetImage("assets/icons/routines-icon.png"),
                     onPressed: () => Get.toNamed(AppRoutes.routines),
                   ),
                   SizedBox(height: metrics.gap),
                   MenuButtonComponent(
-                    title: "titulo",
-                    text: "Descricao",
-                    image: const AssetImage("assets/login.png"),
+                    title: "Expressões",
+                    text:
+                        "Trabalha estabelecer a relação do numero com a quantidade e percepção visual, etc.",
+                    image:
+                        const AssetImage("assets/icons/expressions-icon.png"),
                     onPressed: () => Get.toNamed(AppRoutes.expressions),
                   ),
                 ],

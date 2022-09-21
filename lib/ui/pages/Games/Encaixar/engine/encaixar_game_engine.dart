@@ -22,6 +22,5 @@ class EncaixarGameEngine extends FlameGame
   void onRemove() {
     FlameAudio.bgm.pause();
     detach();
-    remove(this);
   }
 }
