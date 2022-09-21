@@ -11,4 +11,6 @@ abstract class AppRoutes {
   static const String localize = "/localize";
   static const String avatar = "/avatar";
   static const String encaixarGame = "/games/encaixar";
+  static const String routines = "/routines";
+  static const String expressions = "/expressions";
 }

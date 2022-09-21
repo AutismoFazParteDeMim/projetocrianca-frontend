@@ -9,12 +9,14 @@ import 'package:projeto_crianca/ui/pages/Games/Encaixar/encaixar_game_page.dart'
 import 'package:projeto_crianca/ui/pages/about_page.dart';
 import 'package:projeto_crianca/ui/pages/activities_page.dart';
 import 'package:projeto_crianca/ui/pages/avatar_page.dart';
+import 'package:projeto_crianca/ui/pages/expressions_page.dart';
 import 'package:projeto_crianca/ui/pages/games_page.dart';
 import 'package:projeto_crianca/ui/pages/home_page.dart';
 import 'package:projeto_crianca/ui/pages/localize_page.dart';
 import 'package:projeto_crianca/ui/pages/login_page.dart';
 import 'package:projeto_crianca/ui/pages/profile_page.dart';
 import 'package:projeto_crianca/ui/pages/register_page.dart';
+import 'package:projeto_crianca/ui/pages/routines_page.dart';
 import 'package:projeto_crianca/ui/pages/settings_page.dart';
 import 'package:projeto_crianca/ui/pages/welcome_page.dart';
 
@@ -65,6 +67,7 @@ abstract class AppPages {
       page: () => const AboutPage(),
     ),
     GetPage(
+<<<<<<< HEAD
       name: AppRoutes.avatar,
       page: () => const AvatarPage(),
       binding: AvatarPageBinding(),
@@ -73,6 +76,14 @@ abstract class AppPages {
       name: AppRoutes.encaixarGame,
       page: () => const EncaixarGamePage(),
       //binding: AvatarPageBinding(),
+=======
+      name: AppRoutes.routines,
+      page: () => const RoutinesPage(),
+    ),
+    GetPage(
+      name: AppRoutes.expressions,
+      page: () => const ExpressionsPage(),
+>>>>>>> brianMigration
     ),
   ];
 }
