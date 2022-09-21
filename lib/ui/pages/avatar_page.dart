@@ -1,3 +1,4 @@
+import 'package:contained_tab_bar_view/contained_tab_bar_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_layout_grid/flutter_layout_grid.dart';
 import 'package:get/get.dart';
@@ -193,49 +194,88 @@ class AvatarPage extends GetView<AvatarPageController> {
         padding: metrics.padding,
         child: Column(
           children: [
-            Expanded(
-              flex: 4,
-              child: Center(
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(140),
-                  child: ColoredBox(
-                    color: colors.secondary,
-                    child: Obx(
-                      () => SVGComponent(
-                        width: 140,
-                        height: 140,
-                        rawSvg: controller.getAvatarSvg,
-                      ),
+            Container(
+              alignment: Alignment.center,
+              margin: EdgeInsets.only(
+                bottom: metrics.toDouble(metrics.padding)!,
+              ),
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(140),
+                child: ColoredBox(
+                  color: colors.secondary,
+                  child: Obx(
+                    () => SVGComponent(
+                      width: 140,
+                      height: 140,
+                      rawSvg: controller.getAvatarSvg,
                     ),
                   ),
                 ),
               ),
             ),
             Expanded(
-              flex: 6,
-              child: SingleChildScrollView(
-                child: Center(
-                  child: Column(
-                    children: [
-                      _SectionComponent(
-                        title: "Estilos de cabelo",
-                        data: _hairStyles,
-                      ),
-                      _SectionComponent(
-                        title: "Estilos de olhos",
-                        data: _eyeStyles,
-                      ),
-                      _SectionComponent(
-                        title: "Estilos de boca",
-                        data: _mouthStyles,
-                      ),
-                      _SectionComponent(
-                        title: "Acessórios",
-                        data: _accessories,
-                      ),
-                    ],
+              child: ContainedTabBarView(
+                tabBarProperties: TabBarProperties(
+                  height: 50,
+                  indicatorColor: colors.primary,
+                  labelColor: colors.primary,
+                  unselectedLabelColor: colors.text,
+                  margin: EdgeInsets.only(
+                    bottom: metrics.toDouble(metrics.padding)!,
                   ),
                 ),
+                tabs: const [
+                  Text("Estilo"),
+                  Text("Cores"),
+                ],
+                views: [
+                  SingleChildScrollView(
+                    child: Column(
+                      children: [
+                        _SectionComponent(
+                          title: "Estilos de cabelo",
+                          data: _hairStyles,
+                        ),
+                        _SectionComponent(
+                          title: "Estilos de olhos",
+                          data: _eyeStyles,
+                        ),
+                        _SectionComponent(
+                          title: "Estilos de boca",
+                          data: _mouthStyles,
+                        ),
+                        _SectionComponent(
+                          title: "Acessórios",
+                          data: _accessories,
+                        ),
+                      ],
+                    ),
+                  ),
+                  Expanded(
+                    child: SingleChildScrollView(
+                      child: Column(
+                        children: [
+                          _SectionComponent(
+                            title: "Estilos de cabelo",
+                            data: _hairStyles,
+                          ),
+                          _SectionComponent(
+                            title: "Estilos de olhos",
+                            data: _eyeStyles,
+                          ),
+                          _SectionComponent(
+                            title: "Estilos de boca",
+                            data: _mouthStyles,
+                          ),
+                          _SectionComponent(
+                            title: "Acessórios",
+                            data: _accessories,
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ],
               ),
             ),
             SizedBox(height: metrics.gap),
