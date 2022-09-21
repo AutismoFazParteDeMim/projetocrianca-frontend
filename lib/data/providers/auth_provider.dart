@@ -1,7 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
-import 'package:projeto_crianca/data/models/child_model.dart';
 
 class AuthProvider {
   static final FirebaseAuth _instance = FirebaseAuth.instance;

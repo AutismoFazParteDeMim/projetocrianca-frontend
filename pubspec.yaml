@@ -83,6 +83,13 @@ flutter:
     - assets/avatar/smile/teethSmile.png
     # other images
     - assets/profile-cover.jpg
+    # game images - encaixar
+    - assets/images/encaixar/body.png
+    - assets/images/encaixar/engine.png
+    - assets/images/encaixar/foguete.png
+    - assets/images/encaixar/head.png
+    - assets/images/encaixar/lowerWings.png
+    - assets/images/encaixar/upperWings.png
 
   fonts:
     - family: Noto

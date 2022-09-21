@@ -94,7 +94,7 @@ class HomePage extends GetView<HomePageController> {
             SquareButtonComponent(
               text: "Jogos",
               image: const AssetImage("assets/icons/games-icon.png"),
-              onPressed: () => Get.toNamed(AppRoutes.games),
+              onPressed: () => Get.toNamed(AppRoutes.encaixarGame),
             ),
             SquareButtonComponent(
               text: "Localizar",

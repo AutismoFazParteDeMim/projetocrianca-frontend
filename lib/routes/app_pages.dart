@@ -5,6 +5,7 @@ import 'package:projeto_crianca/bindings/login_page_binding.dart';
 import 'package:projeto_crianca/bindings/profile_page_binding.dart';
 import 'package:projeto_crianca/bindings/register_page_binding.dart';
 import 'package:projeto_crianca/routes/app_routes.dart';
+import 'package:projeto_crianca/ui/pages/Games/Encaixar/encaixar_game_page.dart';
 import 'package:projeto_crianca/ui/pages/about_page.dart';
 import 'package:projeto_crianca/ui/pages/activities_page.dart';
 import 'package:projeto_crianca/ui/pages/avatar_page.dart';
@@ -67,6 +68,11 @@ abstract class AppPages {
       name: AppRoutes.avatar,
       page: () => const AvatarPage(),
       binding: AvatarPageBinding(),
+    ),
+    GetPage(
+      name: AppRoutes.encaixarGame,
+      page: () => const EncaixarGamePage(),
+      //binding: AvatarPageBinding(),
     ),
   ];
 }

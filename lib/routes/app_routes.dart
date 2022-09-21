@@ -10,4 +10,5 @@ abstract class AppRoutes {
   static const String about = "/about";
   static const String localize = "/localize";
   static const String avatar = "/avatar";
+  static const String encaixarGame = "/games/encaixar";
 }
