@@ -17,31 +17,35 @@ class GamesPage extends StatelessWidget {
         title: "Games",
       ),
       body: SingleChildScrollView(
-          child: Padding(
-              padding: metrics.padding,
-              child: Column(
+        child: Padding(
+          padding: metrics.padding,
+          child: Column(
+            children: [
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      SizedBox(height: metrics.gap),
-                      MenuButtonComponent(
-                        title: "titulo",
-                        text: "Descricao",
-                        image: const AssetImage("assets/login.png"),
-                        onPressed: () => Get.toNamed(AppRoutes.home), //TEMP
-                      ),
-                      SizedBox(height: metrics.gap),
-                      MenuButtonComponent(
-                        title: "titulo",
-                        text: "Descricao",
-                        image: const AssetImage("assets/login.png"),
-                        onPressed: () => Get.toNamed(AppRoutes.home), //TEMP
-                      ),
-                    ],
+                  SizedBox(height: metrics.gap),
+                  MenuButtonComponent(
+                    title: "Quebra Cabeça",
+                    text: "Descricao",
+                    image: const AssetImage("assets/login.png"),
+                    onPressed: () => {}, //TEMP
+                  ),
+                  SizedBox(height: metrics.gap),
+                  MenuButtonComponent(
+                    title: "Encaixar",
+                    text: "Descricao",
+                    image: const AssetImage("assets/login.png"),
+                    onPressed: () => Get.toNamed(
+                      AppRoutes.encaixarGame,
+                    ), //TEMP
                   ),
                 ],
-              ))),
+              ),
+            ],
+          ),
+        ),
+      ),
     );
   }
 }

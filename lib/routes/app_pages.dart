@@ -67,7 +67,6 @@ abstract class AppPages {
       page: () => const AboutPage(),
     ),
     GetPage(
-<<<<<<< HEAD
       name: AppRoutes.avatar,
       page: () => const AvatarPage(),
       binding: AvatarPageBinding(),
@@ -76,14 +75,14 @@ abstract class AppPages {
       name: AppRoutes.encaixarGame,
       page: () => const EncaixarGamePage(),
       //binding: AvatarPageBinding(),
-=======
+    ),
+    GetPage(
       name: AppRoutes.routines,
       page: () => const RoutinesPage(),
     ),
     GetPage(
       name: AppRoutes.expressions,
       page: () => const ExpressionsPage(),
->>>>>>> brianMigration
     ),
   ];
 }

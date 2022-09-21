@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:ionicons/ionicons.dart';
 import 'package:projeto_crianca/routes/app_routes.dart';
-import 'package:projeto_crianca/ui/components/Buttons/button_component.dart';
 import 'package:projeto_crianca/ui/components/Buttons/menu_button_component.dart';
 import 'package:projeto_crianca/ui/components/appbar_component.dart';
 import 'package:projeto_crianca/ui/theme/theme_extensions.dart';
@@ -19,32 +17,33 @@ class ActivitiesPage extends StatelessWidget {
         title: "Atividades",
       ),
       body: SingleChildScrollView(
-          child: Padding(
-              padding: metrics.padding,
-              child: Column(
+        child: Padding(
+          padding: metrics.padding,
+          child: Column(
+            children: [
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      SizedBox(height: metrics.gap),
-                      MenuButtonComponent(
-                        title: "Rotinas",
-                        text: "Descricao",
-                        image: const AssetImage("assets/login.png"),
-                        onPressed: () => Get.toNamed(AppRoutes.routines), //TEMP
-                      ),
-                      SizedBox(height: metrics.gap),
-                      MenuButtonComponent(
-                        title: "titulo",
-                        text: "Descricao",
-                        image: const AssetImage("assets/login.png"),
-                        onPressed: () =>
-                            Get.toNamed(AppRoutes.expressions), //TEMP
-                      ),
-                    ],
+                  SizedBox(height: metrics.gap),
+                  MenuButtonComponent(
+                    title: "Rotinas",
+                    text: "Descricao",
+                    image: const AssetImage("assets/login.png"),
+                    onPressed: () => Get.toNamed(AppRoutes.routines),
+                  ),
+                  SizedBox(height: metrics.gap),
+                  MenuButtonComponent(
+                    title: "titulo",
+                    text: "Descricao",
+                    image: const AssetImage("assets/login.png"),
+                    onPressed: () => Get.toNamed(AppRoutes.expressions),
                   ),
                 ],
-              ))),
+              ),
+            ],
+          ),
+        ),
+      ),
     );
   }
 }

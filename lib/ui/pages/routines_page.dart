@@ -1,7 +1,6 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:projeto_crianca/ui/components/appbar_component.dart';
-import 'package:projeto_crianca/ui/theme/theme_extensions.dart';
 
 class _SliderChild extends StatelessWidget {
   final String title;
@@ -16,23 +15,30 @@ class _SliderChild extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-        child: Center(
-            child: Column(
+    return Column(
       crossAxisAlignment: CrossAxisAlignment.center,
-      children: [Image(image: AssetImage(image)), Text(title), Text(text)],
-    )));
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Image(image: AssetImage(image)),
+        Text(title),
+        Text(text),
+      ],
+    );
   }
 }
 
-class RoutinesPage extends StatelessWidget {
+class RoutinesPage extends StatefulWidget {
   const RoutinesPage({super.key});
 
   @override
+  State<StatefulWidget> createState() => _RoutinesPageState();
+}
+
+class _RoutinesPageState extends State<RoutinesPage> {
+  int _currentIndex = 0;
+
+  @override
   Widget build(BuildContext context) {
-    int _current = 0;
-    final ThemeMetrics metrics = Theme.of(context).extension<ThemeMetrics>()!;
-    final ThemeColors colors = Theme.of(context).extension<ThemeColors>()!;
     const List<Map> data = [
       {
         "title": "Acordar",
@@ -100,11 +106,13 @@ class RoutinesPage extends StatelessWidget {
             height: MediaQuery.of(context).size.height,
             enlargeCenterPage: true,
             viewportFraction: 0.9,
-            onPageChanged: (index, reason) {
-              _current = index;
-            },
             enableInfiniteScroll: false,
             initialPage: 0,
+            onPageChanged: (index, reason) => setState(
+              () {
+                _currentIndex = index;
+              },
+            ),
           ),
           items: data
               .map((e) => _SliderChild(
