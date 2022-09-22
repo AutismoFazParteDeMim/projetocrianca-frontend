@@ -32,7 +32,11 @@ class AboutPageController extends GetxController {
   @override
   Future<void> onReady() async {
     super.onReady();
-    final contributors = await repository.getContributors();
-    _contributors.value = contributors;
+    try {
+      final contributors = await repository.getContributors();
+      _contributors.value = contributors;
+    } catch (e) {
+      _showAlertModal(e.toString(), AlertModalComponentType.warning);
+    }
   }
 }

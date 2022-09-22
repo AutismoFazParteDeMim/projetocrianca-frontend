@@ -15,7 +15,6 @@ class GitHubButtonComponent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final ThemeMetrics metrics = Theme.of(context).extension<ThemeMetrics>()!;
-    final ThemeColors colors = Theme.of(context).extension<ThemeColors>()!;
 
     return Container(
       height: 56,

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:projeto_crianca/controllers/about_page_controller.dart';
-import 'package:projeto_crianca/ui/components/Buttons/button_component.dart';
 import 'package:projeto_crianca/ui/components/Buttons/github_button_component.dart';
 import 'package:projeto_crianca/ui/components/appbar_component.dart';
 import 'package:projeto_crianca/ui/theme/theme_extensions.dart';
