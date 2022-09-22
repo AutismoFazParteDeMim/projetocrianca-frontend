@@ -61,7 +61,11 @@ class MenuButtonComponent extends StatelessWidget {
                       title,
                       style: theme.textTheme.titleMedium,
                     ),
-                    Text(text),
+                    Text(
+                      text,
+                      overflow: TextOverflow.ellipsis,
+                      maxLines: 2,
+                    ),
                   ],
                 ),
               ),

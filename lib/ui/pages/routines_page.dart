@@ -1,6 +1,9 @@
+import 'dart:developer';
+
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:projeto_crianca/ui/components/appbar_component.dart';
+import 'package:projeto_crianca/ui/theme/theme_extensions.dart';
 
 class _SliderChild extends StatelessWidget {
   final String title;
@@ -15,13 +18,20 @@ class _SliderChild extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final ThemeData theme = Theme.of(context);
     return Column(
       crossAxisAlignment: CrossAxisAlignment.center,
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Image(image: AssetImage(image)),
-        Text(title),
-        Text(text),
+        Text(
+          title,
+          style: theme.textTheme.titleMedium,
+        ),
+        Text(
+          text,
+          textAlign: TextAlign.center,
+        ),
       ],
     );
   }
@@ -36,88 +46,113 @@ class RoutinesPage extends StatefulWidget {
 
 class _RoutinesPageState extends State<RoutinesPage> {
   int _currentIndex = 0;
+  final CarouselController _controller = CarouselController();
 
   @override
   Widget build(BuildContext context) {
+    final ThemeColors colors = Theme.of(context).extension<ThemeColors>()!;
+
     const List<Map> data = [
       {
         "title": "Acordar",
         "text": "Está na hora de acordar e ter um excelente dia!",
-        "image": "assets/login.png"
+        "image": "assets/images/routines/1Acordar.png"
       },
       {
-        "key": 2,
         "title": "Escovar os Dentes",
         "text": "Hora de escovar os dentes e manter sua boca saudável.",
-        "image": "assets/login.png"
+        "image": "assets/images/routines/2EscovarOsDentes.png"
       },
       {
-        "key": 3,
         "title": "Tomar Banho",
         "text": "Hora de tomar banho e se manter limpinho.",
-        "image": "assets/login.png"
+        "image": "assets/images/routines/3TomarBanho.png"
       },
       {
-        "key": 4,
         "title": "Café da Manhã",
         "text":
             "Hora de fazer uma refeição saudável e se manter bem alimentado.",
-        "image": "assets/login.png"
+        "image": "assets/images/routines/4CafeDaManha.png"
       },
       {
-        "key": 5,
         "title": "Usar o Banheiro",
         "text": "Fazer suas necessidades, não esqueça de lavar as mãos",
-        "image": "assets/login.png"
+        "image": "assets/images/routines/5UsarBanheiro.png"
       },
       {
-        "key": 6,
         "title": "Ir para escola",
         "text":
             "Hora de se arrumar e ir para escola aprender novas coisas e encontrar os amigos",
-        "image": "assets/login.png"
+        "image": "assets/images/routines/6IrParaEscola.png"
       },
       {
-        "key": 7,
         "title": "Estudar",
         "text": "Hora de fazer o dever de casa",
-        "image": "assets/login.png"
+        "image": "assets/images/routines/7Estudar.png"
       },
       {
-        "key": 8,
         "title": "Praticar Esportes",
         "text": "Hora de brincar, gastar suas energias e se divertir",
-        "image": "assets/login.png"
+        "image": "assets/images/routines/8PraticarEsportes.png"
       },
       {
-        "key": 9,
         "title": "Ir Dormir",
         "text": "Hora de dormir, ter uma boa noite de sono para o próximo dia",
-        "image": "assets/login.png"
+        "image": "assets/images/routines/9Dormir.png"
       },
     ];
 
     return Scaffold(
-        appBar: AppBarComponent(
-          title: "Rotinas",
-        ),
-        body: CarouselSlider(
-          options: CarouselOptions(
-            height: MediaQuery.of(context).size.height,
-            enlargeCenterPage: true,
-            viewportFraction: 0.9,
-            enableInfiniteScroll: false,
-            initialPage: 0,
-            onPageChanged: (index, reason) => setState(
-              () {
-                _currentIndex = index;
-              },
+      appBar: AppBarComponent(
+        title: "Rotinas",
+      ),
+      body: Column(
+        children: [
+          Expanded(
+              child: CarouselSlider(
+            carouselController: _controller,
+            options: CarouselOptions(
+              height: MediaQuery.of(context).size.height,
+              enlargeCenterPage: true,
+              viewportFraction: 0.9,
+              enableInfiniteScroll: false,
+              initialPage: 0,
+              onPageChanged: (index, reason) => setState(
+                () {
+                  _currentIndex = index;
+                  log(_currentIndex.toString());
+                },
+              ),
             ),
+            items: data
+                .map((e) => _SliderChild(
+                    title: e["title"], text: e["text"], image: e["image"]))
+                .toList(),
+          )),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: data.asMap().entries.map(
+              (entry) {
+                return GestureDetector(
+                  onTap: () => _controller.animateToPage(entry.key),
+                  child: Container(
+                    width: 12.0,
+                    height: 12.0,
+                    margin:
+                        const EdgeInsets.only(top: 16, right: 10, bottom: 16),
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      color: _currentIndex == entry.key
+                          ? colors.primary
+                          : colors.secondary,
+                    ),
+                  ),
+                );
+              },
+            ).toList(),
           ),
-          items: data
-              .map((e) => _SliderChild(
-                  title: e["title"], text: e["text"], image: e["image"]))
-              .toList(),
-        ));
+        ],
+      ),
+    );
   }
 }

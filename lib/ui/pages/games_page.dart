@@ -28,14 +28,15 @@ class GamesPage extends StatelessWidget {
                   MenuButtonComponent(
                     title: "Quebra Cabeça",
                     text: "Descricao",
-                    image: const AssetImage("assets/login.png"),
+                    image:
+                        const AssetImage("assets/icons/quebraCabecaIcon.png"),
                     onPressed: () => {}, //TEMP
                   ),
                   SizedBox(height: metrics.gap),
                   MenuButtonComponent(
                     title: "Encaixar",
                     text: "Descricao",
-                    image: const AssetImage("assets/login.png"),
+                    image: const AssetImage("assets/icons/encaixarIcon.png"),
                     onPressed: () => Get.toNamed(
                       AppRoutes.encaixarGame,
                     ), //TEMP
