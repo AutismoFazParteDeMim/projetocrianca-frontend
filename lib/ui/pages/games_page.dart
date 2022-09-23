@@ -27,7 +27,8 @@ class GamesPage extends StatelessWidget {
                   SizedBox(height: metrics.gap),
                   MenuButtonComponent(
                     title: "Quebra Cabeça",
-                    text: "Descricao",
+                    text:
+                        "Quebra-cabeça é um jogo onde um jogador deve resolver um problema proposto.",
                     image:
                         const AssetImage("assets/icons/quebraCabecaIcon.png"),
                     onPressed: () => {}, //TEMP
@@ -35,7 +36,8 @@ class GamesPage extends StatelessWidget {
                   SizedBox(height: metrics.gap),
                   MenuButtonComponent(
                     title: "Encaixar",
-                    text: "Descricao",
+                    text:
+                        "Encaixar é um jogo onde tem varias partes de uma figura e o jogador deve acertar onde vai cada parte.",
                     image: const AssetImage("assets/icons/encaixarIcon.png"),
                     onPressed: () => Get.toNamed(
                       AppRoutes.encaixarGame,
