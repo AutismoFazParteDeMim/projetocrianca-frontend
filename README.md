@@ -1,11 +1,9 @@
-:construction: Projeto em desenvolvimento  :construction:
+<div align="center">:construction: Projeto em desenvolvimento :construction:</div>
 <h2 align="center">
   Projeto Crianca
   <p><img src="assets/adaptive-icon.png" width="300" heigth="auto"></p>
   Ajudando pais e filhos com a comunicação e aprendizado
 </h2>
-
-
 
 <p>
   <img src="https://img.shields.io/badge/NodeJs-v16.15-yellowgreen">
@@ -21,6 +19,7 @@ O projeto foi pensado para rodar nas mais diversas plataformas e sistemas operac
 ## 🧰 》Tecnologias usadas
 Para desenvolver o projeto, nossa equipe decidiu usar um kit básico de ferramentas para o desenvolvimento mobile, pensando em atender os dois sistemas mais utilizados no mundo hoje (Android e IOS). 
 - Flutter 
+- Flame
 - Dart 
 - Getx 
 - Firebase
@@ -30,7 +29,6 @@ Para desenvolver o projeto, nossa equipe decidiu usar um kit básico de ferramen
 Abaixo temos uma lista dos atuais parceiros do projeto. 
 - Unisociesc
 - O Farol
-
 
 ## 📷 》Imagens do projeto
 ### Login e Cadastro
