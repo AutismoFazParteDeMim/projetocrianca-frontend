@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>654760512004-o63pc4al417fdf0jc62olltdr71g6bog.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.654760512004-o63pc4al417fdf0jc62olltdr71g6bog</string>
+	<key>API_KEY</key>
+	<string>AIzaSyBgSHdyNl0qvatFdfjY5uEpCGIaLv1tZ28</string>
+	<key>GCM_SENDER_ID</key>
+	<string>654760512004</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>br.com.unisociesc.projetoCrianca</string>
+	<key>PROJECT_ID</key>
+	<string>projetocrianca-ae4a3</string>
+	<key>STORAGE_BUCKET</key>
+	<string>projetocrianca-ae4a3.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:654760512004:ios:75381bb5b054b942568351</string>
+	<key>DATABASE_URL</key>
+	<string>https://projetocrianca-ae4a3-default-rtdb.firebaseio.com</string>
+</dict>
+</plist>
