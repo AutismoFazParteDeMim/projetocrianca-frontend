@@ -75,7 +75,7 @@ abstract class AppPages {
     ),
     GetPage(
       name: AppRoutes.encaixarGame,
-      page: () => const EncaixarGamePage(),
+      page: () => EncaixarGamePage(),
       //binding: AvatarPageBinding(),
     ),
     GetPage(

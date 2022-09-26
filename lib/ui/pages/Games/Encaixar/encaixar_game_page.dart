@@ -3,10 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:projeto_crianca/ui/components/appbar_component.dart';
 import 'package:projeto_crianca/ui/pages/Games/Encaixar/engine/encaixar_game_engine.dart';
 
-final EncaixarGameEngine _gameInstance = EncaixarGameEngine();
+final EncaixarGameEngine gameInstance = EncaixarGameEngine();
 
 class EncaixarGamePage extends StatelessWidget {
-  const EncaixarGamePage({super.key});
+  EncaixarGamePage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +17,7 @@ class EncaixarGamePage extends StatelessWidget {
         invertedColor: true,
       ),
       extendBodyBehindAppBar: true,
-      body: GameWidget<EncaixarGameEngine>(game: _gameInstance),
+      body: GameWidget<EncaixarGameEngine>(game: gameInstance),
     );
   }
 }

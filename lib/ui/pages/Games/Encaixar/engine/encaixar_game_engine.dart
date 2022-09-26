@@ -6,11 +6,15 @@ import 'package:flame_audio/flame_audio.dart';
 class EncaixarGameEngine extends FlameGame
     with SingleGameInstance, HasCollisionDetection, HasDraggableComponents {
   @override
+  void onMount() {
+    super.onMount();
+    FlameAudio.bgm.initialize();
+    FlameAudio.bgm.play("encaixar/background.mp3");
+  }
+
+  @override
   Future<void> onLoad() async {
     await super.onLoad();
-    FlameAudio.bgm.initialize();
-
-    FlameAudio.bgm.play("encaixar/background.mp3");
 
     addAll([
       EncaixarGameEngineContainer()..size = Vector2(size.x, size.y),
@@ -20,6 +24,5 @@ class EncaixarGameEngine extends FlameGame
   @override
   void onRemove() {
     FlameAudio.bgm.pause();
-    detach();
   }
 }

@@ -61,7 +61,6 @@ flutter:
     - assets/icons/quebraCabecaIcon.png
     - assets/icons/routines-icon.png
     - assets/icons/expressions-icon.png
-
       # avatar icons - eyes
     - assets/avatar/eye/cheeryEyes.png
     - assets/avatar/eye/confusedEyes.png
@@ -121,27 +120,8 @@ flutter:
     - assets/images/expressions/7Triste.png
     - assets/images/expressions/8Raiva.png
     - assets/images/expressions/9Surpreso.png
-  fonts:
-    - family: Noto
-      fonts:
-        - asset: assets/fonts/NotoSans-Black.ttf
-        - asset: assets/fonts/NotoSans-BlackItalic.ttf
-        - asset: assets/fonts/NotoSans-Bold.ttf
-        - asset: assets/fonts/NotoSans-BoldItalic.ttf
-        - asset: assets/fonts/NotoSans-ExtraBold.ttf
-        - asset: assets/fonts/NotoSans-ExtraBoldItalic.ttf
-        - asset: assets/fonts/NotoSans-ExtraLight.ttf
-        - asset: assets/fonts/NotoSans-ExtraLightItalic.ttf
-        - asset: assets/fonts/NotoSans-Italic.ttf
-        - asset: assets/fonts/NotoSans-Light.ttf
-        - asset: assets/fonts/NotoSans-LightItalic.ttf
-        - asset: assets/fonts/NotoSans-Medium.ttf
-        - asset: assets/fonts/NotoSans-MediumItalic.ttf
-        - asset: assets/fonts/NotoSans-Regular.ttf
-        - asset: assets/fonts/NotoSans-SemiBold.ttf
-        - asset: assets/fonts/NotoSans-SemiBoldItalic.ttf
-        - asset: assets/fonts/NotoSans-Thin.ttf
-        - asset: assets/fonts/NotoSans-ThinItalic.ttf
+    # google fonts
+    - assets/google_fonts/
 
 flutter_icons:
   android: "launcher_icon"

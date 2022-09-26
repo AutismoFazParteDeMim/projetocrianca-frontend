@@ -47,10 +47,11 @@ class ProfilePage extends GetView<ProfilePageController> {
             height: 280,
             child: Stack(
               children: [
-                const Image(
-                  height: 240,
+                Image(
                   fit: BoxFit.cover,
-                  image: AssetImage(
+                  width: MediaQuery.of(context).size.width,
+                  height: 240,
+                  image: const AssetImage(
                     "assets/profile-cover.jpg",
                   ),
                 ),
@@ -61,17 +62,17 @@ class ProfilePage extends GetView<ProfilePageController> {
                     crossAxisAlignment: CrossAxisAlignment.end,
                     children: [
                       ClipRRect(
-                        borderRadius: BorderRadius.circular(60),
+                        borderRadius: BorderRadius.circular(80),
                         child: ColoredBox(
                           color: colors.secondary,
                           child: InkWell(
                             onTap: () => Get.toNamed(AppRoutes.avatar),
-                            borderRadius: BorderRadius.circular(60),
+                            borderRadius: BorderRadius.circular(80),
                             child: Obx(
                               () => SVGComponent(
                                 width: 80,
                                 height: 80,
-                                rawSvg: controller.getCurrentChild?.photoURL,
+                                rawSvg: controller.getCurrentChild!.photoURL!,
                               ),
                             ),
                           ),

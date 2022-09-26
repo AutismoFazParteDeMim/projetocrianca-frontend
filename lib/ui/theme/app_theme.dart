@@ -48,7 +48,7 @@ class AppTheme {
   AppTheme({required this.isDark});
 
   late final _theme = ThemeData(
-    useMaterial3: false,
+    useMaterial3: true,
     extensions: <ThemeExtension<dynamic>>[
       ThemeMetrics(
         padding: const EdgeInsets.all(16),
@@ -76,7 +76,7 @@ class AppTheme {
       primaryColor: colors.primary,
       scaffoldBackgroundColor: colors.background,
       dialogBackgroundColor: colors.background,
-      textTheme: GoogleFonts.poppinsTextTheme(ThemeData.dark().textTheme)
+      textTheme: GoogleFonts.poppinsTextTheme(_theme.textTheme)
           .copyWith(
             headlineLarge: const TextStyle(fontWeight: FontWeight.w700),
             headlineMedium: const TextStyle(fontWeight: FontWeight.w700),
