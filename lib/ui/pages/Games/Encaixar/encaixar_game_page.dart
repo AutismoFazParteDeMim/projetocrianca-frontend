@@ -6,7 +6,7 @@ import 'package:projeto_crianca/ui/pages/Games/Encaixar/engine/encaixar_game_eng
 final EncaixarGameEngine gameInstance = EncaixarGameEngine();
 
 class EncaixarGamePage extends StatelessWidget {
-  EncaixarGamePage({super.key});
+  const EncaixarGamePage({super.key});
 
   @override
   Widget build(BuildContext context) {
