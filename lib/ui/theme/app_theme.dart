@@ -48,7 +48,7 @@ class AppTheme {
   AppTheme({required this.isDark});
 
   late final _theme = ThemeData(
-    useMaterial3: true,
+    useMaterial3: false,
     extensions: <ThemeExtension<dynamic>>[
       ThemeMetrics(
         padding: const EdgeInsets.all(16),
