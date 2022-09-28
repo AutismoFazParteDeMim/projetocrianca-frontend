@@ -28,7 +28,7 @@ class ActivitiesPage extends StatelessWidget {
                   MenuButtonComponent(
                     title: "Rotinas",
                     text:
-                        "Trabalha estabelecer a relação do numero com a quantidade e percepção visual, etc.",
+                        "Trabalha antecipação dos acontecimentos no seu dia-a-dia faz com que criança se sinta segura, auxiliam na independência das crianças.",
                     image: const AssetImage("assets/icons/routines-icon.png"),
                     onPressed: () => Get.toNamed(AppRoutes.routines),
                   ),
@@ -36,7 +36,7 @@ class ActivitiesPage extends StatelessWidget {
                   MenuButtonComponent(
                     title: "Expressões",
                     text:
-                        "Trabalha estabelecer a relação do numero com a quantidade e percepção visual, etc.",
+                        "Trabalha com apoio visual, contribui para uma melhor interação social com amigos e família.",
                     image:
                         const AssetImage("assets/icons/expressions-icon.png"),
                     onPressed: () => Get.toNamed(AppRoutes.expressions),

@@ -136,7 +136,7 @@ Abaixo temos uma lista dos atuais parceiros do projeto.
   <img src="assets/prints/dormirDark.jpeg" width="250" heigth="auto">
 </p>
 
-# 📈 》Continuous Deployment com Netlify
-[![Netlify Status](https://api.netlify.com/api/v1/badges/33859f43-c489-46e4-8e3a-cb641b59f6d8/deploy-status)](https://app.netlify.com/sites/projetocrianca/deploys)
-<p>https://projetocrianca.netlify.app/</p>
+# 📈 》Continuous Deployment com CodeMagic
+[![Codemagic build status](https://api.codemagic.io/apps/6334c3660c4aebed1c4c18d2/6334c3660c4aebed1c4c18d1/status_badge.svg)](https://codemagic.io/apps/6334c3660c4aebed1c4c18d2/6334c3660c4aebed1c4c18d1/latest_build)
+<p><a href="https://projetocrianca.codemagic.app">https://projetocrianca.codemagic.app</a></p>
 

@@ -45,7 +45,7 @@ class ExpressionsPage extends StatelessWidget {
       },
       {
         "key": '6',
-        "title": "Nâo estou feliz",
+        "title": "Não estou feliz",
         "text":
             'Não estou feliz, me mandaram dormir cedo hoje e não quero dormir agora, agora eu quero brincar!',
         "image": "assets/images/expressions/6Infeliz.png"
