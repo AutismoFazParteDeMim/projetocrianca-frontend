@@ -57,7 +57,7 @@ abstract class AppPages {
     ),
     GetPage(
       name: AppRoutes.localize,
-      page: () => const LocalizePage(),
+      page: () => LocalizePage(),
     ),
     GetPage(
       name: AppRoutes.settings,

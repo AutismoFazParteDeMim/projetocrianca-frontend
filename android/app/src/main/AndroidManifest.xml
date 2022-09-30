@@ -25,4 +25,11 @@
     </application>
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.VIBRATE"/>
+    <!-- location -->
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" /> 
+    <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION"/> 
+    <!-- google-maps -->
+    <meta-data android:name="com.google.android.geo.API_KEY"
+               android:value="AIzaSyAdZPkx8S1BrdPrs1SHnxqQ56_VddgYGO4"/>
+
 </manifest>
