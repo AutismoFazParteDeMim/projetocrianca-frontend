@@ -8,10 +8,11 @@ class LocalizePageControler extends GetxController {
   LatLng _position = LatLng(-26.294627, -48.848147); // coordenadas do Farol(ONG)
   late GoogleMapController _googleMapsController;
 
-  get position => _position;
-  get mapsController => _googleMapsController;
-
   static LocalizePageControler get to => Get.find<LocalizePageControler>();
+
+  get position => _position;
+  get googleMapsController => _googleMapsController;
+
   Future<Position> _currentPosition() async {
     LocationPermission permission;
     bool enable = await Geolocator.isLocationServiceEnabled();

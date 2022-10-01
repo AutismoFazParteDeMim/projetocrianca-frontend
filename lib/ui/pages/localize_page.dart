@@ -7,6 +7,7 @@ import 'package:ionicons/ionicons.dart';
 import 'package:projeto_crianca/controllers/localize_page_controler.dart';
 import 'package:projeto_crianca/ui/components/Inputs/text_input_component.dart';
 import 'package:projeto_crianca/ui/theme/theme_extensions.dart';
+
 class _CustomAppBar extends StatelessWidget with PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
@@ -23,9 +24,11 @@ class _CustomAppBar extends StatelessWidget with PreferredSizeWidget {
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: const [
-          TextInputComponent(
-            placeholder: "Pesquisa...",
-            icon: Icons.search,
+          Flexible(
+            child: TextInputComponent(
+              placeholder: "Pesquisa...",
+              icon: Icons.search,
+            ),
           ),
         ],
       ),
@@ -36,27 +39,28 @@ class _CustomAppBar extends StatelessWidget with PreferredSizeWidget {
   Size get preferredSize => const Size.fromHeight(100);
 }
 
-class LocalizePage extends StatelessWidget {
+class LocalizePage extends GetView<LocalizePageControler> {
   LocalizePage({super.key});
-  final controller = Get.put(LocalizePageControler());
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: _CustomAppBar(),
       extendBodyBehindAppBar: true,
+
       body: GetBuilder<LocalizePageControler>(
+        init: controller,
         builder: (value) => GoogleMap(
           onMapCreated: controller.mapInit,
           initialCameraPosition: CameraPosition(
             target: controller.position,
             zoom: 13,
           ),
-          mapType: MapType.none,
+          mapType: MapType.normal,
           zoomControlsEnabled: true,
           myLocationEnabled: true,
-        ) ,
         ),
+      ),
     );
   }
 }
