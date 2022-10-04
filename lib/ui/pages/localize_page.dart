@@ -49,16 +49,54 @@ class _CustomAppBar extends StatelessWidget with PreferredSizeWidget {
 
 class CustomModalBottomSheet extends StatelessWidget {
   final LocalizePageController controller = Get.find<LocalizePageController>();
+
   @override
   Widget build(BuildContext context) {
+    final ThemeMetrics metrics = Theme.of(context).extension<ThemeMetrics>()!;
     if (controller.getProfessional != null) {
       return Obx(
         () => Container(
+          padding: metrics.padding,
+          height: 300,
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.start,
             children: [
               Text(controller.getProfessional!.nome!),
-              // Text(controller.getProfessional.data) // descricao da modal
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  Row(
+                    children: const [
+                      Icon(Ionicons.calendar_outline),
+                      SizedBox(width: 10),
+                      Text("seg - sex"),
+                    ],
+                  ),
+                  Row(
+                    children: const [
+                      Icon(Ionicons.time_outline),
+                      SizedBox(width: 10),
+                      Text("9:00 as 12:00 - 13:00 as 17:30"),
+                    ],
+                  ),
+                  SizedBox(height: 16),
+                  Text(
+                      "Lorem ipsum magna fusce vitae torquent gravida etiam sem tortor velit, mattis leo"),
+                  SizedBox(height: 16),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.end,
+                    children: const [
+                      SizedBox(
+                        height: 16,
+                      ),
+                      Image(image: AssetImage("assets/icons/local-icon.png")),
+                      SizedBox(height: 16),
+                    ],
+                  )
+                  // Text(controller.getProfessional.data) // descricao da modal
+                ],
+              ),
             ],
           ),
         ),
@@ -74,6 +112,7 @@ class LocalizePage extends GetView<LocalizePageController> {
   @override
   Widget build(BuildContext context) {
     controller.setShowPinModal = () => showMaterialModalBottomSheet(
+          expand: false,
           context: context,
           builder: (BuildContext context) => CustomModalBottomSheet(),
         );
