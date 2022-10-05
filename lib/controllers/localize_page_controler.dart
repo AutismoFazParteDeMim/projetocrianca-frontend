@@ -81,7 +81,7 @@ class LocalizePageController extends GetxController {
           log(element!.latitude.toString());
           _markers.add(
             Marker(
-              markerId: MarkerId(element!.profissionalId!.toString()),
+              markerId: MarkerId(element.profissionalId!.toString()),
               position: LatLng(element.latitude!, element.longitude!),
               onTap: () {
                 _profissional.value = element;
@@ -89,7 +89,7 @@ class LocalizePageController extends GetxController {
                 } ,
               // icon: await BitmapDescriptor.fromAssetImage(
               // ImageConfiguration(),
-              // "asset/path_do_icon"
+              // "assets/map_styles/pin_map.png")
             ),
             
           );
