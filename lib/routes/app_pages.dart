@@ -2,6 +2,7 @@ import 'package:get/get.dart';
 import 'package:projeto_crianca/bindings/about_page_binding.dart';
 import 'package:projeto_crianca/bindings/avatar_page_binding.dart';
 import 'package:projeto_crianca/bindings/home_page_binding.dart';
+import 'package:projeto_crianca/bindings/localize_page_binding.dart';
 import 'package:projeto_crianca/bindings/login_page_binding.dart';
 import 'package:projeto_crianca/bindings/profile_page_binding.dart';
 import 'package:projeto_crianca/bindings/register_page_binding.dart';
@@ -58,7 +59,8 @@ abstract class AppPages {
     ),
     GetPage(
       name: AppRoutes.localize,
-      page: () => const LocalizePage(),
+      page: () => LocalizePage(),
+      binding: LocalizePageBinding(),
     ),
     GetPage(
       name: AppRoutes.settings,

@@ -36,6 +36,11 @@ dependencies:
   vibration: ^1.7.6
   contained_tab_bar_view: ^0.8.0
   flame_svg: ^1.5.0
+  google_maps_flutter: ^2.2.1
+  location: ^4.4.0
+  geolocator: ^9.0.2
+  modal_bottom_sheet: ^2.1.2
+  flutter_config: ^2.0.0
 
 dev_dependencies:
   flutter_test:
@@ -120,6 +125,11 @@ flutter:
     - assets/images/memoryGame/
     # google fonts
     - assets/google_fonts/
+    # maps-styles
+    - assets/map_styles/normal.json
+    - assets/map_styles/pin_map.png
+    # .env
+    - .env
 
 flutter_icons:
   android: "launcher_icon"

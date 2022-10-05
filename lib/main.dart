@@ -1,5 +1,8 @@
+import 'dart:io';
+
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_config/flutter_config.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:projeto_crianca/controllers/auth_controller.dart';
@@ -10,10 +13,12 @@ import 'package:projeto_crianca/routes/app_routes.dart';
 import 'package:projeto_crianca/routes/app_pages.dart';
 import 'package:projeto_crianca/ui/theme/app_theme.dart';
 
+
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   GoogleFonts.config.allowRuntimeFetching = false;
-  
+  WidgetsFlutterBinding.ensureInitialized(); // Required by FlutterConfig
+  await FlutterConfig.loadEnvVariables();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform)
       .then(
     (value) => Get.put(
