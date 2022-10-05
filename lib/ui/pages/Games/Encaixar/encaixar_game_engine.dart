@@ -1,10 +1,10 @@
 import 'package:flame/experimental.dart';
 import 'package:flame/game.dart';
-import 'package:projeto_crianca/ui/pages/Games/Encaixar/engine/encaixar_game_engine_container.dart';
+import 'package:projeto_crianca/ui/pages/Games/Encaixar/encaixar_game_engine_container.dart';
 import 'package:flame_audio/flame_audio.dart';
 
 class EncaixarGameEngine extends FlameGame
-    with SingleGameInstance, HasCollisionDetection, HasDraggableComponents {
+    with HasCollisionDetection, HasDraggableComponents {
   @override
   void onMount() {
     super.onMount();

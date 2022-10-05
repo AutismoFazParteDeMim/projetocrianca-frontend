@@ -31,7 +31,7 @@ class GamesPage extends StatelessWidget {
                         "Trabalha raciocínio lógico das crianças de forma lúdica.",
                     image:
                         const AssetImage("assets/icons/quebraCabecaIcon.png"),
-                    onPressed: () => {}, //TEMP
+                    onPressed: () => Get.toNamed(AppRoutes.memoryGame), //TEMP
                   ),
                   SizedBox(height: metrics.gap),
                   MenuButtonComponent(
