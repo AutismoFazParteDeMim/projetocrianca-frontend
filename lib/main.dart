@@ -1,5 +1,3 @@
-import 'dart:io';
-
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_config/flutter_config.dart';
@@ -12,7 +10,6 @@ import 'package:projeto_crianca/firebase_options.dart';
 import 'package:projeto_crianca/routes/app_routes.dart';
 import 'package:projeto_crianca/routes/app_pages.dart';
 import 'package:projeto_crianca/ui/theme/app_theme.dart';
-
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();

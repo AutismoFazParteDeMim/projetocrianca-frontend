@@ -1,5 +1,3 @@
-import 'dart:ui';
-
 import 'package:flame/components.dart';
 import 'package:flame_svg/flame_svg.dart';
 import 'package:flutter/material.dart';

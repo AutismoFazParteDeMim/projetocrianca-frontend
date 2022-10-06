@@ -1,9 +1,8 @@
-import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:ionicons/ionicons.dart';
-import 'package:projeto_crianca/controllers/localize_page_controler.dart';
+import 'package:projeto_crianca/controllers/localize_page_controller.dart';
 import 'package:projeto_crianca/ui/components/Buttons/icon_button_component.dart';
 import 'package:projeto_crianca/ui/components/Inputs/text_input_component.dart';
 import 'package:projeto_crianca/ui/theme/theme_extensions.dart';
@@ -14,7 +13,6 @@ class _CustomAppBar extends StatelessWidget with PreferredSizeWidget {
   Widget build(BuildContext context) {
     final ThemeData theme = Theme.of(context);
     final ThemeMetrics metrics = theme.extension<ThemeMetrics>()!;
-    final ThemeColors colors = theme.extension<ThemeColors>()!;
 
     return Container(
       height: metrics.headerHeight * 2,
@@ -50,6 +48,8 @@ class _CustomAppBar extends StatelessWidget with PreferredSizeWidget {
 class CustomModalBottomSheet extends StatelessWidget {
   final LocalizePageController controller = Get.find<LocalizePageController>();
 
+  CustomModalBottomSheet({super.key});
+
   @override
   Widget build(BuildContext context) {
     final ThemeMetrics metrics = Theme.of(context).extension<ThemeMetrics>()!;
@@ -79,10 +79,11 @@ class CustomModalBottomSheet extends StatelessWidget {
                       Text("9:00 as 12:00 - 13:00 as 17:30"),
                     ],
                   ),
-                  SizedBox(height: 16),
-                  Text(
-                      "Lorem ipsum magna fusce vitae torquent gravida etiam sem tortor velit, mattis leo"),
-                  SizedBox(height: 16),
+                  const SizedBox(height: 16),
+                  const Text(
+                    "Lorem ipsum magna fusce vitae torquent gravida etiam sem tortor velit, mattis leo",
+                  ),
+                  const SizedBox(height: 16),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.end,
@@ -102,12 +103,12 @@ class CustomModalBottomSheet extends StatelessWidget {
         ),
       );
     }
-    return CircularProgressIndicator();
+    return const CircularProgressIndicator();
   }
 }
 
 class LocalizePage extends GetView<LocalizePageController> {
-  LocalizePage({super.key});
+  const LocalizePage({super.key});
 
   @override
   Widget build(BuildContext context) {

@@ -59,7 +59,7 @@ abstract class AppPages {
     ),
     GetPage(
       name: AppRoutes.localize,
-      page: () => LocalizePage(),
+      page: () => const LocalizePage(),
       binding: LocalizePageBinding(),
     ),
     GetPage(
@@ -83,6 +83,10 @@ abstract class AppPages {
     GetPage(
       name: AppRoutes.routines,
       page: () => const RoutinesPage(),
+    ),
+    GetPage(
+      name: AppRoutes.expressions,
+      page: () => const ExpressionsPage(),
     ),
     GetPage(
       name: AppRoutes.memoryGame,
