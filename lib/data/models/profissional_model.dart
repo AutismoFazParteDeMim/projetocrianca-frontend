@@ -9,7 +9,6 @@ class ProfissionalModel {
   String? horario;
   String? diasFuncionamento;
   String? descricao;
-  Uri? rotaLink;
 
   ProfissionalModel({
     this.profissionalId,
@@ -22,7 +21,6 @@ class ProfissionalModel {
     this.descricao,
     this.diasFuncionamento,
     this.horario,
-    this.rotaLink,
   });
 
   ProfissionalModel.formJson(Map<String, dynamic> json) {

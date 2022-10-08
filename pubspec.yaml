@@ -41,6 +41,7 @@ dependencies:
   geolocator: ^9.0.2
   modal_bottom_sheet: ^2.1.2
   flutter_config: ^2.0.0
+  maps_launcher: ^2.0.1
 
 dev_dependencies:
   flutter_test:

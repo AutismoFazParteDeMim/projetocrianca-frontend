@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:ionicons/ionicons.dart';
+import 'package:maps_launcher/maps_launcher.dart';
 import 'package:projeto_crianca/controllers/localize_page_controller.dart';
 import 'package:projeto_crianca/ui/components/Buttons/button_component.dart';
 import 'package:projeto_crianca/ui/components/Buttons/icon_button_component.dart';
 import 'package:projeto_crianca/ui/components/Inputs/text_input_component.dart';
 import 'package:projeto_crianca/ui/theme/theme_extensions.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 class _CustomAppBar extends StatelessWidget with PreferredSizeWidget {
   @override
@@ -145,7 +145,8 @@ class CustomModalBottomSheet extends StatelessWidget {
                     ButtonComponent(
                       text: "Rotas",
                       icon: Ionicons.navigate_outline,
-                      onPressed: () => launchUrl(controller.getProfessional!.rotaLink!),
+                      onPressed: () =>MapsLauncher.launchCoordinates(controller.getProfessional!.latitude!, controller.getProfessional!.longitude!),
+
                     ),
                   ],
                 ),
@@ -158,7 +159,6 @@ class CustomModalBottomSheet extends StatelessWidget {
     return const CircularProgressIndicator();
   }
 }
-
 class LocalizePage extends GetView<LocalizePageController> {
   const LocalizePage({super.key});
 
