@@ -104,7 +104,16 @@ class LocalizePageController extends GetxController {
     getPosition();
     loadMarkers();
 
-    var style = await rootBundle.loadString("assets/map_styles/normal.json");
-    _googleMapsController.setMapStyle(style);
+    final _currentTime = DateTime.now();
+
+    if (_currentTime.hour >= 18){
+      var style = await rootBundle.loadString("assets/map_styles/dark.json");
+      _googleMapsController.setMapStyle(style);  
+    }
+    else{
+      var style = await rootBundle.loadString("assets/map_styles/normal.json");
+      _googleMapsController.setMapStyle(style);
+    }
+    
   }
 }

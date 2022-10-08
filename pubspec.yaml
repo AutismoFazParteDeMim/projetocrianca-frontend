@@ -127,6 +127,7 @@ flutter:
     - assets/google_fonts/
     # maps-styles
     - assets/map_styles/normal.json
+    - assets/map_styles/dark.json
     - assets/map_styles/pin_map.png
     # .env
     - .env
