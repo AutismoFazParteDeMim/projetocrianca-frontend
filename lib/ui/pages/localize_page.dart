@@ -10,14 +10,14 @@ import 'package:projeto_crianca/ui/components/Inputs/text_input_component.dart';
 import 'package:projeto_crianca/ui/theme/theme_extensions.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 
-class _CustomAppBar extends StatelessWidget with PreferredSizeWidget {
+class _CustomAppBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final ThemeData theme = Theme.of(context);
     final ThemeMetrics metrics = theme.extension<ThemeMetrics>()!;
+    final ThemeColors colors = theme.extension<ThemeColors>()!;
 
     return Container(
-      height: metrics.headerHeight * 2,
       color: Colors.transparent,
       alignment: Alignment.bottomCenter,
       padding: metrics.padding,
@@ -32,19 +32,35 @@ class _CustomAppBar extends StatelessWidget with PreferredSizeWidget {
           SizedBox(
             width: metrics.gap,
           ),
-          const Flexible(
-            child: TextInputComponent(
-              placeholder: "Pesquisa...",
-              icon: Icons.search,
-            ),
-          ),
+          Column(
+            children: [
+              Flexible(
+                child: TextInputComponent(
+                  placeholder: "Pesquisa...",
+                  icon: Icons.search,
+                ),
+              ),
+              Container(
+                height: 200,
+                decoration: BoxDecoration(
+                  borderRadius: metrics.borderRadius,
+                  color: colors.secondary,
+                ),
+                child: Scrollbar(
+                  child: ListView(
+                    shrinkWrap: true,
+                    children: [
+                      Column(children: [Text("")]),
+                    ],
+                  ),
+                ),
+              ),
+            ],
+          )
         ],
       ),
     );
   }
-
-  @override
-  Size get preferredSize => const Size.fromHeight(100);
 }
 
 class CustomModalBottomSheet extends StatelessWidget {
@@ -55,6 +71,7 @@ class CustomModalBottomSheet extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final ThemeMetrics metrics = Theme.of(context).extension<ThemeMetrics>()!;
+    final ThemeColors colors = Theme.of(context).extension<ThemeColors>()!;
     final ThemeData theme = Theme.of(context);
     final ScrollController? modalScrollController =
         ModalScrollController.of(context);
@@ -62,96 +79,125 @@ class CustomModalBottomSheet extends StatelessWidget {
     if (controller.getProfessional != null) {
       return Obx(
         () => Container(
+          color: colors.background,
           padding: metrics.padding,
           height: 400,
-          child: SingleChildScrollView(
-            controller: modalScrollController,
-            scrollDirection: Axis.vertical,
-            padding:
-                EdgeInsets.only(bottom: metrics.toDouble(metrics.padding)!),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    IconButtonComponent(
-                      icon: Ionicons.close_outline,
-                      onPressed: () => Get.back(),
-                    ),
-                  ],
+          child: Column(
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  IconButtonComponent(
+                    icon: Ionicons.close_outline,
+                    onPressed: () => Get.back(),
+                  ),
+                ],
+              ),
+              SizedBox(
+                height: metrics.gap,
+              ),
+              Flexible(
+                  child: Scrollbar(
+                thumbVisibility: true,
+                child: SingleChildScrollView(
+                  controller: modalScrollController,
+                  scrollDirection: Axis.vertical,
+                  padding: EdgeInsets.only(
+                      bottom: metrics.toDouble(metrics.padding)!),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        controller.getProfessional!.nome,
+                        style: theme.textTheme.titleLarge,
+                      ),
+                      SizedBox(height: metrics.gap),
+                      Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          Row(
+                            children: [
+                              Row(
+                                children: [
+                                  const Icon(Ionicons.calendar_outline),
+                                  const SizedBox(width: 10),
+                                  Text(controller
+                                      .getProfessional!.diasFuncionamento),
+                                ],
+                              ),
+                              SizedBox(width: metrics.gap),
+                              Row(
+                                children: [
+                                  const Icon(Ionicons.time_outline),
+                                  const SizedBox(width: 10),
+                                  Text(controller.getProfessional!.horario),
+                                ],
+                              ),
+                            ],
+                          ),
+                          SizedBox(height: metrics.gap),
+                          Row(
+                            children: [
+                              const Icon(Ionicons.map_outline),
+                              const SizedBox(width: 10),
+                              Flexible(
+                                child: Text(
+                                  controller.getProfessional!.endereco,
+                                  overflow: TextOverflow.ellipsis,
+                                  maxLines: 1,
+                                ),
+                              ),
+                            ],
+                          ),
+                          SizedBox(height: metrics.gap),
+                          Row(
+                            children: [
+                              const Icon(Ionicons.call_outline),
+                              const SizedBox(width: 10),
+                              Text(controller.getProfessional!.telefone ??
+                                  "Nenhum contato conhecido."),
+                            ],
+                          ),
+                          SizedBox(height: metrics.gap),
+                          Row(
+                            children: [
+                              const Icon(Ionicons.mail_outline),
+                              const SizedBox(width: 10),
+                              Text(controller.getProfessional!.email ??
+                                  "Nenhum email conhecido."),
+                            ],
+                          )
+                        ],
+                      ),
+                      SizedBox(height: metrics.gap),
+                      Text(controller.getProfessional!.descricao),
+                      SizedBox(height: metrics.gap),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.end,
+                        children: [
+                          SizedBox(height: metrics.gap),
+                          // add btn maps
+                          SizedBox(height: metrics.gap),
+                        ],
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          ButtonComponent(
+                            text: "Rotas",
+                            icon: Ionicons.navigate,
+                            onPressed: () => MapsLauncher.launchCoordinates(
+                                controller.getProfessional!.latitude,
+                                controller.getProfessional!.longitude),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
                 ),
-                Text(
-                  controller.getProfessional!.nome!,
-                  style: theme.textTheme.titleLarge,
-                ),
-                SizedBox(height: metrics.gap),
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    Row(
-                      children: [
-                        Row(
-                          children: [
-                            const Icon(Ionicons.calendar_outline),
-                            const SizedBox(width: 10),
-                            Text(
-                                controller.getProfessional!.diasFuncionamento!),
-                          ],
-                        ),
-                        SizedBox(width: metrics.gap),
-                        Row(
-                          children: [
-                            const Icon(Ionicons.time_outline),
-                            const SizedBox(width: 10),
-                            Text(controller.getProfessional!.horario!),
-                          ],
-                        ),
-                      ],
-                    ),
-                    SizedBox(height: metrics.gap),
-                    Row(
-                      children: [
-                        const Icon(Ionicons.map_outline),
-                        const SizedBox(width: 10),
-                        Text(controller.getProfessional!.endereco!),
-                      ],
-                    ),
-                    SizedBox(height: metrics.gap),
-                    Row(
-                      children: [
-                        const Icon(Ionicons.call_outline),
-                        const SizedBox(width: 10),
-                        Text(controller.getProfessional!.telefone!),
-                      ],
-                    ),
-                  ],
-                ),
-                SizedBox(height: metrics.gap),
-                Text(controller.getProfessional!.descricao!),
-                SizedBox(height: metrics.gap),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.end,
-                  children: [
-                    SizedBox(height: metrics.gap),
-                    // add btn maps
-                    SizedBox(height: metrics.gap),
-                  ],
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    ButtonComponent(
-                      text: "Rotas",
-                      icon: Ionicons.navigate_outline,
-                      onPressed: () =>MapsLauncher.launchCoordinates(controller.getProfessional!.latitude!, controller.getProfessional!.longitude!),
-
-                    ),
-                  ],
-                ),
-              ],
-            ),
+              ))
+            ],
           ),
         ),
       );
@@ -159,34 +205,43 @@ class CustomModalBottomSheet extends StatelessWidget {
     return const CircularProgressIndicator();
   }
 }
+
 class LocalizePage extends GetView<LocalizePageController> {
   const LocalizePage({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final ThemeMetrics metrics = Theme.of(context).extension<ThemeMetrics>()!;
     controller.setShowPinModal = () => showMaterialModalBottomSheet(
           expand: false,
           context: context,
           builder: (BuildContext context) => CustomModalBottomSheet(),
         );
     return Scaffold(
-      appBar: _CustomAppBar(),
-      extendBodyBehindAppBar: true,
-      body: GetBuilder<LocalizePageController>(
-        init: controller,
-        builder: (value) => GoogleMap(
-          onMapCreated: controller.mapInit,
-          initialCameraPosition: CameraPosition(
-            target: controller.position,
-            zoom: 13,
-          ),
-          mapType: MapType.normal,
-          zoomControlsEnabled: true,
-          myLocationEnabled: true,
-          myLocationButtonEnabled: false,
-          markers: controller.getMarkers,
-        ),
-      ),
-    );
+        extendBodyBehindAppBar: true,
+        body: Stack(
+          children: [
+            GetBuilder<LocalizePageController>(
+              init: controller,
+              builder: (value) => GoogleMap(
+                onMapCreated: controller.mapInit,
+                initialCameraPosition: CameraPosition(
+                  target: controller.position,
+                  zoom: 13,
+                ),
+                mapType: MapType.normal,
+                zoomControlsEnabled: true,
+                myLocationEnabled: true,
+                myLocationButtonEnabled: false,
+                markers: controller.getMarkers,
+              ),
+            ),
+            Positioned(
+                top: metrics.toDouble(metrics.padding)! * 2,
+                left: 0,
+                right: 0,
+                child: _CustomAppBar()),
+          ],
+        ));
   }
 }

@@ -1,38 +1,26 @@
 class ProfissionalModel {
-  int? profissionalId;
-  String? nome;
-  double? latitude;
-  double? longitude;
-  String? endereco;
+  int profissionalId;
+  String nome;
+  double latitude;
+  double longitude;
+  String endereco;
   String? email;
   String? telefone;
-  String? horario;
-  String? diasFuncionamento;
-  String? descricao;
+  String horario;
+  String diasFuncionamento;
+  String descricao;
 
   ProfissionalModel({
-    this.profissionalId,
-    this.nome,
-    this.latitude,
-    this.longitude,
-    this.email,
-    this.endereco,
-    this.telefone,
-    this.descricao,
-    this.diasFuncionamento,
-    this.horario,
+    required this.profissionalId,
+    required this.nome,
+    required this.latitude,
+    required this.longitude,
+    required this.email,
+    required this.endereco,
+    required this.telefone,
+    required this.descricao,
+    required this.diasFuncionamento,
+    required this.horario,
   });
 
-  ProfissionalModel.formJson(Map<String, dynamic> json) {
-    profissionalId = json["id"];
-    nome = json["nome"];
-    latitude = json["latitude"];
-    longitude = json["longitude"];
-    endereco = json["endereço"];
-    email = json["email"];
-    telefone = json["telefone"];
-    horario = json["horario"];
-    diasFuncionamento = json["dias"];
-    descricao = json["descricao"];
-  }
 }

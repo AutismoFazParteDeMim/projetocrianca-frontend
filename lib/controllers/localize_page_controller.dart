@@ -11,6 +11,7 @@ class LocalizePageController extends GetxController {
   final LocalizeRepository repository;
   final RxDouble _latitude = 0.0.obs;
   final RxDouble _longitude = 0.0.obs;
+  RxBool _isDark = false.obs;
   late GoogleMapController _googleMapsController;
   late Function _showPinModal;
   final LatLng _position =
@@ -79,15 +80,17 @@ class LocalizePageController extends GetxController {
         for (var element in data) {
           _markers.add(
             Marker(
-              markerId: MarkerId(element!.profissionalId!.toString()),
-              position: LatLng(element.latitude!, element.longitude!),
+              markerId: MarkerId(element!.profissionalId.toString()),
+              position: LatLng(element.latitude, element.longitude),
               onTap: () {
                 _profissional.value = element;
                 _showPinModal();
               },
               icon: await BitmapDescriptor.fromAssetImage(
                 const ImageConfiguration(),
-                "assets/map_styles/pin_map.png",
+                _isDark.value ?
+                "assets/map_styles/pin_map_dark.png"
+                : "assets/map_styles/pin_map.png"
               ),
             ),
           );
@@ -102,18 +105,19 @@ class LocalizePageController extends GetxController {
   mapInit(GoogleMapController gmc) async {
     _googleMapsController = gmc;
     getPosition();
-    loadMarkers();
 
     final _currentTime = DateTime.now();
 
     if (_currentTime.hour >= 18){
-      var style = await rootBundle.loadString("assets/map_styles/dark.json");
+      _isDark.value = true;
+      final style = await rootBundle.loadString("assets/map_styles/dark.json");
       _googleMapsController.setMapStyle(style);  
     }
     else{
-      var style = await rootBundle.loadString("assets/map_styles/normal.json");
+      _isDark.value = false;
+      final style = await rootBundle.loadString("assets/map_styles/normal.json");
       _googleMapsController.setMapStyle(style);
     }
-    
+    loadMarkers();
   }
 }

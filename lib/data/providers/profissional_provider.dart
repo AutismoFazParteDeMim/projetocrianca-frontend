@@ -20,13 +20,12 @@ class ProfissionalProvider {
           nome: element["nome"],
           latitude: element["latitude"],
           longitude: element["longitude"],
-          endereco: "Rua Max Colin, 550, America",
-          diasFuncionamento: "seg - sex",
-          horario: "8:00 as 18:00",
-          telefone: "(47) 3422-2419",
-          email: null,
-          descricao:
-              "É responsável pelo projeto O Farol, espaço de empreendedorismo para fortalecer negócios e projetos sociais, culturais e esportivos; e pelo Espaço do Empreendedor, para orientar pessoas que precisam aderir ao MEI (Microempreendedor Individual) e empresas em geral no auxílio em processos, retirada de dúvidas etc.",
+          endereco: element["endereço"],
+          diasFuncionamento: element["diasFuncionamento"],
+          horario: element["horarioFuncionamento"],
+          telefone: element["contato"],
+          email: element["email"],
+          descricao: element["descricao"],
         ));
       }
 
