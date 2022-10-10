@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -113,7 +111,7 @@ class RegisterPageController extends GetxController {
           )
           .then(
             (value) async => await repository.createChild(
-              userInstance!,
+              userInstance,
               ChildModel(
                 name: _childFieldController.text,
                 sex: _childSex.value,
@@ -136,15 +134,14 @@ class RegisterPageController extends GetxController {
               AlertModalComponentType.warning);
           break;
         case "error_wrong_password":
-          _showAlertModal(
-              "Senha incorreta, digite novamente.",
+          _showAlertModal("Senha incorreta, digite novamente.",
               AlertModalComponentType.warning);
-              break;
+          break;
         case "error_user_not_found":
           _showAlertModal(
               "Esse usuario foi deletado, entre em contato com o suporte para saber mais.",
               AlertModalComponentType.warning);
-              break;
+          break;
         default:
           _showAlertModal(e.toString(), AlertModalComponentType.warning);
       }
@@ -167,27 +164,25 @@ class RegisterPageController extends GetxController {
           ),
         );
       } on FirebaseAuthException catch (e) {
-      switch (e.code) {
-        case "error_invalid_credential":
-          _showAlertModal(
-              "Conta do Google invalida",
-              AlertModalComponentType.warning);
-          break;
-        case "error_account_exists_with_different_credential":
-          _showAlertModal(
-              "Essa conta Google esta em uso por outra conta.",
-              AlertModalComponentType.warning);
-          break;
-        case "error_operation_not_allowed":
-          _showAlertModal(
-              "Contas Google nao estão habilitadas nesse dispositivo.",
-              AlertModalComponentType.warning);
-          break;
+        switch (e.code) {
+          case "error_invalid_credential":
+            _showAlertModal(
+                "Conta do Google invalida", AlertModalComponentType.warning);
+            break;
+          case "error_account_exists_with_different_credential":
+            _showAlertModal("Essa conta Google esta em uso por outra conta.",
+                AlertModalComponentType.warning);
+            break;
+          case "error_operation_not_allowed":
+            _showAlertModal(
+                "Contas Google nao estão habilitadas nesse dispositivo.",
+                AlertModalComponentType.warning);
+            break;
 
-        default:
-          _showAlertModal(e.toString(), AlertModalComponentType.warning);
+          default:
+            _showAlertModal(e.toString(), AlertModalComponentType.warning);
+        }
       }
-    }
     }
   }
 
@@ -207,27 +202,25 @@ class RegisterPageController extends GetxController {
           ),
         );
       } on FirebaseAuthException catch (e) {
-      switch (e.code) {
-        case "error_invalid_credential":
-          _showAlertModal(
-              "Conta do Facebook invalida",
-              AlertModalComponentType.warning);
-          break;
-        case "error_account_exists_with_different_credential":
-          _showAlertModal(
-              "Essa conta Facebook esta em uso por outra conta.",
-              AlertModalComponentType.warning);
-          break;
-        case "error_operation_not_allowed":
-          _showAlertModal(
-              "Contas Faceboook nao estão habilitadas nesse dispositivo.",
-              AlertModalComponentType.warning);
-          break;
+        switch (e.code) {
+          case "error_invalid_credential":
+            _showAlertModal(
+                "Conta do Facebook invalida", AlertModalComponentType.warning);
+            break;
+          case "error_account_exists_with_different_credential":
+            _showAlertModal("Essa conta Facebook esta em uso por outra conta.",
+                AlertModalComponentType.warning);
+            break;
+          case "error_operation_not_allowed":
+            _showAlertModal(
+                "Contas Faceboook nao estão habilitadas nesse dispositivo.",
+                AlertModalComponentType.warning);
+            break;
 
-        default:
-          _showAlertModal(e.toString(), AlertModalComponentType.warning);
+          default:
+            _showAlertModal(e.toString(), AlertModalComponentType.warning);
+        }
       }
-    }
     }
   }
 }

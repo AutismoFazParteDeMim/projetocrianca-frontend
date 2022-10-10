@@ -11,23 +11,31 @@ class LocalizePageController extends GetxController {
   final LocalizeRepository repository;
   final RxDouble _latitude = 0.0.obs;
   final RxDouble _longitude = 0.0.obs;
-  RxBool _isDark = false.obs;
+  final RxBool _isDark = false.obs;
   late GoogleMapController _googleMapsController;
   late Function _showPinModal;
-  final LatLng _position =
-      const LatLng(-26.294703, -48.848145); // coordernadas do O Farol(OMG)
   final Set<Marker> _markers = <Marker>{};
   final Rx<ProfissionalModel?> _profissional = Rx<ProfissionalModel?>(null);
+  final RxList<ProfissionalModel?> _profissionals =
+      RxList<ProfissionalModel?>([null]);
+  final RxList<ProfissionalModel?> _results =
+      RxList<ProfissionalModel?>([null]);
+  final TextEditingController searchFieldController = TextEditingController();
+  final LatLng _position = const LatLng(
+    -26.294703,
+    -48.848145,
+  ); // coordernadas do O Farol(OMG)
 
   set setShowPinModal(value) => _showPinModal = value;
+  set setProfissional(value) => _profissional.value = value;
   get googleMapsController => _googleMapsController;
   get position => _position;
   Set<Marker> get getMarkers => _markers;
   ProfissionalModel? get getProfessional => _profissional.value;
+  List<ProfissionalModel?> get getProfessionals => _profissionals;
+  List<ProfissionalModel?> get getResults => _results;
 
   LocalizePageController(this.repository);
-
-  // static LocalizePageControler get to => Get.find<LocalizePageControler>();
 
   Future<Position> _currentPosition() async {
     LocationPermission permission;
@@ -77,6 +85,8 @@ class LocalizePageController extends GetxController {
       final List<ProfissionalModel?>? data =
           await repository.getProfissionals();
       if (data != null) {
+        _profissionals.value = data;
+
         for (var element in data) {
           _markers.add(
             Marker(
@@ -87,11 +97,10 @@ class LocalizePageController extends GetxController {
                 _showPinModal();
               },
               icon: await BitmapDescriptor.fromAssetImage(
-                const ImageConfiguration(),
-                _isDark.value ?
-                "assets/map_styles/pin_map_dark.png"
-                : "assets/map_styles/pin_map.png"
-              ),
+                  const ImageConfiguration(),
+                  _isDark.value
+                      ? "assets/map_styles/pin_map_dark.png"
+                      : "assets/map_styles/pin_map.png"),
             ),
           );
           update();
@@ -106,18 +115,31 @@ class LocalizePageController extends GetxController {
     _googleMapsController = gmc;
     getPosition();
 
-    final _currentTime = DateTime.now();
+    final currentTime = DateTime.now();
 
-    if (_currentTime.hour >= 18){
+    if (currentTime.hour >= 18) {
       _isDark.value = true;
       final style = await rootBundle.loadString("assets/map_styles/dark.json");
-      _googleMapsController.setMapStyle(style);  
-    }
-    else{
+      _googleMapsController.setMapStyle(style);
+    } else {
       _isDark.value = false;
-      final style = await rootBundle.loadString("assets/map_styles/normal.json");
+      final style =
+          await rootBundle.loadString("assets/map_styles/normal.json");
       _googleMapsController.setMapStyle(style);
     }
+
     loadMarkers();
+  }
+
+  void search() {
+    if (_profissionals.isNotEmpty) {
+      _results.value = _profissionals
+          .where(
+            (element) => element!.nome.toLowerCase().contains(
+                  searchFieldController.text.toLowerCase(),
+                ),
+          )
+          .toList();
+    }
   }
 }

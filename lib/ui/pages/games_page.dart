@@ -25,7 +25,7 @@ class GamesPage extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   SizedBox(height: metrics.gap),
-                  MenuButtonComponent(
+                  /*MenuButtonComponent(
                     title: "Jogo da Memória",
                     text:
                         "Trabalha raciocínio lógico das crianças de forma lúdica.",
@@ -33,7 +33,9 @@ class GamesPage extends StatelessWidget {
                         const AssetImage("assets/icons/quebraCabecaIcon.png"),
                     onPressed: () => Get.toNamed(AppRoutes.memoryGame), //TEMP
                   ),
+                  
                   SizedBox(height: metrics.gap),
+                  */
                   MenuButtonComponent(
                     title: "Encaixar",
                     text:

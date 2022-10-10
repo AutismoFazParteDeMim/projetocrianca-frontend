@@ -11,6 +11,8 @@ import 'package:projeto_crianca/ui/theme/theme_extensions.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 
 class _CustomAppBar extends StatelessWidget {
+  final LocalizePageController _controller = Get.find<LocalizePageController>();
+
   @override
   Widget build(BuildContext context) {
     final ThemeData theme = Theme.of(context);
@@ -21,42 +23,70 @@ class _CustomAppBar extends StatelessWidget {
       color: Colors.transparent,
       alignment: Alignment.bottomCenter,
       padding: metrics.padding,
-      child: Row(
+      child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          IconButtonComponent(
-            icon: Ionicons.arrow_back_outline,
-            onPressed: () => Get.back(),
-          ),
-          SizedBox(
-            width: metrics.gap,
-          ),
-          Column(
+          Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
+              IconButtonComponent(
+                icon: Ionicons.arrow_back_outline,
+                onPressed: () => Get.back(),
+              ),
+              SizedBox(width: metrics.gap),
               Flexible(
                 child: TextInputComponent(
+                  controller: _controller.searchFieldController,
                   placeholder: "Pesquisa...",
                   icon: Icons.search,
-                ),
-              ),
-              Container(
-                height: 200,
-                decoration: BoxDecoration(
-                  borderRadius: metrics.borderRadius,
-                  color: colors.secondary,
-                ),
-                child: Scrollbar(
-                  child: ListView(
-                    shrinkWrap: true,
-                    children: [
-                      Column(children: [Text("")]),
-                    ],
-                  ),
+                  onChange: (String value) => _controller.search(),
                 ),
               ),
             ],
-          )
+          ),
+          SizedBox(height: metrics.gap / 2),
+          Obx(
+            () => Visibility(
+              visible: _controller.searchFieldController.text != "",
+              child: Container(
+                padding: metrics.padding,
+                decoration: BoxDecoration(
+                  color: colors.secondary,
+                  borderRadius: metrics.borderRadius,
+                ),
+                child: _controller.getResults.isNotEmpty
+                    ? ListView.separated(
+                        scrollDirection: Axis.vertical,
+                        shrinkWrap: true,
+                        padding: EdgeInsets.zero,
+                        itemCount: _controller.getResults.length,
+                        separatorBuilder: (BuildContext context, int index) =>
+                            SizedBox(
+                          height: metrics.gap,
+                        ),
+                        itemBuilder: (BuildContext context, int index) =>
+                            InkWell(
+                          onTap: () {
+                            _controller.setProfissional =
+                                _controller.getResults[index];
+                            showMaterialModalBottomSheet(
+                              expand: false,
+                              context: context,
+                              builder: (BuildContext context) =>
+                                  CustomModalBottomSheet(),
+                            );
+                          },
+                          child: Text(
+                            _controller.getResults[index]!.nome,
+                          ),
+                        ),
+                      )
+                    : const Text("Nada foi encontrado!"),
+              ),
+            ),
+          ),
         ],
       ),
     );
@@ -103,7 +133,8 @@ class CustomModalBottomSheet extends StatelessWidget {
                   controller: modalScrollController,
                   scrollDirection: Axis.vertical,
                   padding: EdgeInsets.only(
-                      bottom: metrics.toDouble(metrics.padding)!),
+                    bottom: metrics.toDouble(metrics.padding)!,
+                  ),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -121,8 +152,10 @@ class CustomModalBottomSheet extends StatelessWidget {
                                 children: [
                                   const Icon(Ionicons.calendar_outline),
                                   const SizedBox(width: 10),
-                                  Text(controller
-                                      .getProfessional!.diasFuncionamento),
+                                  Text(
+                                    controller
+                                        .getProfessional!.diasFuncionamento,
+                                  ),
                                 ],
                               ),
                               SizedBox(width: metrics.gap),
@@ -130,7 +163,9 @@ class CustomModalBottomSheet extends StatelessWidget {
                                 children: [
                                   const Icon(Ionicons.time_outline),
                                   const SizedBox(width: 10),
-                                  Text(controller.getProfessional!.horario),
+                                  Text(
+                                    controller.getProfessional!.horario,
+                                  ),
                                 ],
                               ),
                             ],
@@ -188,8 +223,9 @@ class CustomModalBottomSheet extends StatelessWidget {
                             text: "Rotas",
                             icon: Ionicons.navigate,
                             onPressed: () => MapsLauncher.launchCoordinates(
-                                controller.getProfessional!.latitude,
-                                controller.getProfessional!.longitude),
+                              controller.getProfessional!.latitude,
+                              controller.getProfessional!.longitude,
+                            ),
                           ),
                         ],
                       ),
@@ -218,30 +254,33 @@ class LocalizePage extends GetView<LocalizePageController> {
           builder: (BuildContext context) => CustomModalBottomSheet(),
         );
     return Scaffold(
-        extendBodyBehindAppBar: true,
-        body: Stack(
-          children: [
-            GetBuilder<LocalizePageController>(
-              init: controller,
-              builder: (value) => GoogleMap(
-                onMapCreated: controller.mapInit,
-                initialCameraPosition: CameraPosition(
-                  target: controller.position,
-                  zoom: 13,
-                ),
-                mapType: MapType.normal,
-                zoomControlsEnabled: true,
-                myLocationEnabled: true,
-                myLocationButtonEnabled: false,
-                markers: controller.getMarkers,
+      extendBodyBehindAppBar: true,
+      body: Stack(
+        children: [
+          GetBuilder<LocalizePageController>(
+            init: controller,
+            builder: (value) => GoogleMap(
+              onMapCreated: controller.mapInit,
+              initialCameraPosition: CameraPosition(
+                target: controller.position,
+                zoom: 13,
               ),
+              mapType: MapType.normal,
+              zoomControlsEnabled: true,
+              myLocationEnabled: true,
+              myLocationButtonEnabled: false,
+              markers: controller.getMarkers,
+              compassEnabled: false,
             ),
-            Positioned(
-                top: metrics.toDouble(metrics.padding)! * 2,
-                left: 0,
-                right: 0,
-                child: _CustomAppBar()),
-          ],
-        ));
+          ),
+          Positioned(
+            top: metrics.toDouble(metrics.padding)! * 2,
+            left: 0,
+            right: 0,
+            child: _CustomAppBar(),
+          ),
+        ],
+      ),
+    );
   }
 }

@@ -72,7 +72,7 @@ class ProfilePage extends GetView<ProfilePageController> {
                               () => SVGComponent(
                                 width: 80,
                                 height: 80,
-                                rawSvg: controller.getCurrentChild!.photoURL!,
+                                rawSvg: controller.getCurrentChild!.photoURL,
                               ),
                             ),
                           ),
@@ -80,10 +80,12 @@ class ProfilePage extends GetView<ProfilePageController> {
                       ),
                       SizedBox(width: metrics.gap),
                       Obx(
-                        () => Text(
-                          "${controller.getCurrentChild?.name}",
-                          style: theme.textTheme.titleLarge,
-                        ),
+                        () => controller.getCurrentChild?.name != null
+                            ? Text(
+                                "${controller.getCurrentChild?.name}",
+                                style: theme.textTheme.titleLarge,
+                              )
+                            : const CircularProgressIndicator(),
                       ),
                     ],
                   ),

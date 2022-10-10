@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:dio/dio.dart';
 import 'package:projeto_crianca/data/models/profissional_model.dart';
 
