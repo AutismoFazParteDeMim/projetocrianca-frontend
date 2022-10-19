@@ -8,7 +8,7 @@ import 'package:projeto_crianca/ui/components/Buttons/button_component.dart';
 import 'package:projeto_crianca/ui/components/Buttons/icon_button_component.dart';
 import 'package:projeto_crianca/ui/components/Inputs/text_input_component.dart';
 import 'package:projeto_crianca/ui/theme/theme_extensions.dart';
-import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
+import 'package:modal_bottom_sheet/modal_bottom_sheet.dart' as ModalBottomSheet;
 
 class _CustomAppBar extends StatelessWidget {
   final LocalizePageController _controller = Get.find<LocalizePageController>();
@@ -71,7 +71,7 @@ class _CustomAppBar extends StatelessWidget {
                           onTap: () {
                             _controller.setProfissional =
                                 _controller.getResults[index];
-                            showMaterialModalBottomSheet(
+                            ModalBottomSheet.showMaterialModalBottomSheet(
                               expand: false,
                               context: context,
                               builder: (BuildContext context) =>
@@ -104,7 +104,7 @@ class CustomModalBottomSheet extends StatelessWidget {
     final ThemeColors colors = Theme.of(context).extension<ThemeColors>()!;
     final ThemeData theme = Theme.of(context);
     final ScrollController? modalScrollController =
-        ModalScrollController.of(context);
+        ModalBottomSheet.ModalScrollController.of(context);
 
     if (controller.getProfessional != null) {
       return Obx(
@@ -248,11 +248,12 @@ class LocalizePage extends GetView<LocalizePageController> {
   @override
   Widget build(BuildContext context) {
     final ThemeMetrics metrics = Theme.of(context).extension<ThemeMetrics>()!;
-    controller.setShowPinModal = () => showMaterialModalBottomSheet(
-          expand: false,
-          context: context,
-          builder: (BuildContext context) => CustomModalBottomSheet(),
-        );
+    controller.setShowPinModal =
+        () => ModalBottomSheet.showMaterialModalBottomSheet(
+              expand: false,
+              context: context,
+              builder: (BuildContext context) => CustomModalBottomSheet(),
+            );
     return Scaffold(
       extendBodyBehindAppBar: true,
       body: Stack(

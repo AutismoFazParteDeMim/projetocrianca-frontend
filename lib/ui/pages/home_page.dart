@@ -45,12 +45,16 @@ class _CustomAppBar extends StatelessWidget with PreferredSizeWidget {
             mainAxisAlignment: MainAxisAlignment.end,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(
-                controller.getCurrentChild?.sex == "f" ||
-                        controller.getCurrentChild?.sex == "female"
-                    ? "Bem vinda"
-                    : "Bem vindo",
-                style: theme.textTheme.titleSmall,
+              Obx(
+                () => controller.getCurrentChild?.name != null
+                    ? Text(
+                        controller.getCurrentChild?.sex == "f" ||
+                                controller.getCurrentChild?.sex == "female"
+                            ? "Bem vinda"
+                            : "Bem vindo",
+                        style: theme.textTheme.titleSmall,
+                      )
+                    : const CircularProgressIndicator(),
               ),
               Obx(
                 () => controller.getCurrentChild?.name != null
