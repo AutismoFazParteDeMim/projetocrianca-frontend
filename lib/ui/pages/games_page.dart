@@ -43,8 +43,17 @@ class GamesPage extends StatelessWidget {
                     image: const AssetImage("assets/icons/encaixarIcon.png"),
                     onPressed: () => Get.toNamed(
                       AppRoutes.encaixarGame,
-                    ), //TEMP
+                    ),
                   ),
+                  MenuButtonComponent(
+                    title: "Sombra",
+                    text:
+                        "Trabalha desenvolvimento das habilidades de raciocínio espacial, coordenação motora.",
+                    image: const AssetImage("assets/icons/encaixarIcon.png"),
+                    onPressed: () => Get.toNamed(
+                      AppRoutes.shadowGame,
+                    ),
+                  )
                 ],
               ),
             ],

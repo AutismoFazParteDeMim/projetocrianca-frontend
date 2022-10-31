@@ -14,4 +14,5 @@ abstract class AppRoutes {
   static const String memoryGame = "/games/memoryGame";
   static const String routines = "/routines";
   static const String expressions = "/expressions";
+  static const String shadowGame = "/games/sombra";
 }
