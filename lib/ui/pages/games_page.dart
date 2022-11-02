@@ -45,6 +45,9 @@ class GamesPage extends StatelessWidget {
                       AppRoutes.encaixarGame,
                     ),
                   ),
+                  const SizedBox(
+                    height: 16,
+                  ),
                   MenuButtonComponent(
                     title: "Sombra",
                     text:
@@ -52,6 +55,18 @@ class GamesPage extends StatelessWidget {
                     image: const AssetImage("assets/icons/encaixarIcon.png"),
                     onPressed: () => Get.toNamed(
                       AppRoutes.shadowGame,
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 16,
+                  ),
+                  MenuButtonComponent(
+                    title: "Quebra-cabeça",
+                    text:
+                        "Trabalha desenvolvimento das habilidades de raciocínio espacial, coordenação motora.",
+                    image: const AssetImage("assets/icons/encaixarIcon.png"),
+                    onPressed: () => Get.toNamed(
+                      AppRoutes.puzzleGame,
                     ),
                   )
                 ],

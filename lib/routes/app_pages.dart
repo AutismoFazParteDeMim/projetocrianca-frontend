@@ -9,6 +9,7 @@ import 'package:projeto_crianca/bindings/register_page_binding.dart';
 import 'package:projeto_crianca/routes/app_routes.dart';
 import 'package:projeto_crianca/ui/pages/Games/Encaixar/encaixar_game_page.dart';
 import 'package:projeto_crianca/ui/pages/Games/Memory/memory_game_page.dart';
+import 'package:projeto_crianca/ui/pages/Games/Puzzle/puzzle_game_page.dart';
 import 'package:projeto_crianca/ui/pages/Games/Sombra/sombra_game_page.dart';
 import 'package:projeto_crianca/ui/pages/about_page.dart';
 import 'package:projeto_crianca/ui/pages/activities_page.dart';
@@ -96,6 +97,10 @@ abstract class AppPages {
     GetPage(
       name: AppRoutes.shadowGame,
       page: () => SombraGamePage(),
+    ),
+    GetPage(
+      name: AppRoutes.puzzleGame,
+      page: () => PuzzleGamePage(),
     ),
   ];
 }

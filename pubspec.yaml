@@ -102,6 +102,8 @@ flutter:
     - assets/images/encaixar/
     # game images - sombra
     - assets/images/sombra/
+     # game images - puzzle
+    - assets/images/puzzle/
     # game audios - encaixar
     - assets/audio/encaixar/background.mp3
     # routines
