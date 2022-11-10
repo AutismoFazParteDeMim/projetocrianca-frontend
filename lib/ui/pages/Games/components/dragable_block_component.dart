@@ -23,12 +23,12 @@ class DragableBlockComponent extends PositionComponent with DragCallbacks {
   Future<void> onLoad() async {
     late ShapeHitbox hitbox;
 
-    await Flame.images.load("puzzle/$image");
+    await Flame.images.load(image);
 
     hitbox = RectangleHitbox();
     hitbox.add(
       SpriteComponent.fromImage(
-        Flame.images.fromCache("puzzle/$image"),
+        Flame.images.fromCache(image),
         position: Vector2(size.x / 2, size.y / 2),
         anchor: Anchor.center,
       ),
