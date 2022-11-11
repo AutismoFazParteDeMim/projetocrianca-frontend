@@ -2,7 +2,7 @@ import 'package:flame/collisions.dart';
 import 'package:flame/experimental.dart';
 import 'package:flame/components.dart';
 import 'package:flame/flame.dart';
-import 'package:projeto_crianca/ui/pages/Games/controllers/vibration_controller.dart';
+import 'package:projeto_crianca/ui/pages/games/controllers/vibration_controller.dart';
 
 class DragableBlockComponent extends PositionComponent with DragCallbacks {
   final VibrationController _vibrationController = VibrationController();

@@ -1,6 +1,6 @@
 import 'package:flame/components.dart';
-import 'package:projeto_crianca/ui/pages/Games/Memory/components/card_component.dart';
-import 'package:projeto_crianca/ui/pages/Games/Memory/components/container_component.dart';
+import 'package:projeto_crianca/ui/pages/games/memory/components/card_component.dart';
+import 'package:projeto_crianca/ui/pages/games/memory/components/container_component.dart';
 
 class MemoryGameEngineContainer extends RectangleComponent {
   @override

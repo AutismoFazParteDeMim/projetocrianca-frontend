@@ -7,10 +7,11 @@ import 'package:projeto_crianca/bindings/login_page_binding.dart';
 import 'package:projeto_crianca/bindings/profile_page_binding.dart';
 import 'package:projeto_crianca/bindings/register_page_binding.dart';
 import 'package:projeto_crianca/routes/app_routes.dart';
-import 'package:projeto_crianca/ui/pages/Games/Encaixar/encaixar_game_page.dart';
-import 'package:projeto_crianca/ui/pages/Games/Memory/memory_game_page.dart';
-import 'package:projeto_crianca/ui/pages/Games/Puzzle/puzzle_game_page.dart';
-import 'package:projeto_crianca/ui/pages/Games/Sombra/sombra_game_page.dart';
+import 'package:projeto_crianca/ui/pages/games/encaixar/encaixar_game_page.dart';
+import 'package:projeto_crianca/ui/pages/games/memory/memory_game_page.dart';
+import 'package:projeto_crianca/ui/pages/games/pardecores/pardecores_game_page.dart';
+import 'package:projeto_crianca/ui/pages/games/puzzle/puzzle_game_page.dart';
+import 'package:projeto_crianca/ui/pages/games/sombra/sombra_game_page.dart';
 import 'package:projeto_crianca/ui/pages/about_page.dart';
 import 'package:projeto_crianca/ui/pages/activities_page.dart';
 import 'package:projeto_crianca/ui/pages/avatar_page.dart';
@@ -101,6 +102,10 @@ abstract class AppPages {
     GetPage(
       name: AppRoutes.puzzleGame,
       page: () => PuzzleGamePage(),
+    ),
+    GetPage(
+      name: AppRoutes.parDeCoresGame,
+      page: () => ParDeCoresGamePage(),
     ),
   ];
 }

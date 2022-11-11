@@ -39,34 +39,41 @@ class GamesPage extends StatelessWidget {
                   MenuButtonComponent(
                     title: "Encaixar",
                     text:
-                        "Trabalha desenvolvimento das habilidades de raciocínio espacial, coordenação motora.",
-                    image: const AssetImage("assets/icons/encaixarIcon.png"),
+                        "Trabalha o desenvolvimento das habilidades de raciocínio espacial, coordenação motora.",
+                    image: const AssetImage("assets/icons/encaixar-icon.png"),
                     onPressed: () => Get.toNamed(
                       AppRoutes.encaixarGame,
                     ),
                   ),
-                  const SizedBox(
-                    height: 16,
-                  ),
+                  const SizedBox(height: 16),
                   MenuButtonComponent(
                     title: "Sombra",
                     text:
-                        "Trabalha desenvolvimento das habilidades de raciocínio espacial, coordenação motora.",
-                    image: const AssetImage("assets/icons/encaixarIcon.png"),
+                        "Trabalha o desenvolvimento das habilidades de raciocínio espacial, coordenação motora.",
+                    image: const AssetImage("assets/icons/sombra-icon.png"),
                     onPressed: () => Get.toNamed(
                       AppRoutes.shadowGame,
                     ),
                   ),
-                  const SizedBox(
-                    height: 16,
-                  ),
+                  const SizedBox(height: 16),
                   MenuButtonComponent(
                     title: "Quebra-cabeça",
                     text:
-                        "Trabalha desenvolvimento das habilidades de raciocínio espacial, coordenação motora.",
-                    image: const AssetImage("assets/icons/encaixarIcon.png"),
+                        "Trabalha o desenvolvimento das habilidades de raciocínio espacial, coordenação motora.",
+                    image:
+                        const AssetImage("assets/icons/quebracabeca-icon.png"),
                     onPressed: () => Get.toNamed(
                       AppRoutes.puzzleGame,
+                    ),
+                  ),
+                  const SizedBox(height: 16),
+                  MenuButtonComponent(
+                    title: "Pareamento de Cores",
+                    text:
+                        "Trabalha o desenvolvimento das habilidades de raciocínio espacial, coordenação motora.",
+                    image: const AssetImage("assets/icons/pardecores-icon.png"),
+                    onPressed: () => Get.toNamed(
+                      AppRoutes.parDeCoresGame,
                     ),
                   )
                 ],

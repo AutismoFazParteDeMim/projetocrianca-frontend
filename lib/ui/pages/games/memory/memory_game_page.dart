@@ -1,7 +1,7 @@
 import 'package:flame/game.dart';
 import 'package:flutter/material.dart';
 import 'package:projeto_crianca/ui/components/appbar_component.dart';
-import 'package:projeto_crianca/ui/pages/Games/Memory/memory_game_engine.dart';
+import 'package:projeto_crianca/ui/pages/games/memory/memory_game_engine.dart';
 
 
 class MemoryGamePage extends StatelessWidget {

@@ -1,24 +1,23 @@
 import 'package:flame/game.dart';
 import 'package:flutter/material.dart';
 import 'package:projeto_crianca/ui/components/appbar_component.dart';
-import 'package:projeto_crianca/ui/pages/Games/Encaixar/encaixar_game_engine.dart';
+import 'package:projeto_crianca/ui/pages/games/pardecores/pardecores_game_engine.dart';
 
+class ParDeCoresGamePage extends StatelessWidget {
+  final ParDeCoresGameEngine _gameInstance = ParDeCoresGameEngine();
 
-class EncaixarGamePage extends StatelessWidget {
-  final EncaixarGameEngine _gameInstance = EncaixarGameEngine();
-
-  EncaixarGamePage({super.key});
+  ParDeCoresGamePage({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBarComponent(
-        title: "Encaixar",
+        title: "Pareamento de Cores",
         transparent: true,
         invertedColor: true,
       ),
       extendBodyBehindAppBar: true,
-      body: GameWidget<EncaixarGameEngine>(game: _gameInstance),
+      body: GameWidget<ParDeCoresGameEngine>(game: _gameInstance),
     );
   }
 }

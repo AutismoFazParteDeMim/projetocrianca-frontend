@@ -1,13 +1,15 @@
 import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
-import 'package:projeto_crianca/ui/pages/Games/components/dragable_block_component.dart';
-import 'package:projeto_crianca/ui/pages/Games/controllers/vibration_controller.dart';
+import 'package:projeto_crianca/ui/pages/games/components/dragable_block_component.dart';
+import 'package:projeto_crianca/ui/pages/games/controllers/vibration_controller.dart';
 
 class FixedBlockComponent extends PositionComponent with CollisionCallbacks {
   final VibrationController _vibrationController = VibrationController();
   final String? key;
 
-  FixedBlockComponent({this.key}) {
+  FixedBlockComponent({
+    this.key,
+  }) {
     super.size = Vector2.all(24);
     super.anchor = Anchor.center;
   }

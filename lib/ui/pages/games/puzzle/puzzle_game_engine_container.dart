@@ -1,9 +1,9 @@
 import 'package:flame/components.dart';
-import 'package:projeto_crianca/ui/pages/Games/components/bottom_container_component.dart';
-import 'package:projeto_crianca/ui/pages/Games/components/dragable_block_component.dart';
-import 'package:projeto_crianca/ui/pages/Games/components/hint_container_component.dart';
-import 'package:projeto_crianca/ui/pages/Games/components/top_container_component.dart';
-import 'package:projeto_crianca/ui/pages/Games/components/fixed_block_component.dart';
+import 'package:projeto_crianca/ui/pages/games/components/bottom_container_component.dart';
+import 'package:projeto_crianca/ui/pages/games/components/dragable_block_component.dart';
+import 'package:projeto_crianca/ui/pages/games/components/hint_container_component.dart';
+import 'package:projeto_crianca/ui/pages/games/components/top_container_component.dart';
+import 'package:projeto_crianca/ui/pages/games/components/fixed_block_component.dart';
 
 class PuzzleGameEngineContainer extends RectangleComponent {
   final Iterable<Component> _data = [
