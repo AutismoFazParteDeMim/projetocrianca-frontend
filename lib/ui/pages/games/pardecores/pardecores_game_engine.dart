@@ -9,7 +9,7 @@ class ParDeCoresGameEngine extends FlameGame
   void onMount() {
     super.onMount();
     FlameAudio.bgm.initialize();
-    FlameAudio.bgm.play("games/sombra/background.mp3");
+    FlameAudio.bgm.play("games/parDeCores/background.mp3");
   }
 
   @override

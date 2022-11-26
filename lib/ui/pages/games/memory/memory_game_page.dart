@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:projeto_crianca/ui/components/appbar_component.dart';
 import 'package:projeto_crianca/ui/pages/games/memory/memory_game_engine.dart';
 
-
 class MemoryGamePage extends StatelessWidget {
   final MemoryGameEngine _gameInstance = MemoryGameEngine();
 
@@ -15,7 +14,7 @@ class MemoryGamePage extends StatelessWidget {
       appBar: AppBarComponent(
         title: "Jogo da Memória",
         transparent: true,
-        invertedColor: false,
+        invertedColor: true,
       ),
       extendBodyBehindAppBar: true,
       body: GameWidget<MemoryGameEngine>(game: _gameInstance),

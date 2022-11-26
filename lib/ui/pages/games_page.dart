@@ -14,7 +14,7 @@ class GamesPage extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBarComponent(
-        title: "Games",
+        title: "Jogos",
       ),
       body: SingleChildScrollView(
         child: Padding(
@@ -25,17 +25,15 @@ class GamesPage extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   SizedBox(height: metrics.gap),
-                  /*MenuButtonComponent(
+                  MenuButtonComponent(
                     title: "Jogo da Memória",
                     text:
                         "Trabalha raciocínio lógico das crianças de forma lúdica.",
                     image:
-                        const AssetImage("assets/icons/quebraCabecaIcon.png"),
+                        const AssetImage("assets/icons/jogodamemoria-icon.png"),
                     onPressed: () => Get.toNamed(AppRoutes.memoryGame), //TEMP
                   ),
-                  
                   SizedBox(height: metrics.gap),
-                  */
                   MenuButtonComponent(
                     title: "Encaixar",
                     text:
@@ -45,7 +43,7 @@ class GamesPage extends StatelessWidget {
                       AppRoutes.encaixarGame,
                     ),
                   ),
-                  const SizedBox(height: 16),
+                  SizedBox(height: metrics.gap),
                   MenuButtonComponent(
                     title: "Sombra",
                     text:
@@ -55,7 +53,7 @@ class GamesPage extends StatelessWidget {
                       AppRoutes.shadowGame,
                     ),
                   ),
-                  const SizedBox(height: 16),
+                  SizedBox(height: metrics.gap),
                   MenuButtonComponent(
                     title: "Quebra-cabeça",
                     text:
@@ -66,7 +64,7 @@ class GamesPage extends StatelessWidget {
                       AppRoutes.puzzleGame,
                     ),
                   ),
-                  const SizedBox(height: 16),
+                  SizedBox(height: metrics.gap),
                   MenuButtonComponent(
                     title: "Pareamento de Cores",
                     text:

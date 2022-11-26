@@ -9,16 +9,16 @@ class MemoryGameEngine extends FlameGame
   void onMount() {
     super.onMount();
     FlameAudio.bgm.initialize();
-    //FlameAudio.bgm.play("encaixar/background.mp3");
+    FlameAudio.bgm.play("games/parDeCores/background.mp3");
   }
 
   @override
   Future<void> onLoad() async {
     await super.onLoad();
 
-    add(
+    addAll([
       MemoryGameEngineContainer()..size = Vector2(size.x, size.y),
-    );
+    ]);
   }
 
   @override
