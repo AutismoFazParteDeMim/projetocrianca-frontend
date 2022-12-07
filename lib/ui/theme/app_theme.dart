@@ -108,7 +108,7 @@ class AppTheme {
       ),
       dialogTheme: DialogTheme(
         elevation: 0,
-        shadowColor: Colors.transparent,
+        //shadowColor: Colors.transparent,
         shape: RoundedRectangleBorder(
           borderRadius: metrics.borderRadius,
         ),
