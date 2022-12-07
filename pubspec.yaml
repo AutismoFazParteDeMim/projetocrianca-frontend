@@ -69,22 +69,10 @@ flutter:
     - assets/avatar/smile/
     # other images
     - assets/profile-cover.jpg
-    # game images - encaixar
-    - assets/images/encaixar/
-    # game images - sombra
-    - assets/images/sombra/
-      # game images - puzzle
-    - assets/images/puzzle/
+    # game images
+    - assets/images/
     # game audios
     - assets/audio/games/
-    # routines
-    - assets/images/routines/
-    # expressions
-    - assets/images/expressions/
-    # jogo da memoria
-    - assets/images/memoryGame/
-    # pareamento de cores
-    - assets/images/parDeCores/
     # google fonts
     - assets/google_fonts/
     # maps-styles
