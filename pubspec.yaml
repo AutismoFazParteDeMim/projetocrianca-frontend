@@ -70,7 +70,14 @@ flutter:
     # other images
     - assets/profile-cover.jpg
     # game images
-    - assets/images/
+    - assets/images/alphabet/
+    - assets/images/encaixar/
+    - assets/images/expressions/
+    - assets/images/memoryGame/
+    - assets/images/parDeCores/
+    - assets/images/puzzle/
+    - assets/images/routines/
+    - assets/images/sombra/
     # game audios
     - assets/audio/games/
     # google fonts

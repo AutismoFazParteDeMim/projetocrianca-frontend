@@ -11,7 +11,7 @@ import 'package:projeto_crianca/ui/pages/games/components/fixed_block_component.
 class DragTarget extends PositionComponent with DragCallbacks {
   DragTarget() : super(anchor: Anchor.center);
 
-  final _rectPaint = Paint()..color = Colors.white;
+  final _rectPaint = Paint()..color = Colors.transparent;
 
   /// We will store all current circles into this map, keyed by the `pointerId`
   /// of the event that created the circle.
@@ -38,9 +38,6 @@ class DragTarget extends PositionComponent with DragCallbacks {
     _trails[event.pointerId] = trail;
     addAll([
       trail,
-      FixedBlockComponent()
-        ..position = Vector2(size.x / 2, size.y / 2)
-        ..debugMode = true
     ]);
   }
 
@@ -178,10 +175,17 @@ class AlphabetActivityEngineContainer extends RectangleComponent {
 
     final paint = Paint()
       ..style = PaintingStyle.fill
-      ..color = Colors.red;
+      ..color = Colors.white;
 
     addAll([
-      ImageComponent(image: "alphabet/A.png"),
+      RectangleHitbox()
+        ..paint = paint
+        ..renderShape = true,
+      ImageComponent(image: "alphabet/A.png")
+        ..position = Vector2(size.x / 2, size.y / 2),
+      FixedBlockComponent()
+        ..position = Vector2((size.x / 2) - 42, (size.y / 2))
+        ..debugMode = true,
       DragTarget(),
     ]);
   }
