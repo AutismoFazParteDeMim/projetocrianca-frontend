@@ -183,8 +183,17 @@ class AlphabetActivityEngineContainer extends RectangleComponent {
         ..renderShape = true,
       ImageComponent(image: "alphabet/A.png")
         ..position = Vector2(size.x / 2, size.y / 2),
-      FixedBlockComponent()
+      FixedBlockComponent() //1
+        ..debugMode = true
+        ..position = Vector2((size.x / 2) - 80, (size.y / 2) + 90),
+      FixedBlockComponent() // 2
         ..position = Vector2((size.x / 2) - 42, (size.y / 2))
+        ..debugMode = true,
+      FixedBlockComponent() // 3
+        ..position = Vector2((size.x / 2), (size.y / 2) - 92)
+        ..debugMode = true,
+      FixedBlockComponent() // 4
+        ..position = Vector2((size.x / 2) + 42, (size.y / 2))
         ..debugMode = true,
       DragTarget(),
     ]);
