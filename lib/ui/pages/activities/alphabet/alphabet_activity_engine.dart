@@ -9,7 +9,7 @@ class AlphabetActivityEngine extends FlameGame
   void onMount() {
     super.onMount();
     FlameAudio.bgm.initialize();
-    //FlameAudio.bgm.play("games/encaixar/background.mp3");
+    FlameAudio.bgm.play("activities/alphabet/background.mp3");
   }
 
   @override

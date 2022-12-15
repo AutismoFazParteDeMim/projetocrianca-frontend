@@ -2,10 +2,8 @@ import 'package:flame/collisions.dart';
 import 'package:flame/experimental.dart';
 import 'package:flame/components.dart';
 import 'package:flame/flame.dart';
-import 'package:projeto_crianca/ui/pages/games/controllers/vibration_controller.dart';
 
 class ImageComponent extends PositionComponent {
-  final VibrationController _vibrationController = VibrationController();
   final String? key;
   late bool fixed;
   final String image;

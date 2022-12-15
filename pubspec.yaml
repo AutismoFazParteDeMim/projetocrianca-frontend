@@ -79,7 +79,13 @@ flutter:
     - assets/images/routines/
     - assets/images/sombra/
     # game audios
-    - assets/audio/games/
+    - assets/audio/games/encaixar/
+    - assets/audio/games/parDeCores/
+    - assets/audio/games/puzzle/
+    - assets/audio/games/sombra/
+    # activities audios
+    - assets/audio/activities/alphabet/
+    - assets/audio/activities/numbers/
     # google fonts
     - assets/google_fonts/
     # maps-styles
