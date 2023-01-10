@@ -76,7 +76,10 @@ flutter:
       # game images - puzzle
     - assets/images/puzzle/
     # game audios
-    - assets/audio/games/
+    - assets/audio/games/encaixar/
+    - assets/audio/games/parDeCores/
+    - assets/audio/games/puzzle/
+    - assets/audio/games/sombra/
     # routines
     - assets/images/routines/
     # expressions
