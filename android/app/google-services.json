@@ -15,11 +15,11 @@
       },
       "oauth_client": [
         {
-          "client_id": "654760512004-hubg2vlnmffib4u6lorp3dn124282a31.apps.googleusercontent.com",
+          "client_id": "654760512004-0ho9i4tv4geeokunf5mlvvvl9brc63bs.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "br.com.unisociesc.projeto_crianca",
-            "certificate_hash": "8b1102b3e305473fca58b47111ef208a094c037f"
+            "certificate_hash": "b70382ce7e16e403da9b9144861068e4d29e6139"
           }
         },
         {
@@ -40,10 +40,10 @@
               "client_type": 3
             },
             {
-              "client_id": "654760512004-dveppbiluckg0o19csv90u196k375iq4.apps.googleusercontent.com",
+              "client_id": "654760512004-5epb49djc918msfo7d718c6rfmg5gco7.apps.googleusercontent.com",
               "client_type": 2,
               "ios_info": {
-                "bundle_id": "br.com.unisociesc.projetocrianca.projetoCrianca"
+                "bundle_id": "br.com.unisociesc.projetocrianca"
               }
             }
           ]

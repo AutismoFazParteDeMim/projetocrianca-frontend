@@ -68,13 +68,13 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions ios = FirebaseOptions(
     apiKey: 'AIzaSyBgSHdyNl0qvatFdfjY5uEpCGIaLv1tZ28',
-    appId: '1:654760512004:ios:75381bb5b054b942568351',
+    appId: '1:654760512004:ios:e147879b23f19c07568351',
     messagingSenderId: '654760512004',
     projectId: 'projetocrianca-ae4a3',
     databaseURL: 'https://projetocrianca-ae4a3-default-rtdb.firebaseio.com',
     storageBucket: 'projetocrianca-ae4a3.appspot.com',
-    androidClientId: '654760512004-hubg2vlnmffib4u6lorp3dn124282a31.apps.googleusercontent.com',
-    iosClientId: '654760512004-o63pc4al417fdf0jc62olltdr71g6bog.apps.googleusercontent.com',
-    iosBundleId: 'br.com.unisociesc.projetoCrianca',
+    androidClientId: '654760512004-0ho9i4tv4geeokunf5mlvvvl9brc63bs.apps.googleusercontent.com',
+    iosClientId: '654760512004-5epb49djc918msfo7d718c6rfmg5gco7.apps.googleusercontent.com',
+    iosBundleId: 'br.com.unisociesc.projetocrianca',
   );
 }
