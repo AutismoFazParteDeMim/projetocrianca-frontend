@@ -3,10 +3,10 @@ import 'package:flame/components.dart';
 import 'package:flame/experimental.dart';
 import 'package:flame/flame.dart';
 import 'package:flame_svg/flame_svg.dart';
-import 'package:projeto_crianca/ui/pages/games/controllers/vibration_controller.dart';
+import 'package:projeto_crianca/mixins/vibration_mixin.dart';
 
-class CardGameComponent extends PositionComponent with DragCallbacks {
-  final VibrationController _vibrationController = VibrationController();
+class CardGameComponent extends PositionComponent with DragCallbacks, VibrationMixin {
+ 
   final String? key;
   late bool fixed;
   final String image;
@@ -54,7 +54,7 @@ class CardGameComponent extends PositionComponent with DragCallbacks {
   void onDragStart(DragStartEvent event) {
     super.onDragStart(event);
     scale = Vector2.all(1.1);
-    _vibrationController.vibrate(duration: 10);
+    vibrate(duration: 10);
   }
 
   @override

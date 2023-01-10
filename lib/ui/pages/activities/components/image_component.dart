@@ -2,15 +2,13 @@ import 'package:flame/collisions.dart';
 import 'package:flame/experimental.dart';
 import 'package:flame/components.dart';
 import 'package:flame/flame.dart';
-import 'package:projeto_crianca/mixins/vibration_mixin.dart';
 
-class DragableBlockComponent extends PositionComponent
-    with DragCallbacks, VibrationMixin {
+class ImageComponent extends PositionComponent {
   final String? key;
   late bool fixed;
   final String image;
 
-  DragableBlockComponent({
+  ImageComponent({
     this.key,
     required this.image,
     this.fixed = false,
@@ -35,26 +33,5 @@ class DragableBlockComponent extends PositionComponent
     );
 
     add(hitbox);
-  }
-
-  @override
-  void onDragStart(DragStartEvent event) {
-    super.onDragStart(event);
-    scale = Vector2.all(1.1);
-    vibrate(duration: 10);
-  }
-
-  @override
-  void onDragEnd(DragEndEvent event) {
-    super.onDragEnd(event);
-    scale = Vector2.all(1);
-  }
-
-  @override
-  void onDragUpdate(DragUpdateEvent event) {
-    super.onDragUpdate(event);
-    if (!fixed) {
-      position += event.delta;
-    }
   }
 }

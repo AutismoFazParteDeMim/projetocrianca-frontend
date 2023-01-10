@@ -17,4 +17,5 @@ abstract class AppRoutes {
   static const String shadowGame = "/games/sombra";
   static const String puzzleGame = "/games/puzzle";
   static const String parDeCoresGame = "/games/pareamentoDeCores";
+  static const String alphabetActivity = "/activities/alphabet";
 }

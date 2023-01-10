@@ -42,6 +42,8 @@ dependencies:
   modal_bottom_sheet: ^2.0.1
   flutter_config: ^2.0.0
   maps_launcher: ^2.0.1
+  flutter_bloc: ^8.1.1
+  flame_bloc: ^1.8.1
 
 dev_dependencies:
   flutter_test:
@@ -69,7 +71,8 @@ flutter:
     - assets/avatar/smile/
     # other images
     - assets/profile-cover.jpg
-    # game images - encaixar
+    # game images
+    - assets/images/alphabet/
     - assets/images/encaixar/
     # game images - sombra
     - assets/images/sombra/
@@ -84,10 +87,19 @@ flutter:
     - assets/images/routines/
     # expressions
     - assets/images/expressions/
-    # jogo da memoria
     - assets/images/memoryGame/
-    # pareamento de cores
     - assets/images/parDeCores/
+    - assets/images/puzzle/
+    - assets/images/routines/
+    - assets/images/sombra/
+    # game audios
+    - assets/audio/games/encaixar/
+    - assets/audio/games/parDeCores/
+    - assets/audio/games/puzzle/
+    - assets/audio/games/sombra/
+    # activities audios
+    - assets/audio/activities/alphabet/
+    - assets/audio/activities/numbers/
     # google fonts
     - assets/google_fonts/
     # maps-styles

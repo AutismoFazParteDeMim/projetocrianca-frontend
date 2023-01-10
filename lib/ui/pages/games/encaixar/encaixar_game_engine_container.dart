@@ -33,6 +33,7 @@ class EncaixarGameEngineContainer extends RectangleComponent {
         (230 / 2) + 74,
       ),
   ];
+
   @override
   Future<void> onLoad() async {
     super.onLoad();

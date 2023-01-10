@@ -41,6 +41,15 @@ class ActivitiesPage extends StatelessWidget {
                         const AssetImage("assets/icons/expressions-icon.png"),
                     onPressed: () => Get.toNamed(AppRoutes.expressions),
                   ),
+                  SizedBox(height: metrics.gap),
+                  MenuButtonComponent(
+                    title: "Alfabeto", 
+                    text:
+                        "Trabalha com apoio visual, contribui para uma melhor interação social com amigos e família.",
+                    image:
+                        const AssetImage("assets/icons/alphabet-icon.png"),
+                    onPressed: () => Get.toNamed(AppRoutes.alphabetActivity),
+                  ),
                 ],
               ),
             ],
