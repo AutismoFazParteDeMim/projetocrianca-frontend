@@ -1,35 +1,35 @@
 {
-  "name": "projeto_crianca",
-  "short_name": "projeto_crianca",
-  "start_url": ".",
-  "display": "standalone",
-  "background_color": "#FFFFFF",
-  "theme_color": "#00A7DF",
-  "description": "Esse projeto tem como intenção auxiliar as famílias de crianças/adolescentes autistas a melhorar a comunicação (não verbal) através de atividades pedagógicas adaptadas para as crianças.",
-  "orientation": "portrait-primary",
-  "prefer_related_applications": false,
-  "icons": [
-    {
-      "src": "icons/Icon-192.png",
-      "sizes": "192x192",
-      "type": "image/png"
-    },
-    {
-      "src": "icons/Icon-512.png",
-      "sizes": "512x512",
-      "type": "image/png"
-    },
-    {
-      "src": "icons/Icon-maskable-192.png",
-      "sizes": "192x192",
-      "type": "image/png",
-      "purpose": "maskable"
-    },
-    {
-      "src": "icons/Icon-maskable-512.png",
-      "sizes": "512x512",
-      "type": "image/png",
-      "purpose": "maskable"
-    }
-  ]
+    "name": "projeto_crianca",
+    "short_name": "projeto_crianca",
+    "start_url": ".",
+    "display": "standalone",
+    "background_color": "#FFFFFF",
+    "theme_color": "#00A7DF",
+    "description": "Esse projeto tem como intenção auxiliar as famílias de crianças/adolescentes autistas a melhorar a comunicação (não verbal) através de atividades pedagógicas adaptadas para as crianças.",
+    "orientation": "portrait-primary",
+    "prefer_related_applications": false,
+    "icons": [
+        {
+            "src": "icons/Icon-192.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "icons/Icon-512.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        },
+        {
+            "src": "icons/Icon-maskable-192.png",
+            "sizes": "192x192",
+            "type": "image/png",
+            "purpose": "maskable"
+        },
+        {
+            "src": "icons/Icon-maskable-512.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "maskable"
+        }
+    ]
 }

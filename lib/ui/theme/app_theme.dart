@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:projeto_crianca/ui/theme/theme_extensions.dart';
@@ -53,7 +55,7 @@ class AppTheme {
       ThemeMetrics(
         padding: const EdgeInsets.all(16),
         gap: 16,
-        headerHeight: 100,
+        headerHeight: Platform.isIOS ? 120 : 100,
         borderRadius: BorderRadius.circular(16),
       ),
       isDark ? _darkColors : _lightColors,
