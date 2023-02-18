@@ -1,7 +1,7 @@
 import 'package:get/get.dart';
 import 'package:projeto_crianca/data/models/github_model.dart';
 import 'package:projeto_crianca/data/repositorys/github_repository.dart';
-import 'package:projeto_crianca/ui/components/alert_modal_component.dart';
+import 'package:projeto_crianca/ui/widgets/alert_modal_component.dart';
 
 void _showAlertModal(
   String message,

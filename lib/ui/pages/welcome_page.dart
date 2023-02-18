@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:projeto_crianca/routes/app_routes.dart';
-import 'package:projeto_crianca/ui/components/Buttons/button_component.dart';
-import 'package:projeto_crianca/ui/components/Buttons/link_button_component.dart';
-import 'package:projeto_crianca/ui/components/modal_component.dart';
+import 'package:projeto_crianca/ui/widgets/Buttons/button_component.dart';
+import 'package:projeto_crianca/ui/widgets/Buttons/link_button_component.dart';
+import 'package:projeto_crianca/ui/widgets/modal_component.dart';
 import 'package:projeto_crianca/ui/theme/theme_extensions.dart';
 
 class WelcomePage extends GetView {

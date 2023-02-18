@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:projeto_crianca/routes/app_routes.dart';
-import 'package:projeto_crianca/ui/components/Buttons/menu_button_component.dart';
-import 'package:projeto_crianca/ui/components/appbar_component.dart';
+import 'package:projeto_crianca/ui/widgets/Buttons/menu_button_component.dart';
+import 'package:projeto_crianca/ui/widgets/appbar_component.dart';
 import 'package:projeto_crianca/ui/theme/theme_extensions.dart';
 
 class GamesPage extends StatelessWidget {

@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:projeto_crianca/controllers/home_page_controller.dart';
 import 'package:projeto_crianca/routes/app_routes.dart';
-import 'package:projeto_crianca/ui/components/Buttons/square_button_component.dart';
-import 'package:projeto_crianca/ui/components/svg_component.dart';
+import 'package:projeto_crianca/ui/widgets/Buttons/square_button_component.dart';
+import 'package:projeto_crianca/ui/widgets/svg_component.dart';
 import 'package:projeto_crianca/ui/theme/theme_extensions.dart';
 
 class _CustomAppBar extends StatelessWidget with PreferredSizeWidget {

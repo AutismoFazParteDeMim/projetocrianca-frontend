@@ -1,6 +1,8 @@
+import 'dart:collection';
+import 'dart:math';
+
 import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
-import 'package:flame_bloc/flame_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:projeto_crianca/mixins/vibration_mixin.dart';
@@ -10,18 +12,14 @@ import 'package:projeto_crianca/ui/pages/activities/components/canvas_component.
 import 'package:projeto_crianca/ui/pages/activities/components/image_component.dart';
 
 class AlphabetActivityEngineContainer extends RectangleComponent
-    with
-        HasGameRef<AlphabetActivityEngine>,
-        FlameBlocListenable<GameBloc, dynamic>,
-        FlameBlocReader<GameBloc, dynamic>,
-        VibrationMixin {
-  LetterModel? letter;
+    with HasGameRef<AlphabetActivityEngine>, VibrationMixin {
+  final LetterModel currentLetter;
+  final Function() nextLetterCallback;
 
-  @override
-  void onNewState(dynamic state) {
-    //print(state);
-    letter = state;
-  }
+  AlphabetActivityEngineContainer({
+    required this.currentLetter,
+    required this.nextLetterCallback,
+  });
 
   @override
   Future<void> onLoad() async {
@@ -31,132 +29,52 @@ class AlphabetActivityEngineContainer extends RectangleComponent
       ..style = PaintingStyle.fill
       ..color = Colors.white;
 
-    final parte1Default = [
-      PointModel(
-        positionTop: Vector2(88, 478),
-        positionBottom: Vector2(112, 502),
-      ),
-      PointModel(
-        positionTop: Vector2(126, 388),
-        positionBottom: Vector2(150, 412),
-      ),
-      PointModel(
-        positionTop: Vector2(168, 296),
-        positionBottom: Vector2(192, 320),
-      ),
-      PointModel(
-        positionTop: Vector2(210, 388),
-        positionBottom: Vector2(234, 412),
-      ),
-      PointModel(
-        positionTop: Vector2(248, 478),
-        positionBottom: Vector2(272, 502),
-      ),
-    ];
-    final parte2Default = [
-      PointModel(
-        positionTop: Vector2(126, 388),
-        positionBottom: Vector2(150, 412),
-      ),
-      PointModel(
-        positionTop: Vector2(210, 388),
-        positionBottom: Vector2(234, 412),
-      ),
-    ];
+    List<PointModel> queue = List<PointModel>.from(
+      currentLetter.points.entries.elementAt(0).value,
+    );
 
-    List parte1 = [];
-    List parte2 = [];
+    int currentPart = 0;
+    int parts = currentLetter.points.entries.length - 1;
 
     void onTrailPositionUpdate(Vector2 trailPosition) {
-      /*for (var i = 0; i < letter!.points.length; i++) {
-        if (letter!.points[i].isNotEmpty) {
-          PointModel? current = letter!.points[i].firstWhereOrNull((element) =>
-              trailPosition.x >= element.positionTop.x &&
-              trailPosition.x <= element.positionBottom.x &&
-              trailPosition.y >= element.positionTop.y &&
-              trailPosition.y <= element.positionBottom.y);
+      PointModel? current = currentLetter.points.entries
+          .elementAt(currentPart)
+          .value
+          .firstWhereOrNull(
+            (element) =>
+                trailPosition.x >= element.positionTop.x &&
+                trailPosition.x <= element.positionBottom.x &&
+                trailPosition.y >= element.positionTop.y &&
+                trailPosition.y <= element.positionBottom.y,
+          );
 
-          for (var j = 0; j < letter!.points[i].length; j++) {
-            if (current != null) {
-              if (current == letter!.points[i].first) {
-                vibrate(duration: 10);
-                letter!.points[i].remove(current);
-              } else {
-                letter = LetterModel(
-                  points: [
-                    [
-                      PointModel(
-                        positionTop: Vector2(88, 478),
-                        positionBottom: Vector2(112, 502),
-                      ),
-                      PointModel(
-                        positionTop: Vector2(126, 388),
-                        positionBottom: Vector2(150, 412),
-                      ),
-                      PointModel(
-                        positionTop: Vector2(168, 296),
-                        positionBottom: Vector2(192, 320),
-                      ),
-                      PointModel(
-                        positionTop: Vector2(210, 388),
-                        positionBottom: Vector2(234, 412),
-                      ),
-                      PointModel(
-                        positionTop: Vector2(248, 478),
-                        positionBottom: Vector2(272, 502),
-                      ),
-                    ],
-                    [
-                      PointModel(
-                        positionTop: Vector2(126, 388),
-                        positionBottom: Vector2(150, 412),
-                      ),
-                      PointModel(
-                        positionTop: Vector2(210, 388),
-                        positionBottom: Vector2(234, 412),
-                      ),
-                    ]
-                  ],
-                );
-              }
-            } else {
-              print("ddd");
+      if (current != null) {
+        final contain = queue.firstWhereOrNull(
+              (element) => element == current,
+            ) !=
+            null;
+
+        if (queue.isEmpty) {
+          if (currentPart == parts) {
+            nextLetterCallback();
+          } else {
+            if (currentPart < parts) {
+              currentPart += 1;
+              queue = List<PointModel>.from(
+                currentLetter.points.entries.elementAt(currentPart).value,
+              );
+              vibrate(duration: 50);
             }
           }
-        } else {
-          print("Fim de jogo");
-        }
-      }*/
-
-      if (parte1.isNotEmpty) {
-        List<Vector2>? current = parte1.firstWhereOrNull((element) =>
-            trailPosition.x >= element[0].x &&
-            trailPosition.x <= element[1].x &&
-            trailPosition.y >= element[0].y &&
-            trailPosition.y <= element[1].y);
-
-        if (current != null) {
-          if (current == parte1.first) {
-            parte1.remove(current); //remove
-            vibrate(duration: 10);
-          } else {
-            parte1 = parte1Default.toList();
-          }
-        }
-      } else if (parte2.isNotEmpty) {
-        List<Vector2>? current = parte2.firstWhereOrNull((element) =>
-            trailPosition.x >= element[0].x &&
-            trailPosition.x <= element[1].x &&
-            trailPosition.y >= element[0].y &&
-            trailPosition.y <= element[1].y);
-
-        if (current != null) {
-          if (current == parte2.first) {
-            parte2.remove(current); //remove
-            vibrate(duration: 10);
-          } else {
-            parte2 = parte1Default.toList();
-          }
+        } else if (queue.first == current) {
+          queue.removeAt(0);
+          vibrate(duration: 10);
+        } else if (contain) {
+          queue = List<PointModel>.from(
+            currentLetter.points.entries.elementAt(currentPart).value,
+          );
+          vibrate(duration: 20);
+          vibrate(duration: 20);
         }
       }
     }
@@ -165,12 +83,19 @@ class AlphabetActivityEngineContainer extends RectangleComponent
       RectangleHitbox()
         ..paint = paint
         ..renderShape = true,
-      ImageComponent(image: "alphabet/A.png")
+      ImageComponent(image: currentLetter.image)
         ..position = Vector2(size.x / 2, size.y / 2),
       CanvasComponent(
         onTrailPositionUpdate: (trailPosition) =>
             onTrailPositionUpdate(trailPosition),
       ),
+      for (PointModel el in currentLetter.points.entries.elementAt(0).value)
+        PositionComponent()
+          ..width = 24
+          ..height = 24
+          ..size = Vector2(24, 24)
+          ..position = Vector2(0, 0)
+          ..debugMode = true,
     ]);
   }
 }

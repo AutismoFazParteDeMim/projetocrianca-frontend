@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:projeto_crianca/ui/components/appbar_component.dart';
-import 'package:projeto_crianca/ui/components/slider_component.dart';
+import 'package:projeto_crianca/ui/widgets/appbar_component.dart';
+import 'package:projeto_crianca/ui/widgets/slider_component.dart';
 
 class RoutinesPage extends StatelessWidget {
   const RoutinesPage({super.key});

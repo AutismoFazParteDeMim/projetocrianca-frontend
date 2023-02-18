@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:projeto_crianca/controllers/register_page_controller.dart';
-import 'package:projeto_crianca/ui/components/Buttons/button_component.dart';
-import 'package:projeto_crianca/ui/components/Buttons/facebook_button_component.dart';
-import 'package:projeto_crianca/ui/components/Buttons/google_button_component.dart';
-import 'package:projeto_crianca/ui/components/Inputs/pass_input_component.dart';
-import 'package:projeto_crianca/ui/components/Inputs/text_input_component.dart';
-import 'package:projeto_crianca/ui/components/appbar_component.dart';
-import 'package:projeto_crianca/ui/components/image_checkbox_component.dart';
-import 'package:projeto_crianca/ui/components/modal_component.dart';
+import 'package:projeto_crianca/ui/widgets/Buttons/button_component.dart';
+import 'package:projeto_crianca/ui/widgets/Buttons/facebook_button_component.dart';
+import 'package:projeto_crianca/ui/widgets/Buttons/google_button_component.dart';
+import 'package:projeto_crianca/ui/widgets/Inputs/pass_input_component.dart';
+import 'package:projeto_crianca/ui/widgets/Inputs/text_input_component.dart';
+import 'package:projeto_crianca/ui/widgets/appbar_component.dart';
+import 'package:projeto_crianca/ui/widgets/image_checkbox_component.dart';
+import 'package:projeto_crianca/ui/widgets/modal_component.dart';
 import 'package:projeto_crianca/ui/theme/theme_extensions.dart';
 
 enum _LoginType {

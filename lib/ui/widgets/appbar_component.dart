@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ionicons/ionicons.dart';
-import 'package:projeto_crianca/ui/components/Buttons/icon_button_component.dart';
+import 'package:projeto_crianca/ui/widgets/Buttons/icon_button_component.dart';
 import 'package:projeto_crianca/ui/theme/theme_extensions.dart';
 
 class AppBarComponent extends StatelessWidget with PreferredSizeWidget {
