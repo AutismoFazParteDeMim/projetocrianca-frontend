@@ -34,16 +34,15 @@ class AlphabetActivityEngineContainer extends RectangleComponent
     int parts = currentLetter.points.entries.length - 1;
 
     void onTrailPositionUpdate(Vector2 trailPosition) {
-      print(trailPosition);
       PointModel? current = currentLetter.points.entries
           .elementAt(currentPart)
           .value
           .firstWhereOrNull(
             (element) =>
-                trailPosition.x >= element.positionTop.x &&
-                trailPosition.x <= element.positionBottom.x &&
-                trailPosition.y >= element.positionTop.y &&
-                trailPosition.y <= element.positionBottom.y,
+                trailPosition.x >= element.position.x &&
+                trailPosition.x <= element.position.x + 24 &&
+                trailPosition.y >= element.position.y &&
+                trailPosition.y <= element.position.y + 24,
           );
 
       if (current != null) {
@@ -85,15 +84,15 @@ class AlphabetActivityEngineContainer extends RectangleComponent
         image: currentLetter.image,
         imageSize: Vector2(230, 230),
         onTrailPositionUpdate: onTrailPositionUpdate,
-        data: [
-          PositionComponent()
-            ..width = 24
-            ..height = 24
-            ..size = Vector2(24, 24)
-            ..position = Vector2(230 / 2, 230 / 2)
-            ..anchor = Anchor.center
-            ..debugMode = true,
-        ],
+        data: currentLetter.points.entries.elementAt(currentPart).value.map(
+              (e) => PositionComponent()
+                ..width = 24
+                ..height = 24
+                ..size = Vector2(24, 24)
+                ..position = e.position
+                ..anchor = Anchor.center
+                ..debugMode = true,
+            ),
       )
         ..position = Vector2(
           size.x / 2,

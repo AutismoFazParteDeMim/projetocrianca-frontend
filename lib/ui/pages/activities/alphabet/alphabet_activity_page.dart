@@ -4,10 +4,9 @@ import 'package:projeto_crianca/ui/widgets/appbar_component.dart';
 import 'package:projeto_crianca/ui/pages/activities/alphabet/alphabet_activity_engine.dart';
 
 class PointModel {
-  final Vector2 positionTop;
-  final Vector2 positionBottom;
+  final Vector2 position;
 
-  PointModel({required this.positionTop, required this.positionBottom});
+  PointModel({required this.position});
 }
 
 class LetterModel {
@@ -22,73 +21,8 @@ final letters = {
     image: "alphabet/A.png",
     points: {
       1: [
-        PointModel(
-          positionTop: Vector2(88, 478),
-          positionBottom: Vector2(112, 502),
-        ),
-        PointModel(
-          positionTop: Vector2(126, 388),
-          positionBottom: Vector2(150, 412),
-        ),
-        PointModel(
-          positionTop: Vector2(168, 296),
-          positionBottom: Vector2(192, 320),
-        ),
-        PointModel(
-          positionTop: Vector2(210, 388),
-          positionBottom: Vector2(234, 412),
-        ),
-        PointModel(
-          positionTop: Vector2(248, 478),
-          positionBottom: Vector2(272, 502),
-        ),
-      ],
-      2: [
-        PointModel(
-          positionTop: Vector2(126, 388),
-          positionBottom: Vector2(150, 412),
-        ),
-        PointModel(
-          positionTop: Vector2(210, 388),
-          positionBottom: Vector2(234, 412),
-        ),
-      ]
-    },
-  ),
-  "B": LetterModel(
-    image: "alphabet/B.png",
-    points: {
-      1: [
-        PointModel(
-          positionTop: Vector2(88, 478),
-          positionBottom: Vector2(112, 502),
-        ),
-        PointModel(
-          positionTop: Vector2(126, 388),
-          positionBottom: Vector2(150, 412),
-        ),
-        PointModel(
-          positionTop: Vector2(168, 296),
-          positionBottom: Vector2(192, 320),
-        ),
-        PointModel(
-          positionTop: Vector2(210, 388),
-          positionBottom: Vector2(234, 412),
-        ),
-        PointModel(
-          positionTop: Vector2(248, 478),
-          positionBottom: Vector2(272, 502),
-        ),
-      ],
-      2: [
-        PointModel(
-          positionTop: Vector2(126, 388),
-          positionBottom: Vector2(150, 412),
-        ),
-        PointModel(
-          positionTop: Vector2(210, 388),
-          positionBottom: Vector2(234, 412),
-        ),
+        PointModel(position: Vector2(115 + 52, 115 + 2)),
+        PointModel(position: Vector2(115 - 52, 115 + 2)),
       ]
     },
   ),
@@ -108,7 +42,6 @@ class _AlphabetActivityPageState extends State<AlphabetActivityPage> {
 
   void nextLetterCallback() {
     if (counter == letters.entries.length - 1) {
-      print("Fim de Jogo");
       counter = 0;
       setState(
         () => currentLetter = letters.entries.elementAt(counter).value,
