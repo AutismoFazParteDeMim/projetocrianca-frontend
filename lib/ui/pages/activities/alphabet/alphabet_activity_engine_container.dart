@@ -26,7 +26,7 @@ class AlphabetActivityEngineContainer extends RectangleComponent
       ..style = PaintingStyle.fill
       ..color = Colors.white;
 
-    List<PointModel> queue = List<PointModel>.from(
+    List<Vector2> queue = List<Vector2>.from(
       currentLetter.points.entries.elementAt(0).value,
     );
 
@@ -34,15 +34,15 @@ class AlphabetActivityEngineContainer extends RectangleComponent
     int parts = currentLetter.points.entries.length - 1;
 
     void onTrailPositionUpdate(Vector2 trailPosition) {
-      PointModel? current = currentLetter.points.entries
+      Vector2? current = currentLetter.points.entries
           .elementAt(currentPart)
           .value
           .firstWhereOrNull(
             (element) =>
-                trailPosition.x >= element.position.x &&
-                trailPosition.x <= element.position.x + 24 &&
-                trailPosition.y >= element.position.y &&
-                trailPosition.y <= element.position.y + 24,
+                trailPosition.x >= element.x - 12 &&
+                trailPosition.x <= element.x - 12 + 24 &&
+                trailPosition.y >= element.y - 12 &&
+                trailPosition.y <= element.y - 12 + 24,
           );
 
       if (current != null) {
@@ -53,11 +53,13 @@ class AlphabetActivityEngineContainer extends RectangleComponent
 
         if (queue.isEmpty) {
           if (currentPart == parts) {
+            currentPart = 0;
+
             nextLetterCallback();
           } else {
             if (currentPart < parts) {
               currentPart += 1;
-              queue = List<PointModel>.from(
+              queue = List<Vector2>.from(
                 currentLetter.points.entries.elementAt(currentPart).value,
               );
               vibrate(duration: 50);
@@ -67,10 +69,9 @@ class AlphabetActivityEngineContainer extends RectangleComponent
           queue.removeAt(0);
           vibrate(duration: 10);
         } else if (contain) {
-          queue = List<PointModel>.from(
+          queue = List<Vector2>.from(
             currentLetter.points.entries.elementAt(currentPart).value,
           );
-          vibrate(duration: 20);
           vibrate(duration: 20);
         }
       }
@@ -86,11 +87,8 @@ class AlphabetActivityEngineContainer extends RectangleComponent
         onTrailPositionUpdate: onTrailPositionUpdate,
         data: currentLetter.points.entries.elementAt(currentPart).value.map(
               (e) => PositionComponent()
-                ..width = 24
-                ..height = 24
                 ..size = Vector2(24, 24)
-                ..position = e.position
-                ..anchor = Anchor.center
+                ..position = e - Vector2(12, 12)
                 ..debugMode = true,
             ),
       )
