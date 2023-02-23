@@ -23,34 +23,34 @@ final letters = {
     points: {
       1: [
         PointModel(
-          positionTop: Vector2(106, 478),
-          positionBottom: Vector2(130, 502),
+          positionTop: Vector2(88, 478),
+          positionBottom: Vector2(112, 502),
         ),
         PointModel(
-          positionTop: Vector2(144, 388),
-          positionBottom: Vector2(168, 412),
+          positionTop: Vector2(126, 388),
+          positionBottom: Vector2(150, 412),
         ),
         PointModel(
-          positionTop: Vector2(186, 296),
-          positionBottom: Vector2(210, 320),
+          positionTop: Vector2(168, 296),
+          positionBottom: Vector2(192, 320),
         ),
         PointModel(
-          positionTop: Vector2(228, 388),
-          positionBottom: Vector2(252, 412),
+          positionTop: Vector2(210, 388),
+          positionBottom: Vector2(234, 412),
         ),
         PointModel(
-          positionTop: Vector2(266, 478),
-          positionBottom: Vector2(290, 502),
+          positionTop: Vector2(248, 478),
+          positionBottom: Vector2(272, 502),
         ),
       ],
       2: [
         PointModel(
-          positionTop: Vector2(144, 388),
-          positionBottom: Vector2(168, 412),
+          positionTop: Vector2(126, 388),
+          positionBottom: Vector2(150, 412),
         ),
         PointModel(
-          positionTop: Vector2(228, 388),
-          positionBottom: Vector2(252, 412),
+          positionTop: Vector2(210, 388),
+          positionBottom: Vector2(234, 412),
         ),
       ]
     },
@@ -108,6 +108,7 @@ class _AlphabetActivityPageState extends State<AlphabetActivityPage> {
 
   void nextLetterCallback() {
     if (counter == letters.entries.length - 1) {
+      print("Fim de Jogo");
       counter = 0;
       setState(
         () => currentLetter = letters.entries.elementAt(counter).value,

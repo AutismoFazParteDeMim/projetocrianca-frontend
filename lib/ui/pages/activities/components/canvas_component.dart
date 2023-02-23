@@ -94,11 +94,11 @@ class CanvasComponent extends PositionComponent with DragCallbacks {
   // ignore: avoid_renaming_method_parameters
   void onGameResize(Vector2 canvasSize) {
     super.onGameResize(canvasSize);
-    size = canvasSize - size;
+    /*  size = canvasSize - size;
     if (size.x < 100 || size.y < 100) {
       size = canvasSize;
     }
-    position = canvasSize / 2;
+    position = canvasSize / 2; */
   }
 
   @override

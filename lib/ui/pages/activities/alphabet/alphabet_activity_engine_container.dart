@@ -6,7 +6,7 @@ import 'package:projeto_crianca/mixins/vibration_mixin.dart';
 import 'package:projeto_crianca/ui/pages/activities/alphabet/alphabet_activity_engine.dart';
 import 'package:projeto_crianca/ui/pages/activities/alphabet/alphabet_activity_page.dart';
 import 'package:projeto_crianca/ui/pages/activities/components/canvas_component.dart';
-import 'package:projeto_crianca/ui/pages/activities/components/image_component.dart';
+import 'package:projeto_crianca/ui/pages/activities/components/hint_container_component.dart';
 
 class AlphabetActivityEngineContainer extends RectangleComponent
     with HasGameRef<AlphabetActivityEngine>, VibrationMixin {
@@ -34,6 +34,7 @@ class AlphabetActivityEngineContainer extends RectangleComponent
     int parts = currentLetter.points.entries.length - 1;
 
     void onTrailPositionUpdate(Vector2 trailPosition) {
+      print(trailPosition);
       PointModel? current = currentLetter.points.entries
           .elementAt(currentPart)
           .value
@@ -80,19 +81,26 @@ class AlphabetActivityEngineContainer extends RectangleComponent
       RectangleHitbox()
         ..paint = paint
         ..renderShape = true,
-      ImageComponent(image: currentLetter.image)
-        ..position = Vector2(size.x / 2, size.y / 2),
-      CanvasComponent(
-        onTrailPositionUpdate: (trailPosition) =>
-            onTrailPositionUpdate(trailPosition),
-      ),
-      for (PointModel el in currentLetter.points.entries.elementAt(0).value)
-        PositionComponent()
-          ..width = 24
-          ..height = 24
-          ..size = Vector2(24, 24)
-          ..position = el.positionTop
-          ..debugMode = true,
+      HintContainerComponent(
+        image: currentLetter.image,
+        imageSize: Vector2(230, 230),
+        onTrailPositionUpdate: onTrailPositionUpdate,
+        data: [
+          PositionComponent()
+            ..width = 24
+            ..height = 24
+            ..size = Vector2(24, 24)
+            ..position = Vector2(230 / 2, 230 / 2)
+            ..anchor = Anchor.center
+            ..debugMode = true,
+        ],
+      )
+        ..position = Vector2(
+          size.x / 2,
+          size.y / 2,
+        )
+        ..size = Vector2(230, 230)
+        ..anchor = Anchor.center,
     ]);
   }
 }
