@@ -1,6 +1,3 @@
-import 'dart:collection';
-import 'dart:math';
-
 import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
 import 'package:flutter/material.dart';
@@ -94,7 +91,7 @@ class AlphabetActivityEngineContainer extends RectangleComponent
           ..width = 24
           ..height = 24
           ..size = Vector2(24, 24)
-          ..position = Vector2(0, 0)
+          ..position = el.positionTop
           ..debugMode = true,
     ]);
   }

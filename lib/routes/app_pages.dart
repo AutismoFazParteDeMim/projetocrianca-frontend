@@ -110,7 +110,7 @@ abstract class AppPages {
     ),
     GetPage(
       name: AppRoutes.alphabetActivity,
-      page: () => AlphabetActivityPage(),
+      page: () => const AlphabetActivityPage(),
     ),
   ];
 }

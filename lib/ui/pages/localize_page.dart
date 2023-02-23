@@ -8,7 +8,8 @@ import 'package:projeto_crianca/ui/widgets/Buttons/button_component.dart';
 import 'package:projeto_crianca/ui/widgets/Buttons/icon_button_component.dart';
 import 'package:projeto_crianca/ui/widgets/Inputs/text_input_component.dart';
 import 'package:projeto_crianca/ui/theme/theme_extensions.dart';
-import 'package:modal_bottom_sheet/modal_bottom_sheet.dart' as ModalBottomSheet;
+import 'package:modal_bottom_sheet/modal_bottom_sheet.dart'
+    as modal_bottom_sheet;
 
 class _CustomAppBar extends StatelessWidget {
   final LocalizePageController _controller = Get.find<LocalizePageController>();
@@ -71,7 +72,7 @@ class _CustomAppBar extends StatelessWidget {
                           onTap: () {
                             _controller.setProfissional =
                                 _controller.getResults[index];
-                            ModalBottomSheet.showMaterialModalBottomSheet(
+                            modal_bottom_sheet.showMaterialModalBottomSheet(
                               expand: false,
                               context: context,
                               builder: (BuildContext context) =>
@@ -104,7 +105,7 @@ class CustomModalBottomSheet extends StatelessWidget {
     final ThemeColors colors = Theme.of(context).extension<ThemeColors>()!;
     final ThemeData theme = Theme.of(context);
     final ScrollController? modalScrollController =
-        ModalBottomSheet.ModalScrollController.of(context);
+        modal_bottom_sheet.ModalScrollController.of(context);
 
     if (controller.getProfessional != null) {
       return Obx(
@@ -249,7 +250,7 @@ class LocalizePage extends GetView<LocalizePageController> {
   Widget build(BuildContext context) {
     final ThemeMetrics metrics = Theme.of(context).extension<ThemeMetrics>()!;
     controller.setShowPinModal =
-        () => ModalBottomSheet.showMaterialModalBottomSheet(
+        () => modal_bottom_sheet.showMaterialModalBottomSheet(
               expand: false,
               context: context,
               builder: (BuildContext context) => CustomModalBottomSheet(),

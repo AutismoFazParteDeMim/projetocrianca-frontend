@@ -1,10 +1,5 @@
 import 'package:flame/components.dart';
-import 'package:get/get.dart';
-import 'package:projeto_crianca/ui/pages/games/components/bottom_container_component.dart';
-import 'package:projeto_crianca/ui/pages/games/components/dragable_block_component.dart';
-import 'package:projeto_crianca/ui/pages/games/components/hint_container_component.dart';
 import 'package:projeto_crianca/ui/pages/games/components/top_container_component.dart';
-import 'package:projeto_crianca/ui/pages/games/components/fixed_block_component.dart';
 import 'package:projeto_crianca/ui/pages/games/memory/components/card_game_component.dart';
 
 class MemoryGameEngineContainer extends RectangleComponent {
