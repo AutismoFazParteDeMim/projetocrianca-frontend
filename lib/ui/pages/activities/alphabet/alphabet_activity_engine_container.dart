@@ -10,14 +10,6 @@ import 'package:projeto_crianca/ui/pages/activities/components/hint_container_co
 
 class AlphabetActivityEngineContainer extends RectangleComponent
     with HasGameRef<AlphabetActivityEngine>, VibrationMixin {
-  final LetterModel currentLetter;
-  final Function() nextLetterCallback;
-
-  AlphabetActivityEngineContainer({
-    required this.currentLetter,
-    required this.nextLetterCallback,
-  });
-
   @override
   Future<void> onLoad() async {
     super.onLoad();
