@@ -46,6 +46,9 @@ dependencies:
       path: modal_bottom_sheet
   flutter_config: ^2.0.0
   maps_launcher: ^2.0.1
+  flutter_bloc: ^8.1.1
+  flame_bloc: ^1.8.2
+  equatable: ^2.0.5
 
 dev_dependencies:
   flutter_test:
@@ -62,72 +65,46 @@ flutter:
     - assets/adaptive-icon.png
     - assets/login.png
     # app icons
-    - assets/icons/avatarM.png
-    - assets/icons/avatarF.png
-    - assets/icons/activities-icon.png
-    - assets/icons/games-icon.png
-    - assets/icons/settings-icon.png
-    - assets/icons/local-icon.png
-    - assets/icons/encaixarIcon.png
-    - assets/icons/quebraCabecaIcon.png
-    - assets/icons/routines-icon.png
-    - assets/icons/expressions-icon.png
-      # avatar icons - eyes
-    - assets/avatar/eye/cheeryEyes.png
-    - assets/avatar/eye/confusedEyes.png
-    - assets/avatar/eye/normalEyes.png
-    - assets/avatar/eye/sleepyEyes.png
-    - assets/avatar/eye/starstruckEyes.png
-    - assets/avatar/eye/winkingEyes.png
+    - assets/icons/
+    # avatar icons - eyes
+    - assets/avatar/eye/
     # avatar icons - hair
-    - assets/avatar/hair/bowlCutHair.png
-    - assets/avatar/hair/froBun.png
-    - assets/avatar/hair/shortHair.png
-    - assets/avatar/hair/shortHairCurly.png
-    - assets/avatar/hair/straightHair.png
-    - assets/avatar/hair/wavyBob.png
+    - assets/avatar/hair/
     # avatar icons - accessories
-    - assets/avatar/objects/catEars.png
-    - assets/avatar/objects/clownNose.png
-    - assets/avatar/objects/faceMask.png
-    - assets/avatar/objects/glasses.png
-    - assets/avatar/objects/sailormoonCrown.png
-    - assets/avatar/objects/sunglasses.png
+    - assets/avatar/objects/
     # avatar icons - mouth
-    - assets/avatar/smile/awkwardSmile.png
-    - assets/avatar/smile/braces.png
-    - assets/avatar/smile/gapSmile.png
-    - assets/avatar/smile/kawaii.png
-    - assets/avatar/smile/openedSmile.png
-    - assets/avatar/smile/teethSmile.png
+    - assets/avatar/smile/
     # other images
     - assets/profile-cover.jpg
-    # game images - encaixar
+    # game images
+    - assets/images/alphabet/
     - assets/images/encaixar/
-    # game audios - encaixar
-    - assets/audio/encaixar/background.mp3
+    # game images - sombra
+    - assets/images/sombra/
+      # game images - puzzle
+    - assets/images/puzzle/
+    # game audios
+    - assets/audio/games/encaixar/
+    - assets/audio/games/parDeCores/
+    - assets/audio/games/puzzle/
+    - assets/audio/games/sombra/
     # routines
-    - assets/images/routines/1Acordar.png
-    - assets/images/routines/2EscovarOsDentes.png
-    - assets/images/routines/3TomarBanho.png
-    - assets/images/routines/4CafeDaManha.png
-    - assets/images/routines/5UsarBanheiro.png
-    - assets/images/routines/6IrParaEscola.png
-    - assets/images/routines/7Estudar.png
-    - assets/images/routines/8PraticarEsportes.png
-    - assets/images/routines/9Dormir.png
+    - assets/images/routines/
     # expressions
-    - assets/images/expressions/1Alegre.png
-    - assets/images/expressions/2Confuso.png
-    - assets/images/expressions/3EmDuvida.png
-    - assets/images/expressions/4EstouBem.png
-    - assets/images/expressions/5Feliz.png
-    - assets/images/expressions/6Infeliz.png
-    - assets/images/expressions/7Triste.png
-    - assets/images/expressions/8Raiva.png
-    - assets/images/expressions/9Surpreso.png
-    # expressions
+    - assets/images/expressions/
     - assets/images/memoryGame/
+    - assets/images/parDeCores/
+    - assets/images/puzzle/
+    - assets/images/routines/
+    - assets/images/sombra/
+    # game audios
+    - assets/audio/games/encaixar/
+    - assets/audio/games/parDeCores/
+    - assets/audio/games/puzzle/
+    - assets/audio/games/sombra/
+    # activities audios
+    - assets/audio/activities/alphabet/
+    - assets/audio/activities/numbers/
     # google fonts
     - assets/google_fonts/
     # maps-styles

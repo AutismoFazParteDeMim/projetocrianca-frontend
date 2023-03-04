@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:projeto_crianca/routes/app_routes.dart';
-import 'package:projeto_crianca/ui/components/Buttons/menu_button_component.dart';
-import 'package:projeto_crianca/ui/components/appbar_component.dart';
+import 'package:projeto_crianca/ui/widgets/Buttons/menu_button_component.dart';
+import 'package:projeto_crianca/ui/widgets/appbar_component.dart';
 import 'package:projeto_crianca/ui/theme/theme_extensions.dart';
 
 class ActivitiesPage extends StatelessWidget {
@@ -41,6 +41,15 @@ class ActivitiesPage extends StatelessWidget {
                         const AssetImage("assets/icons/expressions-icon.png"),
                     onPressed: () => Get.toNamed(AppRoutes.expressions),
                   ),
+                  /*SizedBox(height: metrics.gap),
+                  MenuButtonComponent(
+                    title: "Alfabeto", 
+                    text:
+                        "Trabalha com apoio visual, contribui para uma melhor interação social com amigos e família.",
+                    image:
+                        const AssetImage("assets/icons/alphabet-icon.png"),
+                    onPressed: () => Get.toNamed(AppRoutes.alphabetActivity),
+                  ),*/
                 ],
               ),
             ],

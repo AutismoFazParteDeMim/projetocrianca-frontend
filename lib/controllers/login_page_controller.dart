@@ -2,7 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:projeto_crianca/data/repositorys/auth_repository.dart';
-import 'package:projeto_crianca/ui/components/alert_modal_component.dart';
+import 'package:projeto_crianca/ui/widgets/alert_modal_component.dart';
 
 void _showAlertModal(
   String message,

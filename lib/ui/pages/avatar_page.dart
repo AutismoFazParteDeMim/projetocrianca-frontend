@@ -6,9 +6,9 @@ import 'package:ionicons/ionicons.dart';
 
 import 'package:projeto_crianca/controllers/avatar_page_controller.dart';
 import 'package:projeto_crianca/data/models/avatar_model.dart';
-import 'package:projeto_crianca/ui/components/Buttons/button_component.dart';
-import 'package:projeto_crianca/ui/components/appbar_component.dart';
-import 'package:projeto_crianca/ui/components/svg_component.dart';
+import 'package:projeto_crianca/ui/widgets/Buttons/button_component.dart';
+import 'package:projeto_crianca/ui/widgets/appbar_component.dart';
+import 'package:projeto_crianca/ui/widgets/svg_component.dart';
 import 'package:projeto_crianca/ui/theme/theme_extensions.dart';
 
 class _SectionComponent extends StatelessWidget {
