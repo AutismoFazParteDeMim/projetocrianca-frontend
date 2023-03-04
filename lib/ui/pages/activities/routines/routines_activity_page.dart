@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:projeto_crianca/ui/widgets/appbar_component.dart';
 import 'package:projeto_crianca/ui/widgets/slider_component.dart';
 
-class RoutinesPage extends StatelessWidget {
-  const RoutinesPage({super.key});
+class RoutinesActivityPage extends StatelessWidget {
+  const RoutinesActivityPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -58,9 +58,10 @@ class RoutinesPage extends StatelessWidget {
     ];
 
     return Scaffold(
-        appBar: AppBarComponent(
-          title: "Rotinas",
-        ),
-        body: const SliderComponent(data: data));
+      appBar: AppBarComponent(
+        title: "Rotinas",
+      ),
+      body: const SliderComponent(data: data),
+    );
   }
 }

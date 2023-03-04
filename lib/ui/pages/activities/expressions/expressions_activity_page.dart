@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:projeto_crianca/ui/widgets/appbar_component.dart';
 import 'package:projeto_crianca/ui/widgets/slider_component.dart';
 
-class ExpressionsPage extends StatelessWidget {
-  const ExpressionsPage({super.key});
+class ExpressionsActivityPage extends StatelessWidget {
+  const ExpressionsActivityPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -73,9 +73,10 @@ class ExpressionsPage extends StatelessWidget {
     ];
 
     return Scaffold(
-        appBar: AppBarComponent(
-          title: "Expressões",
-        ),
-        body: const SliderComponent(data: data));
+      appBar: AppBarComponent(
+        title: "Expressões",
+      ),
+      body: const SliderComponent(data: data),
+    );
   }
 }

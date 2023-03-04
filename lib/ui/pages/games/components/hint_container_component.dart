@@ -1,5 +1,6 @@
 import 'package:flame/components.dart';
 import 'package:flame/flame.dart';
+import 'package:flutter/material.dart';
 
 class HintContainerComponent extends RectangleComponent {
   final Iterable<Component> data;
@@ -10,7 +11,9 @@ class HintContainerComponent extends RectangleComponent {
     required this.data,
     required this.image,
     required this.imageSize,
-  });
+  }) {
+    paint = Paint()..color = Colors.transparent;
+  }
 
   @override
   Future<void> onLoad() async {

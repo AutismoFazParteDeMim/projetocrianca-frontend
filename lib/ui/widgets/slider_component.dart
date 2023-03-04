@@ -16,14 +16,27 @@ class _SliderChild extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final ThemeData theme = Theme.of(context);
+    final ThemeMetrics metrics = theme.extension<ThemeMetrics>()!;
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.center,
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Image(image: AssetImage(image)),
+        FractionallySizedBox(
+          widthFactor: 0.8,
+          child: Image(
+            image: AssetImage(image),
+          ),
+        ),
+        SizedBox(
+          height: metrics.gap * 2,
+        ),
         Text(
           title,
-          style: theme.textTheme.titleMedium,
+          style: theme.textTheme.titleLarge,
+        ),
+        SizedBox(
+          height: metrics.gap / 2,
         ),
         Text(
           text,
@@ -65,25 +78,31 @@ class _SliderComponentState extends State<SliderComponent> {
     return Column(
       children: [
         Expanded(
-            child: CarouselSlider(
-          carouselController: _controller,
-          options: CarouselOptions(
-            height: MediaQuery.of(context).size.height,
-            enlargeCenterPage: true,
-            viewportFraction: 0.9,
-            enableInfiniteScroll: false,
-            initialPage: 0,
-            onPageChanged: (index, reason) => setState(
-              () {
-                _currentIndex = index;
-              },
+          child: CarouselSlider(
+            carouselController: _controller,
+            options: CarouselOptions(
+              height: MediaQuery.of(context).size.height,
+              enlargeCenterPage: true,
+              viewportFraction: 0.9,
+              enableInfiniteScroll: false,
+              initialPage: 0,
+              onPageChanged: (index, reason) => setState(
+                () {
+                  _currentIndex = index;
+                },
+              ),
             ),
+            items: data
+                .map(
+                  (e) => _SliderChild(
+                    title: e["title"],
+                    text: e["text"],
+                    image: e["image"],
+                  ),
+                )
+                .toList(),
           ),
-          items: data
-              .map((e) => _SliderChild(
-                  title: e["title"], text: e["text"], image: e["image"]))
-              .toList(),
-        )),
+        ),
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: data.asMap().entries.map(

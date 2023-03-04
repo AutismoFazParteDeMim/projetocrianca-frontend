@@ -41,7 +41,7 @@ class ActivitiesPage extends StatelessWidget {
                         const AssetImage("assets/icons/expressions-icon.png"),
                     onPressed: () => Get.toNamed(AppRoutes.expressions),
                   ),
-                  SizedBox(height: metrics.gap),
+                  /*SizedBox(height: metrics.gap),
                   MenuButtonComponent(
                     title: "Alfabeto", 
                     text:
@@ -49,7 +49,7 @@ class ActivitiesPage extends StatelessWidget {
                     image:
                         const AssetImage("assets/icons/alphabet-icon.png"),
                     onPressed: () => Get.toNamed(AppRoutes.alphabetActivity),
-                  ),
+                  ),*/
                 ],
               ),
             ],
