@@ -2,7 +2,7 @@
     <queries>
         <provider android:authorities="com.facebook.katana.provider.PlatformProvider" />
     </queries>
-    <application android:label="projeto_crianca" android:name="${applicationName}" android:icon="@mipmap/launcher_icon">
+    <application android:label="Autismo Faz Parte de Mim" android:name="${applicationName}" android:icon="@mipmap/launcher_icon">
 
         <meta-data android:name="com.facebook.sdk.ApplicationId" android:value="@string/facebook_app_id"/>
 
