@@ -7,17 +7,22 @@ import 'package:projeto_crianca/controllers/auth_controller.dart';
 import 'package:projeto_crianca/data/providers/auth_provider.dart';
 import 'package:projeto_crianca/data/repositorys/auth_repository.dart';
 import 'package:projeto_crianca/firebase_options.dart';
+import 'package:projeto_crianca/mixins/storage_mixin.dart';
 import 'package:projeto_crianca/routes/app_routes.dart';
 import 'package:projeto_crianca/routes/app_pages.dart';
 import 'package:projeto_crianca/ui/theme/app_theme.dart';
+import 'package:get_storage/get_storage.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await GetStorage.init("settings");
+
   if (!kIsWeb) {
     await FlutterConfig.loadEnvVariables();
   }
-  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform)
-      .then(
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  ).then(
     (value) => Get.put(
       AuthController(
         AuthRepository(AuthProvider()),
@@ -28,7 +33,7 @@ Future<void> main() async {
   runApp(const MyApp());
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatelessWidget with StorageMixin {
   const MyApp({super.key});
 
   @override
@@ -39,7 +44,10 @@ class MyApp extends StatelessWidget {
       initialRoute: AppRoutes.initial,
       theme: AppTheme(isDark: false).getTheme(),
       darkTheme: AppTheme(isDark: true).getTheme(),
-      themeMode: ThemeMode.light,
+      themeMode: storageRead(container: "settings", key: "theme") == "dark"
+          ? ThemeMode.dark
+          : ThemeMode.light,
+      locale: const Locale("pt", "BR"),
       debugShowCheckedModeBanner: false,
     );
   }

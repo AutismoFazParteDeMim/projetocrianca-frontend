@@ -1,24 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:projeto_crianca/ui/theme/theme_extensions.dart';
 
-class SwitchComponent extends StatefulWidget {
-  final Function onChanged;
+class SwitchComponent extends StatelessWidget {
+  final Function(bool value) onChanged;
   final bool? isChecked;
 
-  const SwitchComponent({super.key, required this.onChanged, this.isChecked});
-
-  @override
-  State<StatefulWidget> createState() => _SwitchComponentState();
-}
-
-class _SwitchComponentState extends State<SwitchComponent> {
-  bool _isChecked = false;
-
-  @override
-  void initState() {
-    super.initState();
-    _isChecked = widget.isChecked ?? false;
-  }
+  const SwitchComponent({
+    super.key,
+    required this.onChanged,
+    this.isChecked,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -27,13 +18,8 @@ class _SwitchComponentState extends State<SwitchComponent> {
     return Switch(
       activeColor: colors.primary,
       activeTrackColor: colors.primary,
-      value: _isChecked,
-      onChanged: (value) {
-        setState(() {
-          _isChecked = !_isChecked;
-        });
-        widget.onChanged(value);
-      },
+      value: isChecked == true,
+      onChanged: onChanged,
     );
   }
 }

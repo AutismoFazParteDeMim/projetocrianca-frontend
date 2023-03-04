@@ -6,6 +6,7 @@ import 'package:projeto_crianca/bindings/localize_page_binding.dart';
 import 'package:projeto_crianca/bindings/login_page_binding.dart';
 import 'package:projeto_crianca/bindings/profile_page_binding.dart';
 import 'package:projeto_crianca/bindings/register_page_binding.dart';
+import 'package:projeto_crianca/bindings/settings_page_binding.dart';
 import 'package:projeto_crianca/routes/app_routes.dart';
 import 'package:projeto_crianca/ui/pages/games/encaixar/encaixar_game_page.dart';
 import 'package:projeto_crianca/ui/pages/games/memory/memory_game_page.dart';
@@ -68,6 +69,7 @@ abstract class AppPages {
     GetPage(
       name: AppRoutes.settings,
       page: () => SettingsPage(),
+      binding: SettingsPageBinding(),
     ),
     GetPage(
       name: AppRoutes.about,

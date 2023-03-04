@@ -15,6 +15,7 @@ class ButtonComponent extends StatelessWidget {
   final IconData? icon;
   final ButtonComponentType? type;
   final bool? reversed;
+  final bool? full;
 
   const ButtonComponent({
     super.key,
@@ -23,6 +24,7 @@ class ButtonComponent extends StatelessWidget {
     this.type,
     this.icon,
     this.reversed,
+    this.full,
   });
 
   @override
@@ -73,7 +75,7 @@ class ButtonComponent extends StatelessWidget {
     ];
 
     return Container(
-      width: 250,
+      width: full == true ? null : 250,
       height: 56,
       decoration: BoxDecoration(
         borderRadius: metrics.borderRadius,

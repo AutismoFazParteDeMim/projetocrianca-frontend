@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'dart:developer';
 import 'package:ionicons/ionicons.dart';
 import 'package:projeto_crianca/controllers/auth_controller.dart';
+import 'package:projeto_crianca/controllers/settings_page_controller.dart';
 import 'package:projeto_crianca/routes/app_routes.dart';
 import 'package:projeto_crianca/ui/widgets/Buttons/button_component.dart';
 import 'package:projeto_crianca/ui/widgets/appbar_component.dart';
@@ -56,7 +57,7 @@ class _OptionComponent extends StatelessWidget {
   }
 }
 
-class SettingsPage extends StatelessWidget {
+class SettingsPage extends GetView<SettingsPageController> {
   final authController = Get.find<AuthController>();
 
   SettingsPage({super.key});
@@ -82,17 +83,16 @@ class SettingsPage extends StatelessWidget {
                   _OptionComponent(
                     title: "Modo escuro",
                     icon: Ionicons.contrast_outline,
-                    action: SwitchComponent(
-                      onChanged: (bool value) {
-                        if (value) {
-                          Get.changeThemeMode(ThemeMode.dark);
-                        } else {
-                          Get.changeThemeMode(ThemeMode.light);
-                        }
-                      },
+                    action: Obx(
+                      () => SwitchComponent(
+                        isChecked: controller.getCurrentTheme == ThemeMode.dark,
+                        onChanged: (bool value) => controller.changeTheme(
+                          isDark: value,
+                        ),
+                      ),
                     ),
                   ),
-                  SizedBox(height: metrics.gap),
+                  /*SizedBox(height: metrics.gap),
                   _OptionComponent(
                     title: "Modo daltônico",
                     icon: Ionicons.color_filter_outline,
@@ -101,7 +101,7 @@ class SettingsPage extends StatelessWidget {
                         value.toString(),
                       ),
                     ),
-                  ),
+                  ),*/
                 ],
               ),
               SizedBox(height: metrics.gap * 2),
@@ -124,6 +124,7 @@ class SettingsPage extends StatelessWidget {
                 type: ButtonComponentType.danger,
                 icon: Ionicons.log_out_outline,
                 reversed: true,
+                full: true,
                 onPressed: () => authController.logOut(),
               ),
             ],
