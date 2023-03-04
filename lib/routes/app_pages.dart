@@ -8,6 +8,7 @@ import 'package:projeto_crianca/bindings/profile_page_binding.dart';
 import 'package:projeto_crianca/bindings/register_page_binding.dart';
 import 'package:projeto_crianca/bindings/settings_page_binding.dart';
 import 'package:projeto_crianca/routes/app_routes.dart';
+import 'package:projeto_crianca/ui/pages/activities/alphabet/alphabet_activity_page.dart';
 import 'package:projeto_crianca/ui/pages/games/encaixar/encaixar_game_page.dart';
 import 'package:projeto_crianca/ui/pages/games/memory/memory_game_page.dart';
 import 'package:projeto_crianca/ui/pages/games/pardecores/pardecores_game_page.dart';
@@ -108,6 +109,10 @@ abstract class AppPages {
     GetPage(
       name: AppRoutes.parDeCoresGame,
       page: () => ParDeCoresGamePage(),
+    ),
+    GetPage(
+      name: AppRoutes.alphabetActivity,
+      page: () => const AlphabetActivityPage(),
     ),
   ];
 }
