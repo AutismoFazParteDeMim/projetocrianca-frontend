@@ -1,30 +1,37 @@
 import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
+import 'package:flame_bloc/flame_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:projeto_crianca/mixins/vibration_mixin.dart';
 import 'package:projeto_crianca/ui/pages/activities/alphabet/alphabet_activity_engine.dart';
 import 'package:projeto_crianca/ui/pages/activities/alphabet/alphabet_activity_page.dart';
-import 'package:projeto_crianca/ui/pages/activities/components/canvas_component.dart';
-import 'package:projeto_crianca/ui/pages/activities/components/hint_container_component.dart';
+import 'package:projeto_crianca/ui/pages/activities/alphabet/bloc/alphabet_activity_bloc.dart';
+import 'package:projeto_crianca/ui/pages/activities/alphabet/bloc/alphabet_activity_bloc_events.dart';
+import 'package:projeto_crianca/ui/pages/activities/alphabet/bloc/alphabet_activity_bloc_states.dart';
+import 'package:projeto_crianca/ui/pages/activities/alphabet/components/canvas_component.dart';
+import 'package:projeto_crianca/ui/pages/activities/alphabet/components/hint_container_component.dart';
 
 class AlphabetActivityEngineContainer extends RectangleComponent
-    with HasGameRef<AlphabetActivityEngine>, VibrationMixin {
-  final LetterModel currentLetter;
-  final Function() nextLetterCallback;
+    with
+        FlameBlocListenable<AlphabetActivityBloc, AlphabetActivityState>,
+        VibrationMixin {
+  LetterModel currentLetter = letters.entries.elementAt(0).value;
 
-  AlphabetActivityEngineContainer({
-    required this.currentLetter,
-    required this.nextLetterCallback,
-  });
+  @override
+  void onNewState(AlphabetActivityState state) {
+    currentLetter = state.letter;
+    onLoad();
+    super.onNewState(state);
+  }
+
+  void nextLetterCallback() {
+    bloc.add(NextLetterBlocEvent());
+  }
 
   @override
   Future<void> onLoad() async {
     super.onLoad();
-
-    final paint = Paint()
-      ..style = PaintingStyle.fill
-      ..color = Colors.white;
 
     List<Vector2> queue = List<Vector2>.from(
       currentLetter.points.entries.elementAt(0).value,
@@ -32,6 +39,7 @@ class AlphabetActivityEngineContainer extends RectangleComponent
 
     int currentPart = 0;
     int parts = currentLetter.points.entries.length - 1;
+    List pp = [];
 
     void onTrailPositionUpdate(Vector2 trailPosition) {
       Vector2? current = currentLetter.points.entries
@@ -54,7 +62,7 @@ class AlphabetActivityEngineContainer extends RectangleComponent
         if (queue.isEmpty) {
           if (currentPart == parts) {
             currentPart = 0;
-
+            pp = [];
             nextLetterCallback();
           } else {
             if (currentPart < parts) {
@@ -77,21 +85,23 @@ class AlphabetActivityEngineContainer extends RectangleComponent
       }
     }
 
+    for (var letter in currentLetter.points.entries) {
+      for (var l in letter.value) {
+        pp.add(l);
+      }
+    }
+
     addAll([
-      RectangleHitbox()
-        ..paint = paint
-        ..renderShape = true,
       HintContainerComponent(
-        image: currentLetter.image,
-        imageSize: Vector2(230, 230),
-        onTrailPositionUpdate: onTrailPositionUpdate,
-        data: currentLetter.points.entries.elementAt(currentPart).value.map(
-              (e) => PositionComponent()
-                ..size = Vector2(24, 24)
-                ..position = e - Vector2(12, 12)
-                ..debugMode = true,
-            ),
-      )
+          image: currentLetter.image,
+          imageSize: Vector2(230, 230),
+          onTrailPositionUpdate: onTrailPositionUpdate,
+          data: pp.map(
+            (e) => PositionComponent()
+              ..size = Vector2(24, 24)
+              ..position = e - Vector2(12, 12)
+              ..debugMode = true,
+          ))
         ..position = Vector2(
           size.x / 2,
           size.y / 2,

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'dart:developer';
 import 'package:ionicons/ionicons.dart';
 import 'package:projeto_crianca/controllers/auth_controller.dart';
 import 'package:projeto_crianca/controllers/settings_page_controller.dart';
