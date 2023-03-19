@@ -4,9 +4,9 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:maps_launcher/maps_launcher.dart';
 import 'package:projeto_crianca/controllers/localize_page_controller.dart';
-import 'package:projeto_crianca/ui/widgets/Buttons/button_component.dart';
-import 'package:projeto_crianca/ui/widgets/Buttons/icon_button_component.dart';
-import 'package:projeto_crianca/ui/widgets/Inputs/text_input_component.dart';
+import 'package:projeto_crianca/ui/widgets/buttons/button_component.dart';
+import 'package:projeto_crianca/ui/widgets/buttons/icon_button_component.dart';
+import 'package:projeto_crianca/ui/widgets/inputs/text_input_component.dart';
 import 'package:projeto_crianca/ui/theme/theme_extensions.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart'
     as modal_bottom_sheet;
@@ -32,7 +32,7 @@ class _CustomAppBar extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              IconButtonComponent(
+              IconButtonWidget(
                 icon: Ionicons.arrow_back_outline,
                 onPressed: () => Get.back(),
               ),
@@ -118,7 +118,7 @@ class CustomModalBottomSheet extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
-                  IconButtonComponent(
+                  IconButtonWidget(
                     icon: Ionicons.close_outline,
                     onPressed: () => Get.back(),
                   ),
@@ -220,7 +220,7 @@ class CustomModalBottomSheet extends StatelessWidget {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          ButtonComponent(
+                          ButtonWidget(
                             text: "Rotas",
                             icon: Ionicons.navigate,
                             onPressed: () => MapsLauncher.launchCoordinates(

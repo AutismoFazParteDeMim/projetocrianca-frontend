@@ -24,18 +24,18 @@ class TextInputComponent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  TextFormField(
-        onChanged: onChange != null ? (String value) => onChange!(value) : null,
-        keyboardType: type ?? TextInputType.text,
-        textInputAction: action ?? TextInputAction.next,
-        controller: controller,
-        autofillHints: autofillHints,
-        validator:
-            validador != null ? (String? value) => validador!(value) : null,
-        decoration: InputDecoration(
-          hintText: placeholder,
-          prefixIcon: icon != null ? Icon(icon) : null,
-        ),
-      );
+    return TextFormField(
+      onChanged: onChange != null ? (String value) => onChange!(value) : null,
+      keyboardType: type ?? TextInputType.text,
+      textInputAction: action ?? TextInputAction.next,
+      controller: controller,
+      autofillHints: autofillHints,
+      validator:
+          validador != null ? (String? value) => validador!(value) : null,
+      decoration: InputDecoration(
+        hintText: placeholder,
+        prefixIcon: icon != null ? Icon(icon) : null,
+      ),
+    );
   }
 }

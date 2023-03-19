@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ionicons/ionicons.dart';
-import 'package:projeto_crianca/ui/widgets/Buttons/icon_button_component.dart';
+import 'package:projeto_crianca/ui/widgets/buttons/icon_button_component.dart';
 import 'package:projeto_crianca/ui/theme/theme_extensions.dart';
 
 class AppBarComponent extends StatelessWidget with PreferredSizeWidget {
@@ -35,7 +35,7 @@ class AppBarComponent extends StatelessWidget with PreferredSizeWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.end,
         children: [
-          IconButtonComponent(
+          IconButtonWidget(
             icon: Ionicons.arrow_back,
             onPressed: () => Get.back(),
           ),

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:projeto_crianca/controllers/about_page_controller.dart';
-import 'package:projeto_crianca/ui/widgets/Buttons/github_button_component.dart';
+import 'package:projeto_crianca/ui/widgets/buttons/github_button_component.dart';
 import 'package:projeto_crianca/ui/widgets/appbar_component.dart';
 import 'package:projeto_crianca/ui/theme/theme_extensions.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -97,7 +97,7 @@ class AboutPage extends GetView<AboutPageController> {
                 ],
               ),
             ),
-            GitHubButtonComponent(
+            GitHubButtonWidget(
               text: "GitHub",
               onPressed: () => launchUrl(
                 Uri.parse(

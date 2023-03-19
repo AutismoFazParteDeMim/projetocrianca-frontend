@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:projeto_crianca/ui/theme/theme_extensions.dart';
 
-class SquareButtonComponent extends StatelessWidget {
+class SquareButtonWidget extends StatelessWidget {
   final VoidCallback? onPressed;
   final String text;
   final ImageProvider image;
 
-  const SquareButtonComponent({
+  const SquareButtonWidget({
     super.key,
     this.onPressed,
     required this.text,

@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:projeto_crianca/ui/theme/theme_extensions.dart';
 
-class IconButtonComponent extends StatelessWidget {
+class IconButtonWidget extends StatelessWidget {
   final VoidCallback? onPressed;
   final IconData icon;
 
-  const IconButtonComponent({super.key, required this.icon, this.onPressed});
+  const IconButtonWidget({super.key, required this.icon, this.onPressed});
 
   @override
   Widget build(BuildContext context) {

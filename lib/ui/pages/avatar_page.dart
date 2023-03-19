@@ -6,7 +6,7 @@ import 'package:ionicons/ionicons.dart';
 
 import 'package:projeto_crianca/controllers/avatar_page_controller.dart';
 import 'package:projeto_crianca/data/models/avatar_model.dart';
-import 'package:projeto_crianca/ui/widgets/Buttons/button_component.dart';
+import 'package:projeto_crianca/ui/widgets/buttons/button_component.dart';
 import 'package:projeto_crianca/ui/widgets/appbar_component.dart';
 import 'package:projeto_crianca/ui/widgets/svg_component.dart';
 import 'package:projeto_crianca/ui/theme/theme_extensions.dart';
@@ -346,10 +346,10 @@ class AvatarPage extends GetView<AvatarPageController> {
               ),
             ),
             SizedBox(height: metrics.gap),
-            ButtonComponent(
+            ButtonWidget(
               text: "Salvar",
               icon: Ionicons.save_outline,
-              type: ButtonComponentType.success,
+              color: ButtonWidgetColor.success,
               onPressed: () => controller.saveAvatar(),
             ),
           ],

@@ -4,7 +4,7 @@ import 'package:ionicons/ionicons.dart';
 import 'package:projeto_crianca/controllers/auth_controller.dart';
 import 'package:projeto_crianca/controllers/settings_page_controller.dart';
 import 'package:projeto_crianca/routes/app_routes.dart';
-import 'package:projeto_crianca/ui/widgets/Buttons/button_component.dart';
+import 'package:projeto_crianca/ui/widgets/buttons/button_component.dart';
 import 'package:projeto_crianca/ui/widgets/appbar_component.dart';
 import 'package:projeto_crianca/ui/widgets/switch_component.dart';
 import 'package:projeto_crianca/ui/theme/theme_extensions.dart';
@@ -118,9 +118,9 @@ class SettingsPage extends GetView<SettingsPageController> {
                 ],
               ),
               SizedBox(height: metrics.gap),
-              ButtonComponent(
+              ButtonWidget(
                 text: "Sair da conta",
-                type: ButtonComponentType.danger,
+                color: ButtonWidgetColor.danger,
                 icon: Ionicons.log_out_outline,
                 reversed: true,
                 full: true,

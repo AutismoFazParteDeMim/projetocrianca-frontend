@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:projeto_crianca/ui/theme/theme_extensions.dart';
 
-class LinkButtonComponent extends StatelessWidget {
+class LinkButtonWidget extends StatelessWidget {
   final VoidCallback onPressed;
   final String text;
 
-  const LinkButtonComponent({
+  const LinkButtonWidget({
     super.key,
     required this.text,
     required this.onPressed,

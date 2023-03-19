@@ -1,27 +1,10 @@
 import 'package:get/get.dart';
 import 'package:projeto_crianca/data/models/github_model.dart';
 import 'package:projeto_crianca/data/repositorys/github_repository.dart';
+import 'package:projeto_crianca/mixins/dialog_mixin.dart';
 import 'package:projeto_crianca/ui/widgets/alert_modal_component.dart';
 
-void _showAlertModal(
-  String message,
-  AlertModalComponentType type,
-) {
-  Get.generalDialog(
-    pageBuilder: (
-      context,
-      animation,
-      secondaryAnimation,
-    ) =>
-        AlertModalComponent(
-      type: AlertModalComponentType.warning,
-      title: "Ops!",
-      message: message,
-    ),
-  );
-}
-
-class AboutPageController extends GetxController {
+class AboutPageController extends GetxController with DialogMixin {
   final GitHubRepository repository;
   final Rx<List<GitHubModel?>?> _contributors = Rx<List<GitHubModel?>?>([]);
 
@@ -36,7 +19,11 @@ class AboutPageController extends GetxController {
       final contributors = await repository.getContributors();
       _contributors.value = contributors;
     } catch (e) {
-      _showAlertModal(e.toString(), AlertModalComponentType.warning);
+      showAlertDialog(
+        title: "Ops!",
+        message: e.toString(),
+        type: AlertModalComponentType.warning,
+      );
     }
   }
 }

@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:projeto_crianca/controllers/login_page_controller.dart';
-import 'package:projeto_crianca/ui/widgets/Buttons/button_component.dart';
-import 'package:projeto_crianca/ui/widgets/Buttons/facebook_button_component.dart';
-import 'package:projeto_crianca/ui/widgets/Buttons/google_button_component.dart';
-import 'package:projeto_crianca/ui/widgets/Buttons/link_button_component.dart';
-import 'package:projeto_crianca/ui/widgets/Inputs/pass_input_component.dart';
-import 'package:projeto_crianca/ui/widgets/Inputs/text_input_component.dart';
+import 'package:projeto_crianca/ui/widgets/buttons/button_component.dart';
+import 'package:projeto_crianca/ui/widgets/buttons/facebook_button_component.dart';
+import 'package:projeto_crianca/ui/widgets/buttons/google_button_component.dart';
+import 'package:projeto_crianca/ui/widgets/buttons/link_button_component.dart';
+import 'package:projeto_crianca/ui/widgets/inputs/pass_input_component.dart';
+import 'package:projeto_crianca/ui/widgets/inputs/text_input_component.dart';
 import 'package:projeto_crianca/ui/widgets/appbar_component.dart';
 import 'package:projeto_crianca/ui/widgets/modal_component.dart';
 import 'package:projeto_crianca/ui/theme/theme_extensions.dart';
@@ -46,7 +46,7 @@ class _ForgotPasswordModal extends StatelessWidget {
           ),
         ),
         SizedBox(height: metrics.gap),
-        ButtonComponent(
+        ButtonWidget(
           text: "Enviar email",
           icon: Ionicons.send_outline,
           reversed: true,
@@ -78,12 +78,12 @@ class LoginPage extends GetView<LoginPageController> {
               children: [
                 Column(
                   children: [
-                    GoogleButtonComponent(
+                    GoogleButtonWidget(
                       text: "Entrar com o Google",
                       onPressed: () => controller.loginWithGoogle(),
                     ),
                     SizedBox(height: metrics.gap),
-                    FacebookButtonComponent(
+                    FacebookButtonWidget(
                       text: "Entrar com Facebook",
                       onPressed: () => controller.loginWithFacebook(),
                     ),
@@ -121,7 +121,7 @@ class LoginPage extends GetView<LoginPageController> {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.end,
                         children: [
-                          LinkButtonComponent(
+                          LinkButtonWidget(
                             text: "Esqueceu a senha?",
                             onPressed: () => showDialog(
                               context: context,
@@ -137,7 +137,7 @@ class LoginPage extends GetView<LoginPageController> {
                   ),
                 ),
                 SizedBox(height: metrics.gap),
-                ButtonComponent(
+                ButtonWidget(
                   text: "Entrar",
                   icon: Ionicons.enter_outline,
                   onPressed: () => {

@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:projeto_crianca/controllers/register_page_controller.dart';
-import 'package:projeto_crianca/ui/widgets/Buttons/button_component.dart';
-import 'package:projeto_crianca/ui/widgets/Buttons/facebook_button_component.dart';
-import 'package:projeto_crianca/ui/widgets/Buttons/google_button_component.dart';
-import 'package:projeto_crianca/ui/widgets/Inputs/pass_input_component.dart';
-import 'package:projeto_crianca/ui/widgets/Inputs/text_input_component.dart';
+import 'package:projeto_crianca/ui/widgets/buttons/button_component.dart';
+import 'package:projeto_crianca/ui/widgets/buttons/facebook_button_component.dart';
+import 'package:projeto_crianca/ui/widgets/buttons/google_button_component.dart';
+import 'package:projeto_crianca/ui/widgets/inputs/pass_input_component.dart';
+import 'package:projeto_crianca/ui/widgets/inputs/text_input_component.dart';
 import 'package:projeto_crianca/ui/widgets/appbar_component.dart';
 import 'package:projeto_crianca/ui/widgets/image_checkbox_component.dart';
 import 'package:projeto_crianca/ui/widgets/modal_component.dart';
@@ -86,7 +86,7 @@ class _Modal extends StatelessWidget {
           ),
         ),
         SizedBox(height: metrics.gap),
-        ButtonComponent(
+        ButtonWidget(
           text: "Finalizar",
           icon: Ionicons.checkmark_circle_outline,
           onPressed: () {
@@ -127,7 +127,7 @@ class RegisterPage extends GetView<RegisterPageController> {
               children: [
                 Column(
                   children: [
-                    GoogleButtonComponent(
+                    GoogleButtonWidget(
                       text: "Cadastrar com o Google",
                       onPressed: () => showDialog(
                         context: context,
@@ -141,7 +141,7 @@ class RegisterPage extends GetView<RegisterPageController> {
                       ),
                     ),
                     SizedBox(height: metrics.gap),
-                    FacebookButtonComponent(
+                    FacebookButtonWidget(
                       text: "Cadastrar com Facebook",
                       onPressed: () => showDialog(
                         context: context,
@@ -208,7 +208,7 @@ class RegisterPage extends GetView<RegisterPageController> {
                   ),
                 ),
                 SizedBox(height: metrics.gap),
-                ButtonComponent(
+                ButtonWidget(
                   text: "Próximo",
                   icon: Ionicons.arrow_forward_outline,
                   reversed: true,

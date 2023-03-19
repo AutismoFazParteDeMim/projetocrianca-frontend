@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:projeto_crianca/ui/theme/theme_extensions.dart';
 
-class MenuButtonComponent extends StatelessWidget {
+class MenuButtonWidget extends StatelessWidget {
   final VoidCallback? onPressed;
   final String text;
   final String title;
   final ImageProvider image;
 
-  const MenuButtonComponent({
+  const MenuButtonWidget({
     super.key,
     this.onPressed,
     required this.title,

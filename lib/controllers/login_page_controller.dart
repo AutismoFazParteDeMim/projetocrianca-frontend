@@ -2,27 +2,10 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:projeto_crianca/data/repositorys/auth_repository.dart';
+import 'package:projeto_crianca/mixins/dialog_mixin.dart';
 import 'package:projeto_crianca/ui/widgets/alert_modal_component.dart';
 
-void _showAlertModal(
-  String message,
-  AlertModalComponentType type,
-) {
-  Get.generalDialog(
-    pageBuilder: (
-      context,
-      animation,
-      secondaryAnimation,
-    ) =>
-        AlertModalComponent(
-      type: AlertModalComponentType.warning,
-      title: "Ops!",
-      message: message,
-    ),
-  );
-}
-
-class LoginPageController extends GetxController {
+class LoginPageController extends GetxController with DialogMixin {
   final AuthRepository repository;
 
   // keys dos formulários para controle de estado
@@ -85,27 +68,33 @@ class LoginPageController extends GetxController {
     } on FirebaseAuthException catch (e) {
       switch (e.code) {
         case "user-not-found":
-          _showAlertModal(
-            "Parece que este email não está cadastrado. Verifique e tente novamente!",
-            AlertModalComponentType.warning,
+          showAlertDialog(
+            title: "Ops!",
+            message:
+                "Parece que este email não está cadastrado. Verifique e tente novamente!",
+            type: AlertModalComponentType.warning,
           );
           break;
         case "wrong-password":
-          _showAlertModal(
-            "Email ou senha digitados estão incorretos! Verifique e tente novamente",
-            AlertModalComponentType.warning,
+          showAlertDialog(
+            title: "Ops!",
+            message:
+                "Email ou senha digitados estão incorretos! Verifique e tente novamente",
+            type: AlertModalComponentType.warning,
           );
           break;
         default:
-          _showAlertModal(
-            e.code,
-            AlertModalComponentType.warning,
+          showAlertDialog(
+            title: "Ops!",
+            message: e.code,
+            type: AlertModalComponentType.warning,
           );
       }
     } catch (e) {
-      _showAlertModal(
-        e.toString(),
-        AlertModalComponentType.error,
+      showAlertDialog(
+        title: "Ops!",
+        message: e.toString(),
+        type: AlertModalComponentType.error,
       );
     }
   }
@@ -115,14 +104,16 @@ class LoginPageController extends GetxController {
     try {
       await repository.loginWithGoogle();
     } on FirebaseAuthException catch (e) {
-      _showAlertModal(
-        e.code,
-        AlertModalComponentType.warning,
+      showAlertDialog(
+        title: "Ops!",
+        message: e.code,
+        type: AlertModalComponentType.warning,
       );
     } catch (e) {
-      _showAlertModal(
-        e.toString(),
-        AlertModalComponentType.error,
+      showAlertDialog(
+        title: "Ops!",
+        message: e.toString(),
+        type: AlertModalComponentType.error,
       );
     }
   }
@@ -132,14 +123,16 @@ class LoginPageController extends GetxController {
     try {
       await repository.loginWithFacebook();
     } on FirebaseAuthException catch (e) {
-      _showAlertModal(
-        e.code,
-        AlertModalComponentType.warning,
+      showAlertDialog(
+        title: "Ops!",
+        message: e.code,
+        type: AlertModalComponentType.warning,
       );
     } catch (e) {
-      _showAlertModal(
-        e.toString(),
-        AlertModalComponentType.error,
+      showAlertDialog(
+        title: "Ops!",
+        message: e.toString(),
+        type: AlertModalComponentType.error,
       );
     }
   }

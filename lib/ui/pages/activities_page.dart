@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:projeto_crianca/routes/app_routes.dart';
-import 'package:projeto_crianca/ui/widgets/Buttons/menu_button_component.dart';
+import 'package:projeto_crianca/ui/widgets/buttons/menu_button_component.dart';
 import 'package:projeto_crianca/ui/widgets/appbar_component.dart';
 import 'package:projeto_crianca/ui/theme/theme_extensions.dart';
 
@@ -25,7 +25,7 @@ class ActivitiesPage extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   SizedBox(height: metrics.gap),
-                  MenuButtonComponent(
+                  MenuButtonWidget(
                     title: "Rotinas",
                     text:
                         "Trabalha antecipação dos acontecimentos no seu dia-a-dia faz com que criança se sinta segura, auxiliam na independência das crianças.",
@@ -33,7 +33,7 @@ class ActivitiesPage extends StatelessWidget {
                     onPressed: () => Get.toNamed(AppRoutes.routines),
                   ),
                   SizedBox(height: metrics.gap),
-                  MenuButtonComponent(
+                  MenuButtonWidget(
                     title: "Expressões",
                     text:
                         "Trabalha com apoio visual, contribui para uma melhor interação social com amigos e família.",
@@ -42,7 +42,7 @@ class ActivitiesPage extends StatelessWidget {
                     onPressed: () => Get.toNamed(AppRoutes.expressions),
                   ),
                   SizedBox(height: metrics.gap),
-                  MenuButtonComponent(
+                  MenuButtonWidget(
                     title: "Alfabeto",
                     text:
                         "Trabalha com apoio visual, contribui para uma melhor interação social com amigos e família.",

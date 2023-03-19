@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:projeto_crianca/routes/app_routes.dart';
-import 'package:projeto_crianca/ui/widgets/Buttons/menu_button_component.dart';
+import 'package:projeto_crianca/ui/widgets/buttons/menu_button_component.dart';
 import 'package:projeto_crianca/ui/widgets/appbar_component.dart';
 import 'package:projeto_crianca/ui/theme/theme_extensions.dart';
 
@@ -25,7 +25,7 @@ class GamesPage extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   /*SizedBox(height: metrics.gap),
-                  MenuButtonComponent(
+                  MenuButtonWidget(
                     title: "Jogo da Memória",
                     text:
                         "Trabalha raciocínio lógico das crianças de forma lúdica.",
@@ -34,7 +34,7 @@ class GamesPage extends StatelessWidget {
                     onPressed: () => Get.toNamed(AppRoutes.memoryGame), //TEMP
                   ),*/
                   SizedBox(height: metrics.gap),
-                  MenuButtonComponent(
+                  MenuButtonWidget(
                     title: "Encaixar",
                     text:
                         "Trabalha o desenvolvimento das habilidades de raciocínio espacial, coordenação motora.",
@@ -44,7 +44,7 @@ class GamesPage extends StatelessWidget {
                     ),
                   ),
                   SizedBox(height: metrics.gap),
-                  MenuButtonComponent(
+                  MenuButtonWidget(
                     title: "Sombra",
                     text:
                         "Trabalha o desenvolvimento das habilidades de raciocínio espacial, coordenação motora.",
@@ -54,7 +54,7 @@ class GamesPage extends StatelessWidget {
                     ),
                   ),
                   SizedBox(height: metrics.gap),
-                  MenuButtonComponent(
+                  MenuButtonWidget(
                     title: "Quebra-cabeça",
                     text:
                         "Trabalha o desenvolvimento das habilidades de raciocínio espacial, coordenação motora.",
@@ -65,7 +65,7 @@ class GamesPage extends StatelessWidget {
                     ),
                   ),
                   SizedBox(height: metrics.gap),
-                  MenuButtonComponent(
+                  MenuButtonWidget(
                     title: "Pareamento de Cores",
                     text:
                         "Trabalha o desenvolvimento das habilidades de raciocínio espacial, coordenação motora.",

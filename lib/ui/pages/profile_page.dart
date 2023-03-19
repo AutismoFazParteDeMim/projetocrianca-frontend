@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:projeto_crianca/controllers/profile_page_controller.dart';
 import 'package:projeto_crianca/routes/app_routes.dart';
-import 'package:projeto_crianca/ui/widgets/Buttons/icon_button_component.dart';
+import 'package:projeto_crianca/ui/widgets/buttons/icon_button_component.dart';
 import 'package:projeto_crianca/ui/widgets/svg_component.dart';
 import 'package:projeto_crianca/ui/theme/theme_extensions.dart';
 
@@ -18,7 +18,7 @@ class _CustomAppBar extends StatelessWidget with PreferredSizeWidget {
       color: Colors.transparent,
       alignment: Alignment.bottomLeft,
       padding: metrics.padding,
-      child: IconButtonComponent(
+      child: IconButtonWidget(
         icon: Ionicons.arrow_back,
         onPressed: () => Get.back(),
       ),
