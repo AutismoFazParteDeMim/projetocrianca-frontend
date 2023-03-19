@@ -15,11 +15,13 @@ import 'package:get_storage/get_storage.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await GetStorage.init("settings");
 
+  //env
   if (!kIsWeb) {
     await FlutterConfig.loadEnvVariables();
   }
+
+  //firebase
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   ).then(
@@ -30,6 +32,9 @@ Future<void> main() async {
     ),
   );
 
+  //storage
+  await GetStorage.init("settings");
+
   runApp(const MyApp());
 }
 
@@ -38,15 +43,21 @@ class MyApp extends StatelessWidget with StorageMixin {
 
   @override
   Widget build(BuildContext context) {
+    ThemeMode getTheme() {
+      if (storageRead(container: "settings", key: "theme") == "dark") {
+        return ThemeMode.dark;
+      } else {
+        return ThemeMode.light;
+      }
+    }
+
     return GetMaterialApp(
       title: 'Projeto Criança',
       getPages: AppPages.pages,
       initialRoute: AppRoutes.initial,
       theme: AppTheme(isDark: false).getTheme(),
       darkTheme: AppTheme(isDark: true).getTheme(),
-      themeMode: storageRead(container: "settings", key: "theme") == "dark"
-          ? ThemeMode.dark
-          : ThemeMode.light,
+      themeMode: getTheme(),
       locale: const Locale("pt", "BR"),
       debugShowCheckedModeBanner: false,
     );

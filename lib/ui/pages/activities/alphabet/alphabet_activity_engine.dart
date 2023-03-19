@@ -1,7 +1,6 @@
 import 'package:flame/experimental.dart';
 import 'package:flame/game.dart';
 import 'package:flame_bloc/flame_bloc.dart';
-import 'package:flutter/material.dart';
 import 'package:projeto_crianca/ui/pages/activities/alphabet/alphabet_activity_engine_container.dart';
 import 'package:flame_audio/flame_audio.dart';
 import 'package:projeto_crianca/ui/pages/activities/alphabet/bloc/alphabet_activity_bloc.dart';

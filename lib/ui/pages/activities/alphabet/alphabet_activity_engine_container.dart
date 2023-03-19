@@ -1,15 +1,10 @@
-import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
 import 'package:flame_bloc/flame_bloc.dart';
-import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:projeto_crianca/mixins/vibration_mixin.dart';
-import 'package:projeto_crianca/ui/pages/activities/alphabet/alphabet_activity_engine.dart';
-import 'package:projeto_crianca/ui/pages/activities/alphabet/alphabet_activity_page.dart';
 import 'package:projeto_crianca/ui/pages/activities/alphabet/bloc/alphabet_activity_bloc.dart';
 import 'package:projeto_crianca/ui/pages/activities/alphabet/bloc/alphabet_activity_bloc_events.dart';
 import 'package:projeto_crianca/ui/pages/activities/alphabet/bloc/alphabet_activity_bloc_states.dart';
-import 'package:projeto_crianca/ui/pages/activities/alphabet/components/canvas_component.dart';
 import 'package:projeto_crianca/ui/pages/activities/alphabet/components/hint_container_component.dart';
 
 class AlphabetActivityEngineContainer extends RectangleComponent

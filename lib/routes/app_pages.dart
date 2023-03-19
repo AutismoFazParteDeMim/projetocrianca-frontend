@@ -26,12 +26,18 @@ import 'package:projeto_crianca/ui/pages/profile_page.dart';
 import 'package:projeto_crianca/ui/pages/register_page.dart';
 import 'package:projeto_crianca/ui/pages/activities/routines/routines_activity_page.dart';
 import 'package:projeto_crianca/ui/pages/settings_page.dart';
+import 'package:projeto_crianca/ui/pages/splash_page.dart';
 import 'package:projeto_crianca/ui/pages/welcome_page.dart';
 
 abstract class AppPages {
   static final List<GetPage> pages = [
     GetPage(
       name: AppRoutes.initial,
+      page: () => const SplashPage(),
+      transition: Transition.noTransition,
+    ),
+    GetPage(
+      name: AppRoutes.welcome,
       page: () => const WelcomePage(),
     ),
     GetPage(
@@ -112,7 +118,7 @@ abstract class AppPages {
     ),
     GetPage(
       name: AppRoutes.alphabetActivity,
-      page: () => AlphabetActivityPage(),
+      page: () => const AlphabetActivityPage(),
     ),
   ];
 }

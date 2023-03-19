@@ -39,23 +39,26 @@ dependencies:
   google_maps_flutter: ^2.2.1
   location: ^4.4.0
   geolocator: ^9.0.2
-  modal_bottom_sheet:
-    git:
-      url: https://github.com/followthemoney1/modal_bottom_sheet.git
-      ref: main
-      path: modal_bottom_sheet
   flutter_config: ^2.0.0
   maps_launcher: ^2.0.1
   flutter_bloc: ^8.1.1
   flame_bloc: ^1.8.2
   equatable: ^2.0.5
   get_storage: ^2.1.1
+  modal_bottom_sheet:
+    git:
+      url: https://github.com/followthemoney1/modal_bottom_sheet.git
+      ref: main
+      path: modal_bottom_sheet
+  video_player: ^2.6.0
+  video_player_web: ^2.0.15
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
 
   flutter_lints: ^2.0.0
+  flutter_native_splash: ^2.2.16
 
 flutter:
   uses-material-design: true
@@ -115,6 +118,8 @@ flutter:
     - assets/map_styles/pin_map_dark.png
     # .env
     - .env
+    # splash
+    - assets/splash-video.mp4
 
 flutter_icons:
   android: "launcher_icon"
@@ -133,3 +138,8 @@ flutter_icons:
     generate: true
     image_path: "assets/adaptive-icon.png"
     icon_size: 256
+
+flutter_native_splash:
+  color: "#ffffff"
+  android_12:
+    color: "#ffffff"
