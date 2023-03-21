@@ -89,28 +89,33 @@ class ButtonWidget extends StatelessWidget {
       ),
     ];
 
-    return InkWell(
-      onTap: onPressed,
-      splashColor: textcolor.withOpacity(0.1),
-      borderRadius: metrics.borderRadius,
-      child: Ink(
-        width: full == true ? null : 200,
-        padding: metrics.padding,
-        decoration: BoxDecoration(
-          color: backgroundcolor,
+    return Container(
+      decoration: BoxDecoration(
+        color: backgroundcolor,
+        borderRadius: metrics.borderRadius,
+        boxShadow: [
+          BoxShadow(
+            blurRadius: 0,
+            color: bordercolor,
+            offset: const Offset(0, 4),
+          )
+        ],
+      ),
+      child: Material(
+        type: MaterialType.transparency,
+        child: InkWell(
+          onTap: onPressed,
+          splashColor: textcolor.withOpacity(0.1),
           borderRadius: metrics.borderRadius,
-          boxShadow: [
-            BoxShadow(
-              blurRadius: 0,
-              color: bordercolor,
-              offset: const Offset(0, 4),
-            )
-          ],
-        ),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: reversed == true ? content.reversed.toList() : content,
+          child: Ink(
+            width: full == true ? null : 200,
+            padding: metrics.padding,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: reversed == true ? content.reversed.toList() : content,
+            ),
+          ),
         ),
       ),
     );
