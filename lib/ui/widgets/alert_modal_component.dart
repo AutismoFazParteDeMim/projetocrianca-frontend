@@ -55,54 +55,60 @@ class AlertModalComponent extends StatelessWidget {
 
     return Dialog(
       insetPadding: metrics.padding,
-      child: Container(
-        width: 300,
-        height: 200,
-        decoration: BoxDecoration(
-          borderRadius: metrics.borderRadius,
-          color: backgroundColor,
-          boxShadow: [
-            BoxShadow(
-              blurRadius: 0,
-              color: borderColor,
-              offset: const Offset(0, 4),
-            )
-          ],
-        ),
-        child: Padding(
-          padding: metrics.padding,
-          child: Column(
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  const SizedBox(width: 24, height: 24),
-                  Text(
-                    title,
-                    textAlign: TextAlign.center,
-                    style: theme.textTheme.titleLarge?.copyWith(
-                      color: textColor,
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Container(
+            padding: metrics.padding,
+            decoration: BoxDecoration(
+              borderRadius: metrics.borderRadius,
+              color: backgroundColor,
+              boxShadow: [
+                BoxShadow(
+                  blurRadius: 0,
+                  color: borderColor,
+                  offset: const Offset(0, 4),
+                )
+              ],
+            ),
+            constraints: const BoxConstraints(
+              minWidth: 100,
+              minHeight: 100,
+            ),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    const SizedBox(width: 24, height: 24),
+                    Text(
+                      title,
+                      textAlign: TextAlign.center,
+                      style: theme.textTheme.titleLarge?.copyWith(
+                        color: textColor,
+                      ),
                     ),
-                  ),
-                  IconButton(
-                    onPressed: () => Get.back(),
-                    icon: Icon(
-                      Ionicons.close_circle_outline,
-                      color: textColor,
+                    IconButton(
+                      onPressed: () => Get.back(),
+                      icon: Icon(
+                        Ionicons.close_circle_outline,
+                        color: textColor,
+                      ),
+                      padding: EdgeInsets.zero,
+                      constraints: BoxConstraints.tight(
+                        const Size(24, 24),
+                      ),
+                      tooltip: "Botão para fechar o modal",
                     ),
-                    padding: EdgeInsets.zero,
-                    constraints: BoxConstraints.tight(
-                      const Size(24, 24),
-                    ),
-                    tooltip: "Botão para fechar o modal",
-                  ),
-                ],
-              ),
-              Expanded(
-                child: Column(
+                  ],
+                ),
+                SizedBox(height: metrics.gap),
+                Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisSize: MainAxisSize.min,
                   children: [
                     Icon(
                       type == AlertModalComponentType.error
@@ -123,10 +129,10 @@ class AlertModalComponent extends StatelessWidget {
                     ),
                   ],
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
-        ),
+        ],
       ),
     );
   }

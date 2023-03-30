@@ -22,29 +22,27 @@ class _ForgotPasswordModal extends StatelessWidget with ValidatorsMixin {
 
     return Column(
       children: [
-        Expanded(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              const Text(
-                "Te enviaremos por email um link para a redefinição da sua senha.",
+        Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            const Text(
+              "Te enviaremos por email um link para a redefinição da sua senha.",
+            ),
+            SizedBox(height: metrics.gap),
+            Form(
+              key: controller.getForgotPassFormKey,
+              child: TextInputComponent(
+                controller: controller.getEmailFieldController,
+                placeholder: "Digite seu email",
+                type: TextInputType.emailAddress,
+                autofillHints: const [AutofillHints.email],
+                action: TextInputAction.next,
+                icon: Ionicons.mail_outline,
+                validador: emailValidador,
               ),
-              SizedBox(height: metrics.gap),
-              Form(
-                key: controller.getForgotPassFormKey,
-                child: TextInputComponent(
-                  controller: controller.getEmailFieldController,
-                  placeholder: "Digite seu email",
-                  type: TextInputType.emailAddress,
-                  autofillHints: const [AutofillHints.email],
-                  action: TextInputAction.next,
-                  icon: Ionicons.mail_outline,
-                  validador: emailValidador,
-                ),
-              ),
-            ],
-          ),
+            ),
+          ],
         ),
         SizedBox(height: metrics.gap),
         ButtonWidget(

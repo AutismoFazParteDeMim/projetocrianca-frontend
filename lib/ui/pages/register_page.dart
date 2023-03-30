@@ -31,62 +31,58 @@ class _Modal extends StatelessWidget with ValidatorsMixin {
 
     return Column(
       children: [
-        Expanded(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Row(
-                children: const [
-                  Text("Qual o nome da criança?"),
-                ],
+        Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Row(
+              children: const [
+                Text("Qual o nome da criança?"),
+              ],
+            ),
+            SizedBox(height: metrics.gap),
+            Form(
+              key: controller.getChildFormKey,
+              child: TextInputComponent(
+                placeholder: "Digite o nome da criança",
+                icon: Ionicons.person_outline,
+                controller: controller.getChildFieldController,
+                action: TextInputAction.done,
+                validador: nameValidador,
               ),
-              SizedBox(height: metrics.gap),
-              Form(
-                key: controller.getChildFormKey,
-                child: TextInputComponent(
-                  placeholder: "Digite o nome da criança",
-                  icon: Ionicons.person_outline,
-                  controller: controller.getChildFieldController,
-                  action: TextInputAction.done,
-                  validador: nameValidador,
+            ),
+            SizedBox(height: metrics.gap),
+            Row(
+              children: const [
+                Text("Qual o sexo da criança?"),
+              ],
+            ),
+            SizedBox(height: metrics.gap),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Obx(
+                  () => ImageCheckboxComponent(
+                    isChecked:
+                        controller.getChildSex == "female" ? true : false,
+                    image: const AssetImage("assets/icons/avatarF.png"),
+                    text: "Feminino",
+                    onChange: (bool value) => controller.setChildSex = "female",
+                  ),
                 ),
-              ),
-              SizedBox(height: metrics.gap),
-              Row(
-                children: const [
-                  Text("Qual o sexo da criança?"),
-                ],
-              ),
-              SizedBox(height: metrics.gap),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Obx(
-                    () => ImageCheckboxComponent(
-                      isChecked:
-                          controller.getChildSex == "female" ? true : false,
-                      image: const AssetImage("assets/icons/avatarF.png"),
-                      text: "Feminino",
-                      onChange: (bool value) =>
-                          controller.setChildSex = "female",
-                    ),
+                SizedBox(width: metrics.gap * 2),
+                Obx(
+                  () => ImageCheckboxComponent(
+                    isChecked: controller.getChildSex == "male" ? true : false,
+                    image: const AssetImage("assets/icons/avatarM.png"),
+                    text: "Masculino",
+                    onChange: (bool value) => controller.setChildSex = "male",
                   ),
-                  SizedBox(width: metrics.gap * 2),
-                  Obx(
-                    () => ImageCheckboxComponent(
-                      isChecked:
-                          controller.getChildSex == "male" ? true : false,
-                      image: const AssetImage("assets/icons/avatarM.png"),
-                      text: "Masculino",
-                      onChange: (bool value) => controller.setChildSex = "male",
-                    ),
-                  ),
-                ],
-              )
-            ],
-          ),
+                ),
+              ],
+            )
+          ],
         ),
         SizedBox(height: metrics.gap),
         ButtonWidget(
@@ -137,7 +133,6 @@ class RegisterPage extends GetView<RegisterPageController>
                         context: context,
                         builder: (BuildContext context) => ModalComponent(
                           title: "Cadastro da criança",
-                          size: ModalComponentSize.medium,
                           child: _Modal(
                             loginType: _LoginType.google,
                           ),
@@ -151,7 +146,6 @@ class RegisterPage extends GetView<RegisterPageController>
                         context: context,
                         builder: (BuildContext context) => ModalComponent(
                           title: "Cadastro da criança",
-                          size: ModalComponentSize.medium,
                           child: _Modal(
                             loginType: _LoginType.facebook,
                           ),
@@ -221,7 +215,6 @@ class RegisterPage extends GetView<RegisterPageController>
                         context: context,
                         builder: (BuildContext context) => ModalComponent(
                           title: "Cadastro da criança",
-                          size: ModalComponentSize.medium,
                           child: _Modal(
                             loginType: _LoginType.emailAndPass,
                           ),

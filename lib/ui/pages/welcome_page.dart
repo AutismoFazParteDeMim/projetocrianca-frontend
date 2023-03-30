@@ -67,14 +67,12 @@ class WelcomePage extends GetView {
                     text: "Política de privacidade",
                     onPressed: () => showDialog(
                       context: context,
-                      builder: (BuildContext context) => const ModalComponent(
+                      builder: (BuildContext context) => ModalComponent(
                         title: "Política de privacidade",
-                        size: ModalComponentSize.large,
-                        child: Center(
-                          child: SingleChildScrollView(
-                            child: Text(privacyPolicy),
-                          ),
-                        ),
+                        fill: true,
+                        child:Expanded(child:  SingleChildScrollView(
+                                child: Text(privacyPolicy),
+                              ),)
                       ),
                     ),
                   ),
@@ -88,8 +86,7 @@ class WelcomePage extends GetView {
   }
 }
 
-const String privacyPolicy =
-'''
+const String privacyPolicy = '''
 Esta política de privacidade descreve como o aplicativo móvel Autismo Faz Parte de Mim ("o aplicativo") coleta, usa, compartilha e protege as informações pessoais dos usuários. Ao usar o aplicativo, você concorda com a coleta e uso de informações de acordo com esta política de privacidade.
 
 
