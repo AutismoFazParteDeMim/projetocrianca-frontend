@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:projeto_crianca/mixins/audio_mixin.dart';
 import 'package:projeto_crianca/ui/theme/theme_extensions.dart';
 
-class SquareButtonWidget extends StatelessWidget {
+class SquareButtonWidget extends StatelessWidget with AudioMixin {
   final VoidCallback? onPressed;
   final String text;
   final ImageProvider image;
@@ -12,6 +13,11 @@ class SquareButtonWidget extends StatelessWidget {
     required this.text,
     required this.image,
   });
+
+  void _onTap() {
+    playButtonClickAudio();
+    if (onPressed != null) onPressed!();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -32,7 +38,7 @@ class SquareButtonWidget extends StatelessWidget {
         ],
       ),
       child: RawMaterialButton(
-        onPressed: onPressed,
+        onPressed: _onTap,
         fillColor: colors.secondary,
         padding: metrics.padding,
         elevation: 0,

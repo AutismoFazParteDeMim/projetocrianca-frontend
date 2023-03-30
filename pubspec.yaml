@@ -45,13 +45,14 @@ dependencies:
   flame_bloc: ^1.8.2
   equatable: ^2.0.5
   get_storage: ^2.1.1
+  video_player: ^2.6.0
+  video_player_web: ^2.0.15
   modal_bottom_sheet:
     git:
       url: https://github.com/followthemoney1/modal_bottom_sheet.git
       ref: main
       path: modal_bottom_sheet
-  video_player: ^2.6.0
-  video_player_web: ^2.0.15
+  audioplayers: ^3.0.1
 
 dev_dependencies:
   flutter_test:
@@ -64,62 +65,36 @@ flutter:
   uses-material-design: true
 
   assets:
-    # app launch icons
-    - assets/icon.png
-    - assets/adaptive-icon.png
-    - assets/login.png
-    # app icons
+    - assets/
     - assets/icons/
-    # avatar icons - eyes
+    - assets/google_fonts/
+    - assets/map_styles/
+    #avatar
     - assets/avatar/eye/
-    # avatar icons - hair
     - assets/avatar/hair/
-    # avatar icons - accessories
     - assets/avatar/objects/
-    # avatar icons - mouth
     - assets/avatar/smile/
-    # other images
-    - assets/profile-cover.jpg
-    # game images
-    - assets/images/alphabet/
-    - assets/images/encaixar/
-    # game images - sombra
-    - assets/images/sombra/
-      # game images - puzzle
-    - assets/images/puzzle/
-    # game audios
-    - assets/audio/games/encaixar/
-    - assets/audio/games/parDeCores/
-    - assets/audio/games/puzzle/
-    - assets/audio/games/sombra/
-    # routines
+    #activities images
     - assets/images/routines/
-    # expressions
     - assets/images/expressions/
-    - assets/images/memoryGame/
-    - assets/images/parDeCores/
-    - assets/images/puzzle/
-    - assets/images/routines/
+    - assets/images/alphabet/
+    #games images
+    - assets/images/encaixar/
     - assets/images/sombra/
-    # game audios
-    - assets/audio/games/encaixar/
-    - assets/audio/games/parDeCores/
-    - assets/audio/games/puzzle/
-    - assets/audio/games/sombra/
-    # activities audios
+    - assets/images/puzzle/
+    - assets/images/parDeCores/
+    #activities audios
     - assets/audio/activities/alphabet/
     - assets/audio/activities/numbers/
-    # google fonts
-    - assets/google_fonts/
-    # maps-styles
-    - assets/map_styles/normal.json
-    - assets/map_styles/dark.json
-    - assets/map_styles/pin_map.png
-    - assets/map_styles/pin_map_dark.png
+    #games audios
+    - assets/audio/games/encaixar/
+    - assets/audio/games/sombra/
+    - assets/audio/games/puzzle/
+    - assets/audio/games/parDeCores/
+    #other audios
+    - assets/audio/
     # .env
     - .env
-    # splash
-    - assets/splash-video.mp4
 
 flutter_icons:
   android: "launcher_icon"

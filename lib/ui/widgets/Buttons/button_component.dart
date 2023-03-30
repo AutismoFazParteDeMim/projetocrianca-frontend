@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:projeto_crianca/mixins/audio_mixin.dart';
 import 'package:projeto_crianca/ui/theme/theme_extensions.dart';
 
 enum ButtonWidgetColor {
@@ -9,7 +10,7 @@ enum ButtonWidgetColor {
   success,
 }
 
-class ButtonWidget extends StatelessWidget {
+class ButtonWidget extends StatelessWidget with AudioMixin {
   final String text;
   final IconData? icon;
   final ButtonWidgetColor? color;
@@ -34,6 +35,11 @@ class ButtonWidget extends StatelessWidget {
     this.borderColor,
     this.textColor,
   });
+
+  void _onTap() {
+    playButtonClickAudio();
+    if (onPressed != null) onPressed!();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -104,7 +110,7 @@ class ButtonWidget extends StatelessWidget {
       child: Material(
         type: MaterialType.transparency,
         child: InkWell(
-          onTap: onPressed,
+          onTap: _onTap,
           splashColor: textcolor.withOpacity(0.1),
           borderRadius: metrics.borderRadius,
           child: Ink(

@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:ionicons/ionicons.dart';
+import 'package:projeto_crianca/mixins/audio_mixin.dart';
 import 'package:projeto_crianca/ui/theme/theme_extensions.dart';
 
-class MenuButtonWidget extends StatelessWidget {
+class MenuButtonWidget extends StatelessWidget with AudioMixin {
   final VoidCallback? onPressed;
   final String text;
   final String title;
@@ -16,6 +17,11 @@ class MenuButtonWidget extends StatelessWidget {
     required this.image,
   });
 
+  void _onTap() {
+    playButtonClickAudio();
+    if (onPressed != null) onPressed!();
+  }
+
   @override
   Widget build(BuildContext context) {
     final ThemeData theme = Theme.of(context);
@@ -25,7 +31,7 @@ class MenuButtonWidget extends StatelessWidget {
     return SizedBox(
       height: 100,
       child: InkWell(
-        onTap: onPressed,
+        onTap: _onTap,
         borderRadius: metrics.borderRadius,
         child: Ink(
           height: 60,

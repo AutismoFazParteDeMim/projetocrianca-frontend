@@ -112,6 +112,10 @@ class AboutPage extends GetView<AboutPageController> {
   }
 }
 
+const creditsText = ''' 
+Sound from zapsplat.com
+''';
+
 const aboutText = '''
 A idealizadora do projeto Rose, uma mãe dedicada e uma cidadã exemplar, criou uma apostila para lidar com as dificuldades que ela mesma tinha em criar sua filha, e, além disso, fez cópias para ajudar outras mães que enfrentam a mesma dificuldade.
 

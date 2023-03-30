@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:projeto_crianca/mixins/audio_mixin.dart';
 import 'package:projeto_crianca/ui/theme/theme_extensions.dart';
 
-class LinkButtonWidget extends StatelessWidget {
+class LinkButtonWidget extends StatelessWidget with AudioMixin {
   final VoidCallback onPressed;
   final String text;
 
@@ -11,12 +12,17 @@ class LinkButtonWidget extends StatelessWidget {
     required this.onPressed,
   });
 
+  void _onTap() {
+    playButtonClickAudio();
+    onPressed();
+  }
+
   @override
   Widget build(BuildContext context) {
     final ThemeColors colors = Theme.of(context).extension<ThemeColors>()!;
 
     return TextButton(
-      onPressed: onPressed,
+      onPressed: _onTap,
       style: TextButton.styleFrom(
         foregroundColor: colors.primary,
         textStyle: const TextStyle(fontWeight: FontWeight.w700),

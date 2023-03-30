@@ -1,11 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:projeto_crianca/mixins/audio_mixin.dart';
 import 'package:projeto_crianca/ui/theme/theme_extensions.dart';
 
-class IconButtonWidget extends StatelessWidget {
+class IconButtonWidget extends StatelessWidget with AudioMixin {
   final VoidCallback? onPressed;
   final IconData icon;
 
-  const IconButtonWidget({super.key, required this.icon, this.onPressed});
+  const IconButtonWidget({
+    super.key,
+    required this.icon,
+    this.onPressed,
+  });
+
+  void _onTap() {
+    playButtonClickAudio();
+    if (onPressed != null) onPressed!();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +35,7 @@ class IconButtonWidget extends StatelessWidget {
         ],
       ),
       child: RawMaterialButton(
-        onPressed: onPressed,
+        onPressed: _onTap,
         fillColor: colors.secondary,
         elevation: 0,
         highlightElevation: 0,
