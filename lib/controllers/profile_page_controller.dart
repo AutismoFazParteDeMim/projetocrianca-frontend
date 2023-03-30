@@ -5,8 +5,10 @@ import 'package:projeto_crianca/data/repositorys/user_repository.dart';
 class ProfilePageController extends GetxController {
   final UserRepository repository;
 
+  //vars
   final Rx<ChildModel?> _child = Rx<ChildModel?>(ChildModel());
 
+  //getters
   ChildModel? get getCurrentChild => _child.value;
 
   ProfilePageController(this.repository);

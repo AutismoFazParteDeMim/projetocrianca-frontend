@@ -9,31 +9,40 @@ import 'package:projeto_crianca/data/repositorys/localize_repository.dart';
 
 class LocalizePageController extends GetxController {
   final LocalizeRepository repository;
+
+  //controllers
+  late GoogleMapController _googleMapsController;
+  final TextEditingController searchFieldController = TextEditingController();
+
+  //vars
   final RxDouble _latitude = 0.0.obs;
   final RxDouble _longitude = 0.0.obs;
   final RxBool _isDark = false.obs;
-  late GoogleMapController _googleMapsController;
   late Function _showPinModal;
   final Set<Marker> _markers = <Marker>{};
   final Rx<ProfissionalModel?> _profissional = Rx<ProfissionalModel?>(null);
-  final RxList<ProfissionalModel?> _profissionals =
-      RxList<ProfissionalModel?>([null]);
-  final RxList<ProfissionalModel?> _results =
-      RxList<ProfissionalModel?>([null]);
-  final TextEditingController searchFieldController = TextEditingController();
+  final RxList<ProfissionalModel?> _profissionals = RxList<ProfissionalModel?>(
+    [null],
+  );
+  final RxList<ProfissionalModel?> _results = RxList<ProfissionalModel?>(
+    [null],
+  );
   final LatLng _position = const LatLng(
     -26.294703,
     -48.848145,
   ); // coordernadas do O Farol(OMG)
 
-  set setShowPinModal(value) => _showPinModal = value;
-  set setProfissional(value) => _profissional.value = value;
-  get googleMapsController => _googleMapsController;
-  get position => _position;
+  //getters
+  get getGoogleMapsController => _googleMapsController;
+  get getPosition => _position;
   Set<Marker> get getMarkers => _markers;
   ProfissionalModel? get getProfessional => _profissional.value;
   List<ProfissionalModel?> get getProfessionals => _profissionals;
   List<ProfissionalModel?> get getResults => _results;
+
+  //setters
+  set setShowPinModal(value) => _showPinModal = value;
+  set setProfissional(value) => _profissional.value = value;
 
   LocalizePageController(this.repository);
 
@@ -64,7 +73,7 @@ class LocalizePageController extends GetxController {
     return await Geolocator.getCurrentPosition();
   }
 
-  getPosition() async {
+  _getCurrentPosition() async {
     try {
       final attPosition = await _currentPosition();
       _latitude.value = attPosition.latitude;
@@ -113,7 +122,7 @@ class LocalizePageController extends GetxController {
 
   mapInit(GoogleMapController gmc) async {
     _googleMapsController = gmc;
-    getPosition();
+    _getCurrentPosition();
 
     final currentTime = DateTime.now();
 

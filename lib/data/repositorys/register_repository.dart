@@ -19,18 +19,18 @@ class RegisterRepository {
   }
 
   Future<User?> registerWithEmailAndPass(String email, String password) async {
-    return await authProvider.register(email, password);
+    return await authProvider.registerWithEmailAndPass(email, password);
   }
 
   Future<void> updateUser(User userInstance, UserModel user) async {
-    await userProvider.updateUser(userInstance, user);
+    return await userProvider.updateUser(userInstance, user);
   }
 
   Future<void> updateChild(User userInstance, ChildModel child) async {
-    await userProvider.updateChild(userInstance, child);
+    return await userProvider.updateChild(userInstance, child);
   }
 
   Future<void> createChild(User userInstance, ChildModel child) async {
-    await userProvider.createChild(userInstance, child);
+    return await userProvider.createChild(userInstance, child);
   }
 }

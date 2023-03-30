@@ -8,21 +8,19 @@ import 'package:projeto_crianca/ui/widgets/alert_modal_component.dart';
 class LoginPageController extends GetxController with DialogMixin {
   final AuthRepository repository;
 
-  // keys dos formulários para controle de estado
+  //keys
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   final GlobalKey<FormState> _forgotPassFormKey = GlobalKey<FormState>();
 
-  // controladores dos inputs
+  // controllers
   final TextEditingController _emailFieldController = TextEditingController();
   final TextEditingController _passFieldController = TextEditingController();
 
-  // getters das keys dos forms
-  GlobalKey<FormState> get formKey => _formKey;
-  GlobalKey<FormState> get forgotPassFormKey => _forgotPassFormKey;
-
-  // getters dos controladores dos inputs
-  TextEditingController get emailFieldController => _emailFieldController;
-  TextEditingController get passFieldController => _passFieldController;
+  //getters
+  GlobalKey<FormState> get getFormKey => _formKey;
+  GlobalKey<FormState> get getForgotPassFormKey => _forgotPassFormKey;
+  TextEditingController get getEmailFieldController => _emailFieldController;
+  TextEditingController get getPassFieldController => _passFieldController;
 
   LoginPageController(this.repository);
 
@@ -30,40 +28,15 @@ class LoginPageController extends GetxController with DialogMixin {
   void onClose() {
     super.onClose();
 
-    // exclui os controladores do input
-    // quando o controlador do login é excluído.
     _emailFieldController.dispose();
     _passFieldController.dispose();
   }
 
-  // validador do capo de email
-  String? emailValidador(String value) {
-    if (value.isEmpty) {
-      return "Este campo não pode estar vazio!";
-    } else if (!value.isEmail) {
-      return "Digite seu email corretamente.";
-    }
-
-    return null;
-  }
-
-  // validador do campo de senha
-  String? passValidador(String value) {
-    if (value.isEmpty) {
-      return "Este campo não pode estar vazio!";
-    } else if (value.length < 8) {
-      return "Sua senha deve conter no mínimo 08 caracteres.";
-    }
-
-    return null;
-  }
-
-  // método de login com email e senha
   Future<void> loginWithEmailAndPass() async {
     try {
       await repository.loginWithEmailAndPass(
         _emailFieldController.text,
-        passFieldController.text,
+        _passFieldController.text,
       );
     } on FirebaseAuthException catch (e) {
       switch (e.code) {
@@ -99,7 +72,6 @@ class LoginPageController extends GetxController with DialogMixin {
     }
   }
 
-  // método de login com google
   Future<void> loginWithGoogle() async {
     try {
       await repository.loginWithGoogle();
@@ -118,10 +90,33 @@ class LoginPageController extends GetxController with DialogMixin {
     }
   }
 
-  // método de login com facebook
   Future<void> loginWithFacebook() async {
     try {
       await repository.loginWithFacebook();
+    } on FirebaseAuthException catch (e) {
+      showAlertDialog(
+        title: "Ops!",
+        message: e.code,
+        type: AlertModalComponentType.warning,
+      );
+    } catch (e) {
+      showAlertDialog(
+        title: "Ops!",
+        message: e.toString(),
+        type: AlertModalComponentType.error,
+      );
+    }
+  }
+
+  Future<void> resetPassword() async {
+    try {
+      await repository.resetPassword(email: _emailFieldController.text);
+      showAlertDialog(
+        title: "Email enviado!",
+        message:
+            "Verifique sua caixa de entrada, caso não encontre de uma olhadinha na caixa de Spam.",
+        type: AlertModalComponentType.success,
+      );
     } on FirebaseAuthException catch (e) {
       showAlertDialog(
         title: "Ops!",

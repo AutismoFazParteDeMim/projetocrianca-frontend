@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:projeto_crianca/mixins/storage_mixin.dart';
 
 class SettingsPageController extends GetxController with StorageMixin {
+  //vars
   final Rx<ThemeMode> _currentTheme = Rx(ThemeMode.light);
 
   //getters

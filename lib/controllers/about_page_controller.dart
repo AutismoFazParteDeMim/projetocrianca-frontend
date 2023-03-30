@@ -6,8 +6,11 @@ import 'package:projeto_crianca/ui/widgets/alert_modal_component.dart';
 
 class AboutPageController extends GetxController with DialogMixin {
   final GitHubRepository repository;
+
+  //vars
   final Rx<List<GitHubModel?>?> _contributors = Rx<List<GitHubModel?>?>([]);
 
+  //getters
   List<GitHubModel?>? get getContributors => _contributors.value;
 
   AboutPageController(this.repository);

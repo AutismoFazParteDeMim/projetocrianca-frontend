@@ -46,12 +46,16 @@ class AuthProvider {
     await _instance.signOut();
   }
 
-  Future<User?> register(String email, String password) async {
+  Future<User?> registerWithEmailAndPass(String email, String password) async {
     return await _instance
         .createUserWithEmailAndPassword(
           email: email,
           password: password,
         )
         .then((value) => value.user);
+  }
+
+  Future<void> resetPassword({required String email}) async {
+    return await _instance.sendPasswordResetEmail(email: email);
   }
 }

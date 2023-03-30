@@ -264,7 +264,7 @@ class LocalizePage extends GetView<LocalizePageController> {
             builder: (value) => GoogleMap(
               onMapCreated: controller.mapInit,
               initialCameraPosition: CameraPosition(
-                target: controller.position,
+                target: controller.getPosition,
                 zoom: 13,
               ),
               mapType: MapType.normal,

@@ -20,4 +20,8 @@ class AuthRepository {
   Future<void> logOut() async {
     await provider.logOut();
   }
+
+  Future<void> resetPassword({required String email}) async {
+    return await provider.resetPassword(email: email);
+  }
 }

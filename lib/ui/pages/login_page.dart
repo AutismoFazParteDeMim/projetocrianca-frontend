@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:projeto_crianca/controllers/login_page_controller.dart';
+import 'package:projeto_crianca/mixins/validators_mixin.dart';
 import 'package:projeto_crianca/ui/widgets/buttons/button_component.dart';
 import 'package:projeto_crianca/ui/widgets/buttons/facebook_button_component.dart';
 import 'package:projeto_crianca/ui/widgets/buttons/google_button_component.dart';
@@ -12,7 +13,7 @@ import 'package:projeto_crianca/ui/widgets/appbar_component.dart';
 import 'package:projeto_crianca/ui/widgets/modal_component.dart';
 import 'package:projeto_crianca/ui/theme/theme_extensions.dart';
 
-class _ForgotPasswordModal extends StatelessWidget {
+class _ForgotPasswordModal extends StatelessWidget with ValidatorsMixin {
   final LoginPageController controller = Get.find<LoginPageController>();
 
   @override
@@ -31,15 +32,15 @@ class _ForgotPasswordModal extends StatelessWidget {
               ),
               SizedBox(height: metrics.gap),
               Form(
-                key: controller.forgotPassFormKey,
+                key: controller.getForgotPassFormKey,
                 child: TextInputComponent(
-                  controller: controller.emailFieldController,
+                  controller: controller.getEmailFieldController,
                   placeholder: "Digite seu email",
                   type: TextInputType.emailAddress,
                   autofillHints: const [AutofillHints.email],
                   action: TextInputAction.next,
                   icon: Ionicons.mail_outline,
-                  validador: (String value) => controller.emailValidador(value),
+                  validador: emailValidador,
                 ),
               ),
             ],
@@ -51,14 +52,17 @@ class _ForgotPasswordModal extends StatelessWidget {
           icon: Ionicons.send_outline,
           color: ButtonWidgetColor.secoundary,
           reversed: true,
-          onPressed: () => {},
+          onPressed: () {
+            Get.back();
+            controller.resetPassword();
+          },
         ),
       ],
     );
   }
 }
 
-class LoginPage extends GetView<LoginPageController> {
+class LoginPage extends GetView<LoginPageController> with ValidatorsMixin {
   const LoginPage({super.key});
 
   @override
@@ -94,30 +98,28 @@ class LoginPage extends GetView<LoginPageController> {
                 const Text("ou"),
                 SizedBox(height: metrics.gap),
                 Form(
-                  key: controller.formKey,
+                  key: controller.getFormKey,
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       TextInputComponent(
-                        controller: controller.emailFieldController,
+                        controller: controller.getEmailFieldController,
                         placeholder: "Digite seu email",
                         type: TextInputType.emailAddress,
                         autofillHints: const [AutofillHints.email],
                         action: TextInputAction.next,
                         icon: Ionicons.mail_outline,
-                        validador: (String value) =>
-                            controller.emailValidador(value),
+                        validador: emailValidador,
                       ),
                       SizedBox(height: metrics.gap),
                       PassInputComponent(
-                        controller: controller.passFieldController,
+                        controller: controller.getPassFieldController,
                         autofillHints: const [AutofillHints.password],
                         placeholder: "Digite sua senha",
                         action: TextInputAction.done,
                         icon: Ionicons.lock_closed_outline,
-                        validador: (String value) =>
-                            controller.passValidador(value),
+                        validador: passwordValidador,
                       ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.end,
@@ -142,7 +144,7 @@ class LoginPage extends GetView<LoginPageController> {
                   text: "Entrar",
                   icon: Ionicons.enter_outline,
                   onPressed: () => {
-                    if (controller.formKey.currentState!.validate())
+                    if (controller.getFormKey.currentState!.validate())
                       {controller.loginWithEmailAndPass()}
                   },
                 ),

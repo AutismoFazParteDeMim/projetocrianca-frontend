@@ -8,9 +8,11 @@ import 'package:projeto_crianca/ui/widgets/alert_modal_component.dart';
 class AvatarPageController extends GetxController with DialogMixin {
   final AvatarRepository repository;
 
+  //vars
   final AvatarModel _avatar = AvatarModel();
   final Rx<String?> _avatarSvg = Rx(null);
 
+  //getters
   String? get getAvatarSvg => _avatarSvg.value;
 
   AvatarPageController(this.repository);

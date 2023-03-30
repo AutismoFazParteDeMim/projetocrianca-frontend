@@ -7,6 +7,7 @@ class AuthController extends GetxController {
   final AuthRepository repository;
   static final FirebaseAuth _instance = FirebaseAuth.instance;
 
+  //vars
   late Rx<User?> _user;
 
   AuthController(this.repository);

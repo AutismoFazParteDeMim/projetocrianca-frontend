@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:projeto_crianca/controllers/register_page_controller.dart';
+import 'package:projeto_crianca/mixins/validators_mixin.dart';
 import 'package:projeto_crianca/ui/widgets/buttons/button_component.dart';
 import 'package:projeto_crianca/ui/widgets/buttons/facebook_button_component.dart';
 import 'package:projeto_crianca/ui/widgets/buttons/google_button_component.dart';
@@ -18,7 +19,7 @@ enum _LoginType {
   emailAndPass,
 }
 
-class _Modal extends StatelessWidget {
+class _Modal extends StatelessWidget with ValidatorsMixin {
   final _LoginType loginType;
   final RegisterPageController controller = Get.find<RegisterPageController>();
 
@@ -42,13 +43,13 @@ class _Modal extends StatelessWidget {
               ),
               SizedBox(height: metrics.gap),
               Form(
-                key: controller.childFormKey,
+                key: controller.getChildFormKey,
                 child: TextInputComponent(
                   placeholder: "Digite o nome da criança",
                   icon: Ionicons.person_outline,
-                  controller: controller.childFieldController,
+                  controller: controller.getChildFieldController,
                   action: TextInputAction.done,
-                  validador: (String value) => controller.nameValidador(value),
+                  validador: nameValidador,
                 ),
               ),
               SizedBox(height: metrics.gap),
@@ -64,7 +65,8 @@ class _Modal extends StatelessWidget {
                 children: [
                   Obx(
                     () => ImageCheckboxComponent(
-                      isChecked: controller.childSex == "female" ? true : false,
+                      isChecked:
+                          controller.getChildSex == "female" ? true : false,
                       image: const AssetImage("assets/icons/avatarF.png"),
                       text: "Feminino",
                       onChange: (bool value) =>
@@ -74,7 +76,8 @@ class _Modal extends StatelessWidget {
                   SizedBox(width: metrics.gap * 2),
                   Obx(
                     () => ImageCheckboxComponent(
-                      isChecked: controller.childSex == "male" ? true : false,
+                      isChecked:
+                          controller.getChildSex == "male" ? true : false,
                       image: const AssetImage("assets/icons/avatarM.png"),
                       text: "Masculino",
                       onChange: (bool value) => controller.setChildSex = "male",
@@ -90,7 +93,7 @@ class _Modal extends StatelessWidget {
           text: "Finalizar",
           icon: Ionicons.checkmark_circle_outline,
           onPressed: () {
-            if (controller.childFormKey.currentState!.validate()) {
+            if (controller.getChildFormKey.currentState!.validate()) {
               if (loginType == _LoginType.emailAndPass) {
                 controller.registerWithEmailAndPass();
               } else if (loginType == _LoginType.google) {
@@ -106,7 +109,8 @@ class _Modal extends StatelessWidget {
   }
 }
 
-class RegisterPage extends GetView<RegisterPageController> {
+class RegisterPage extends GetView<RegisterPageController>
+    with ValidatorsMixin {
   const RegisterPage({super.key});
 
   @override
@@ -160,40 +164,37 @@ class RegisterPage extends GetView<RegisterPageController> {
                 const Text("ou"),
                 SizedBox(height: metrics.gap),
                 Form(
-                  key: controller.formKey,
+                  key: controller.getFormKey,
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       TextInputComponent(
-                        controller: controller.nameFieldController,
+                        controller: controller.getNameFieldController,
                         placeholder: "Digite seu nome",
                         icon: Ionicons.person_outline,
                         action: TextInputAction.next,
                         autofillHints: const [AutofillHints.name],
-                        validador: (String value) =>
-                            controller.nameValidador(value),
+                        validador: nameValidador,
                       ),
                       SizedBox(height: metrics.gap),
                       TextInputComponent(
-                        controller: controller.emailFieldController,
+                        controller: controller.getEmailFieldController,
                         placeholder: "Digite seu email",
                         icon: Ionicons.mail_outline,
                         type: TextInputType.emailAddress,
                         action: TextInputAction.next,
                         autofillHints: const [AutofillHints.email],
-                        validador: (String value) =>
-                            controller.emailValidador(value),
+                        validador: emailValidador,
                       ),
                       SizedBox(height: metrics.gap),
                       PassInputComponent(
-                        controller: controller.passFieldController,
+                        controller: controller.getPassFieldController,
                         placeholder: "Digite uma senha",
                         icon: Ionicons.lock_closed_outline,
                         action: TextInputAction.next,
                         autofillHints: const [AutofillHints.newPassword],
-                        validador: (String value) =>
-                            controller.passValidador(value),
+                        validador: passwordValidador,
                       ),
                       SizedBox(height: metrics.gap),
                       PassInputComponent(
@@ -201,8 +202,10 @@ class RegisterPage extends GetView<RegisterPageController> {
                         icon: Ionicons.lock_closed_outline,
                         action: TextInputAction.done,
                         autofillHints: const [AutofillHints.newPassword],
-                        validador: (String value) =>
-                            controller.confirmPassValidador(value),
+                        validador: (value) => equalValidador(
+                          value,
+                          controller.getPassFieldController.text,
+                        ),
                       ),
                     ],
                   ),
@@ -213,7 +216,7 @@ class RegisterPage extends GetView<RegisterPageController> {
                   icon: Ionicons.arrow_forward_outline,
                   reversed: true,
                   onPressed: () => {
-                    if (controller.formKey.currentState!.validate())
+                    if (controller.getFormKey.currentState!.validate())
                       showDialog(
                         context: context,
                         builder: (BuildContext context) => ModalComponent(

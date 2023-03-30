@@ -4,8 +4,11 @@ import 'package:projeto_crianca/data/repositorys/user_repository.dart';
 
 class HomePageController extends GetxController {
   final UserRepository repository;
+
+  //vars
   final Rx<ChildModel?> _child = Rx<ChildModel?>(ChildModel());
 
+  //getters
   ChildModel? get getCurrentChild => _child.value;
 
   HomePageController(this.repository);
