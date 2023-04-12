@@ -5,7 +5,7 @@ import 'package:geolocator/geolocator.dart';
 import 'package:get/get.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:projeto_crianca/data/models/profissional_model.dart';
-import 'package:projeto_crianca/data/repositorys/localize_repository.dart';
+import 'package:projeto_crianca/data/repositories/localize_repository.dart';
 
 class LocalizePageController extends GetxController {
   final LocalizeRepository repository;

@@ -67,7 +67,7 @@ class WelcomePage extends GetView {
                     text: "Política de privacidade",
                     onPressed: () => showDialog(
                       context: context,
-                      builder: (BuildContext context) => ModalComponent(
+                      builder: (BuildContext context) => const ModalComponent(
                         title: "Política de privacidade",
                         fill: true,
                         child:Expanded(child:  SingleChildScrollView(

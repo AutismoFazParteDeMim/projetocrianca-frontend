@@ -1,7 +1,7 @@
 import 'package:get/get.dart';
 import 'package:projeto_crianca/data/models/avatar_model.dart';
 import 'package:projeto_crianca/data/models/child_model.dart';
-import 'package:projeto_crianca/data/repositorys/avatar_repository.dart';
+import 'package:projeto_crianca/data/repositories/avatar_repository.dart';
 import 'package:projeto_crianca/mixins/dialog_mixin.dart';
 import 'package:projeto_crianca/ui/widgets/alert_modal_component.dart';
 

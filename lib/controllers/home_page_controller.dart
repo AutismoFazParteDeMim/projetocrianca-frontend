@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
 import 'package:projeto_crianca/data/models/child_model.dart';
-import 'package:projeto_crianca/data/repositorys/user_repository.dart';
+import 'package:projeto_crianca/data/repositories/user_repository.dart';
 
 class HomePageController extends GetxController {
   final UserRepository repository;

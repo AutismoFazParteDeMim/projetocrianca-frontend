@@ -5,7 +5,7 @@ import 'package:flutter_config/flutter_config.dart';
 import 'package:get/get.dart';
 import 'package:projeto_crianca/controllers/auth_controller.dart';
 import 'package:projeto_crianca/data/providers/auth_provider.dart';
-import 'package:projeto_crianca/data/repositorys/auth_repository.dart';
+import 'package:projeto_crianca/data/repositories/auth_repository.dart';
 import 'package:projeto_crianca/firebase_options.dart';
 import 'package:projeto_crianca/mixins/storage_mixin.dart';
 import 'package:projeto_crianca/routes/app_routes.dart';

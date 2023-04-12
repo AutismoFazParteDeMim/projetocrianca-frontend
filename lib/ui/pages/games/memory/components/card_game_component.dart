@@ -4,8 +4,8 @@ import 'package:flame/flame.dart';
 import 'package:flame_svg/flame_svg.dart';
 import 'package:projeto_crianca/mixins/vibration_mixin.dart';
 
-class CardGameComponent extends PositionComponent with DragCallbacks, VibrationMixin {
- 
+class CardGameComponent extends PositionComponent
+    with DragCallbacks, VibrationMixin {
   final String? key;
   late bool fixed;
   final String image;
@@ -15,7 +15,7 @@ class CardGameComponent extends PositionComponent with DragCallbacks, VibrationM
     required this.image,
     this.fixed = false,
   }) {
-    super.size = Vector2(100, 130);
+    super.size = Vector2(64, 100);
     super.anchor = Anchor.center;
   }
 

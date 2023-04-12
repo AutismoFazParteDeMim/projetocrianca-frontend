@@ -1,6 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
-import 'package:projeto_crianca/data/repositorys/auth_repository.dart';
+import 'package:projeto_crianca/data/repositories/auth_repository.dart';
 import 'package:projeto_crianca/routes/app_routes.dart';
 
 class AuthController extends GetxController {

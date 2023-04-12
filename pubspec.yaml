@@ -79,6 +79,7 @@ flutter:
     - assets/images/expressions/
     - assets/images/alphabet/
     #games images
+    - assets/images/memoryGame/
     - assets/images/encaixar/
     - assets/images/sombra/
     - assets/images/puzzle/
