@@ -30,7 +30,6 @@ class AlphabetActivityEngineContainer extends RectangleComponent
     int total = currentLetter.points.entries.length - 1;
     List<PointModel> etapaAtual =
         currentLetter.points.entries.elementAt(index).value;
-
     List<PointModel> devPoints = [];
 
     void onTrailPositionUpdate(Vector2 trailPosition) {
@@ -42,23 +41,29 @@ class AlphabetActivityEngineContainer extends RectangleComponent
             trailPosition.y <= element.position.y - 12 + 24,
       );
 
+      //if current point is correct
       if (current != null && current == etapaAtual.first) {
         etapaAtual.removeAt(0);
+        vibrate(duration: 50);
 
+        //next step when complete
         if (etapaAtual.isEmpty && index < total) {
           index++;
           etapaAtual = currentLetter.points.entries.elementAt(index).value;
         }
 
+        //next level when complete
         if (etapaAtual.isEmpty && index == total) {
+          nextLetterCallback();
           index = 0;
+          total = currentLetter.points.entries.length - 1;
           etapaAtual = currentLetter.points.entries.elementAt(index).value;
           devPoints = [];
-          nextLetterCallback();
         }
       }
     }
 
+    //devlopment screen points
     for (var letter in currentLetter.points.entries) {
       for (var l in letter.value) {
         devPoints.add(l);
