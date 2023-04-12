@@ -12,7 +12,7 @@ class AlphabetActivityPage extends StatelessWidget {
       appBar: AppBarComponent(
         title: "Alfabeto",
         transparent: true,
-        invertedColor: false,
+        invertedColor: true,
       ),
       extendBodyBehindAppBar: true,
       body: GameWidget<AlphabetActivityEngine>(

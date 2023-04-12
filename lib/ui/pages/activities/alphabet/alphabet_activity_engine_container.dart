@@ -15,9 +15,9 @@ class AlphabetActivityEngineContainer extends RectangleComponent
 
   @override
   void onNewState(AlphabetActivityState state) {
+    super.onNewState(state);
     currentLetter = state.letter;
     onLoad();
-    super.onNewState(state);
   }
 
   void nextLetterCallback() {
@@ -26,63 +26,42 @@ class AlphabetActivityEngineContainer extends RectangleComponent
 
   @override
   Future<void> onLoad() async {
-    super.onLoad();
+    int index = 0;
+    int total = currentLetter.points.entries.length - 1;
+    List<PointModel> etapaAtual =
+        currentLetter.points.entries.elementAt(index).value;
 
-    List<Vector2> queue = List<Vector2>.from(
-      currentLetter.points.entries.elementAt(0).value,
-    );
-
-    int currentPart = 0;
-    int parts = currentLetter.points.entries.length - 1;
-    List pp = [];
+    List<PointModel> devPoints = [];
 
     void onTrailPositionUpdate(Vector2 trailPosition) {
-      Vector2? current = currentLetter.points.entries
-          .elementAt(currentPart)
-          .value
-          .firstWhereOrNull(
-            (element) =>
-                trailPosition.x >= element.x - 12 &&
-                trailPosition.x <= element.x - 12 + 24 &&
-                trailPosition.y >= element.y - 12 &&
-                trailPosition.y <= element.y - 12 + 24,
-          );
+      PointModel? current = etapaAtual.firstWhereOrNull(
+        (element) =>
+            trailPosition.x >= element.position.x - 12 &&
+            trailPosition.x <= element.position.x - 12 + 24 &&
+            trailPosition.y >= element.position.y - 12 &&
+            trailPosition.y <= element.position.y - 12 + 24,
+      );
 
-      if (current != null) {
-        final contain = queue.firstWhereOrNull(
-              (element) => element == current,
-            ) !=
-            null;
+      if (current != null && current == etapaAtual.first) {
+        etapaAtual.removeAt(0);
 
-        if (queue.isEmpty) {
-          if (currentPart == parts) {
-            currentPart = 0;
-            pp = [];
-            nextLetterCallback();
-          } else {
-            if (currentPart < parts) {
-              currentPart += 1;
-              queue = List<Vector2>.from(
-                currentLetter.points.entries.elementAt(currentPart).value,
-              );
-              vibrate(duration: 50);
-            }
-          }
-        } else if (queue.first == current) {
-          queue.removeAt(0);
-          vibrate(duration: 10);
-        } else if (contain) {
-          queue = List<Vector2>.from(
-            currentLetter.points.entries.elementAt(currentPart).value,
-          );
-          vibrate(duration: 20);
+        if (etapaAtual.isEmpty && index < total) {
+          index++;
+          etapaAtual = currentLetter.points.entries.elementAt(index).value;
+        }
+
+        if (etapaAtual.isEmpty && index == total) {
+          index = 0;
+          etapaAtual = currentLetter.points.entries.elementAt(index).value;
+          devPoints = [];
+          nextLetterCallback();
         }
       }
     }
 
     for (var letter in currentLetter.points.entries) {
       for (var l in letter.value) {
-        pp.add(l);
+        devPoints.add(l);
       }
     }
 
@@ -91,10 +70,10 @@ class AlphabetActivityEngineContainer extends RectangleComponent
           image: currentLetter.image,
           imageSize: Vector2(230, 230),
           onTrailPositionUpdate: onTrailPositionUpdate,
-          data: pp.map(
+          data: devPoints.map(
             (e) => PositionComponent()
               ..size = Vector2(24, 24)
-              ..position = e - Vector2(12, 12)
+              ..position = e.position - Vector2(12, 12)
               ..debugMode = true,
           ))
         ..position = Vector2(
