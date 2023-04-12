@@ -60,6 +60,7 @@ class MyApp extends StatelessWidget with StorageMixin {
       themeMode: getTheme(),
       locale: const Locale("pt", "BR"),
       debugShowCheckedModeBanner: false,
+      
     );
   }
 }
