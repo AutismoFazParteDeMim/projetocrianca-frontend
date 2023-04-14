@@ -143,19 +143,18 @@ final letters = {
     image: "alphabet/H.png",
     points: {
       1: [
-        PointModel(id: "1-1", position: Vector2(115 + 74, 115 - 102)),
-        PointModel(id: "1-2", position: Vector2(115 + 74, 115 - 0)),
-        PointModel(id: "1-3", position: Vector2(115 + 74, 115 + 102)),
-      ],
-      2: [
-        PointModel(id: "2-1", position: Vector2(115 + 74, 115 - 0)),
-        PointModel(id: "2-2", position: Vector2(115 - 0, 115 - 0)),
-        PointModel(id: "2-3", position: Vector2(115 - 74, 115 - 0)),
-      ],
-      3: [
         PointModel(id: "3-1", position: Vector2(115 - 74, 115 - 102)),
         PointModel(id: "3-2", position: Vector2(115 - 74, 115 - 0)),
         PointModel(id: "3-3", position: Vector2(115 - 74, 115 + 102)),
+      ],
+      2: [
+        PointModel(id: "2-3", position: Vector2(115 - 74, 115 - 0)),
+        PointModel(id: "2-1", position: Vector2(115 + 74, 115 - 0)),
+      ],
+      3: [
+        PointModel(id: "1-1", position: Vector2(115 + 74, 115 - 102)),
+        PointModel(id: "1-2", position: Vector2(115 + 74, 115 - 0)),
+        PointModel(id: "1-3", position: Vector2(115 + 74, 115 + 102)),
       ]
     },
   ),
@@ -245,9 +244,10 @@ final letters = {
     points: {
       1: [
         PointModel(id: "1-1", position: Vector2(115, 115 - 104)),
-      ],
-      2: [
-        PointModel(id: "1-2", position: Vector2(115, 115 - 104)),
+        PointModel(id: "1-2", position: Vector2(115 - 90, 115)),
+        PointModel(id: "1-3", position: Vector2(115, 115 + 104)),
+        PointModel(id: "1-4", position: Vector2(115 + 90, 115)),
+        PointModel(id: "1-5", position: Vector2(115, 115 - 104)),
       ],
     },
   ),
