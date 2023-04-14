@@ -43,22 +43,17 @@ final letters = {
       1: [
         PointModel(id: "1-1", position: Vector2(115 - 60, 115 - 102)),
         PointModel(id: "1-2", position: Vector2(115 - 60, 115 + 0)),
-        PointModel(id: "1-3", position: Vector2(115 - 60, 115 - 102)),
+        PointModel(id: "1-3", position: Vector2(115 - 60, 115 + 102)),
       ],
       2: [
         PointModel(id: "2-1", position: Vector2(115 - 60, 115 - 102)),
         PointModel(id: "2-2", position: Vector2(115 + 40, 115 - 94)),
         PointModel(id: "2-3", position: Vector2(115 + 60, 115 - 50)),
-        // PointModel(id: "2-4", position: Vector2(115 + 36, 115 - 0)),
         PointModel(id: "2-5", position: Vector2(115 - 60, 115 + 0)),
-      ],
-      3: [
-        PointModel(id: "3-1", position: Vector2(115 - 60, 115 + 0)),
-        // PointModel(id: "3-2", position: Vector2(115 + 36, 115 - 0)),
-        PointModel(id: "3-3", position: Vector2(115 + 40, 115 + 94)),
         PointModel(id: "3-4", position: Vector2(115 + 60, 115 + 50)),
+        PointModel(id: "3-3", position: Vector2(115 + 40, 115 + 94)),
         PointModel(id: "3-5", position: Vector2(115 - 60, 115 + 102)),
-      ]
+      ],
     },
   ),
   "C": LetterModel(
@@ -86,6 +81,7 @@ final letters = {
         PointModel(id: "2-2", position: Vector2(115 + 20, 115 - 96)),
         PointModel(id: "2-3", position: Vector2(115 + 80, 115 - 0)),
         PointModel(id: "2-4", position: Vector2(115 + 20, 115 + 96)),
+        PointModel(id: "1-3", position: Vector2(115 - 76, 115 + 102)),
       ],
     },
   ),
