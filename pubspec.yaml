@@ -78,11 +78,13 @@ flutter:
     - assets/images/routines/
     - assets/images/expressions/
     - assets/images/alphabet/
+    - assets/images/numbers/
     #games images
     - assets/images/encaixar/
     - assets/images/sombra/
     - assets/images/puzzle/
     - assets/images/parDeCores/
+
     #activities audios
     - assets/audio/activities/alphabet/
     - assets/audio/activities/numbers/
