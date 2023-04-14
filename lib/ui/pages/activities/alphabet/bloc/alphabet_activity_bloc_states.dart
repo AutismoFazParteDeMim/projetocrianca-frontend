@@ -245,6 +245,8 @@ final letters = {
     points: {
       1: [
         PointModel(id: "1-1", position: Vector2(115, 115 - 104)),
+      ],
+      2: [
         PointModel(id: "1-2", position: Vector2(115, 115 - 104)),
       ],
     },

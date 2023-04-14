@@ -11,7 +11,7 @@ class AlphabetActivityEngineContainer extends RectangleComponent
     with
         FlameBlocListenable<AlphabetActivityBloc, AlphabetActivityState>,
         VibrationMixin {
-  LetterModel currentLetter = letters.entries.elementAt(0).value;
+  LetterModel currentLetter = letters.entries.elementAt(14).value;
 
   @override
   void onNewState(AlphabetActivityState state) {
