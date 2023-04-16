@@ -89,28 +89,25 @@ final numbers = {
     image: "numbers/6.png",
     points: {
       1: [
-        PointModel(id: "1-1", position: Vector2(115 - 46, 115 - 102)),
-        PointModel(id: "1-2", position: Vector2(115 - 46, 115 + 0)),
-        PointModel(id: "1-3", position: Vector2(115 - 46, 115 + 102)),
+        PointModel(id: "1-1", position: Vector2(115 + 24, 115 - 88)),
+        PointModel(id: "1-2", position: Vector2(115 - 34, 115 + 80)),
+        PointModel(id: "1-3", position: Vector2(115 + 48, 115 + 6)),
+        PointModel(id: "1-4", position: Vector2(115 - 34, 115 + 80)),
       ],
-      2: [
-        PointModel(id: "2-1", position: Vector2(115 - 46, 115 - 102)),
-        PointModel(id: "2-2", position: Vector2(115 + 74, 115 - 102)),
-      ],
-      3: [
-        PointModel(id: "3-1", position: Vector2(115 - 46, 115 + 0)),
-        PointModel(id: "3-2", position: Vector2(115 + 70, 115 + 0)),
-      ]
     },
   ),
   "7": NumberModel(
     image: "numbers/7.png",
     points: {
       1: [
-        PointModel(id: "1-1", position: Vector2(115 - 65, 115 - 104)),
-        PointModel(id: "1-2", position: Vector2(115 + 68, 115 - 102)),
-        PointModel(id: "1-3", position: Vector2(115 - 68, 115 + 102)),
-        PointModel(id: "1-4", position: Vector2(115 + 73, 115 + 104)),
+        PointModel(id: "1-1", position: Vector2(115 - 60, 115 - 80)),
+        PointModel(id: "1-2", position: Vector2(115 + 60, 115 - 80)),
+        PointModel(id: "1-3", position: Vector2(115 + 40, 115 - 30)),
+        PointModel(id: "1-4", position: Vector2(115 - 6, 115 + 80)),
+      ],
+      2: [
+        PointModel(id: "2-1", position: Vector2(115 - 16, 115)),
+        PointModel(id: "2-2", position: Vector2(115 + 68, 115)),
       ],
     },
   ),
@@ -118,10 +115,12 @@ final numbers = {
     image: "numbers/8.png",
     points: {
       1: [
-        PointModel(id: "1-1", position: Vector2(115 - 65, 115 - 104)),
-        PointModel(id: "1-2", position: Vector2(115 + 68, 115 - 102)),
-        PointModel(id: "1-3", position: Vector2(115 - 68, 115 + 102)),
-        PointModel(id: "1-4", position: Vector2(115 + 73, 115 + 104)),
+        PointModel(id: "1-1", position: Vector2(115 - 10, 115 - 90)),
+        PointModel(id: "1-2", position: Vector2(115, 115 - 10)),
+        PointModel(id: "1-3", position: Vector2(115 + 60, 115 + 48)),
+        PointModel(id: "1-4", position: Vector2(115 - 56, 115 + 26)),
+        PointModel(id: "1-5", position: Vector2(115 + 50, 115 - 48)),
+        PointModel(id: "1-6", position: Vector2(115 - 10, 115 - 90)),
       ],
     },
   ),
@@ -129,21 +128,32 @@ final numbers = {
     image: "numbers/9.png",
     points: {
       1: [
-        PointModel(id: "1-1", position: Vector2(115 - 65, 115 - 104)),
-        PointModel(id: "1-2", position: Vector2(115 + 68, 115 - 102)),
-        PointModel(id: "1-3", position: Vector2(115 - 68, 115 + 102)),
-        PointModel(id: "1-4", position: Vector2(115 + 73, 115 + 104)),
+        PointModel(id: "1-1", position: Vector2(115 + 44, 115 - 58)),
+        PointModel(id: "1-2", position: Vector2(115 - 26, 115 - 80)),
+        PointModel(id: "1-3", position: Vector2(115, 115 + 22)),
+        PointModel(id: "1-4", position: Vector2(115 + 44, 115 - 58)),
       ],
+      2: [
+        PointModel(id: "2-1", position: Vector2(115 + 44, 115 - 58)),
+        PointModel(id: "2-2", position: Vector2(115 + 44, 115 + 80)),
+      ]
     },
   ),
   "10": NumberModel(
     image: "numbers/10.png",
     points: {
       1: [
-        PointModel(id: "1-1", position: Vector2(115 - 65, 115 - 104)),
-        PointModel(id: "1-2", position: Vector2(115 + 68, 115 - 102)),
-        PointModel(id: "1-3", position: Vector2(115 - 68, 115 + 102)),
-        PointModel(id: "1-4", position: Vector2(115 + 73, 115 + 104)),
+        PointModel(id: "1-1", position: Vector2(115 - 66, 115 - 60)),
+        PointModel(id: "1-2", position: Vector2(115 - 42, 115 - 80)),
+        PointModel(id: "1-3", position: Vector2(115 - 42, 115)),
+        PointModel(id: "1-4", position: Vector2(115 - 42, 115 + 80)),
+      ],
+      2: [
+        PointModel(id: "2-1", position: Vector2(115 + 30, 115 - 82)),
+        PointModel(id: "2-2", position: Vector2(115 + 68, 115)),
+        PointModel(id: "2-3", position: Vector2(115 + 30, 115 + 82)),
+        PointModel(id: "2-4", position: Vector2(115 - 8, 115)),
+        PointModel(id: "2-5", position: Vector2(115 + 30, 115 - 82)),
       ],
     },
   ),

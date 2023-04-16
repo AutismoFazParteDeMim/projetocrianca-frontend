@@ -79,7 +79,7 @@ class AlphabetActivityEngineContainer extends RectangleComponent
             (e) => PositionComponent()
               ..size = Vector2(24, 24)
               ..position = e.position - Vector2(12, 12)
-              ..debugMode = true,
+              ..debugMode = false,
           ))
         ..position = Vector2(
           size.x / 2,

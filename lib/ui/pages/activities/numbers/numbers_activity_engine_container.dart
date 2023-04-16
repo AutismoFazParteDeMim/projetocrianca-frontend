@@ -11,7 +11,7 @@ class NumbersActivityEngineContainer extends RectangleComponent
     with
         FlameBlocListenable<NumbersActivityBloc, NumbersActivityState>,
         VibrationMixin {
-  NumberModel currentNumber = numbers.entries.elementAt(4).value;
+  NumberModel currentNumber = numbers.entries.elementAt(0).value;
 
   @override
   void onNewState(NumbersActivityState state) {
@@ -79,7 +79,7 @@ class NumbersActivityEngineContainer extends RectangleComponent
             (e) => PositionComponent()
               ..size = Vector2(24, 24)
               ..position = e.position - Vector2(12, 12)
-              ..debugMode = true,
+              ..debugMode = false,
           ))
         ..position = Vector2(
           size.x / 2,
