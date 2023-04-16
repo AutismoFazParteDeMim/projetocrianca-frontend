@@ -11,7 +11,7 @@ class NumbersActivityEngineContainer extends RectangleComponent
     with
         FlameBlocListenable<NumbersActivityBloc, NumbersActivityState>,
         VibrationMixin {
-  NumberModel currentNumber = numbers.entries.elementAt(0).value;
+  NumberModel currentNumber = numbers.entries.elementAt(4).value;
 
   @override
   void onNewState(NumbersActivityState state) {

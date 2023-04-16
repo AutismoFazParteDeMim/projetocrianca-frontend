@@ -55,7 +55,7 @@ class ActivitiesPage extends StatelessWidget {
                     text:
                         "Trabalha com apoio visual, contribui para uma melhor interação social com amigos e família.",
                     image: const AssetImage("assets/icons/numbers-icon.png"),
-                    onPressed: () => Get.toNamed(AppRoutes.alphabetActivity),
+                    onPressed: () => Get.toNamed(AppRoutes.numbersActivity),
                   ),
                 ],
               ),
