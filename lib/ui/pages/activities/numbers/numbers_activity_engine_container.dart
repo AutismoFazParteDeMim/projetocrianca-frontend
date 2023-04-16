@@ -2,34 +2,34 @@ import 'package:flame/components.dart';
 import 'package:flame_bloc/flame_bloc.dart';
 import 'package:get/get.dart';
 import 'package:projeto_crianca/mixins/vibration_mixin.dart';
-import 'package:projeto_crianca/ui/pages/activities/alphabet/bloc/alphabet_activity_bloc.dart';
-import 'package:projeto_crianca/ui/pages/activities/alphabet/bloc/alphabet_activity_bloc_events.dart';
-import 'package:projeto_crianca/ui/pages/activities/alphabet/bloc/alphabet_activity_bloc_states.dart';
-import 'package:projeto_crianca/ui/pages/activities/alphabet/components/hint_container_component.dart';
+import 'package:projeto_crianca/ui/pages/activities/numbers/components/hint_container_component.dart';
+import 'package:projeto_crianca/ui/pages/activities/numbers/bloc/numbers_activity_bloc.dart';
+import 'package:projeto_crianca/ui/pages/activities/numbers/bloc/numbers_activity_bloc_events.dart';
+import 'package:projeto_crianca/ui/pages/activities/numbers/bloc/numbers_activity_bloc_states.dart';
 
-class AlphabetActivityEngineContainer extends RectangleComponent
+class NumbersActivityEngineContainer extends RectangleComponent
     with
-        FlameBlocListenable<AlphabetActivityBloc, AlphabetActivityState>,
+        FlameBlocListenable<NumbersActivityBloc, NumbersActivityState>,
         VibrationMixin {
-  LetterModel currentLetter = letters.entries.elementAt(0).value;
+  NumberModel currentNumber = numbers.entries.elementAt(0).value;
 
   @override
-  void onNewState(AlphabetActivityState state) {
+  void onNewState(NumbersActivityState state) {
     super.onNewState(state);
-    currentLetter = state.letter;
+    currentNumber = state.number;
     onLoad();
   }
 
-  void nextLetterCallback() {
-    bloc.add(NextLetterBlocEvent());
+  void nextNumberCallback() {
+    bloc.add(NextNumberBlocEvent());
   }
 
   @override
   Future<void> onLoad() async {
     int index = 0;
-    int total = currentLetter.points.entries.length - 1;
+    int total = currentNumber.points.entries.length - 1;
     List<PointModel> etapaAtual =
-        currentLetter.points.entries.elementAt(index).value;
+        currentNumber.points.entries.elementAt(index).value;
     List<PointModel> devPoints = [];
 
     void onTrailPositionUpdate(Vector2 trailPosition) {
@@ -49,30 +49,30 @@ class AlphabetActivityEngineContainer extends RectangleComponent
         //next step when complete
         if (etapaAtual.isEmpty && index < total) {
           index++;
-          etapaAtual = currentLetter.points.entries.elementAt(index).value;
+          etapaAtual = currentNumber.points.entries.elementAt(index).value;
         }
 
         //next level when complete
         if (etapaAtual.isEmpty && index == total) {
-          nextLetterCallback();
+          nextNumberCallback();
           index = 0;
-          total = currentLetter.points.entries.length - 1;
-          etapaAtual = currentLetter.points.entries.elementAt(index).value;
+          total = currentNumber.points.entries.length - 1;
+          etapaAtual = currentNumber.points.entries.elementAt(index).value;
           devPoints = [];
         }
       }
     }
 
     //devlopment screen points
-    for (var letter in currentLetter.points.entries) {
-      for (var l in letter.value) {
+    for (var number in currentNumber.points.entries) {
+      for (var l in number.value) {
         devPoints.add(l);
       }
     }
 
     addAll([
       HintContainerComponent(
-          image: currentLetter.image,
+          image: currentNumber.image,
           imageSize: Vector2(230, 230),
           onTrailPositionUpdate: onTrailPositionUpdate,
           data: devPoints.map(

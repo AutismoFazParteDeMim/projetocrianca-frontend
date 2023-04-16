@@ -1,10 +1,10 @@
 import 'package:flame/game.dart';
 import 'package:flutter/material.dart';
+import 'package:projeto_crianca/ui/pages/activities/numbers/numbers_activity_engine.dart';
 import 'package:projeto_crianca/ui/widgets/appbar_component.dart';
-import 'package:projeto_crianca/ui/pages/activities/alphabet/alphabet_activity_engine.dart';
 
-class AlphabetActivityPage extends StatelessWidget {
-  const AlphabetActivityPage({super.key});
+class NumbersActivityPage extends StatelessWidget {
+  const NumbersActivityPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -15,8 +15,8 @@ class AlphabetActivityPage extends StatelessWidget {
         invertedColor: true,
       ),
       extendBodyBehindAppBar: true,
-      body: GameWidget<AlphabetActivityEngine>(
-        game: AlphabetActivityEngine(),
+      body: GameWidget<NumbersActivityEngine>(
+        game: NumbersActivityEngine(),
       ),
     );
   }

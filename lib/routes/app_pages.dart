@@ -9,6 +9,7 @@ import 'package:projeto_crianca/bindings/register_page_binding.dart';
 import 'package:projeto_crianca/bindings/settings_page_binding.dart';
 import 'package:projeto_crianca/routes/app_routes.dart';
 import 'package:projeto_crianca/ui/pages/activities/alphabet/alphabet_activity_page.dart';
+import 'package:projeto_crianca/ui/pages/activities/numbers/numbers_activity_page.dart';
 import 'package:projeto_crianca/ui/pages/games/encaixar/encaixar_game_page.dart';
 import 'package:projeto_crianca/ui/pages/games/memory/memory_game_page.dart';
 import 'package:projeto_crianca/ui/pages/games/pardecores/pardecores_game_page.dart';
@@ -119,6 +120,10 @@ abstract class AppPages {
     GetPage(
       name: AppRoutes.alphabetActivity,
       page: () => const AlphabetActivityPage(),
+    ),
+    GetPage(
+      name: AppRoutes.numbersActivity,
+      page: () => const NumbersActivityPage(),
     ),
   ];
 }
