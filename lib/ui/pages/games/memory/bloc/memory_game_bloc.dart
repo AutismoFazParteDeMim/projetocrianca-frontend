@@ -4,14 +4,23 @@ import 'package:projeto_crianca/ui/pages/games/memory/bloc/memory_game_bloc_stat
 
 class MemoryGameBloc extends Bloc<MemoryGameBlocEvent, MemoryGameState> {
   MemoryGameBloc() : super(MemoryGameState.initialState()) {
-    on<GetCardsBlocEvent>((event, emit) {
-      List<CardModel> newCards = [];
+    on<OpenCardBlocEvent>((event, emit) {
+      List<CardModel> cards = state.cards.toList();
+      List<CardModel> opened = state.openedCards.toList();
 
-      cards_data.shuffle();
-      newCards = cards_data.toList();
+      final index = cards.indexOf(event.card);
+
+      for (var card in cards) {
+        print(card);
+      }
+      print(index);
+      cards[index].isFaceUp = true;
 
       return emit(
-        MemoryGameState(cards: newCards),
+        MemoryGameState(
+          cards: cards,
+          openedCards: opened,
+        ),
       );
     });
   }
