@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:flame/components.dart';
 import 'package:flame_bloc/flame_bloc.dart';
 import 'package:projeto_crianca/ui/pages/games/components/top_container_component.dart';
@@ -10,68 +8,73 @@ import 'package:projeto_crianca/ui/pages/games/memory/components/card_game_compo
 
 class MemoryGameEngineContainer extends RectangleComponent
     with FlameBlocListenable<MemoryGameBloc, MemoryGameState> {
-  List<CardModel> cards = cards_data;
+  List<CardModel>? cards;
+  List<CardModel>? opened;
 
   @override
   void onNewState(MemoryGameState state) {
     super.onNewState(state);
     cards = state.cards;
-    print(cards[0].isFaceUp);
-    print(cards[1].isFaceUp);
+    opened = state.opened;
+    onLoad();
+  }
+
+  void onCardPressed(CardModel card) {
+    bloc.add(OpenCardBlocEvent(card: card));
+  }
+
+  @override
+  void onMount() {
+    super.onMount();
+    onLoad();
   }
 
   @override
   Future<void> onLoad() async {
-    super.onLoad();
+    await super.onLoad();
 
-    List<Component> cardsComponent = [];
-
-    List<int> randoms = [];
-
-    int getCardIndex() {
-      int rand = Random().nextInt(cards.length);
-      if (!randoms.contains(rand)) {
-        randoms.add(rand);
-        return rand;
-      }
-
-      return getCardIndex();
+    if (super.isMounted && cards == null) {
+      cards = bloc.state.cards;
     }
 
-    for (var i = 0; i < 4; i++) {
-      for (var j = 0; j < 4; j++) {
-        const double width = 80;
-        const double height = 100;
-        const int gap = 16;
-        final columns = (size.x / 4) - width / 2;
-        final rows = (size.y / 2) + 50 - height / 2;
+    if (cards != null) {
+      List<CardGameComponent> cardsComponent = [];
 
-        final card = cards[getCardIndex()];
+      int index = 0;
+      for (var i = 0; i < 4; i++) {
+        for (var j = 0; j < 4; j++) {
+          const double width = 80;
+          const double height = 100;
+          const int gap = 16;
+          final columns = (size.x / 4) - width / 2;
+          final rows = (size.y / 2) - height / 2;
 
-        cardsComponent.add(
-          CardGameComponent(
-            image: card.image,
-            isFaceUp: card.isFaceUp,
-            onPressed: () => bloc.add(
-              OpenCardBlocEvent(card: card),
-            ),
-          )
-            ..size = Vector2(width, height)
-            ..position = Vector2(
-              columns + i * (width + gap),
-              rows + j * (height + gap),
+          final CardModel card = cards![index];
+
+          cardsComponent.add(
+            CardGameComponent(
+              image: card.image,
+              isFaceUp: card.isFaceUp,
+              onPressed: () => onCardPressed(card),
             )
-            ..anchor = Anchor.center
-            ..debugMode = false,
-        );
-      }
-    }
+              ..position = Vector2(
+                columns + i * (width + gap),
+                rows + j * (height + gap),
+              )
+              ..anchor = Anchor.center
+              ..debugMode = false,
+          );
 
-    addAll([
-      TopContainerComponent()
-        ..size = Vector2(size.x, size.y)
-        ..position = Vector2(0, 0),
-      ...cardsComponent
-    ]);
+          index++;
+        }
+      }
+
+      addAll([
+        TopContainerComponent()
+          ..size = Vector2(size.x, size.y)
+          ..position = Vector2(0, 0),
+        ...cardsComponent
+      ]);
+    }
   }
 }

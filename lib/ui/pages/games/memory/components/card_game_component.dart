@@ -10,29 +10,35 @@ class CardGameComponent extends PositionComponent
   final bool? isFaceUp;
   final String image;
   final void Function() onPressed;
+  late Svg emptyCard;
+  late Svg faceDown;
 
   CardGameComponent({
     this.key,
     required this.image,
     required this.onPressed,
     this.isFaceUp,
-  });
+  }) {
+    super.size = Vector2(80, 100);
+  }
 
   @override
   Future<void> onLoad() async {
     late RectangleComponent component;
-    final emptyCard = await Svg.load("images/memoryGame/emptyCard.svg");
-    final faceDown = await Svg.load("images/memoryGame/card.svg");
 
     await Flame.images.load(image);
+    await Flame.images.load("memoryGame/card.png");
+    await Flame.images.load("memoryGame/emptycard.png");
 
     component = RectangleComponent()..anchor = Anchor.center;
     component.add(
-      SvgComponent(
-        svg: isFaceUp == true ? emptyCard : faceDown,
-        size: size,
+      SpriteComponent.fromImage(
+        isFaceUp == true
+            ? Flame.images.fromCache("memoryGame/emptycard.png")
+            : Flame.images.fromCache("memoryGame/card.png"),
+        size: Vector2(80, 100),
         position: Vector2(size.x / 2, size.y / 2),
-        anchor: anchor,
+        anchor: Anchor.center,
         children: [
           isFaceUp == true
               ? SpriteComponent.fromImage(
