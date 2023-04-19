@@ -61,7 +61,7 @@ class MyApp extends StatelessWidget with StorageMixin {
     return GetMaterialApp(
       title: 'Projeto Criança',
       getPages: AppPages.pages,
-      initialRoute: AppRoutes.initial,
+      initialRoute: AppRoutes.welcome,
       theme: AppTheme(isDark: false).getTheme(),
       darkTheme: AppTheme(isDark: true).getTheme(),
       themeMode: getTheme(),

@@ -23,6 +23,9 @@ class MemoryGamePage extends StatelessWidget {
       extendBodyBehindAppBar: true,
       body: GameWidget<MemoryGameEngine>(
         game: MemoryGameEngine(),
+        backgroundBuilder: (BuildContext context) => Container(
+          color: colors.background,
+        ),
       ),
     );
   }

@@ -22,12 +22,15 @@ class _SplashPageState extends State<SplashPage> {
       "assets/splash-video.mp4",
       videoPlayerOptions: VideoPlayerOptions(mixWithOthers: true),
     )..initialize().then(
-        (value) => setState(() => controller.play()),
+        (value) {
+          controller.play();
+          setState(() => {});
+        },
       );
 
     Timer(
       const Duration(seconds: 2),
-      () => Get.offAllNamed(AppRoutes.home),
+      () => Get.offAllNamed(AppRoutes.welcome),
     );
   }
 

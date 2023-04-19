@@ -1,15 +1,16 @@
 import 'package:flame/game.dart';
 import 'package:flutter/material.dart';
+import 'package:projeto_crianca/ui/theme/theme_extensions.dart';
 import 'package:projeto_crianca/ui/widgets/appbar_component.dart';
 import 'package:projeto_crianca/ui/pages/games/puzzle/puzzle_game_engine.dart';
 
 class PuzzleGamePage extends StatelessWidget {
-  final PuzzleGameEngine _gameInstance = PuzzleGameEngine();
-
-  PuzzleGamePage({super.key});
+  const PuzzleGamePage({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final ThemeColors colors = Theme.of(context).extension<ThemeColors>()!;
+
     return Scaffold(
       appBar: AppBarComponent(
         title: "Quebra-cabeça",
@@ -17,7 +18,12 @@ class PuzzleGamePage extends StatelessWidget {
         invertedColor: true,
       ),
       extendBodyBehindAppBar: true,
-      body: GameWidget<PuzzleGameEngine>(game: _gameInstance),
+      body: GameWidget<PuzzleGameEngine>(
+        game: PuzzleGameEngine(),
+        backgroundBuilder: (BuildContext context) => Container(
+          color: colors.background,
+        ),
+      ),
     );
   }
 }

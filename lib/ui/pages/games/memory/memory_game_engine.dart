@@ -12,8 +12,8 @@ class MemoryGameEngine extends FlameGame
   @override
   void onMount() {
     super.onMount();
-    //FlameAudio.bgm.initialize();
-    //FlameAudio.bgm.play("games/parDeCores/background.mp3");
+    FlameAudio.bgm.initialize();
+    FlameAudio.bgm.play("games/parDeCores/background.mp3");
   }
 
   @override

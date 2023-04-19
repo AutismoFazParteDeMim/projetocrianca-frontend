@@ -22,7 +22,7 @@ class AuthController extends GetxController {
 
   void _toInitialPage(User? user) {
     if (user == null) {
-      Get.offAllNamed(AppRoutes.initial);
+      Get.offAllNamed(AppRoutes.welcome);
     } else {
       Get.offAllNamed(AppRoutes.home);
     }

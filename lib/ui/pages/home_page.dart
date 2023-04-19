@@ -59,7 +59,7 @@ class _CustomAppBar extends StatelessWidget with PreferredSizeWidget {
               Obx(
                 () => controller.getCurrentChild?.name != null
                     ? Text(
-                        "${controller.getCurrentChild?.name}!",
+                        "${controller.getCurrentChild?.name}",
                         style: theme.textTheme.titleLarge,
                       )
                     : const CircularProgressIndicator(),
