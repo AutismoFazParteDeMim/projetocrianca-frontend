@@ -47,7 +47,7 @@ class MemoryGameEngineContainer extends RectangleComponent
           const double height = 100;
           const int gap = 16;
           final columns = (size.x / 4) - width / 2;
-          final rows = (size.y / 2) - height / 2;
+          final rows = (size.y / 2) - height;
 
           final CardModel card = cards![index];
 
