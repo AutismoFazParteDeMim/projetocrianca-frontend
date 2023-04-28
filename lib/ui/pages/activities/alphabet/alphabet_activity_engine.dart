@@ -7,6 +7,10 @@ import 'package:projeto_crianca/ui/pages/activities/alphabet/bloc/alphabet_activ
 import 'package:projeto_crianca/ui/pages/activities/alphabet/bloc/alphabet_activity_bloc_states.dart';
 
 class AlphabetActivityEngine extends FlameGame with HasDraggableComponents {
+  String avatarMessage = "Vamos começar!";
+
+  void setAvatarMessage(String message) => avatarMessage = message;
+
   @override
   void onMount() {
     super.onMount();
@@ -22,7 +26,7 @@ class AlphabetActivityEngine extends FlameGame with HasDraggableComponents {
       FlameBlocProvider<AlphabetActivityBloc, AlphabetActivityState>(
         create: () => AlphabetActivityBloc(),
         children: [
-          AlphabetActivityEngineContainer()
+          AlphabetActivityEngineContainer(setAvatarMessage)
             ..size = Vector2(
               size.x,
               size.y,

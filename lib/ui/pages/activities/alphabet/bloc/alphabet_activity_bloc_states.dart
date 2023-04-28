@@ -391,9 +391,14 @@ final letters = {
 
 class AlphabetActivityState {
   final LetterModel letter;
+  final String? avatarMessage;
 
-  AlphabetActivityState({required this.letter});
+  AlphabetActivityState({
+    required this.letter,
+    this.avatarMessage,
+  });
 
   AlphabetActivityState.initialState()
-      : letter = letters.entries.elementAt(0).value;
+      : letter = letters.entries.elementAt(0).value,
+        avatarMessage = null;
 }

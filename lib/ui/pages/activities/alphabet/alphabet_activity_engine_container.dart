@@ -13,23 +13,40 @@ class AlphabetActivityEngineContainer extends RectangleComponent
         VibrationMixin,
         HasGameRef {
   LetterModel currentLetter = letters.entries.elementAt(0).value;
+  final void Function(String message) setAvatarMessage;
+
+  AlphabetActivityEngineContainer(this.setAvatarMessage);
+
+  void _showAvatarOverlay(String message) async {
+    setAvatarMessage(message);
+    gameRef.overlays.add("avatar");
+    await Future.delayed(
+      const Duration(seconds: 5),
+      () {
+        gameRef.overlays.remove("avatar");
+      },
+    );
+  }
+
+  @override
+  void onMount() {
+    super.onMount();
+    _showAvatarOverlay("Vamos começar!");
+  }
 
   @override
   void onNewState(AlphabetActivityState state) {
     super.onNewState(state);
     currentLetter = state.letter;
     onLoad();
+
+    if (state.avatarMessage != null) {
+      _showAvatarOverlay(state.avatarMessage!);
+    }
   }
 
   void nextLetterCallback() {
     bloc.add(NextLetterBlocEvent());
-  }
-
-  @override
-  onMount() {
-    super.onMount();
-    gameRef.overlays.add("avatar");
-    gameRef.overlays.add("confetti");
   }
 
   @override

@@ -45,7 +45,6 @@ class MemoryGameBloc extends Bloc<MemoryGameBlocEvent, MemoryGameState> {
         () {
           if (opened.length == 2) {
             if (opened[0].image == opened[1].image) {
-              print("acertou!");
               opened = [];
 
               return emit(

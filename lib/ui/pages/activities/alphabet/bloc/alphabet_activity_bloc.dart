@@ -14,8 +14,13 @@ class AlphabetActivityBloc
 
       final LetterModel nextLetter = letters.entries.elementAt(counter).value;
 
+      String avatarMessage =
+          "Parabéns! Continue assim. ${letters.entries.elementAt(counter).key}";
       return emit(
-        AlphabetActivityState(letter: nextLetter),
+        AlphabetActivityState(
+          letter: nextLetter,
+          avatarMessage: avatarMessage,
+        ),
       );
     });
   }

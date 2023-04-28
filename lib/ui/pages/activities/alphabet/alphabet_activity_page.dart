@@ -27,13 +27,15 @@ class AlphabetActivityPage extends StatelessWidget {
       body: GameWidget<AlphabetActivityEngine>(
         game: AlphabetActivityEngine(),
         overlayBuilderMap: {
-          "avatar": (context, game) => Obx(
-                () => AvatarWidget(
-                  rawSvg: authService.getCurrentChild?.photoURL ?? "",
-                  text: "",
-                ),
+          "confetti": (context, game) => const ConfettiComponent(),
+          "avatar": (context, game) {
+            return Obx(
+              () => AvatarWidget(
+                rawSvg: authService.getCurrentChild?.photoURL ?? "",
+                text: game.avatarMessage,
               ),
-          "confetti": (context, game) => ConfettiComponent(),
+            );
+          },
         },
         backgroundBuilder: (BuildContext context) => Container(
           color: colors.background,
