@@ -4,6 +4,7 @@ import 'package:projeto_crianca/ui/theme/theme_extensions.dart';
 import 'package:projeto_crianca/ui/widgets/appbar_component.dart';
 import 'package:projeto_crianca/ui/pages/activities/alphabet/alphabet_activity_engine.dart';
 import 'package:projeto_crianca/ui/widgets/avatar_widget.dart';
+import 'package:projeto_crianca/ui/widgets/confetti_component.dart';
 
 class AlphabetActivityPage extends StatelessWidget {
   const AlphabetActivityPage({super.key});
@@ -23,6 +24,7 @@ class AlphabetActivityPage extends StatelessWidget {
         game: AlphabetActivityEngine(),
         overlayBuilderMap: {
           "avatar": (context, game) => AvatarWidget(),
+          "confetti": (context, game) => ConfettiComponent(),
         },
         backgroundBuilder: (BuildContext context) => Container(
           color: colors.background,
