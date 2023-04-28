@@ -5,8 +5,8 @@ import 'package:projeto_crianca/data/models/child_model.dart';
 import 'package:projeto_crianca/data/models/user_model.dart';
 
 class UserProvider {
-  static final FirebaseAuth _authInstance = FirebaseAuth.instance;
-  static final FirebaseFirestore _databaseInstance = FirebaseFirestore.instance;
+  final FirebaseAuth _authInstance = FirebaseAuth.instance;
+  final FirebaseFirestore _databaseInstance = FirebaseFirestore.instance;
 
   UserProvider() {
     _databaseInstance.settings = const Settings(persistenceEnabled: true);
@@ -29,8 +29,9 @@ class UserProvider {
           .doc(userUID)
           .get()
           .then(
-            (DocumentSnapshot doc) =>
-                ChildModel.fromDocumentSnapshot(documentSnapshot: doc),
+            (DocumentSnapshot doc) => ChildModel.fromDocumentSnapshot(
+              documentSnapshot: doc,
+            ),
           );
     }
 

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ionicons/ionicons.dart';
-import 'package:projeto_crianca/controllers/auth_controller.dart';
 import 'package:projeto_crianca/controllers/settings_page_controller.dart';
 import 'package:projeto_crianca/routes/app_routes.dart';
+import 'package:projeto_crianca/service/auth_service.dart';
 import 'package:projeto_crianca/ui/widgets/buttons/button_component.dart';
 import 'package:projeto_crianca/ui/widgets/appbar_component.dart';
 import 'package:projeto_crianca/ui/widgets/switch_component.dart';
@@ -57,7 +57,7 @@ class _OptionComponent extends StatelessWidget {
 }
 
 class SettingsPage extends GetView<SettingsPageController> {
-  final authController = Get.find<AuthController>();
+  final AuthService authService = Get.find<AuthService>();
 
   SettingsPage({super.key});
 
@@ -124,7 +124,7 @@ class SettingsPage extends GetView<SettingsPageController> {
                 icon: Ionicons.log_out_outline,
                 reversed: true,
                 full: true,
-                onPressed: () => authController.logOut(),
+                onPressed: () => authService.logOut(),
               ),
             ],
           ),

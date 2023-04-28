@@ -2,12 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:projeto_crianca/controllers/home_page_controller.dart';
 import 'package:projeto_crianca/routes/app_routes.dart';
+import 'package:projeto_crianca/service/auth_service.dart';
 import 'package:projeto_crianca/ui/widgets/buttons/square_button_component.dart';
 import 'package:projeto_crianca/ui/widgets/svg_component.dart';
 import 'package:projeto_crianca/ui/theme/theme_extensions.dart';
 
 class _CustomAppBar extends StatelessWidget with PreferredSizeWidget {
   final HomePageController controller = Get.find<HomePageController>();
+  final AuthService authService = Get.find<AuthService>();
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +36,7 @@ class _CustomAppBar extends StatelessWidget with PreferredSizeWidget {
                   () => SVGComponent(
                     width: 60,
                     height: 60,
-                    rawSvg: controller.getCurrentChild?.photoURL,
+                    rawSvg: authService.getCurrentChild?.photoURL,
                   ),
                 ),
               ),
@@ -46,23 +48,19 @@ class _CustomAppBar extends StatelessWidget with PreferredSizeWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Obx(
-                () => controller.getCurrentChild?.name != null
-                    ? Text(
-                        controller.getCurrentChild?.sex == "f" ||
-                                controller.getCurrentChild?.sex == "female"
-                            ? "Bem vinda"
-                            : "Bem vindo",
-                        style: theme.textTheme.titleSmall,
-                      )
-                    : const CircularProgressIndicator(),
+                () => Text(
+                  controller.getCurrentChild?.sex == "f" ||
+                          controller.getCurrentChild?.sex == "female"
+                      ? "Bem vinda"
+                      : "Bem vindo",
+                  style: theme.textTheme.titleSmall,
+                ),
               ),
               Obx(
-                () => controller.getCurrentChild?.name != null
-                    ? Text(
-                        "${controller.getCurrentChild?.name}",
-                        style: theme.textTheme.titleLarge,
-                      )
-                    : const CircularProgressIndicator(),
+                () => Text(
+                  "${controller.getCurrentChild?.name}",
+                  style: theme.textTheme.titleLarge,
+                ),
               ),
             ],
           ),

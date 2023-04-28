@@ -10,7 +10,8 @@ import 'package:projeto_crianca/ui/pages/activities/alphabet/components/hint_con
 class AlphabetActivityEngineContainer extends RectangleComponent
     with
         FlameBlocListenable<AlphabetActivityBloc, AlphabetActivityState>,
-        VibrationMixin {
+        VibrationMixin,
+        HasGameRef {
   LetterModel currentLetter = letters.entries.elementAt(0).value;
 
   @override
@@ -22,7 +23,12 @@ class AlphabetActivityEngineContainer extends RectangleComponent
 
   void nextLetterCallback() {
     bloc.add(NextLetterBlocEvent());
-    
+  }
+
+  @override
+  void onMount() {
+    super.onMount();
+    gameRef.overlays.add("avatar");
   }
 
   @override

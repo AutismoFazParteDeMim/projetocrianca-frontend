@@ -1,27 +1,47 @@
+import 'package:projeto_crianca/data/models/child_model.dart';
+import 'package:projeto_crianca/data/models/user_model.dart';
 import 'package:projeto_crianca/data/providers/auth_provider.dart';
+import 'package:projeto_crianca/data/providers/user_provider.dart';
 
 class AuthRepository {
-  final AuthProvider provider;
+  final AuthProvider authProvider;
+  final UserProvider userProvider;
 
-  AuthRepository(this.provider);
+  AuthRepository({
+    required this.authProvider,
+    required this.userProvider,
+  });
 
   Future<void> loginWithEmailAndPass(String email, String password) async {
-    await provider.loginWithEmailAndPass(email, password);
+    await authProvider.loginWithEmailAndPass(email, password);
   }
 
   Future<void> loginWithGoogle() async {
-    await provider.loginWithGoogle();
+    await authProvider.loginWithGoogle();
   }
 
   Future<void> loginWithFacebook() async {
-    await provider.loginWithFacebook();
+    await authProvider.loginWithFacebook();
   }
 
   Future<void> logOut() async {
-    await provider.logOut();
+    await authProvider.logOut();
   }
 
   Future<void> resetPassword({required String email}) async {
-    return await provider.resetPassword(email: email);
+    return await authProvider.resetPassword(email: email);
+  }
+
+  //user provider
+  UserModel? getCurrentUser() {
+    return userProvider.getCurrentUser();
+  }
+
+  Future<ChildModel?> getCurrentChild() async {
+    return await userProvider.getCurrentChild();
+  }
+
+  Stream<ChildModel>? getChildStream() {
+    return userProvider.getChildStream();
   }
 }

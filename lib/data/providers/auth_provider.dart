@@ -3,7 +3,7 @@ import 'package:google_sign_in/google_sign_in.dart';
 import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 
 class AuthProvider {
-  static final FirebaseAuth _instance = FirebaseAuth.instance;
+  final FirebaseAuth _instance = FirebaseAuth.instance;
 
   Future<void> loginWithEmailAndPass(String email, String password) async {
     await _instance.signInWithEmailAndPassword(
@@ -42,10 +42,6 @@ class AuthProvider {
         );
   }
 
-  Future<void> logOut() async {
-    await _instance.signOut();
-  }
-
   Future<User?> registerWithEmailAndPass(String email, String password) async {
     return await _instance
         .createUserWithEmailAndPassword(
@@ -57,5 +53,9 @@ class AuthProvider {
 
   Future<void> resetPassword({required String email}) async {
     return await _instance.sendPasswordResetEmail(email: email);
+  }
+
+  Future<void> logOut() async {
+    await _instance.signOut();
   }
 }

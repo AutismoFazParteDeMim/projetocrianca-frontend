@@ -4,13 +4,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_config/flutter_config.dart';
 import 'package:get/get.dart';
-import 'package:projeto_crianca/controllers/auth_controller.dart';
 import 'package:projeto_crianca/data/providers/auth_provider.dart';
+import 'package:projeto_crianca/data/providers/user_provider.dart';
 import 'package:projeto_crianca/data/repositories/auth_repository.dart';
 import 'package:projeto_crianca/firebase_options.dart';
 import 'package:projeto_crianca/mixins/storage_mixin.dart';
 import 'package:projeto_crianca/routes/app_routes.dart';
 import 'package:projeto_crianca/routes/app_pages.dart';
+import 'package:projeto_crianca/service/auth_service.dart';
 import 'package:projeto_crianca/ui/theme/app_theme.dart';
 import 'package:get_storage/get_storage.dart';
 
@@ -33,8 +34,11 @@ Future<void> main() async {
     options: DefaultFirebaseOptions.currentPlatform,
   ).then(
     (value) => Get.put(
-      AuthController(
-        AuthRepository(AuthProvider()),
+      AuthService(
+        AuthRepository(
+          authProvider: AuthProvider(),
+          userProvider: UserProvider(),
+        ),
       ),
     ),
   );
