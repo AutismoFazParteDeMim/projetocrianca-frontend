@@ -26,9 +26,10 @@ class AlphabetActivityEngineContainer extends RectangleComponent
   }
 
   @override
-  void onMount() {
+  onMount() {
     super.onMount();
     gameRef.overlays.add("avatar");
+    gameRef.overlays.add("confetti");
   }
 
   @override

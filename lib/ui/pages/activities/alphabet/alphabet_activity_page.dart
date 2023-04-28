@@ -6,6 +6,7 @@ import 'package:projeto_crianca/ui/theme/theme_extensions.dart';
 import 'package:projeto_crianca/ui/widgets/appbar_component.dart';
 import 'package:projeto_crianca/ui/pages/activities/alphabet/alphabet_activity_engine.dart';
 import 'package:projeto_crianca/ui/widgets/avatar_widget.dart';
+import 'package:projeto_crianca/ui/widgets/confetti_component.dart';
 
 class AlphabetActivityPage extends StatelessWidget {
   final AuthService authService = Get.find<AuthService>();
@@ -32,6 +33,7 @@ class AlphabetActivityPage extends StatelessWidget {
                   text: "",
                 ),
               ),
+          "confetti": (context, game) => ConfettiComponent(),
         },
         backgroundBuilder: (BuildContext context) => Container(
           color: colors.background,
