@@ -22,6 +22,7 @@ class AlphabetActivityEngineContainer extends RectangleComponent
 
   void nextLetterCallback() {
     bloc.add(NextLetterBlocEvent());
+    
   }
 
   @override
