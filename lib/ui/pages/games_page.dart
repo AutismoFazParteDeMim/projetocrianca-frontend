@@ -73,6 +73,16 @@ class GamesPage extends StatelessWidget {
                     onPressed: () => Get.toNamed(
                       AppRoutes.parDeCoresGame,
                     ),
+                  ),
+                  SizedBox(height: metrics.gap),
+                  MenuButtonWidget(
+                    title: "Colorir",
+                    text:
+                        "Trabalha o desenvolvimento da criatividade e coordenação motora.",
+                    image: const AssetImage("assets/icons/pardecores-icon.png"),
+                    onPressed: () => Get.toNamed(
+                      AppRoutes.paintGame,
+                    ),
                   )
                 ],
               ),

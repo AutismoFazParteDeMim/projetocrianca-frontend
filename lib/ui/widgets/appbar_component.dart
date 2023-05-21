@@ -11,6 +11,7 @@ class AppBarComponent extends StatelessWidget with PreferredSizeWidget {
   final String? title;
   final bool? transparent;
   final bool? invertedColor;
+  final Widget? suffixChild;
 
   AppBarComponent({
     super.key,
@@ -18,6 +19,7 @@ class AppBarComponent extends StatelessWidget with PreferredSizeWidget {
     this.transparent,
     this.invertedColor,
     this.preferredSize = const Size.fromHeight(100),
+    this.suffixChild,
   });
 
   @override
@@ -39,14 +41,20 @@ class AppBarComponent extends StatelessWidget with PreferredSizeWidget {
             icon: Ionicons.arrow_back,
             onPressed: () => Get.back(),
           ),
-          Text(
-            title ?? "",
-            textAlign: TextAlign.center,
-            style: theme.textTheme.headlineSmall?.copyWith(
-              color: invertedColor == true ? colors.onPrimary : colors.text,
+          Expanded(
+            child: Text(
+              title ?? "",
+              textAlign: TextAlign.center,
+              overflow: TextOverflow.ellipsis,
+              maxLines: 1,
+              style: theme.textTheme.headlineSmall?.copyWith(
+                color: invertedColor == true ? colors.onPrimary : colors.text,
+              ),
             ),
           ),
-          const SizedBox(width: 50),
+          Container(
+            child: suffixChild,
+          ),
         ],
       ),
     );

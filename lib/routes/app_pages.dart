@@ -1,6 +1,7 @@
 import 'package:get/get.dart';
 import 'package:projeto_crianca/bindings/about_page_binding.dart';
 import 'package:projeto_crianca/bindings/avatar_page_binding.dart';
+import 'package:projeto_crianca/bindings/games/paint_game_page_binding.dart';
 import 'package:projeto_crianca/bindings/home_page_binding.dart';
 import 'package:projeto_crianca/bindings/localize_page_binding.dart';
 import 'package:projeto_crianca/bindings/login_page_binding.dart';
@@ -15,6 +16,7 @@ import 'package:projeto_crianca/ui/pages/games/memory/memory_game_page.dart';
 import 'package:projeto_crianca/ui/pages/games/pardecores/pardecores_game_page.dart';
 import 'package:projeto_crianca/ui/pages/games/puzzle/puzzle_game_page.dart';
 import 'package:projeto_crianca/ui/pages/games/sombra/sombra_game_page.dart';
+import 'package:projeto_crianca/ui/pages/games/paint/paint_game_page.dart';
 import 'package:projeto_crianca/ui/pages/about_page.dart';
 import 'package:projeto_crianca/ui/pages/activities_page.dart';
 import 'package:projeto_crianca/ui/pages/avatar_page.dart';
@@ -124,6 +126,11 @@ abstract class AppPages {
     GetPage(
       name: AppRoutes.numbersActivity,
       page: () => NumbersActivityPage(),
+    ),
+    GetPage(
+      name: AppRoutes.paintGame,
+      page: () => const PaintGamePage(),
+      binding: PaintGamePageBinding(),
     ),
   ];
 }
