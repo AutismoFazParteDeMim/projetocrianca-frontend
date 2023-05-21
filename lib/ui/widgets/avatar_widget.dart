@@ -42,30 +42,32 @@ class AvatarWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     final ThemeMetrics metrics = Theme.of(context).extension<ThemeMetrics>()!;
 
-    return Container(
-      width: double.infinity,
-      height: double.infinity,
-      padding: metrics.padding.copyWith(
-        top: metrics.padding.top + metrics.headerHeight,
-      ),
-      color: isBackdrop ? Colors.black.withOpacity(0.6) : Colors.transparent,
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          ClipRRect(
-            borderRadius: BorderRadius.circular(100),
-            child: SVGComponent(
-              width: 80,
-              height: 80,
-              rawSvg: rawSvg,
+    return IgnorePointer(
+      child: Container(
+        width: double.infinity,
+        height: double.infinity,
+        padding: metrics.padding.copyWith(
+          top: metrics.padding.top + metrics.headerHeight,
+        ),
+        color: isBackdrop ? Colors.black.withOpacity(0.6) : Colors.transparent,
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            ClipRRect(
+              borderRadius: BorderRadius.circular(100),
+              child: SVGComponent(
+                width: 80,
+                height: 80,
+                rawSvg: rawSvg,
+              ),
             ),
-          ),
-          SizedBox(width: metrics.gap),
-          Expanded(
-            child: _ChatWidget(text: text),
-          ),
-        ],
+            SizedBox(width: metrics.gap),
+            Expanded(
+              child: _ChatWidget(text: text),
+            ),
+          ],
+        ),
       ),
     );
   }

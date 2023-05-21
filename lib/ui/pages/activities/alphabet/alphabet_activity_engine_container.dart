@@ -12,8 +12,8 @@ class AlphabetActivityEngineContainer extends RectangleComponent
         FlameBlocListenable<AlphabetActivityBloc, AlphabetActivityState>,
         VibrationMixin,
         HasGameRef {
-  LetterModel currentLetter = letters.entries.elementAt(0).value;
   final void Function(String message) setAvatarMessage;
+  LetterModel currentLetter = letters.entries.elementAt(0).value;
 
   AlphabetActivityEngineContainer(this.setAvatarMessage);
 
@@ -88,7 +88,7 @@ class AlphabetActivityEngineContainer extends RectangleComponent
       }
     }
 
-    //devlopment screen points
+    // development screen points
     for (var letter in currentLetter.points.entries) {
       for (var l in letter.value) {
         devPoints.add(l);

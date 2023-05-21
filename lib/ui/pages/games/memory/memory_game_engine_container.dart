@@ -7,9 +7,31 @@ import 'package:projeto_crianca/ui/pages/games/memory/bloc/memory_game_bloc_stat
 import 'package:projeto_crianca/ui/pages/games/memory/components/card_game_component.dart';
 
 class MemoryGameEngineContainer extends RectangleComponent
-    with FlameBlocListenable<MemoryGameBloc, MemoryGameState> {
+    with FlameBlocListenable<MemoryGameBloc, MemoryGameState>, HasGameRef {
+  final void Function(String message) setAvatarMessage;
   List<CardModel>? cards;
   List<CardModel>? opened;
+
+  MemoryGameEngineContainer(this.setAvatarMessage);
+
+  void _showAvatarOverlay(String message) async {
+    setAvatarMessage(message);
+    gameRef.overlays.add("avatar");
+    await Future.delayed(
+      const Duration(seconds: 5),
+      () {
+        gameRef.overlays.remove("avatar");
+      },
+    );
+  }
+
+  @override
+  void onMount() {
+    super.onMount();
+    onLoad();
+
+    _showAvatarOverlay("Vamos começar!");
+  }
 
   @override
   void onNewState(MemoryGameState state) {
@@ -17,16 +39,14 @@ class MemoryGameEngineContainer extends RectangleComponent
     cards = state.cards;
     opened = state.opened;
     onLoad();
+
+    if (state.avatarMessage != null) {
+      _showAvatarOverlay(state.avatarMessage!);
+    }
   }
 
   void onCardPressed(CardModel card) {
     bloc.add(OpenCardBlocEvent(card: card));
-  }
-
-  @override
-  void onMount() {
-    super.onMount();
-    onLoad();
   }
 
   @override

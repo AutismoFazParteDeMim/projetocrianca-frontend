@@ -1,7 +1,7 @@
 import 'package:flame/game.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:projeto_crianca/service/auth_service.dart';
+import 'package:projeto_crianca/services/auth_service.dart';
 import 'package:projeto_crianca/ui/theme/theme_extensions.dart';
 import 'package:projeto_crianca/ui/widgets/appbar_component.dart';
 import 'package:projeto_crianca/ui/pages/activities/alphabet/alphabet_activity_engine.dart';

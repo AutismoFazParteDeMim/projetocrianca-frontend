@@ -5,6 +5,11 @@ import 'package:flame_audio/flame_audio.dart';
 
 class PuzzleGameEngine extends FlameGame
     with HasCollisionDetection, HasDraggableComponents {
+  String avatarMessage = "Vamos começar!";
+
+  // setters
+  void setAvatarMessage(String message) => avatarMessage = message;
+
   @override
   void onMount() {
     super.onMount();
@@ -17,7 +22,8 @@ class PuzzleGameEngine extends FlameGame
     await super.onLoad();
 
     addAll([
-      PuzzleGameEngineContainer()..size = Vector2(size.x, size.y),
+      PuzzleGameEngineContainer(setAvatarMessage)
+        ..size = Vector2(size.x, size.y),
     ]);
   }
 

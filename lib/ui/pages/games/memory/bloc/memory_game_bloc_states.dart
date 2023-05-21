@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 class CardModel {
   final int id;
   final String image;
@@ -12,7 +10,7 @@ class CardModel {
   });
 }
 
-final List<CardModel> cards_data = [
+final List<CardModel> cardsData = [
   CardModel(id: 0, image: "memoryGame/abelha.png", isFaceUp: false),
   CardModel(id: 1, image: "memoryGame/cabra.png", isFaceUp: false),
   CardModel(id: 2, image: "memoryGame/camaleao.png", isFaceUp: false),
@@ -38,10 +36,16 @@ final List<CardModel> cards_data = [
 class MemoryGameState {
   final List<CardModel> cards;
   final List<CardModel> opened;
+  final String? avatarMessage;
 
-  MemoryGameState({required this.cards, required this.opened});
+  MemoryGameState({
+    required this.cards,
+    required this.opened,
+    this.avatarMessage,
+  });
 
   MemoryGameState.initialState()
-      : cards = cards_data.toList(),
-        opened = [];
+      : cards = cardsData.toList(),
+        opened = [],
+        avatarMessage = null;
 }

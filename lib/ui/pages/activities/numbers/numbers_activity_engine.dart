@@ -7,6 +7,11 @@ import 'package:projeto_crianca/ui/pages/activities/numbers/bloc/numbers_activit
 import 'package:projeto_crianca/ui/pages/activities/numbers/numbers_activity_engine_container.dart';
 
 class NumbersActivityEngine extends FlameGame with HasDraggableComponents {
+  String avatarMessage = "Vamos começar!";
+
+  // setters
+  void setAvatarMessage(String message) => avatarMessage = message;
+
   @override
   void onMount() {
     super.onMount();
@@ -22,7 +27,7 @@ class NumbersActivityEngine extends FlameGame with HasDraggableComponents {
       FlameBlocProvider<NumbersActivityBloc, NumbersActivityState>(
         create: () => NumbersActivityBloc(),
         children: [
-          NumbersActivityEngineContainer()
+          NumbersActivityEngineContainer(setAvatarMessage)
             ..size = Vector2(
               size.x,
               size.y,

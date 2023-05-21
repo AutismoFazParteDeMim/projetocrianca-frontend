@@ -4,13 +4,13 @@ import 'package:flame/components.dart';
 import 'package:flame/flame.dart';
 import 'package:projeto_crianca/mixins/vibration_mixin.dart';
 
-class DragableBlockComponent extends PositionComponent
+class DraggableBlockComponent extends PositionComponent
     with DragCallbacks, VibrationMixin {
   final String? key;
   late bool fixed;
   final String image;
 
-  DragableBlockComponent({
+  DraggableBlockComponent({
     this.key,
     required this.image,
     this.fixed = false,

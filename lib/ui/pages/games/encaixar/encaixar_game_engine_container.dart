@@ -1,11 +1,12 @@
 import 'package:flame/components.dart';
 import 'package:projeto_crianca/ui/pages/games/components/bottom_container_component.dart';
-import 'package:projeto_crianca/ui/pages/games/components/dragable_block_component.dart';
+import 'package:projeto_crianca/ui/pages/games/components/draggable_block_component.dart';
 import 'package:projeto_crianca/ui/pages/games/components/fixed_block_component.dart';
 import 'package:projeto_crianca/ui/pages/games/components/hint_container_component.dart';
 import 'package:projeto_crianca/ui/pages/games/components/top_container_component.dart';
 
-class EncaixarGameEngineContainer extends RectangleComponent {
+class EncaixarGameEngineContainer extends RectangleComponent with HasGameRef {
+  final void Function(String message) setAvatarMessage;
   final Iterable<Component> _data = [
     FixedBlockComponent(key: "body")
       ..position = Vector2(
@@ -34,6 +35,25 @@ class EncaixarGameEngineContainer extends RectangleComponent {
       ),
   ];
 
+  EncaixarGameEngineContainer(this.setAvatarMessage);
+
+  void _showAvatarOverlay(String message) async {
+    setAvatarMessage(message);
+    gameRef.overlays.add("avatar");
+    await Future.delayed(
+      const Duration(seconds: 5),
+      () {
+        gameRef.overlays.remove("avatar");
+      },
+    );
+  }
+
+  @override
+  void onMount() {
+    super.onMount();
+    _showAvatarOverlay("Vamos começar!");
+  }
+
   @override
   Future<void> onLoad() async {
     super.onLoad();
@@ -53,16 +73,16 @@ class EncaixarGameEngineContainer extends RectangleComponent {
         ..size = Vector2(230, 230)
         ..position = Vector2(size.x / 2, size.y / 3)
         ..anchor = Anchor.center,
-      DragableBlockComponent(key: "head", image: "encaixar/head.png")
+      DraggableBlockComponent(key: "head", image: "encaixar/head.png")
         ..position = Vector2(size.x - 100, size.y - 100),
-      DragableBlockComponent(key: "body", image: "encaixar/body.png")
+      DraggableBlockComponent(key: "body", image: "encaixar/body.png")
         ..position = Vector2(size.x - 200, size.y - 300),
-      DragableBlockComponent(key: "engine", image: "encaixar/engine.png")
+      DraggableBlockComponent(key: "engine", image: "encaixar/engine.png")
         ..position = Vector2(size.x - 300, size.y - 100),
-      DragableBlockComponent(
+      DraggableBlockComponent(
           key: "lowerWings", image: "encaixar/lowerWings.png")
         ..position = Vector2(size.x - 200, size.y - 100),
-      DragableBlockComponent(
+      DraggableBlockComponent(
           key: "upperWings", image: "encaixar/upperWings.png")
         ..position = Vector2(size.x - 50, size.y - 200),
     ]);

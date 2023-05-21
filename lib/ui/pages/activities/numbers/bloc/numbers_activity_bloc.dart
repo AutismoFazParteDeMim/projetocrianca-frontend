@@ -14,8 +14,14 @@ class NumbersActivityBloc
 
       final NumberModel nextNumber = numbers.entries.elementAt(counter).value;
 
+      String avatarMessage =
+          "Parabéns! Continue assim. Vamos fazer agora o número: ${numbers.entries.elementAt(counter).key}.";
+
       return emit(
-        NumbersActivityState(number: nextNumber),
+        NumbersActivityState(
+          number: nextNumber,
+          avatarMessage: avatarMessage,
+        ),
       );
     });
   }

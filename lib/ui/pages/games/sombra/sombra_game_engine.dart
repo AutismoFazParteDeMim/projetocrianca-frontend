@@ -5,6 +5,11 @@ import 'package:projeto_crianca/ui/pages/games/sombra/sombra_game_engine_contain
 
 class SombraGameEngine extends FlameGame
     with HasCollisionDetection, HasDraggableComponents {
+  String avatarMessage = "Vamos começar!";
+
+  // setters
+  void setAvatarMessage(String message) => avatarMessage = message;
+
   @override
   void onMount() {
     super.onMount();
@@ -17,7 +22,8 @@ class SombraGameEngine extends FlameGame
     await super.onLoad();
 
     addAll([
-      SombraGameEngineContainer()..size = Vector2(size.x, size.y),
+      SombraGameEngineContainer(setAvatarMessage)
+        ..size = Vector2(size.x, size.y),
     ]);
   }
 

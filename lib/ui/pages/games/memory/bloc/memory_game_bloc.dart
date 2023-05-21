@@ -1,5 +1,3 @@
-import 'dart:io';
-
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
 import 'package:projeto_crianca/ui/pages/games/memory/bloc/memory_game_bloc_events.dart';
@@ -47,10 +45,14 @@ class MemoryGameBloc extends Bloc<MemoryGameBlocEvent, MemoryGameState> {
             if (opened[0].image == opened[1].image) {
               opened = [];
 
+              String avatarMessage =
+                  "Parabéns! Continue assim. Abra as cartas restantes.";
+
               return emit(
                 MemoryGameState(
                   cards: cards,
                   opened: opened,
+                  avatarMessage: avatarMessage,
                 ),
               );
             } else {

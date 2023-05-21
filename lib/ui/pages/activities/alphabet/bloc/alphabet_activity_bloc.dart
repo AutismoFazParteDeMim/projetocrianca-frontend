@@ -15,7 +15,8 @@ class AlphabetActivityBloc
       final LetterModel nextLetter = letters.entries.elementAt(counter).value;
 
       String avatarMessage =
-          "Parabéns! Continue assim. ${letters.entries.elementAt(counter).key}";
+          "Parabéns! Continue assim. Vamos fazer agora a letra: ${letters.entries.elementAt(counter).key}.";
+
       return emit(
         AlphabetActivityState(
           letter: nextLetter,

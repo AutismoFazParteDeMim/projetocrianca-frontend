@@ -10,14 +10,39 @@ import 'package:projeto_crianca/ui/pages/activities/numbers/bloc/numbers_activit
 class NumbersActivityEngineContainer extends RectangleComponent
     with
         FlameBlocListenable<NumbersActivityBloc, NumbersActivityState>,
-        VibrationMixin {
+        VibrationMixin,
+        HasGameRef {
+  final void Function(String message) setAvatarMessage;
   NumberModel currentNumber = numbers.entries.elementAt(0).value;
+
+  NumbersActivityEngineContainer(this.setAvatarMessage);
+
+  void _showAvatarOverlay(String message) async {
+    setAvatarMessage(message);
+    gameRef.overlays.add("avatar");
+    await Future.delayed(
+      const Duration(seconds: 5),
+      () {
+        gameRef.overlays.remove("avatar");
+      },
+    );
+  }
+
+  @override
+  void onMount() {
+    super.onMount();
+    _showAvatarOverlay("Vamos começar!");
+  }
 
   @override
   void onNewState(NumbersActivityState state) {
     super.onNewState(state);
     currentNumber = state.number;
     onLoad();
+
+    if (state.avatarMessage != null) {
+      _showAvatarOverlay(state.avatarMessage!);
+    }
   }
 
   void nextNumberCallback() {

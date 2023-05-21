@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:projeto_crianca/controllers/home_page_controller.dart';
 import 'package:projeto_crianca/routes/app_routes.dart';
-import 'package:projeto_crianca/service/auth_service.dart';
+import 'package:projeto_crianca/services/auth_service.dart';
 import 'package:projeto_crianca/ui/widgets/buttons/square_button_component.dart';
 import 'package:projeto_crianca/ui/widgets/svg_component.dart';
 import 'package:projeto_crianca/ui/theme/theme_extensions.dart';

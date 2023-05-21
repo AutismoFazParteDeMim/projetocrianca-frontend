@@ -161,9 +161,14 @@ final numbers = {
 
 class NumbersActivityState {
   final NumberModel number;
+  final String? avatarMessage;
 
-  NumbersActivityState({required this.number});
+  NumbersActivityState({
+    required this.number,
+    this.avatarMessage,
+  });
 
   NumbersActivityState.initialState()
-      : number = numbers.entries.elementAt(0).value;
+      : number = numbers.entries.elementAt(0).value,
+        avatarMessage = null;
 }

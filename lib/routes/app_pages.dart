@@ -123,7 +123,7 @@ abstract class AppPages {
     ),
     GetPage(
       name: AppRoutes.numbersActivity,
-      page: () => const NumbersActivityPage(),
+      page: () => NumbersActivityPage(),
     ),
   ];
 }

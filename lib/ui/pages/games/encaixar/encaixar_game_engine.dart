@@ -5,6 +5,11 @@ import 'package:flame_audio/flame_audio.dart';
 
 class EncaixarGameEngine extends FlameGame
     with HasCollisionDetection, HasDraggableComponents {
+  String avatarMessage = "Vamos começar!";
+
+  // setters
+  void setAvatarMessage(String message) => avatarMessage = message;
+
   @override
   void onMount() {
     super.onMount();
@@ -17,7 +22,7 @@ class EncaixarGameEngine extends FlameGame
     await super.onLoad();
 
     addAll([
-      EncaixarGameEngineContainer()..size = Vector2(size.x, size.y),
+      EncaixarGameEngineContainer(setAvatarMessage)..size = Vector2(size.x, size.y),
     ]);
   }
 

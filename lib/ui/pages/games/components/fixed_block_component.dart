@@ -1,7 +1,7 @@
 import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
 import 'package:projeto_crianca/mixins/vibration_mixin.dart';
-import 'package:projeto_crianca/ui/pages/games/components/dragable_block_component.dart';
+import 'package:projeto_crianca/ui/pages/games/components/draggable_block_component.dart';
 
 class FixedBlockComponent extends PositionComponent with CollisionCallbacks, VibrationMixin {
   final String? key;
@@ -23,7 +23,7 @@ class FixedBlockComponent extends PositionComponent with CollisionCallbacks, Vib
   void onCollision(Set<Vector2> intersectionPoints, PositionComponent other) {
     super.onCollision(intersectionPoints, other);
 
-    if (other is DragableBlockComponent && key == other.key) {
+    if (other is DraggableBlockComponent && key == other.key) {
       other.position = absolutePosition;
       other.fixed = true;
       vibrate(duration: 50);

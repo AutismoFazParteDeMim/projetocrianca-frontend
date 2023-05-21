@@ -9,6 +9,7 @@ import 'package:projeto_crianca/ui/pages/activities/alphabet/bloc/alphabet_activ
 class AlphabetActivityEngine extends FlameGame with HasDraggableComponents {
   String avatarMessage = "Vamos começar!";
 
+  // setters
   void setAvatarMessage(String message) => avatarMessage = message;
 
   @override

@@ -5,6 +5,11 @@ import 'package:projeto_crianca/ui/pages/games/pardecores/pardecores_game_engine
 
 class ParDeCoresGameEngine extends FlameGame
     with HasCollisionDetection, HasDraggableComponents {
+  String avatarMessage = "Vamos começar!";
+
+  // setters
+  void setAvatarMessage(String message) => avatarMessage = message;
+
   @override
   void onMount() {
     super.onMount();
@@ -17,7 +22,7 @@ class ParDeCoresGameEngine extends FlameGame
     await super.onLoad();
 
     addAll([
-      ParDeCoresGameEngineContainer()..size = Vector2(size.x, size.y),
+      ParDeCoresGameEngineContainer(setAvatarMessage)..size = Vector2(size.x, size.y),
     ]);
   }
 
