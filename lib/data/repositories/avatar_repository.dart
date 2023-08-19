@@ -4,20 +4,20 @@ import 'package:projeto_crianca/data/providers/avatar_provider.dart';
 import 'package:projeto_crianca/data/providers/user_provider.dart';
 
 class AvatarRepository {
+  AvatarRepository(this.avatarProvider, this.userProvider);
+
   final AvatarProvider avatarProvider;
   final UserProvider userProvider;
 
-  AvatarRepository(this.avatarProvider, this.userProvider);
-
   Future<String?> getAvatar(AvatarModel avatar) async {
-    return await avatarProvider.getAvatar(avatar);
+    return avatarProvider.getAvatar(avatar);
   }
 
   Future<void> saveAvatar(ChildModel child) async {
-    return await userProvider.updateCurrentChild(child);
+    return userProvider.updateCurrentChild(child);
   }
 
   Future<ChildModel?> getCurrentChild() async {
-    return await userProvider.getCurrentChild();
+    return userProvider.getCurrentChild();
   }
 }

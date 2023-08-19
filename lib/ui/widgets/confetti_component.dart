@@ -16,9 +16,6 @@ class _ConfettiComponentState extends State<ConfettiComponent> {
   final controller = ConfettiController();
   bool isPlaying = false;
   static double top = -pi / 2;
-  //static double down = pi / 2;
-  //static double left = pi;
-  //static double right = 0;
 
   final double blastDirection = top;
 
@@ -42,7 +39,8 @@ class _ConfettiComponentState extends State<ConfettiComponent> {
 
   @override
   Widget build(BuildContext context) {
-    final ThemeColors colors = Theme.of(context).extension<ThemeColors>()!;
+    final colors = Theme.of(context).extension<ThemeColors>()!;
+
     return Center(
       child: ConfettiWidget(
         confettiController: controller,
@@ -55,7 +53,6 @@ class _ConfettiComponentState extends State<ConfettiComponent> {
           colors.warning,
           colors.success,
         ],
-        numberOfParticles: 10,
       ),
     );
   }

@@ -1,4 +1,6 @@
-import 'package:flame/experimental.dart';
+// ignore_for_file: use_setters_to_change_properties
+
+import 'package:flame/events.dart';
 import 'package:flame/game.dart';
 import 'package:flame_audio/flame_audio.dart';
 import 'package:flame_bloc/flame_bloc.dart';
@@ -7,8 +9,8 @@ import 'package:projeto_crianca/ui/pages/games/memory/bloc/memory_game_bloc_stat
 import 'package:projeto_crianca/ui/pages/games/memory/memory_game_engine_container.dart';
 
 class MemoryGameEngine extends FlameGame
-    with HasCollisionDetection, HasDraggableComponents, HasTappableComponents {
-  String avatarMessage = "Vamos começar!";
+    with HasCollisionDetection, DragCallbacks, TapCallbacks {
+  String avatarMessage = 'Vamos começar!';
 
   // setters
   void setAvatarMessage(String message) => avatarMessage = message;
@@ -17,7 +19,7 @@ class MemoryGameEngine extends FlameGame
   void onMount() {
     super.onMount();
     FlameAudio.bgm.initialize();
-    FlameAudio.bgm.play("games/parDeCores/background.mp3");
+    FlameAudio.bgm.play('games/parDeCores/background.mp3');
   }
 
   @override
@@ -26,7 +28,7 @@ class MemoryGameEngine extends FlameGame
 
     add(
       FlameBlocProvider<MemoryGameBloc, MemoryGameState>(
-        create: () => MemoryGameBloc(),
+        create: MemoryGameBloc.new,
         children: [
           MemoryGameEngineContainer(setAvatarMessage)
             ..size = Vector2(

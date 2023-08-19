@@ -9,17 +9,17 @@ import 'package:projeto_crianca/ui/widgets/avatar_widget.dart';
 import 'package:projeto_crianca/ui/widgets/confetti_component.dart';
 
 class NumbersActivityPage extends StatelessWidget {
-  final AuthService authService = Get.find<AuthService>();
-
   NumbersActivityPage({super.key});
+
+  final AuthService authService = Get.find<AuthService>();
 
   @override
   Widget build(BuildContext context) {
-    final ThemeColors colors = Theme.of(context).extension<ThemeColors>()!;
+    final colors = Theme.of(context).extension<ThemeColors>()!;
 
     return Scaffold(
       appBar: AppBarComponent(
-        title: "Alfabeto",
+        title: 'Alfabeto',
         transparent: true,
         invertedColor: true,
       ),
@@ -27,11 +27,11 @@ class NumbersActivityPage extends StatelessWidget {
       body: GameWidget<NumbersActivityEngine>(
         game: NumbersActivityEngine(),
         overlayBuilderMap: {
-          "confetti": (context, game) => const ConfettiComponent(),
-          "avatar": (context, game) {
+          'confetti': (context, game) => const ConfettiComponent(),
+          'avatar': (context, game) {
             return Obx(
               () => AvatarWidget(
-                rawSvg: authService.getCurrentChild?.photoURL ?? "",
+                rawSvg: authService.getCurrentChild?.photoURL ?? '',
                 text: game.avatarMessage,
               ),
             );

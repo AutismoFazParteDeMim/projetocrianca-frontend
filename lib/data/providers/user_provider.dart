@@ -5,12 +5,12 @@ import 'package:projeto_crianca/data/models/child_model.dart';
 import 'package:projeto_crianca/data/models/user_model.dart';
 
 class UserProvider {
-  final FirebaseAuth _authInstance = FirebaseAuth.instance;
-  final FirebaseFirestore _databaseInstance = FirebaseFirestore.instance;
-
   UserProvider() {
     _databaseInstance.settings = const Settings(persistenceEnabled: true);
   }
+
+  final FirebaseAuth _authInstance = FirebaseAuth.instance;
+  final FirebaseFirestore _databaseInstance = FirebaseFirestore.instance;
 
   UserModel? getCurrentUser() {
     if (_authInstance.currentUser != null) {
@@ -21,14 +21,10 @@ class UserProvider {
   }
 
   Future<ChildModel?> getCurrentChild() async {
-    final String? userUID = _authInstance.currentUser?.uid;
+    final userUID = _authInstance.currentUser?.uid;
 
     if (userUID != null) {
-      return await _databaseInstance
-          .collection("users")
-          .doc(userUID)
-          .get()
-          .then(
+      return _databaseInstance.collection('users').doc(userUID).get().then(
             (DocumentSnapshot doc) => ChildModel.fromDocumentSnapshot(
               documentSnapshot: doc,
             ),
@@ -39,17 +35,17 @@ class UserProvider {
   }
 
   Stream<ChildModel>? getChildStream() {
-    final String? userUID = _authInstance.currentUser?.uid;
+    final userUID = _authInstance.currentUser?.uid;
 
     if (userUID != null) {
-      final Stream stream =
-          _databaseInstance.collection("users").doc(userUID).snapshots();
+      final stream =
+          _databaseInstance.collection('users').doc(userUID).snapshots();
 
       return stream.map(
         (value) => ChildModel(
-          name: value["childName"],
-          sex: value["childSex"],
-          photoURL: value["childPic"],
+          name: value['childName'] as String?,
+          sex: value['childSex'] as String?,
+          photoURL: value['childPic'] as String?,
         ),
       );
     }
@@ -58,51 +54,48 @@ class UserProvider {
   }
 
   Future<void> createChild(User userInstance, ChildModel child) async {
-    final String userUID = userInstance.uid;
-    final Map<String, dynamic> data = {
-      "childName": child.name ?? "",
-      "childSex": child.sex ?? "",
-      "childPic": child.photoURL ?? "",
+    final userUID = userInstance.uid;
+    final data = {
+      'childName': child.name ?? '',
+      'childSex': child.sex ?? '',
+      'childPic': child.photoURL ?? '',
     };
 
     if (data.isNotEmpty) {
-      await _databaseInstance.collection("users").doc(userUID).set(data);
+      await _databaseInstance.collection('users').doc(userUID).set(data);
     }
   }
 
   Future<void> updateUser(User userInstance, UserModel user) async {
-    final Map<String, dynamic> data = {};
-
-    data.addIf(user.name != null, "displayName", user.name);
+    final data = <String, dynamic>{}
+      ..addIf(user.name != null, 'displayName', user.name);
 
     if (data.isNotEmpty) {
-      await userInstance.updateDisplayName(data["displayName"]);
+      await userInstance.updateDisplayName(data['displayName'] as String?);
     }
   }
 
   Future<void> updateChild(User userInstance, ChildModel child) async {
-    final String userUID = userInstance.uid;
-    final Map<String, dynamic> data = {};
-
-    data.addIf(child.name != null, "childName", child.name);
-    data.addIf(child.sex != null, "childSex", child.sex);
-    data.addIf(child.photoURL != null, "childPic", child.photoURL);
+    final userUID = userInstance.uid;
+    final data = <String, dynamic>{}
+      ..addIf(child.name != null, 'childName', child.name)
+      ..addIf(child.sex != null, 'childSex', child.sex)
+      ..addIf(child.photoURL != null, 'childPic', child.photoURL);
 
     if (data.isNotEmpty) {
-      await _databaseInstance.collection("users").doc(userUID).update(data);
+      await _databaseInstance.collection('users').doc(userUID).update(data);
     }
   }
 
   Future<void> updateCurrentChild(ChildModel child) async {
-    final String? userUID = _authInstance.currentUser?.uid;
-    final Map<String, dynamic> data = {};
-
-    data.addIf(child.name != null, "childName", child.name);
-    data.addIf(child.sex != null, "childSex", child.sex);
-    data.addIf(child.photoURL != null, "childPic", child.photoURL);
+    final userUID = _authInstance.currentUser?.uid;
+    final data = <String, dynamic>{}
+      ..addIf(child.name != null, 'childName', child.name)
+      ..addIf(child.sex != null, 'childSex', child.sex)
+      ..addIf(child.photoURL != null, 'childPic', child.photoURL);
 
     if (userUID != null) {
-      await _databaseInstance.collection("users").doc(userUID).update(data);
+      await _databaseInstance.collection('users').doc(userUID).update(data);
     }
   }
 }

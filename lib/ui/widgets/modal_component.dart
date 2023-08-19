@@ -4,40 +4,39 @@ import 'package:ionicons/ionicons.dart';
 import 'package:projeto_crianca/ui/theme/theme_extensions.dart';
 
 class ModalComponent extends StatelessWidget {
-  final Widget child;
-  final String? title;
-  final bool? fill;
-
   const ModalComponent({
-    super.key,
     required this.child,
+    super.key,
     this.title,
     this.fill,
   });
 
+  final Widget child;
+  final String? title;
+  final bool? fill;
+
   @override
   Widget build(BuildContext context) {
-    final double screenWidth = MediaQuery.of(context).size.width;
-    final double screenHeight = MediaQuery.of(context).size.height;
-    final ThemeData theme = Theme.of(context);
-    final ThemeColors colors = theme.extension<ThemeColors>()!;
-    final ThemeMetrics metrics = theme.extension<ThemeMetrics>()!;
+    final screenWidth = MediaQuery.of(context).size.width;
+    final screenHeight = MediaQuery.of(context).size.height;
+    final theme = Theme.of(context);
+    final colors = theme.extension<ThemeColors>()!;
+    final metrics = theme.extension<ThemeMetrics>()!;
 
     return Dialog(
       insetPadding: metrics.padding,
       child: Container(
-        width: fill == true ? screenWidth : null,
-        height: fill == true ? screenHeight : null,
+        width: fill == false ? null : screenWidth,
+        height: fill == false ? null : screenHeight,
         padding: metrics.padding,
         decoration: BoxDecoration(
           borderRadius: metrics.borderRadius,
           color: colors.background,
           boxShadow: [
             BoxShadow(
-              blurRadius: 0,
               color: colors.secondaryShadow,
               offset: const Offset(0, 4),
-            )
+            ),
           ],
         ),
         constraints: const BoxConstraints(
@@ -49,22 +48,21 @@ class ModalComponent extends StatelessWidget {
           children: [
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 const SizedBox(width: 24, height: 24),
                 Text(
-                  title ?? "",
+                  title ?? '',
                   textAlign: TextAlign.center,
                   style: theme.textTheme.titleLarge,
                 ),
                 IconButton(
-                  onPressed: () => Get.back(),
+                  onPressed: () => Get.back<void>(),
                   icon: const Icon(Ionicons.close_circle_outline),
                   padding: EdgeInsets.zero,
                   constraints: BoxConstraints.tight(
                     const Size(24, 24),
                   ),
-                  tooltip: "Botão para fechar o modal",
+                  tooltip: 'Botão para fechar o modal',
                 ),
               ],
             ),

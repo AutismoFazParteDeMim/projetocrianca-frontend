@@ -19,7 +19,7 @@ class _SplashPageState extends State<SplashPage> {
     super.initState();
 
     controller = VideoPlayerController.asset(
-      "assets/splash-video.mp4",
+      'assets/splash-video.mp4',
       videoPlayerOptions: VideoPlayerOptions(mixWithOthers: true),
     )..initialize().then(
         (value) {
@@ -30,7 +30,7 @@ class _SplashPageState extends State<SplashPage> {
 
     Timer(
       const Duration(seconds: 2),
-      () => Get.offAllNamed(AppRoutes.welcome),
+      () => Get.offAllNamed<void>(AppRoutes.welcome),
     );
   }
 

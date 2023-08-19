@@ -1,13 +1,16 @@
-import 'package:flame/experimental.dart';
+// ignore_for_file: use_setters_to_change_properties
+
+import 'package:flame/events.dart';
 import 'package:flame/game.dart';
-import 'package:flame_bloc/flame_bloc.dart';
-import 'package:projeto_crianca/ui/pages/activities/alphabet/alphabet_activity_engine_container.dart';
 import 'package:flame_audio/flame_audio.dart';
+import 'package:flame_bloc/flame_bloc.dart';
+
+import 'package:projeto_crianca/ui/pages/activities/alphabet/alphabet_activity_engine_container.dart';
 import 'package:projeto_crianca/ui/pages/activities/alphabet/bloc/alphabet_activity_bloc.dart';
 import 'package:projeto_crianca/ui/pages/activities/alphabet/bloc/alphabet_activity_bloc_states.dart';
 
-class AlphabetActivityEngine extends FlameGame with HasDraggableComponents {
-  String avatarMessage = "Vamos começar!";
+class AlphabetActivityEngine extends FlameGame with DragCallbacks {
+  String avatarMessage = 'Vamos começar!';
 
   // setters
   void setAvatarMessage(String message) => avatarMessage = message;
@@ -16,7 +19,7 @@ class AlphabetActivityEngine extends FlameGame with HasDraggableComponents {
   void onMount() {
     super.onMount();
     FlameAudio.bgm.initialize();
-    FlameAudio.bgm.play("activities/alphabet/background.mp3");
+    FlameAudio.bgm.play('activities/alphabet/background.mp3');
   }
 
   @override
@@ -25,7 +28,7 @@ class AlphabetActivityEngine extends FlameGame with HasDraggableComponents {
 
     add(
       FlameBlocProvider<AlphabetActivityBloc, AlphabetActivityState>(
-        create: () => AlphabetActivityBloc(),
+        create: AlphabetActivityBloc.new,
         children: [
           AlphabetActivityEngineContainer(setAvatarMessage)
             ..size = Vector2(

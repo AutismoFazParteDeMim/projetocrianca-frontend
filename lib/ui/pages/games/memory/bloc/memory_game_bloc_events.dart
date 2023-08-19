@@ -5,9 +5,9 @@ abstract class MemoryGameBlocEvent {}
 class CheckIsCorrectBlocEvent extends MemoryGameBlocEvent {}
 
 class OpenCardBlocEvent extends MemoryGameBlocEvent {
-  final CardModel card;
-
   OpenCardBlocEvent({required this.card});
+
+  final CardModel card;
 }
 
 class NextLevelBlocEvent extends MemoryGameBlocEvent {}

@@ -3,11 +3,6 @@ import 'package:flame/flame.dart';
 import 'package:projeto_crianca/ui/pages/activities/alphabet/components/canvas_component.dart';
 
 class HintContainerComponent extends RectangleComponent {
-  final String image;
-  final Vector2 imageSize;
-  final Function(Vector2 trailPosition) onTrailPositionUpdate;
-  final Iterable<Component> data;
-
   HintContainerComponent({
     required this.image,
     required this.imageSize,
@@ -15,12 +10,17 @@ class HintContainerComponent extends RectangleComponent {
     required this.data,
   });
 
+  final String image;
+  final Vector2 imageSize;
+  final void Function(Vector2 trailPosition) onTrailPositionUpdate;
+  final Iterable<Component> data;
+
   @override
   Future<void> onLoad() async {
     super.onLoad();
     await Flame.images.load(image);
 
-    addAll([
+    await addAll([
       SpriteComponent.fromImage(
         Flame.images.fromCache(image),
         size: imageSize,
@@ -28,14 +28,13 @@ class HintContainerComponent extends RectangleComponent {
         anchor: Anchor.center,
       ),
       CanvasComponent(
-        onTrailPositionUpdate: (trailPosition) =>
-            onTrailPositionUpdate(trailPosition),
+        onTrailPositionUpdate: onTrailPositionUpdate,
       )
         ..size = imageSize
         ..position = Vector2(size.x / 2, size.y / 2)
         ..anchor = Anchor.center,
     ]);
 
-    addAll(data);
+    await addAll(data);
   }
 }

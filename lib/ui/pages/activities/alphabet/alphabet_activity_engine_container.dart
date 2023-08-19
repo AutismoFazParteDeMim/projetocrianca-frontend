@@ -12,18 +12,18 @@ class AlphabetActivityEngineContainer extends RectangleComponent
         FlameBlocListenable<AlphabetActivityBloc, AlphabetActivityState>,
         VibrationMixin,
         HasGameRef {
+  AlphabetActivityEngineContainer(this.setAvatarMessage);
+
   final void Function(String message) setAvatarMessage;
   LetterModel currentLetter = letters.entries.elementAt(0).value;
 
-  AlphabetActivityEngineContainer(this.setAvatarMessage);
-
-  void _showAvatarOverlay(String message) async {
+  Future<void> _showAvatarOverlay(String message) async {
     setAvatarMessage(message);
-    gameRef.overlays.add("avatar");
+    gameRef.overlays.add('avatar');
     await Future.delayed(
       const Duration(seconds: 5),
       () {
-        gameRef.overlays.remove("avatar");
+        gameRef.overlays.remove('avatar');
       },
     );
   }
@@ -31,7 +31,7 @@ class AlphabetActivityEngineContainer extends RectangleComponent
   @override
   void onMount() {
     super.onMount();
-    _showAvatarOverlay("Vamos começar!");
+    _showAvatarOverlay('Vamos começar!');
   }
 
   @override
@@ -51,14 +51,13 @@ class AlphabetActivityEngineContainer extends RectangleComponent
 
   @override
   Future<void> onLoad() async {
-    int index = 0;
-    int total = currentLetter.points.entries.length - 1;
-    List<PointModel> etapaAtual =
-        currentLetter.points.entries.elementAt(index).value;
-    List<PointModel> devPoints = [];
+    var index = 0;
+    var total = currentLetter.points.entries.length - 1;
+    var etapaAtual = currentLetter.points.entries.elementAt(index).value;
+    var devPoints = <PointModel>[];
 
     void onTrailPositionUpdate(Vector2 trailPosition) {
-      PointModel? current = etapaAtual.firstWhereOrNull(
+      final current = etapaAtual.firstWhereOrNull(
         (element) =>
             trailPosition.x >= element.position.x - 12 &&
             trailPosition.x <= element.position.x - 12 + 24 &&
@@ -89,23 +88,24 @@ class AlphabetActivityEngineContainer extends RectangleComponent
     }
 
     // development screen points
-    for (var letter in currentLetter.points.entries) {
-      for (var l in letter.value) {
+    for (final letter in currentLetter.points.entries) {
+      for (final l in letter.value) {
         devPoints.add(l);
       }
     }
 
-    addAll([
+    await addAll([
       HintContainerComponent(
-          image: currentLetter.image,
-          imageSize: Vector2(230, 230),
-          onTrailPositionUpdate: onTrailPositionUpdate,
-          data: devPoints.map(
-            (e) => PositionComponent()
-              ..size = Vector2(24, 24)
-              ..position = e.position - Vector2(12, 12)
-              ..debugMode = false,
-          ))
+        image: currentLetter.image,
+        imageSize: Vector2(230, 230),
+        onTrailPositionUpdate: onTrailPositionUpdate,
+        data: devPoints.map(
+          (e) => PositionComponent()
+            ..size = Vector2(24, 24)
+            ..position = e.position - Vector2(12, 12)
+            ..debugMode = false,
+        ),
+      )
         ..position = Vector2(
           size.x / 2,
           size.y / 2,

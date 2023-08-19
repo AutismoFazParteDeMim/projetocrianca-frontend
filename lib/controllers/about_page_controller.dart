@@ -5,6 +5,8 @@ import 'package:projeto_crianca/mixins/dialog_mixin.dart';
 import 'package:projeto_crianca/ui/widgets/alert_modal_component.dart';
 
 class AboutPageController extends GetxController with DialogMixin {
+  AboutPageController(this.repository);
+
   final GitHubRepository repository;
 
   //vars
@@ -12,8 +14,6 @@ class AboutPageController extends GetxController with DialogMixin {
 
   //getters
   List<GitHubModel?>? get getContributors => _contributors.value;
-
-  AboutPageController(this.repository);
 
   @override
   Future<void> onReady() async {
@@ -23,7 +23,7 @@ class AboutPageController extends GetxController with DialogMixin {
       _contributors.value = contributors;
     } catch (e) {
       showAlertDialog(
-        title: "Ops!",
+        title: 'Ops!',
         message: e.toString(),
         type: AlertModalComponentType.warning,
       );

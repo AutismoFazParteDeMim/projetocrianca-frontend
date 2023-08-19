@@ -4,13 +4,13 @@ import 'package:projeto_crianca/data/providers/auth_provider.dart';
 import 'package:projeto_crianca/data/providers/user_provider.dart';
 
 class AuthRepository {
-  final AuthProvider authProvider;
-  final UserProvider userProvider;
-
   AuthRepository({
     required this.authProvider,
     required this.userProvider,
   });
+
+  final AuthProvider authProvider;
+  final UserProvider userProvider;
 
   Future<void> loginWithEmailAndPass(String email, String password) async {
     await authProvider.loginWithEmailAndPass(email, password);
@@ -29,7 +29,7 @@ class AuthRepository {
   }
 
   Future<void> resetPassword({required String email}) async {
-    return await authProvider.resetPassword(email: email);
+    return authProvider.resetPassword(email: email);
   }
 
   //user provider
@@ -38,7 +38,7 @@ class AuthRepository {
   }
 
   Future<ChildModel?> getCurrentChild() async {
-    return await userProvider.getCurrentChild();
+    return userProvider.getCurrentChild();
   }
 
   Stream<ChildModel>? getChildStream() {

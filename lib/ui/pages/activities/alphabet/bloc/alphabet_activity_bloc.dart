@@ -1,3 +1,5 @@
+// ignore_for_file: lines_longer_than_80_chars
+
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:projeto_crianca/ui/pages/activities/alphabet/bloc/alphabet_activity_bloc_events.dart';
 import 'package:projeto_crianca/ui/pages/activities/alphabet/bloc/alphabet_activity_bloc_states.dart';
@@ -5,17 +7,17 @@ import 'package:projeto_crianca/ui/pages/activities/alphabet/bloc/alphabet_activ
 class AlphabetActivityBloc
     extends Bloc<AlphabetActivityBlocEvent, AlphabetActivityState> {
   AlphabetActivityBloc() : super(AlphabetActivityState.initialState()) {
-    int counter = 0;
+    var counter = 0;
 
     on<NextLetterBlocEvent>((event, emit) {
       counter++;
 
       if (counter == letters.length) counter = 0;
 
-      final LetterModel nextLetter = letters.entries.elementAt(counter).value;
+      final nextLetter = letters.entries.elementAt(counter).value;
 
-      String avatarMessage =
-          "Parabéns! Continue assim. Vamos fazer agora a letra: ${letters.entries.elementAt(counter).key}.";
+      final avatarMessage =
+          'Parabéns! Continue assim. Vamos fazer agora a letra: ${letters.entries.elementAt(counter).key}.';
 
       return emit(
         AlphabetActivityState(

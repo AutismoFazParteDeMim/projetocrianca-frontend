@@ -3,6 +3,8 @@ import 'package:projeto_crianca/data/models/child_model.dart';
 import 'package:projeto_crianca/data/repositories/user_repository.dart';
 
 class HomePageController extends GetxController {
+  HomePageController(this.repository);
+
   final UserRepository repository;
 
   //vars
@@ -10,8 +12,6 @@ class HomePageController extends GetxController {
 
   //getters
   ChildModel? get getCurrentChild => _child.value;
-
-  HomePageController(this.repository);
 
   @override
   void onInit() {

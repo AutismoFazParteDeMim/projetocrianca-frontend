@@ -4,22 +4,22 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_config/flutter_config.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:projeto_crianca/data/providers/auth_provider.dart';
 import 'package:projeto_crianca/data/providers/user_provider.dart';
 import 'package:projeto_crianca/data/repositories/auth_repository.dart';
 import 'package:projeto_crianca/firebase_options.dart';
 import 'package:projeto_crianca/mixins/storage_mixin.dart';
-import 'package:projeto_crianca/routes/app_routes.dart';
 import 'package:projeto_crianca/routes/app_pages.dart';
+import 'package:projeto_crianca/routes/app_routes.dart';
 import 'package:projeto_crianca/services/auth_service.dart';
 import 'package:projeto_crianca/ui/theme/app_theme.dart';
-import 'package:get_storage/get_storage.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   //orientation
-  SystemChrome.setPreferredOrientations([
+  await SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
     DeviceOrientation.portraitDown,
   ]);
@@ -44,7 +44,7 @@ Future<void> main() async {
   );
 
   //storage
-  await GetStorage.init("settings");
+  await GetStorage.init('settings');
 
   runApp(const MyApp());
 }
@@ -55,7 +55,7 @@ class MyApp extends StatelessWidget with StorageMixin {
   @override
   Widget build(BuildContext context) {
     ThemeMode getTheme() {
-      if (storageRead(container: "settings", key: "theme") == "dark") {
+      if (storageRead(container: 'settings', key: 'theme') == 'dark') {
         return ThemeMode.dark;
       } else {
         return ThemeMode.light;
@@ -69,7 +69,7 @@ class MyApp extends StatelessWidget with StorageMixin {
       theme: AppTheme(isDark: false).getTheme(),
       darkTheme: AppTheme(isDark: true).getTheme(),
       themeMode: getTheme(),
-      locale: const Locale("pt", "BR"),
+      locale: const Locale('pt', 'BR'),
       debugShowCheckedModeBanner: false,
     );
   }

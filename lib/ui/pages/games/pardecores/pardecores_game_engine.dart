@@ -1,11 +1,13 @@
-import 'package:flame/experimental.dart';
+// ignore_for_file: use_setters_to_change_properties
+
+import 'package:flame/events.dart';
 import 'package:flame/game.dart';
 import 'package:flame_audio/flame_audio.dart';
 import 'package:projeto_crianca/ui/pages/games/pardecores/pardecores_game_engine_container.dart';
 
 class ParDeCoresGameEngine extends FlameGame
-    with HasCollisionDetection, HasDraggableComponents {
-  String avatarMessage = "Vamos começar!";
+    with HasCollisionDetection, DragCallbacks {
+  String avatarMessage = 'Vamos começar!';
 
   // setters
   void setAvatarMessage(String message) => avatarMessage = message;
@@ -14,15 +16,16 @@ class ParDeCoresGameEngine extends FlameGame
   void onMount() {
     super.onMount();
     FlameAudio.bgm.initialize();
-    FlameAudio.bgm.play("games/parDeCores/background.mp3");
+    FlameAudio.bgm.play('games/parDeCores/background.mp3');
   }
 
   @override
   Future<void> onLoad() async {
     await super.onLoad();
 
-    addAll([
-      ParDeCoresGameEngineContainer(setAvatarMessage)..size = Vector2(size.x, size.y),
+    await addAll([
+      ParDeCoresGameEngineContainer(setAvatarMessage)
+        ..size = Vector2(size.x, size.y),
     ]);
   }
 

@@ -2,12 +2,12 @@ import 'package:get/get.dart';
 import 'package:projeto_crianca/ui/widgets/alert_modal_component.dart';
 
 mixin DialogMixin {
-  showAlertDialog({
+  void showAlertDialog({
     required String title,
     required String message,
     required AlertModalComponentType type,
   }) {
-    Get.dialog(
+    Get.dialog<void>(
       AlertModalComponent(
         title: title,
         message: message,

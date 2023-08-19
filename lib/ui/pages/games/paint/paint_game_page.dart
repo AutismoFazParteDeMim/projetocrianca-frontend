@@ -15,14 +15,13 @@ class PaintGamePage extends GetView<PaintGameController> {
 
   @override
   Widget build(BuildContext context) {
-    final ThemeData theme = Theme.of(context);
-    final ThemeColors colors = theme.extension<ThemeColors>()!;
-    //final ThemeMetrics metrics = theme.extension<ThemeMetrics>()!;
+    final theme = Theme.of(context);
+    final colors = theme.extension<ThemeColors>()!;
 
     return Scaffold(
       backgroundColor: colors.background,
       appBar: AppBarComponent(
-        title: "Colorir",
+        title: 'Colorir',
         transparent: false,
         invertedColor: false,
         suffixChild: IconButtonWidget(
@@ -30,7 +29,6 @@ class PaintGamePage extends GetView<PaintGameController> {
           onPressed: () => controller.clearPoints(),
         ),
       ),
-      extendBodyBehindAppBar: false,
       body: Column(
         children: [
           const Expanded(
@@ -38,7 +36,7 @@ class PaintGamePage extends GetView<PaintGameController> {
           ),
           PaletteComponent(
             onColorChanged: (color) => controller.setColor = color,
-          )
+          ),
         ],
       ),
     );

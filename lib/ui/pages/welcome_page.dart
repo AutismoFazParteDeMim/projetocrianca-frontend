@@ -1,23 +1,25 @@
+// ignore_for_file: lines_longer_than_80_chars
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+
 import 'package:projeto_crianca/routes/app_routes.dart';
+import 'package:projeto_crianca/ui/theme/theme_extensions.dart';
 import 'package:projeto_crianca/ui/widgets/buttons/button_component.dart';
 import 'package:projeto_crianca/ui/widgets/buttons/link_button_component.dart';
 import 'package:projeto_crianca/ui/widgets/modal_component.dart';
-import 'package:projeto_crianca/ui/theme/theme_extensions.dart';
 
-class WelcomePage extends GetView {
+class WelcomePage extends StatelessWidget {
   const WelcomePage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final ThemeData theme = Theme.of(context);
-    final ThemeMetrics metrics = theme.extension<ThemeMetrics>()!;
-    final ThemeColors colors = theme.extension<ThemeColors>()!;
+    final theme = Theme.of(context);
+    final metrics = theme.extension<ThemeMetrics>()!;
+    final colors = theme.extension<ThemeColors>()!;
 
     return Scaffold(
       body: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Expanded(
@@ -26,17 +28,16 @@ class WelcomePage extends GetView {
               alignment: Alignment.center,
               padding: metrics.padding,
               child: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
-                    "Bem-Vindo(a)!",
+                    'Bem-Vindo(a)!',
                     style: theme.textTheme.headlineMedium
                         ?.copyWith(color: colors.onPrimary),
                   ),
                   SizedBox(height: metrics.gap * 2),
                   Text(
-                    "Seja bem-vindo ao aplicativo do projeto Autismo Faz Parte de Mim.",
+                    'Seja bem-vindo ao aplicativo do projeto Autismo Faz Parte de Mim.',
                     textAlign: TextAlign.center,
                     style: theme.textTheme.titleMedium
                         ?.copyWith(color: colors.onPrimary),
@@ -49,30 +50,31 @@ class WelcomePage extends GetView {
             child: Container(
               padding: metrics.padding,
               child: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   ButtonWidget(
-                    text: "Fazer login",
-                    onPressed: () => Get.toNamed(AppRoutes.login),
+                    text: 'Fazer login',
+                    onPressed: () => Get.toNamed<void>(AppRoutes.login),
                   ),
                   SizedBox(height: metrics.gap),
                   ButtonWidget(
-                    text: "Cadastre-se",
-                    color: ButtonWidgetColor.secoundary,
-                    onPressed: () => Get.toNamed(AppRoutes.register),
+                    text: 'Cadastre-se',
+                    color: ButtonWidgetColor.secondary,
+                    onPressed: () => Get.toNamed<void>(AppRoutes.register),
                   ),
                   SizedBox(height: metrics.gap),
                   LinkButtonWidget(
-                    text: "Política de privacidade",
-                    onPressed: () => showDialog(
+                    text: 'Política de privacidade',
+                    onPressed: () => showDialog<void>(
                       context: context,
                       builder: (BuildContext context) => const ModalComponent(
-                        title: "Política de privacidade",
+                        title: 'Política de privacidade',
                         fill: true,
-                        child:Expanded(child:  SingleChildScrollView(
-                                child: Text(privacyPolicy),
-                              ),)
+                        child: Expanded(
+                          child: SingleChildScrollView(
+                            child: Text(privacyPolicy),
+                          ),
+                        ),
                       ),
                     ),
                   ),
@@ -87,7 +89,7 @@ class WelcomePage extends GetView {
 }
 
 const String privacyPolicy = '''
-Esta política de privacidade descreve como o aplicativo móvel Autismo Faz Parte de Mim ("o aplicativo") coleta, usa, compartilha e protege as informações pessoais dos usuários. Ao usar o aplicativo, você concorda com a coleta e uso de informações de acordo com esta política de privacidade.
+Esta política de privacidade descreve como o aplicativo móvel Autismo Faz Parte de Mim ('o aplicativo') coleta, usa, compartilha e protege as informações pessoais dos usuários. Ao usar o aplicativo, você concorda com a coleta e uso de informações de acordo com esta política de privacidade.
 
 
 -> Coleta e Uso de Informações Pessoais

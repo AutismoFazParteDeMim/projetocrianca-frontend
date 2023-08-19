@@ -8,19 +8,19 @@ import 'package:projeto_crianca/ui/pages/games/memory/components/card_game_compo
 
 class MemoryGameEngineContainer extends RectangleComponent
     with FlameBlocListenable<MemoryGameBloc, MemoryGameState>, HasGameRef {
+  MemoryGameEngineContainer(this.setAvatarMessage);
+
   final void Function(String message) setAvatarMessage;
   List<CardModel>? cards;
   List<CardModel>? opened;
 
-  MemoryGameEngineContainer(this.setAvatarMessage);
-
-  void _showAvatarOverlay(String message) async {
+  Future<void> _showAvatarOverlay(String message) async {
     setAvatarMessage(message);
-    gameRef.overlays.add("avatar");
+    gameRef.overlays.add('avatar');
     await Future.delayed(
       const Duration(seconds: 5),
       () {
-        gameRef.overlays.remove("avatar");
+        gameRef.overlays.remove('avatar');
       },
     );
   }
@@ -30,7 +30,7 @@ class MemoryGameEngineContainer extends RectangleComponent
     super.onMount();
     onLoad();
 
-    _showAvatarOverlay("Vamos começar!");
+    _showAvatarOverlay('Vamos começar!');
   }
 
   @override
@@ -58,18 +58,18 @@ class MemoryGameEngineContainer extends RectangleComponent
     }
 
     if (cards != null) {
-      List<CardGameComponent> cardsComponent = [];
+      final cardsComponent = <CardGameComponent>[];
 
-      int index = 0;
+      var index = 0;
       for (var i = 0; i < 4; i++) {
         for (var j = 0; j < 4; j++) {
-          const double width = 80;
-          const double height = 100;
-          const int gap = 16;
+          const width = 80;
+          const height = 100;
+          const gap = 16;
           final columns = (size.x / 4) - width / 2;
           final rows = (size.y / 2) - height;
 
-          final CardModel card = cards![index];
+          final card = cards![index];
 
           cardsComponent.add(
             CardGameComponent(
@@ -89,12 +89,14 @@ class MemoryGameEngineContainer extends RectangleComponent
         }
       }
 
-      addAll([
-        TopContainerComponent()
-          ..size = Vector2(size.x, size.y)
-          ..position = Vector2(0, 0),
-        ...cardsComponent
-      ]);
+      await addAll(
+        [
+          TopContainerComponent()
+            ..size = Vector2(size.x, size.y)
+            ..position = Vector2(0, 0),
+          ...cardsComponent,
+        ],
+      );
     }
   }
 }

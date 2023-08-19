@@ -1,10 +1,9 @@
-import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class PaintGameController extends GetxController {
   final Rx<Color> paintColor = Rx(Colors.black);
-  final Rx<double> strokeWidth = Rx(2.0);
+  final Rx<double> strokeWidth = Rx(2);
   final Rx<List<DrawingArea?>> points = Rx([]);
 
   Color get getColor => paintColor.value;
@@ -26,8 +25,11 @@ class PaintGameController extends GetxController {
 }
 
 class DrawingArea {
+  DrawingArea({
+    required this.points,
+    required this.areaPaint,
+  });
+
   final Offset points;
   final Paint areaPaint;
-
-  DrawingArea({required this.points, required this.areaPaint});
 }

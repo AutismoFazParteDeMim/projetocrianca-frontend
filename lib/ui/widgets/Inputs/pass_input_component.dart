@@ -2,17 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:ionicons/ionicons.dart';
 
 class PassInputComponent extends StatefulWidget {
-  final String placeholder;
-  final Function? onChange;
-  final IconData? icon;
-  final TextInputAction? action;
-  final TextEditingController? controller;
-  final Function? validador;
-  final Iterable<String>? autofillHints;
-
   const PassInputComponent({
-    super.key,
     required this.placeholder,
+    super.key,
     this.onChange,
     this.icon,
     this.action,
@@ -20,6 +12,14 @@ class PassInputComponent extends StatefulWidget {
     this.autofillHints,
     this.controller,
   });
+
+  final String placeholder;
+  final void Function(String value)? onChange;
+  final IconData? icon;
+  final TextInputAction? action;
+  final TextEditingController? controller;
+  final String? Function(String?)? validador;
+  final Iterable<String>? autofillHints;
 
   @override
   State<PassInputComponent> createState() => _PassInputComponentState();
@@ -36,18 +36,13 @@ class _PassInputComponentState extends State<PassInputComponent> {
       controller: widget.controller,
       obscureText: _isObscure,
       autofillHints: widget.autofillHints ?? [AutofillHints.password],
-      onChanged: widget.onChange != null
-          ? (String value) => widget.onChange!(value)
-          : null,
-      validator: widget.validador != null
-          ? (String? value) => widget.validador!(value)
-          : null,
+      onChanged: widget.onChange,
+      validator: widget.validador,
       decoration: InputDecoration(
         hintText: widget.placeholder,
         prefixIcon: widget.icon != null ? Icon(widget.icon) : null,
         suffixIcon: _isObscure
             ? IconButton(
-                autofocus: false,
                 icon: const Icon(Ionicons.eye_outline),
                 onPressed: () => setState(
                   () {
@@ -56,7 +51,6 @@ class _PassInputComponentState extends State<PassInputComponent> {
                 ),
               )
             : IconButton(
-                autofocus: false,
                 icon: const Icon(Ionicons.eye_off_outline),
                 onPressed: () => setState(
                   () {

@@ -1,29 +1,30 @@
 import 'package:flame/components.dart';
 import 'package:flame_bloc/flame_bloc.dart';
 import 'package:get/get.dart';
+
 import 'package:projeto_crianca/mixins/vibration_mixin.dart';
-import 'package:projeto_crianca/ui/pages/activities/numbers/components/hint_container_component.dart';
 import 'package:projeto_crianca/ui/pages/activities/numbers/bloc/numbers_activity_bloc.dart';
 import 'package:projeto_crianca/ui/pages/activities/numbers/bloc/numbers_activity_bloc_events.dart';
 import 'package:projeto_crianca/ui/pages/activities/numbers/bloc/numbers_activity_bloc_states.dart';
+import 'package:projeto_crianca/ui/pages/activities/numbers/components/hint_container_component.dart';
 
 class NumbersActivityEngineContainer extends RectangleComponent
     with
         FlameBlocListenable<NumbersActivityBloc, NumbersActivityState>,
         VibrationMixin,
         HasGameRef {
+  NumbersActivityEngineContainer(this.setAvatarMessage);
+
   final void Function(String message) setAvatarMessage;
   NumberModel currentNumber = numbers.entries.elementAt(0).value;
 
-  NumbersActivityEngineContainer(this.setAvatarMessage);
-
-  void _showAvatarOverlay(String message) async {
+  Future<void> _showAvatarOverlay(String message) async {
     setAvatarMessage(message);
-    gameRef.overlays.add("avatar");
+    gameRef.overlays.add('avatar');
     await Future.delayed(
       const Duration(seconds: 5),
       () {
-        gameRef.overlays.remove("avatar");
+        gameRef.overlays.remove('avatar');
       },
     );
   }
@@ -31,7 +32,7 @@ class NumbersActivityEngineContainer extends RectangleComponent
   @override
   void onMount() {
     super.onMount();
-    _showAvatarOverlay("Vamos começar!");
+    _showAvatarOverlay('Vamos começar!');
   }
 
   @override
@@ -51,14 +52,13 @@ class NumbersActivityEngineContainer extends RectangleComponent
 
   @override
   Future<void> onLoad() async {
-    int index = 0;
-    int total = currentNumber.points.entries.length - 1;
-    List<PointModel> etapaAtual =
-        currentNumber.points.entries.elementAt(index).value;
-    List<PointModel> devPoints = [];
+    var index = 0;
+    var total = currentNumber.points.entries.length - 1;
+    var etapaAtual = currentNumber.points.entries.elementAt(index).value;
+    var devPoints = <PointModel>[];
 
     void onTrailPositionUpdate(Vector2 trailPosition) {
-      PointModel? current = etapaAtual.firstWhereOrNull(
+      final current = etapaAtual.firstWhereOrNull(
         (element) =>
             trailPosition.x >= element.position.x - 12 &&
             trailPosition.x <= element.position.x - 12 + 24 &&
@@ -88,24 +88,25 @@ class NumbersActivityEngineContainer extends RectangleComponent
       }
     }
 
-    //devlopment screen points
-    for (var number in currentNumber.points.entries) {
-      for (var l in number.value) {
+    //development screen points
+    for (final number in currentNumber.points.entries) {
+      for (final l in number.value) {
         devPoints.add(l);
       }
     }
 
-    addAll([
+    await addAll([
       HintContainerComponent(
-          image: currentNumber.image,
-          imageSize: Vector2(230, 230),
-          onTrailPositionUpdate: onTrailPositionUpdate,
-          data: devPoints.map(
-            (e) => PositionComponent()
-              ..size = Vector2(24, 24)
-              ..position = e.position - Vector2(12, 12)
-              ..debugMode = false,
-          ))
+        image: currentNumber.image,
+        imageSize: Vector2(230, 230),
+        onTrailPositionUpdate: onTrailPositionUpdate,
+        data: devPoints.map(
+          (e) => PositionComponent()
+            ..size = Vector2(24, 24)
+            ..position = e.position - Vector2(12, 12)
+            ..debugMode = false,
+        ),
+      )
         ..position = Vector2(
           size.x / 2,
           size.y / 2,

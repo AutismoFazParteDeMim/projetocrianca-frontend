@@ -4,18 +4,18 @@ import 'package:projeto_crianca/mixins/audio_mixin.dart';
 import 'package:projeto_crianca/ui/widgets/buttons/button_component.dart';
 
 class FacebookButtonWidget extends StatelessWidget with AudioMixin {
-  final VoidCallback? onPressed;
-  final String text;
-
   const FacebookButtonWidget({
-    super.key,
     required this.text,
+    super.key,
     this.onPressed,
   });
 
+  final VoidCallback? onPressed;
+  final String text;
+
   void _onTap() {
     playButtonClickAudio();
-    if (onPressed != null) onPressed!();
+    onPressed?.call();
   }
 
   @override

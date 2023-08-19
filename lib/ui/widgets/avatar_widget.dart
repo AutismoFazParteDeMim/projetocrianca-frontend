@@ -3,14 +3,14 @@ import 'package:projeto_crianca/ui/theme/theme_extensions.dart';
 import 'package:projeto_crianca/ui/widgets/svg_component.dart';
 
 class _ChatWidget extends StatelessWidget {
-  final String text;
-
   const _ChatWidget({required this.text});
+
+  final String text;
 
   @override
   Widget build(BuildContext context) {
-    final ThemeColors colors = Theme.of(context).extension<ThemeColors>()!;
-    final ThemeMetrics metrics = Theme.of(context).extension<ThemeMetrics>()!;
+    final colors = Theme.of(context).extension<ThemeColors>()!;
+    final metrics = Theme.of(context).extension<ThemeMetrics>()!;
 
     return Container(
       padding: metrics.padding,
@@ -18,7 +18,7 @@ class _ChatWidget extends StatelessWidget {
       decoration: BoxDecoration(
         color: colors.secondary,
         borderRadius: metrics.borderRadius.copyWith(
-          topLeft: const Radius.circular(0),
+          topLeft: Radius.zero,
         ),
       ),
       child: Text(text),
@@ -27,20 +27,20 @@ class _ChatWidget extends StatelessWidget {
 }
 
 class AvatarWidget extends StatelessWidget {
+  const AvatarWidget({
+    required this.rawSvg,
+    required this.text,
+    super.key,
+    this.isBackdrop = false,
+  });
+
   final String rawSvg;
   final String text;
   final bool isBackdrop;
 
-  const AvatarWidget({
-    super.key,
-    required this.rawSvg,
-    required this.text,
-    this.isBackdrop = false,
-  });
-
   @override
   Widget build(BuildContext context) {
-    final ThemeMetrics metrics = Theme.of(context).extension<ThemeMetrics>()!;
+    final metrics = Theme.of(context).extension<ThemeMetrics>()!;
 
     return IgnorePointer(
       child: Container(

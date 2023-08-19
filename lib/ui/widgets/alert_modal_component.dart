@@ -1,3 +1,5 @@
+// ignore_for_file: no_default_cases
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ionicons/ionicons.dart';
@@ -10,46 +12,43 @@ enum AlertModalComponentType {
 }
 
 class AlertModalComponent extends StatelessWidget {
+  const AlertModalComponent({
+    required this.title,
+    required this.message,
+    super.key,
+    this.type,
+  });
+
   final String title;
   final String message;
   final AlertModalComponentType? type;
 
-  const AlertModalComponent({
-    super.key,
-    required this.title,
-    required this.message,
-    this.type,
-  });
-
   @override
   Widget build(BuildContext context) {
-    final ThemeData theme = Theme.of(context);
-    final ThemeColors colors = theme.extension<ThemeColors>()!;
-    final ThemeMetrics metrics = theme.extension<ThemeMetrics>()!;
+    final theme = Theme.of(context);
+    final colors = theme.extension<ThemeColors>()!;
+    final metrics = theme.extension<ThemeMetrics>()!;
 
-    Color backgroundColor = colors.primary;
-    Color borderColor = colors.primaryShadow;
-    Color textColor = colors.onPrimary;
+    var backgroundColor = colors.primary;
+    var borderColor = colors.primaryShadow;
+    var textColor = colors.onPrimary;
 
     switch (type) {
       case AlertModalComponentType.error:
         backgroundColor = colors.error;
         borderColor = colors.errorShadow;
         textColor = colors.onError;
-        break;
       case AlertModalComponentType.warning:
         backgroundColor = colors.warning;
         borderColor = colors.warningShadow;
         textColor = colors.onWarning;
-        break;
       case AlertModalComponentType.success:
         backgroundColor = colors.success;
-        borderColor = colors.sucessShadow;
+        borderColor = colors.successShadow;
         textColor = colors.onSuccess;
-        break;
       default:
         backgroundColor = colors.success;
-        borderColor = colors.sucessShadow;
+        borderColor = colors.successShadow;
         textColor = colors.onSuccess;
     }
 
@@ -65,10 +64,9 @@ class AlertModalComponent extends StatelessWidget {
               color: backgroundColor,
               boxShadow: [
                 BoxShadow(
-                  blurRadius: 0,
                   color: borderColor,
                   offset: const Offset(0, 4),
-                )
+                ),
               ],
             ),
             constraints: const BoxConstraints(
@@ -80,7 +78,6 @@ class AlertModalComponent extends StatelessWidget {
               children: [
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     const SizedBox(width: 24, height: 24),
                     Text(
@@ -91,7 +88,7 @@ class AlertModalComponent extends StatelessWidget {
                       ),
                     ),
                     IconButton(
-                      onPressed: () => Get.back(),
+                      onPressed: () => Get.back<void>(),
                       icon: Icon(
                         Ionicons.close_circle_outline,
                         color: textColor,
@@ -100,14 +97,13 @@ class AlertModalComponent extends StatelessWidget {
                       constraints: BoxConstraints.tight(
                         const Size(24, 24),
                       ),
-                      tooltip: "Botão para fechar o modal",
+                      tooltip: 'Botão para fechar o modal',
                     ),
                   ],
                 ),
                 SizedBox(height: metrics.gap),
                 Column(
                   mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     Icon(

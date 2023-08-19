@@ -4,16 +4,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class SVGComponent extends StatelessWidget {
+  const SVGComponent({
+    required this.width,
+    required this.height,
+    super.key,
+    this.rawSvg,
+  });
+
   final String? rawSvg;
   final double width;
   final double height;
-
-  const SVGComponent({
-    super.key,
-    this.rawSvg,
-    required this.width,
-    required this.height,
-  });
 
   Future<SvgPicture?> getSVG() async {
     try {
@@ -21,7 +21,6 @@ class SVGComponent extends StatelessWidget {
         rawSvg!,
         width: width,
         height: height,
-        alignment: Alignment.center,
       );
 
       return picture;

@@ -4,29 +4,29 @@ import 'package:projeto_crianca/mixins/audio_mixin.dart';
 import 'package:projeto_crianca/ui/theme/theme_extensions.dart';
 
 class MenuButtonWidget extends StatelessWidget with AudioMixin {
+  const MenuButtonWidget({
+    required this.title,
+    required this.text,
+    required this.image,
+    super.key,
+    this.onPressed,
+  });
+
   final VoidCallback? onPressed;
   final String text;
   final String title;
   final ImageProvider image;
 
-  const MenuButtonWidget({
-    super.key,
-    this.onPressed,
-    required this.title,
-    required this.text,
-    required this.image,
-  });
-
   void _onTap() {
     playButtonClickAudio();
-    if (onPressed != null) onPressed!();
+    onPressed?.call();
   }
 
   @override
   Widget build(BuildContext context) {
-    final ThemeData theme = Theme.of(context);
-    final ThemeColors colors = theme.extension<ThemeColors>()!;
-    final ThemeMetrics metrics = theme.extension<ThemeMetrics>()!;
+    final theme = Theme.of(context);
+    final colors = theme.extension<ThemeColors>()!;
+    final metrics = theme.extension<ThemeMetrics>()!;
 
     return SizedBox(
       height: 100,
@@ -41,10 +41,9 @@ class MenuButtonWidget extends StatelessWidget with AudioMixin {
             color: colors.secondary,
             boxShadow: [
               BoxShadow(
-                blurRadius: 0,
                 color: colors.secondaryShadow,
                 offset: const Offset(0, 4),
-              )
+              ),
             ],
           ),
           child: Row(

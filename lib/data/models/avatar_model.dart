@@ -71,13 +71,6 @@ enum AvatarModelHairColor {
 }
 
 class AvatarModel {
-  late AvatarModelMouth mouth;
-  late AvatarModelEye eye;
-  late AvatarModelHairType hair;
-  late AvatarModelAccessories accessories;
-  late AvatarModelSkinColor skinColor;
-  late AvatarModelHairColor hairColor;
-
   AvatarModel({
     AvatarModelMouth? mouth,
     AvatarModelEye? eye,
@@ -93,4 +86,11 @@ class AvatarModel {
     this.skinColor = skinColor ?? AvatarModelSkinColor.variant01;
     this.hairColor = hairColor ?? AvatarModelHairColor.variant01;
   }
+
+  late AvatarModelMouth mouth;
+  late AvatarModelEye eye;
+  late AvatarModelHairType hair;
+  late AvatarModelAccessories accessories;
+  late AvatarModelSkinColor skinColor;
+  late AvatarModelHairColor hairColor;
 }

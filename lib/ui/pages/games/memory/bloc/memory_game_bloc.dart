@@ -8,8 +8,8 @@ class MemoryGameBloc extends Bloc<MemoryGameBlocEvent, MemoryGameState> {
     state.cards.shuffle();
 
     on<OpenCardBlocEvent>((event, emit) {
-      List<CardModel> cards = state.cards.toList();
-      List<CardModel> opened = state.opened.toList();
+      final cards = state.cards.toList();
+      final opened = state.opened.toList();
 
       if (opened.length < 2) {
         final index = cards.indexOf(event.card);
@@ -35,8 +35,8 @@ class MemoryGameBloc extends Bloc<MemoryGameBlocEvent, MemoryGameState> {
     });
 
     on<CheckIsCorrectBlocEvent>((event, emit) async {
-      List<CardModel> cards = state.cards.toList();
-      List<CardModel> opened = state.opened.toList();
+      final cards = state.cards.toList();
+      var opened = state.opened.toList();
 
       await Future.delayed(
         const Duration(seconds: 1),
@@ -45,8 +45,8 @@ class MemoryGameBloc extends Bloc<MemoryGameBlocEvent, MemoryGameState> {
             if (opened[0].image == opened[1].image) {
               opened = [];
 
-              String avatarMessage =
-                  "Parabéns! Continue assim. Abra as cartas restantes.";
+              const avatarMessage =
+                  'Parabéns! Continue assim. Abra as cartas restantes.';
 
               return emit(
                 MemoryGameState(

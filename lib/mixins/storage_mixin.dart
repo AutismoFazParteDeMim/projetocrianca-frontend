@@ -5,7 +5,7 @@ mixin StorageMixin {
     required String container,
     required String key,
   }) {
-    final GetStorage storage = GetStorage(container);
+    final storage = GetStorage(container);
     return storage.read(key);
   }
 
@@ -14,7 +14,7 @@ mixin StorageMixin {
     required String key,
     required String value,
   }) async {
-    final GetStorage storage = GetStorage(container);
-    return await storage.write(key, value);
+    final storage = GetStorage(container);
+    return storage.write(key, value);
   }
 }

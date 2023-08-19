@@ -1,29 +1,30 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:projeto_crianca/controllers/games/paint_game_controller.dart';
 import 'package:projeto_crianca/ui/theme/theme_extensions.dart';
 
 class PaletteComponent extends GetView<PaintGameController> {
-  final void Function(Color) onColorChanged;
   const PaletteComponent({
-    super.key,
     required this.onColorChanged,
+    super.key,
   });
+
+  final void Function(Color) onColorChanged;
 
   @override
   Widget build(BuildContext context) {
-    final ThemeData theme = Theme.of(context);
-    final ThemeMetrics metrics = theme.extension<ThemeMetrics>()!;
+    final theme = Theme.of(context);
+    final metrics = theme.extension<ThemeMetrics>()!;
 
-    List<Color> rowColors1 = [
+    final rowColors1 = <Color>[
       Colors.black,
       Colors.grey,
       Colors.red,
       Colors.yellow,
-      Colors.blue
+      Colors.blue,
     ];
-    List<Color> rowColors2 = [
+
+    final rowColors2 = <Color>[
       Colors.green,
       Colors.purple,
       Colors.orange,
@@ -61,7 +62,7 @@ class PaletteComponent extends GetView<PaintGameController> {
                   ),
                 ),
             ],
-          )
+          ),
         ],
       ),
     );
@@ -69,20 +70,20 @@ class PaletteComponent extends GetView<PaintGameController> {
 }
 
 class _CircleColor extends StatelessWidget {
-  final Color color;
-  final void Function() onPressed;
-  final bool? isActives;
-
   const _CircleColor({
     required this.color,
     required this.onPressed,
     this.isActives,
   });
 
+  final Color color;
+  final void Function() onPressed;
+  final bool? isActives;
+
   @override
   Widget build(BuildContext context) {
-    final ThemeData theme = Theme.of(context);
-    final ThemeColors colors = theme.extension<ThemeColors>()!;
+    final theme = Theme.of(context);
+    final colors = theme.extension<ThemeColors>()!;
 
     return InkWell(
       borderRadius: BorderRadius.circular(50),
@@ -92,7 +93,7 @@ class _CircleColor extends StatelessWidget {
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(50),
           border: Border.all(
-            color: isActives == true ? colors.primary : Colors.transparent,
+            color: isActives == false ? Colors.transparent : colors.primary,
             width: 4,
             strokeAlign: BorderSide.strokeAlignOutside,
           ),

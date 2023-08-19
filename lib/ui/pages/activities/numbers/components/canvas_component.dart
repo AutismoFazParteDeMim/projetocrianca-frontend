@@ -1,7 +1,6 @@
 import 'dart:math';
-
 import 'package:flame/components.dart';
-import 'package:flame/experimental.dart';
+import 'package:flame/events.dart';
 import 'package:flutter/material.dart';
 
 class _Trail extends Component {
@@ -27,26 +26,27 @@ class _Trail extends Component {
 
   @override
   void render(Canvas canvas) {
-    assert(_paths.length == _opacities.length);
+    assert(_paths.length == _opacities.length, '');
     for (var i = 0; i < _paths.length; i++) {
       final path = _paths[i];
       final opacity = _opacities[i];
       if (opacity > 0) {
-        _linePaint.color = _color.withOpacity(opacity);
-        _linePaint.strokeWidth = lineWidth * opacity;
+        _linePaint
+          ..color = _color.withOpacity(opacity)
+          ..strokeWidth = lineWidth * opacity;
         canvas.drawPath(path, _linePaint);
       }
     }
     canvas.drawCircle(
       _lastPoint.toOffset(),
-      (lineWidth /2) * _opacities.last + 2,
+      (lineWidth / 2) * _opacities.last + 2,
       _circlePaint,
     );
   }
 
   @override
   void update(double dt) {
-    assert(_paths.length == _opacities.length);
+    assert(_paths.length == _opacities.length, '');
     _timer += dt;
     while (_timer > _vanishInterval) {
       _timer -= _vanishInterval;
@@ -84,14 +84,14 @@ class _Trail extends Component {
 }
 
 class CanvasComponent extends PositionComponent with DragCallbacks {
-  final _rectPaint = Paint()..color = Colors.transparent; //canvas color
-  final Map<int, _Trail> _trails = {}; //fingers
-  final Function(Vector2 tailPosition)? onTrailPositionUpdate;
-
   CanvasComponent({
     super.anchor = Anchor.center,
     this.onTrailPositionUpdate,
   });
+
+  final _rectPaint = Paint()..color = Colors.transparent; //canvas color
+  final Map<int, _Trail> _trails = {}; //fingers
+  final void Function(Vector2 tailPosition)? onTrailPositionUpdate;
 
   @override
   void render(Canvas canvas) {
@@ -100,6 +100,7 @@ class CanvasComponent extends PositionComponent with DragCallbacks {
 
   @override
   void onDragStart(DragStartEvent event) {
+    super.onDragStart(event);
     final trail = _Trail(event.localPosition);
     _trails[event.pointerId] = trail;
     addAll([
@@ -110,18 +111,18 @@ class CanvasComponent extends PositionComponent with DragCallbacks {
   @override
   void onDragUpdate(DragUpdateEvent event) {
     _trails[event.pointerId]!.addPoint(event.localPosition);
-    onTrailPositionUpdate != null
-        ? onTrailPositionUpdate!(_trails[event.pointerId]!._lastPoint)
-        : null;
+    onTrailPositionUpdate?.call(_trails[event.pointerId]!._lastPoint);
   }
 
   @override
   void onDragEnd(DragEndEvent event) {
+    super.onDragEnd(event);
     _trails.remove(event.pointerId)!.end();
   }
 
   @override
   void onDragCancel(DragCancelEvent event) {
+    super.onDragCancel(event);
     _trails.remove(event.pointerId)!.cancel();
   }
 }

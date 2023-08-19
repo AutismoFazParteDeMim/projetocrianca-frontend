@@ -17,8 +17,8 @@ class SettingsPageController extends GetxController with StorageMixin {
           (element) =>
               element.name ==
               storageRead(
-                container: "settings",
-                key: "theme",
+                container: 'settings',
+                key: 'theme',
               ),
         ) ??
         ThemeMode.light;
@@ -33,8 +33,8 @@ class SettingsPageController extends GetxController with StorageMixin {
 
     Get.changeThemeMode(_currentTheme.value);
     storageWrite(
-      container: "settings",
-      key: "theme",
+      container: 'settings',
+      key: 'theme',
       value: _currentTheme.value.name,
     );
   }

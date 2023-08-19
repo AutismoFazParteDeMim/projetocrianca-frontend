@@ -1,12 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 
 class UserModel {
-  String? uid;
-  String? name;
-  String? email;
-  bool? isEmailVerified;
-  String? photoURL;
-
   UserModel({
     this.uid,
     this.name,
@@ -21,4 +15,10 @@ class UserModel {
     isEmailVerified = user.emailVerified;
     photoURL = user.photoURL;
   }
+
+  String? uid;
+  String? name;
+  String? email;
+  bool? isEmailVerified;
+  String? photoURL;
 }

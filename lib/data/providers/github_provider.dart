@@ -1,25 +1,29 @@
+// ignore_for_file: avoid_dynamic_calls
+
 import 'package:dio/dio.dart';
 import 'package:projeto_crianca/data/models/github_model.dart';
 
 class GitHubProvider {
   final Dio dio = Dio();
   final String baseUrl =
-      "https://api.github.com/repos/AutismoFazParteDeMim/ProjetoCrianca/contributors";
+      'https://api.github.com/repos/AutismoFazParteDeMim/ProjetoCrianca/contributors';
 
   Future<List<GitHubModel?>?> getContributors() async {
-    final List<dynamic>? response = await dio.get(baseUrl).then(
+    final response = await dio.get<dynamic>(baseUrl).then(
           (value) => value.data,
-        );
+        ) as List<dynamic>?;
 
     if (response != null) {
-      final List<GitHubModel?> contributors = [];
+      final contributors = <GitHubModel?>[];
 
-      for (var element in response) {
-        contributors.add(GitHubModel(
-          user: element["login"],
-          photoUrl: element["avatar_url"],
-          profileUrl: element["html_url"],
-        ));
+      for (final element in response) {
+        contributors.add(
+          GitHubModel(
+            user: element['login'] as String?,
+            photoUrl: element['avatar_url'] as String?,
+            profileUrl: element['html_url'] as String?,
+          ),
+        );
       }
 
       return contributors;

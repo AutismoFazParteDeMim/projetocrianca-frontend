@@ -6,6 +6,8 @@ import 'package:projeto_crianca/data/repositories/auth_repository.dart';
 import 'package:projeto_crianca/routes/app_routes.dart';
 
 class AuthService extends GetxService {
+  AuthService(this.repository);
+
   final AuthRepository repository;
   final FirebaseAuth _instance = FirebaseAuth.instance;
 
@@ -17,24 +19,23 @@ class AuthService extends GetxService {
   UserModel? get getCurrentUser => _currentUser.value;
   ChildModel? get getCurrentChild => _currentChild.value;
 
-  AuthService(this.repository);
-
   @override
   void onReady() {
     super.onReady();
 
-    _user.value = _instance.currentUser;
-    _user.bindStream(_instance.authStateChanges());
+    _user
+      ..value = _instance.currentUser
+      ..bindStream(_instance.authStateChanges());
     ever(_user, _toInitialPage);
   }
 
-  void _toInitialPage(User? user) async {
+  Future<void> _toInitialPage(User? user) async {
     if (user == null) {
-      Get.offAllNamed(AppRoutes.welcome);
+      await Get.offAllNamed<void>(AppRoutes.welcome);
     } else {
       _currentUser.value = repository.getCurrentUser();
       _currentChild.bindStream(repository.getChildStream()!);
-      Get.offAllNamed(AppRoutes.home);
+      await Get.offAllNamed<void>(AppRoutes.home);
     }
   }
 

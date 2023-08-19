@@ -1,25 +1,26 @@
 import 'package:flame/game.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+
 import 'package:projeto_crianca/services/auth_service.dart';
+import 'package:projeto_crianca/ui/pages/games/encaixar/encaixar_game_engine.dart';
 import 'package:projeto_crianca/ui/theme/theme_extensions.dart';
 import 'package:projeto_crianca/ui/widgets/appbar_component.dart';
-import 'package:projeto_crianca/ui/pages/games/encaixar/encaixar_game_engine.dart';
 import 'package:projeto_crianca/ui/widgets/avatar_widget.dart';
 import 'package:projeto_crianca/ui/widgets/confetti_component.dart';
 
 class EncaixarGamePage extends StatelessWidget {
-  final AuthService authService = Get.find<AuthService>();
-
   EncaixarGamePage({super.key});
+
+  final AuthService authService = Get.find<AuthService>();
 
   @override
   Widget build(BuildContext context) {
-    final ThemeColors colors = Theme.of(context).extension<ThemeColors>()!;
+    final colors = Theme.of(context).extension<ThemeColors>()!;
 
     return Scaffold(
       appBar: AppBarComponent(
-        title: "Encaixar",
+        title: 'Encaixar',
         transparent: true,
         invertedColor: true,
       ),
@@ -27,11 +28,11 @@ class EncaixarGamePage extends StatelessWidget {
       body: GameWidget<EncaixarGameEngine>(
         game: EncaixarGameEngine(),
         overlayBuilderMap: {
-          "confetti": (context, game) => const ConfettiComponent(),
-          "avatar": (context, game) {
+          'confetti': (context, game) => const ConfettiComponent(),
+          'avatar': (context, game) {
             return Obx(
               () => AvatarWidget(
-                rawSvg: authService.getCurrentChild?.photoURL ?? "",
+                rawSvg: authService.getCurrentChild?.photoURL ?? '',
                 text: game.avatarMessage,
               ),
             );

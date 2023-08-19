@@ -2,29 +2,25 @@ import 'package:flutter/material.dart';
 import 'package:projeto_crianca/ui/theme/theme_extensions.dart';
 
 class ImageCheckboxComponent extends StatelessWidget {
-  final Function? onChange;
+  const ImageCheckboxComponent({
+    required this.isChecked,
+    required this.onChange,
+    required this.image,
+    super.key,
+    this.text,
+  });
+
+  final void Function({required bool isChecked})? onChange;
   final bool isChecked;
   final ImageProvider image;
   final String? text;
 
-  const ImageCheckboxComponent({
-    super.key,
-    required this.isChecked,
-    required this.onChange,
-    required this.image,
-    this.text,
-  });
-
   @override
   Widget build(BuildContext context) {
-    final ThemeColors colors = Theme.of(context).extension<ThemeColors>()!;
+    final colors = Theme.of(context).extension<ThemeColors>()!;
 
     return InkWell(
-      onTap: () {
-        if (onChange != null) {
-          onChange!(isChecked);
-        }
-      },
+      onTap: () => onChange?.call(isChecked: isChecked),
       child: Column(
         children: [
           AnimatedContainer(

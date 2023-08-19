@@ -1,30 +1,21 @@
+// ignore_for_file: no_default_cases
+
 import 'package:flutter/material.dart';
 import 'package:projeto_crianca/mixins/audio_mixin.dart';
 import 'package:projeto_crianca/ui/theme/theme_extensions.dart';
 
 enum ButtonWidgetColor {
   primary,
-  secoundary,
+  secondary,
   danger,
   warning,
   success,
 }
 
 class ButtonWidget extends StatelessWidget with AudioMixin {
-  final String text;
-  final IconData? icon;
-  final ButtonWidgetColor? color;
-  final VoidCallback? onPressed;
-  final bool? reversed;
-  final bool? full;
-  final bool? isLoading;
-  final Color? backgroundColor;
-  final Color? borderColor;
-  final Color? textColor;
-
   const ButtonWidget({
-    super.key,
     required this.text,
+    super.key,
     this.onPressed,
     this.color,
     this.icon,
@@ -36,53 +27,59 @@ class ButtonWidget extends StatelessWidget with AudioMixin {
     this.textColor,
   });
 
+  final String text;
+  final IconData? icon;
+  final ButtonWidgetColor? color;
+  final VoidCallback? onPressed;
+  final bool? reversed;
+  final bool? full;
+  final bool? isLoading;
+  final Color? backgroundColor;
+  final Color? borderColor;
+  final Color? textColor;
+
   void _onTap() {
     playButtonClickAudio();
-    if (onPressed != null) onPressed!();
+    onPressed?.call();
   }
 
   @override
   Widget build(BuildContext context) {
-    final ThemeMetrics metrics = Theme.of(context).extension<ThemeMetrics>()!;
-    final ThemeColors colors = Theme.of(context).extension<ThemeColors>()!;
+    final metrics = Theme.of(context).extension<ThemeMetrics>()!;
+    final colors = Theme.of(context).extension<ThemeColors>()!;
 
-    Color backgroundcolor = colors.primary;
-    Color bordercolor = colors.primaryShadow;
-    Color textcolor = colors.onPrimary;
+    var backgroundcolor = colors.primary;
+    var bordercolor = colors.primaryShadow;
+    var textcolor = colors.onPrimary;
 
     switch (color) {
       case ButtonWidgetColor.primary:
         backgroundcolor = colors.primary;
         bordercolor = colors.primaryShadow;
         textcolor = colors.onPrimary;
-        break;
-      case ButtonWidgetColor.secoundary:
+      case ButtonWidgetColor.secondary:
         backgroundcolor = colors.secondary;
         bordercolor = colors.secondaryShadow;
         textcolor = colors.onSecondary;
-        break;
       case ButtonWidgetColor.danger:
         backgroundcolor = colors.error;
         bordercolor = colors.errorShadow;
         textcolor = colors.onPrimary;
-        break;
       case ButtonWidgetColor.warning:
         backgroundcolor = colors.warning;
         bordercolor = colors.warningShadow;
         textcolor = colors.onPrimary;
-        break;
       case ButtonWidgetColor.success:
         backgroundcolor = colors.success;
-        bordercolor = colors.sucessShadow;
+        bordercolor = colors.successShadow;
         textcolor = colors.onPrimary;
-        break;
       default:
         backgroundcolor = backgroundColor ?? colors.primary;
         bordercolor = borderColor ?? colors.primaryShadow;
         textcolor = textColor ?? colors.onPrimary;
     }
 
-    final List<Widget> content = [
+    final content = <Widget>[
       if (icon != null) Icon(icon, color: textcolor),
       if (icon != null) SizedBox(width: metrics.gap),
       Text(
@@ -101,10 +98,9 @@ class ButtonWidget extends StatelessWidget with AudioMixin {
         borderRadius: metrics.borderRadius,
         boxShadow: [
           BoxShadow(
-            blurRadius: 0,
             color: bordercolor,
             offset: const Offset(0, 4),
-          )
+          ),
         ],
       ),
       child: Material(
@@ -118,7 +114,6 @@ class ButtonWidget extends StatelessWidget with AudioMixin {
             padding: metrics.padding,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
               children: reversed == true ? content.reversed.toList() : content,
             ),
           ),

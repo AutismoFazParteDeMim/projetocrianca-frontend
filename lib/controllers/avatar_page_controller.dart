@@ -6,6 +6,8 @@ import 'package:projeto_crianca/mixins/dialog_mixin.dart';
 import 'package:projeto_crianca/ui/widgets/alert_modal_component.dart';
 
 class AvatarPageController extends GetxController with DialogMixin {
+  AvatarPageController(this.repository);
+
   final AvatarRepository repository;
 
   //vars
@@ -14,8 +16,6 @@ class AvatarPageController extends GetxController with DialogMixin {
 
   //getters
   String? get getAvatarSvg => _avatarSvg.value;
-
-  AvatarPageController(this.repository);
 
   @override
   Future<void> onReady() async {
@@ -44,7 +44,7 @@ class AvatarPageController extends GetxController with DialogMixin {
       _avatarSvg.value = avatarSvg;
     } catch (e) {
       showAlertDialog(
-        title: "Ops!",
+        title: 'Ops!',
         message: e.toString(),
         type: AlertModalComponentType.warning,
       );
@@ -55,10 +55,10 @@ class AvatarPageController extends GetxController with DialogMixin {
     final child = ChildModel(photoURL: _avatarSvg.value);
     try {
       await repository.saveAvatar(child);
-      Get.back();
+      Get.back<void>();
     } catch (e) {
       showAlertDialog(
-        title: "Ops!",
+        title: 'Ops!',
         message: e.toString(),
         type: AlertModalComponentType.warning,
       );

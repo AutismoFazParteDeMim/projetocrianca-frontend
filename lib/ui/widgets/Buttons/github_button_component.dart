@@ -4,18 +4,18 @@ import 'package:projeto_crianca/mixins/audio_mixin.dart';
 import 'package:projeto_crianca/ui/widgets/Buttons/button_component.dart';
 
 class GitHubButtonWidget extends StatelessWidget with AudioMixin {
-  final String text;
-  final VoidCallback? onPressed;
-
   const GitHubButtonWidget({
-    super.key,
     required this.text,
+    super.key,
     this.onPressed,
   });
 
+  final String text;
+  final VoidCallback? onPressed;
+
   void _onTap() {
     playButtonClickAudio();
-    if (onPressed != null) onPressed!();
+    onPressed?.call();
   }
 
   @override

@@ -1,3 +1,5 @@
+// ignore_for_file: lines_longer_than_80_chars
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -6,6 +8,8 @@ import 'package:projeto_crianca/mixins/dialog_mixin.dart';
 import 'package:projeto_crianca/ui/widgets/alert_modal_component.dart';
 
 class LoginPageController extends GetxController with DialogMixin {
+  LoginPageController(this.repository);
+
   final AuthRepository repository;
 
   //keys
@@ -21,8 +25,6 @@ class LoginPageController extends GetxController with DialogMixin {
   GlobalKey<FormState> get getForgotPassFormKey => _forgotPassFormKey;
   TextEditingController get getEmailFieldController => _emailFieldController;
   TextEditingController get getPassFieldController => _passFieldController;
-
-  LoginPageController(this.repository);
 
   @override
   void onClose() {
@@ -40,32 +42,30 @@ class LoginPageController extends GetxController with DialogMixin {
       );
     } on FirebaseAuthException catch (e) {
       switch (e.code) {
-        case "user-not-found":
+        case 'user-not-found':
           showAlertDialog(
-            title: "Ops!",
+            title: 'Ops!',
             message:
-                "Parece que este email não está cadastrado. Verifique e tente novamente!",
+                'Parece que este email não está cadastrado. Verifique e tente novamente!',
             type: AlertModalComponentType.warning,
           );
-          break;
-        case "wrong-password":
+        case 'wrong-password':
           showAlertDialog(
-            title: "Ops!",
+            title: 'Ops!',
             message:
-                "Email ou senha digitados estão incorretos! Verifique e tente novamente",
+                'Email ou senha digitados estão incorretos! Verifique e tente novamente',
             type: AlertModalComponentType.warning,
           );
-          break;
         default:
           showAlertDialog(
-            title: "Ops!",
+            title: 'Ops!',
             message: e.code,
             type: AlertModalComponentType.warning,
           );
       }
     } catch (e) {
       showAlertDialog(
-        title: "Ops!",
+        title: 'Ops!',
         message: e.toString(),
         type: AlertModalComponentType.error,
       );
@@ -77,13 +77,13 @@ class LoginPageController extends GetxController with DialogMixin {
       await repository.loginWithGoogle();
     } on FirebaseAuthException catch (e) {
       showAlertDialog(
-        title: "Ops!",
+        title: 'Ops!',
         message: e.code,
         type: AlertModalComponentType.warning,
       );
     } catch (e) {
       showAlertDialog(
-        title: "Ops!",
+        title: 'Ops!',
         message: e.toString(),
         type: AlertModalComponentType.error,
       );
@@ -95,13 +95,13 @@ class LoginPageController extends GetxController with DialogMixin {
       await repository.loginWithFacebook();
     } on FirebaseAuthException catch (e) {
       showAlertDialog(
-        title: "Ops!",
+        title: 'Ops!',
         message: e.code,
         type: AlertModalComponentType.warning,
       );
     } catch (e) {
       showAlertDialog(
-        title: "Ops!",
+        title: 'Ops!',
         message: e.toString(),
         type: AlertModalComponentType.error,
       );
@@ -112,20 +112,20 @@ class LoginPageController extends GetxController with DialogMixin {
     try {
       await repository.resetPassword(email: _emailFieldController.text);
       showAlertDialog(
-        title: "Email enviado!",
+        title: 'Email enviado!',
         message:
-            "Verifique sua caixa de entrada, caso não encontre de uma olhadinha na caixa de Spam.",
+            'Verifique sua caixa de entrada, caso não encontre de uma olhadinha na caixa de Spam.',
         type: AlertModalComponentType.success,
       );
     } on FirebaseAuthException catch (e) {
       showAlertDialog(
-        title: "Ops!",
+        title: 'Ops!',
         message: e.code,
         type: AlertModalComponentType.warning,
       );
     } catch (e) {
       showAlertDialog(
-        title: "Ops!",
+        title: 'Ops!',
         message: e.toString(),
         type: AlertModalComponentType.error,
       );

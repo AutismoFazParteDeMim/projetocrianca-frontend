@@ -6,7 +6,10 @@ import 'package:projeto_crianca/data/repositories/localize_repository.dart';
 class LocalizePageBinding implements Bindings {
   @override
   void dependencies() {
-    Get.lazyPut(() => LocalizePageController(LocalizeRepository(ProfissionalProvider())));
+    Get.lazyPut(
+      () => LocalizePageController(
+        LocalizeRepository(ProfessionalProvider()),
+      ),
+    );
   }
-
 }
