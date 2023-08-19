@@ -1,16 +1,5 @@
-class ProfissionalModel {
-  int profissionalId;
-  String nome;
-  double latitude;
-  double longitude;
-  String endereco;
-  String? email;
-  String? telefone;
-  String horario;
-  String diasFuncionamento;
-  String descricao;
-
-  ProfissionalModel({
+class ProfessionalModel {
+  ProfessionalModel({
     required this.profissionalId,
     required this.nome,
     required this.latitude,
@@ -23,4 +12,14 @@ class ProfissionalModel {
     required this.horario,
   });
 
+  int profissionalId;
+  String nome;
+  double latitude;
+  double longitude;
+  String endereco;
+  String? email;
+  String? telefone;
+  String horario;
+  String diasFuncionamento;
+  String descricao;
 }

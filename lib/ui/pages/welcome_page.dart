@@ -1,23 +1,25 @@
+// ignore_for_file: lines_longer_than_80_chars
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:projeto_crianca/routes/app_routes.dart';
-import 'package:projeto_crianca/ui/widgets/Buttons/button_component.dart';
-import 'package:projeto_crianca/ui/widgets/Buttons/link_button_component.dart';
-import 'package:projeto_crianca/ui/widgets/modal_component.dart';
-import 'package:projeto_crianca/ui/theme/theme_extensions.dart';
 
-class WelcomePage extends GetView {
+import 'package:projeto_crianca/routes/app_routes.dart';
+import 'package:projeto_crianca/ui/theme/theme_extensions.dart';
+import 'package:projeto_crianca/ui/widgets/buttons/button_component.dart';
+import 'package:projeto_crianca/ui/widgets/buttons/link_button_component.dart';
+import 'package:projeto_crianca/ui/widgets/modal_component.dart';
+
+class WelcomePage extends StatelessWidget {
   const WelcomePage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final ThemeData theme = Theme.of(context);
-    final ThemeMetrics metrics = theme.extension<ThemeMetrics>()!;
-    final ThemeColors colors = theme.extension<ThemeColors>()!;
+    final theme = Theme.of(context);
+    final metrics = theme.extension<ThemeMetrics>()!;
+    final colors = theme.extension<ThemeColors>()!;
 
     return Scaffold(
       body: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Expanded(
@@ -26,17 +28,16 @@ class WelcomePage extends GetView {
               alignment: Alignment.center,
               padding: metrics.padding,
               child: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
-                    "Bem-Vindo(a)!",
+                    'Bem-Vindo(a)!',
                     style: theme.textTheme.headlineMedium
                         ?.copyWith(color: colors.onPrimary),
                   ),
                   SizedBox(height: metrics.gap * 2),
                   Text(
-                    "Seja bem-vindo ao aplicativo do projeto Autismo Faz Parte de Mim.",
+                    'Seja bem-vindo ao aplicativo do projeto Autismo Faz Parte de Mim.',
                     textAlign: TextAlign.center,
                     style: theme.textTheme.titleMedium
                         ?.copyWith(color: colors.onPrimary),
@@ -49,28 +50,27 @@ class WelcomePage extends GetView {
             child: Container(
               padding: metrics.padding,
               child: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  ButtonComponent(
-                    text: "Fazer login",
-                    onPressed: () => Get.toNamed(AppRoutes.login),
+                  ButtonWidget(
+                    text: 'Fazer login',
+                    onPressed: () => Get.toNamed<void>(AppRoutes.login),
                   ),
                   SizedBox(height: metrics.gap),
-                  ButtonComponent(
-                    text: "Cadastre-se",
-                    type: ButtonComponentType.secoundary,
-                    onPressed: () => Get.toNamed(AppRoutes.register),
+                  ButtonWidget(
+                    text: 'Cadastre-se',
+                    color: ButtonWidgetColor.secondary,
+                    onPressed: () => Get.toNamed<void>(AppRoutes.register),
                   ),
                   SizedBox(height: metrics.gap),
-                  LinkButtonComponent(
-                    text: "Política de privacidade",
-                    onPressed: () => showDialog(
+                  LinkButtonWidget(
+                    text: 'Política de privacidade',
+                    onPressed: () => showDialog<void>(
                       context: context,
                       builder: (BuildContext context) => const ModalComponent(
-                        title: "Política de privacidade",
-                        size: ModalComponentSize.large,
-                        child: Center(
+                        title: 'Política de privacidade',
+                        fill: true,
+                        child: Expanded(
                           child: SingleChildScrollView(
                             child: Text(privacyPolicy),
                           ),
@@ -88,75 +88,40 @@ class WelcomePage extends GetView {
   }
 }
 
-const String privacyPolicy =
-    '''A sua privacidade é importante para nós. É política do Projeto Criança respeitar a sua privacidade em relação a qualquer informação sua que possamos coletar no site Projeto Criança, e outros sites que possuímos e operamos.
+const String privacyPolicy = '''
+Esta política de privacidade descreve como o aplicativo móvel Autismo Faz Parte de Mim ('o aplicativo') coleta, usa, compartilha e protege as informações pessoais dos usuários. Ao usar o aplicativo, você concorda com a coleta e uso de informações de acordo com esta política de privacidade.
 
-Solicitamos informações pessoais apenas quando realmente precisamos delas para lhe fornecer um serviço. Fazemo-lo por meios justos e legais, com o seu conhecimento e consentimento. Também informamos por que estamos coletando e como será usado.
 
-Apenas retemos as informações coletadas pelo tempo necessário para fornecer o serviço solicitado. Quando armazenamos dados, protegemos dentro de meios comercialmente aceitáveis ​​para evitar perdas e roubos, bem como acesso, divulgação, cópia, uso ou modificação não autorizados.
+-> Coleta e Uso de Informações Pessoais
 
-Não compartilhamos informações de identificação pessoal publicamente ou com terceiros, exceto quando exigido por lei.
+Para personalizar a experiência do usuário, o aplicativo coleta o nome dos pais e da criança. Essas informações são usadas exclusivamente para fornecer um serviço personalizado para o usuário e não são compartilhadas com terceiros.
 
-O nosso site pode ter links para sites externos que não são operados por nós. Esteja ciente de que não temos controle sobre o conteúdo e práticas desses sites e não podemos aceitar responsabilidade por suas respectivas políticas de privacidade.
+O aplicativo também usa o login do Google ou Facebook para autenticar os usuários. O aplicativo não armazena informações de login do Google ou Facebook. O aplicativo apenas acessa o nome de usuário e o endereço de e-mail para identificar o usuário.
 
-Você é livre para recusar a nossa solicitação de informações pessoais, entendendo que talvez não possamos fornecer alguns dos serviços desejados.
+Além disso, o aplicativo solicita a localização atual do usuário para mostrar no mapa centros e instituições de ajuda a crianças com TEA. A localização atual do usuário é usada apenas para exibir informações relevantes ao usuário e não é compartilhada com terceiros.
 
-O uso continuado de nosso site será considerado como aceitação de nossas práticas em torno de privacidade e informações pessoais. Se você tiver alguma dúvida sobre como lidamos com dados do usuário e informações pessoais, entre em contacto connosco.
 
-Política de Cookies Projeto Criança
-O que são cookies?
-Como é prática comum em quase todos os sites profissionais, este site usa cookies, que são pequenos arquivos baixados no seu computador, para melhorar sua experiência. Esta página descreve quais informações eles coletam, como as usamos e por que às vezes precisamos armazenar esses cookies. Também compartilharemos como você pode impedir que esses cookies sejam armazenados, no entanto, isso pode fazer o downgrade ou 'quebrar' certos elementos da funcionalidade do site.
+-> Compartilhamento de Informações
 
-Como usamos os cookies?
-Utilizamos cookies por vários motivos, detalhados abaixo. Infelizmente, na maioria dos casos, não existem opções padrão do setor para desativar os cookies sem desativar completamente a funcionalidade e os recursos que eles adicionam a este site. É recomendável que você deixe todos os cookies se não tiver certeza se precisa ou não deles, caso sejam usados ​​para fornecer um serviço que você usa.
+O aplicativo não compartilha informações pessoais com terceiros, exceto quando exigido por lei ou quando necessário para fornecer o serviço solicitado pelo usuário. O aplicativo pode compartilhar informações não pessoais, como dados estatísticos e de uso, com terceiros para fins de análise e melhoria do aplicativo.
 
-Desativar cookies
-Você pode impedir a configuração de cookies ajustando as configurações do seu navegador (consulte a Ajuda do navegador para saber como fazer isso). Esteja ciente de que a desativação de cookies afetará a funcionalidade deste e de muitos outros sites que você visita. A desativação de cookies geralmente resultará na desativação de determinadas funcionalidades e recursos deste site. Portanto, é recomendável que você não desative os cookies.
 
-Cookies que definimos
-Cookies relacionados à conta
+-> Proteção de Informações
 
-Se você criar uma conta connosco, usaremos cookies para o gerenciamento do processo de inscrição e administração geral. Esses cookies geralmente serão excluídos quando você sair do sistema, porém, em alguns casos, eles poderão permanecer posteriormente para lembrar as preferências do seu site ao sair.
+O aplicativo utiliza medidas de segurança padrão da indústria para proteger as informações pessoais dos usuários, incluindo criptografia de dados, armazenamento seguro e controle de acesso. No entanto, nenhuma transmissão de dados pela Internet ou armazenamento eletrônico é totalmente segura, e o aplicativo não pode garantir a segurança absoluta das informações dos usuários.
 
-Cookies relacionados ao login
 
-Utilizamos cookies quando você está logado, para que possamos lembrar dessa ação. Isso evita que você precise fazer login sempre que visitar uma nova página. Esses cookies são normalmente removidos ou limpos quando você efetua logout para garantir que você possa acessar apenas a recursos e áreas restritas ao efetuar login.
+-> Alterações na Política de Privacidade
 
-Cookies relacionados a boletins por e-mail
+O aplicativo pode atualizar esta política de privacidade de tempos em tempos. A versão mais recente da política de privacidade estará sempre disponível no aplicativo.
 
-Este site oferece serviços de assinatura de boletim informativo ou e-mail e os cookies podem ser usados ​​para lembrar se você já está registrado e se deve mostrar determinadas notificações válidas apenas para usuários inscritos / não inscritos.
 
-Pedidos processando cookies relacionados
+-> Contato
 
-Este site oferece facilidades de comércio eletrônico ou pagamento e alguns cookies são essenciais para garantir que seu pedido seja lembrado entre as páginas, para que possamos processá-lo adequadamente.
+Se você tiver alguma dúvida ou preocupação sobre esta política de privacidade, entre em contato conosco pelo endereço de e-mail autismofazpartedemim@gmail.com.
 
-Cookies relacionados a pesquisas
 
-Periodicamente, oferecemos pesquisas e questionários para fornecer informações interessantes, ferramentas úteis ou para entender nossa base de usuários com mais precisão. Essas pesquisas podem usar cookies para lembrar quem já participou numa pesquisa ou para fornecer resultados precisos após a alteração das páginas.
+-> Data de Vigência
 
-Cookies relacionados a formulários
-
-Quando você envia dados por meio de um formulário como os encontrados nas páginas de contacto ou nos formulários de comentários, os cookies podem ser configurados para lembrar os detalhes do usuário para correspondência futura.
-
-Cookies de preferências do site
-
-Para proporcionar uma ótima experiência neste site, fornecemos a funcionalidade para definir suas preferências de como esse site é executado quando você o usa. Para lembrar suas preferências, precisamos definir cookies para que essas informações possam ser chamadas sempre que você interagir com uma página for afetada por suas preferências.
-Cookies de Terceiros
-Em alguns casos especiais, também usamos cookies fornecidos por terceiros confiáveis. A seção a seguir detalha quais cookies de terceiros você pode encontrar através deste site.
-
-Este site usa o Google Analytics, que é uma das soluções de análise mais difundidas e confiáveis ​​da Web, para nos ajudar a entender como você usa o site e como podemos melhorar sua experiência. Esses cookies podem rastrear itens como quanto tempo você gasta no site e as páginas visitadas, para que possamos continuar produzindo conteúdo atraente.
-Para mais informações sobre cookies do Google Analytics, consulte a página oficial do Google Analytics.
-
-As análises de terceiros são usadas para rastrear e medir o uso deste site, para que possamos continuar produzindo conteúdo atrativo. Esses cookies podem rastrear itens como o tempo que você passa no site ou as páginas visitadas, o que nos ajuda a entender como podemos melhorar o site para você.
-Periodicamente, testamos novos recursos e fazemos alterações subtis na maneira como o site se apresenta. Quando ainda estamos testando novos recursos, esses cookies podem ser usados ​​para garantir que você receba uma experiência consistente enquanto estiver no site, enquanto entendemos quais otimizações os nossos usuários mais apreciam.
-À medida que vendemos produtos, é importante entendermos as estatísticas sobre quantos visitantes de nosso site realmente compram e, portanto, esse é o tipo de dados que esses cookies rastrearão. Isso é importante para você, pois significa que podemos fazer previsões de negócios com precisão que nos permitem analizar nossos custos de publicidade e produtos para garantir o melhor preço possível.
-Compromisso do Usuário
-O usuário se compromete a fazer uso adequado dos conteúdos e da informação que o Projeto Criança oferece no site e com caráter enunciativo, mas não limitativo:
-
-A) Não se envolver em atividades que sejam ilegais ou contrárias à boa fé a à ordem pública;
-B) Não difundir propaganda ou conteúdo de natureza racista, xenofóbica, betano pt ou azar, qualquer tipo de pornografia ilegal, de apologia ao terrorismo ou contra os direitos humanos;
-C) Não causar danos aos sistemas físicos (hardwares) e lógicos (softwares) do Projeto Criança, de seus fornecedores ou terceiros, para introduzir ou disseminar vírus informáticos ou quaisquer outros sistemas de hardware ou software que sejam capazes de causar danos anteriormente mencionados.
-Mais informações
-Esperemos que esteja esclarecido e, como mencionado anteriormente, se houver algo que você não tem certeza se precisa ou não, geralmente é mais seguro deixar os cookies ativados, caso interaja com um dos recursos que você usa em nosso site.
-
-Esta política é efetiva a partir de Fevereiro/2022.''';
+Esta política de privacidade entra em vigor a partir de 20 de março de 2023.
+''';

@@ -3,23 +3,22 @@ import 'package:flutter/material.dart';
 import 'package:projeto_crianca/ui/theme/theme_extensions.dart';
 
 class _SliderChild extends StatelessWidget {
-  final String title;
-  final String text;
-  final String image;
-
   const _SliderChild({
     required this.title,
     required this.text,
     required this.image,
   });
 
+  final String title;
+  final String text;
+  final String image;
+
   @override
   Widget build(BuildContext context) {
-    final ThemeData theme = Theme.of(context);
-    final ThemeMetrics metrics = theme.extension<ThemeMetrics>()!;
+    final theme = Theme.of(context);
+    final metrics = theme.extension<ThemeMetrics>()!;
 
     return Column(
-      crossAxisAlignment: CrossAxisAlignment.center,
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         FractionallySizedBox(
@@ -48,12 +47,12 @@ class _SliderChild extends StatelessWidget {
 }
 
 class SliderComponent extends StatefulWidget {
-  final List<Map> data;
-
   const SliderComponent({
-    super.key,
     required this.data,
+    super.key,
   });
+
+  final List<Map<dynamic, dynamic>> data;
 
   @override
   State<StatefulWidget> createState() {
@@ -64,7 +63,7 @@ class SliderComponent extends StatefulWidget {
 class _SliderComponentState extends State<SliderComponent> {
   int _currentIndex = 0;
   final CarouselController _controller = CarouselController();
-  late List<Map> data;
+  late List<Map<dynamic, dynamic>> data;
 
   @override
   void initState() {
@@ -74,7 +73,8 @@ class _SliderComponentState extends State<SliderComponent> {
 
   @override
   Widget build(BuildContext context) {
-    final ThemeColors colors = Theme.of(context).extension<ThemeColors>()!;
+    final colors = Theme.of(context).extension<ThemeColors>()!;
+
     return Column(
       children: [
         Expanded(
@@ -85,7 +85,6 @@ class _SliderComponentState extends State<SliderComponent> {
               enlargeCenterPage: true,
               viewportFraction: 0.9,
               enableInfiniteScroll: false,
-              initialPage: 0,
               onPageChanged: (index, reason) => setState(
                 () {
                   _currentIndex = index;
@@ -95,9 +94,9 @@ class _SliderComponentState extends State<SliderComponent> {
             items: data
                 .map(
                   (e) => _SliderChild(
-                    title: e["title"],
-                    text: e["text"],
-                    image: e["image"],
+                    title: e['title'] as String,
+                    text: e['text'] as String,
+                    image: e['image'] as String,
                   ),
                 )
                 .toList(),
@@ -110,8 +109,8 @@ class _SliderComponentState extends State<SliderComponent> {
               return GestureDetector(
                 onTap: () => _controller.animateToPage(entry.key),
                 child: Container(
-                  width: 12.0,
-                  height: 12.0,
+                  width: 12,
+                  height: 12,
                   margin: const EdgeInsets.only(top: 16, right: 10, bottom: 16),
                   decoration: BoxDecoration(
                     shape: BoxShape.circle,

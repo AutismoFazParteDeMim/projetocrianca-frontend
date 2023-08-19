@@ -1,22 +1,28 @@
 import 'package:flutter/material.dart';
+import 'package:projeto_crianca/mixins/audio_mixin.dart';
 import 'package:projeto_crianca/ui/theme/theme_extensions.dart';
 
-class SquareButtonComponent extends StatelessWidget {
+class SquareButtonWidget extends StatelessWidget with AudioMixin {
+  const SquareButtonWidget({
+    required this.text,
+    required this.image,
+    super.key,
+    this.onPressed,
+  });
+
   final VoidCallback? onPressed;
   final String text;
   final ImageProvider image;
 
-  const SquareButtonComponent({
-    super.key,
-    this.onPressed,
-    required this.text,
-    required this.image,
-  });
+  void _onTap() {
+    playButtonClickAudio();
+    onPressed?.call();
+  }
 
   @override
   Widget build(BuildContext context) {
-    final ThemeMetrics metrics = Theme.of(context).extension<ThemeMetrics>()!;
-    final ThemeColors colors = Theme.of(context).extension<ThemeColors>()!;
+    final metrics = Theme.of(context).extension<ThemeMetrics>()!;
+    final colors = Theme.of(context).extension<ThemeColors>()!;
 
     return Container(
       width: 100,
@@ -25,14 +31,13 @@ class SquareButtonComponent extends StatelessWidget {
         borderRadius: metrics.borderRadius,
         boxShadow: [
           BoxShadow(
-            blurRadius: 0,
             color: colors.secondaryShadow,
             offset: const Offset(0, 4),
-          )
+          ),
         ],
       ),
       child: RawMaterialButton(
-        onPressed: onPressed,
+        onPressed: _onTap,
         fillColor: colors.secondary,
         padding: metrics.padding,
         elevation: 0,
@@ -47,7 +52,6 @@ class SquareButtonComponent extends StatelessWidget {
         ),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Image(
               width: 60,

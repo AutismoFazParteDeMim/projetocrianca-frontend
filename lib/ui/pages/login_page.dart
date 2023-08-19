@@ -1,72 +1,77 @@
+// ignore_for_file: lines_longer_than_80_chars
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ionicons/ionicons.dart';
-import 'package:projeto_crianca/controllers/login_page_controller.dart';
-import 'package:projeto_crianca/ui/widgets/Buttons/button_component.dart';
-import 'package:projeto_crianca/ui/widgets/Buttons/facebook_button_component.dart';
-import 'package:projeto_crianca/ui/widgets/Buttons/google_button_component.dart';
-import 'package:projeto_crianca/ui/widgets/Buttons/link_button_component.dart';
-import 'package:projeto_crianca/ui/widgets/Inputs/pass_input_component.dart';
-import 'package:projeto_crianca/ui/widgets/Inputs/text_input_component.dart';
-import 'package:projeto_crianca/ui/widgets/appbar_component.dart';
-import 'package:projeto_crianca/ui/widgets/modal_component.dart';
-import 'package:projeto_crianca/ui/theme/theme_extensions.dart';
 
-class _ForgotPasswordModal extends StatelessWidget {
+import 'package:projeto_crianca/controllers/login_page_controller.dart';
+import 'package:projeto_crianca/mixins/validators_mixin.dart';
+import 'package:projeto_crianca/ui/theme/theme_extensions.dart';
+import 'package:projeto_crianca/ui/widgets/appbar_component.dart';
+import 'package:projeto_crianca/ui/widgets/buttons/button_component.dart';
+import 'package:projeto_crianca/ui/widgets/buttons/facebook_button_component.dart';
+import 'package:projeto_crianca/ui/widgets/buttons/google_button_component.dart';
+import 'package:projeto_crianca/ui/widgets/buttons/link_button_component.dart';
+import 'package:projeto_crianca/ui/widgets/inputs/pass_input_component.dart';
+import 'package:projeto_crianca/ui/widgets/inputs/text_input_component.dart';
+import 'package:projeto_crianca/ui/widgets/modal_component.dart';
+
+class _ForgotPasswordModal extends StatelessWidget with ValidatorsMixin {
   final LoginPageController controller = Get.find<LoginPageController>();
 
   @override
   Widget build(BuildContext context) {
-    final ThemeMetrics metrics = Theme.of(context).extension<ThemeMetrics>()!;
+    final metrics = Theme.of(context).extension<ThemeMetrics>()!;
 
     return Column(
       children: [
-        Expanded(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              const Text(
-                "Te enviaremos por email um link para a redefinição da sua senha.",
+        Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            const Text(
+              'Te enviaremos por email um link para a redefinição da sua senha.',
+            ),
+            SizedBox(height: metrics.gap),
+            Form(
+              key: controller.getForgotPassFormKey,
+              child: TextInputComponent(
+                controller: controller.getEmailFieldController,
+                placeholder: 'Digite seu email',
+                type: TextInputType.emailAddress,
+                autofillHints: const [AutofillHints.email],
+                action: TextInputAction.next,
+                icon: Ionicons.mail_outline,
+                validador: emailValidador,
               ),
-              SizedBox(height: metrics.gap),
-              Form(
-                key: controller.forgotPassFormKey,
-                child: TextInputComponent(
-                  controller: controller.emailFieldController,
-                  placeholder: "Digite seu email",
-                  type: TextInputType.emailAddress,
-                  autofillHints: const [AutofillHints.email],
-                  action: TextInputAction.next,
-                  icon: Ionicons.mail_outline,
-                  validador: (String value) => controller.emailValidador(value),
-                ),
-              ),
-            ],
-          ),
+            ),
+          ],
         ),
         SizedBox(height: metrics.gap),
-        ButtonComponent(
-          text: "Enviar email",
+        ButtonWidget(
+          text: 'Enviar email',
           icon: Ionicons.send_outline,
+          color: ButtonWidgetColor.secondary,
           reversed: true,
-          onPressed: () => {},
+          onPressed: () {
+            Get.back<void>();
+            controller.resetPassword();
+          },
         ),
       ],
     );
   }
 }
 
-class LoginPage extends GetView<LoginPageController> {
+class LoginPage extends GetView<LoginPageController> with ValidatorsMixin {
   const LoginPage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final ThemeMetrics metrics = Theme.of(context).extension<ThemeMetrics>()!;
+    final metrics = Theme.of(context).extension<ThemeMetrics>()!;
 
     return Scaffold(
       appBar: AppBarComponent(
-        title: "Login",
+        title: 'Login',
       ),
       body: Padding(
         padding: metrics.padding,
@@ -74,59 +79,55 @@ class LoginPage extends GetView<LoginPageController> {
           child: SingleChildScrollView(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Column(
                   children: [
-                    GoogleButtonComponent(
-                      text: "Entrar com o Google",
+                    GoogleButtonWidget(
+                      text: 'Entrar com o Google',
                       onPressed: () => controller.loginWithGoogle(),
                     ),
                     SizedBox(height: metrics.gap),
-                    FacebookButtonComponent(
-                      text: "Entrar com Facebook",
+                    FacebookButtonWidget(
+                      text: 'Entrar com Facebook',
                       onPressed: () => controller.loginWithFacebook(),
                     ),
                   ],
                 ),
                 SizedBox(height: metrics.gap),
-                const Text("ou"),
+                const Text('ou'),
                 SizedBox(height: metrics.gap),
                 Form(
-                  key: controller.formKey,
+                  key: controller.getFormKey,
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       TextInputComponent(
-                        controller: controller.emailFieldController,
-                        placeholder: "Digite seu email",
+                        controller: controller.getEmailFieldController,
+                        placeholder: 'Digite seu email',
                         type: TextInputType.emailAddress,
                         autofillHints: const [AutofillHints.email],
                         action: TextInputAction.next,
                         icon: Ionicons.mail_outline,
-                        validador: (String value) =>
-                            controller.emailValidador(value),
+                        validador: emailValidador,
                       ),
                       SizedBox(height: metrics.gap),
                       PassInputComponent(
-                        controller: controller.passFieldController,
+                        controller: controller.getPassFieldController,
                         autofillHints: const [AutofillHints.password],
-                        placeholder: "Digite sua senha",
+                        placeholder: 'Digite sua senha',
                         action: TextInputAction.done,
                         icon: Ionicons.lock_closed_outline,
-                        validador: (String value) =>
-                            controller.passValidador(value),
+                        validador: passwordValidador,
                       ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.end,
                         children: [
-                          LinkButtonComponent(
-                            text: "Esqueceu a senha?",
-                            onPressed: () => showDialog(
+                          LinkButtonWidget(
+                            text: 'Esqueceu a senha?',
+                            onPressed: () => showDialog<void>(
                               context: context,
                               builder: (BuildContext context) => ModalComponent(
-                                title: "Recuperação de senha",
+                                title: 'Recuperação de senha',
                                 child: _ForgotPasswordModal(),
                               ),
                             ),
@@ -137,12 +138,12 @@ class LoginPage extends GetView<LoginPageController> {
                   ),
                 ),
                 SizedBox(height: metrics.gap),
-                ButtonComponent(
-                  text: "Entrar",
+                ButtonWidget(
+                  text: 'Entrar',
                   icon: Ionicons.enter_outline,
                   onPressed: () => {
-                    if (controller.formKey.currentState!.validate())
-                      {controller.loginWithEmailAndPass()}
+                    if (controller.getFormKey.currentState!.validate())
+                      {controller.loginWithEmailAndPass()},
                   },
                 ),
               ],

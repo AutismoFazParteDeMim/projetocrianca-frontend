@@ -1,67 +1,33 @@
 import 'package:flutter/material.dart';
 import 'package:ionicons/ionicons.dart';
-import 'package:projeto_crianca/ui/theme/theme_extensions.dart';
+import 'package:projeto_crianca/mixins/audio_mixin.dart';
+import 'package:projeto_crianca/ui/widgets/Buttons/button_component.dart';
 
-class GitHubButtonComponent extends StatelessWidget {
-  final VoidCallback? onPressed;
-  final String text;
-
-  const GitHubButtonComponent({
-    super.key,
+class GitHubButtonWidget extends StatelessWidget with AudioMixin {
+  const GitHubButtonWidget({
     required this.text,
+    super.key,
     this.onPressed,
   });
 
+  final String text;
+  final VoidCallback? onPressed;
+
+  void _onTap() {
+    playButtonClickAudio();
+    onPressed?.call();
+  }
+
   @override
   Widget build(BuildContext context) {
-    final ThemeMetrics metrics = Theme.of(context).extension<ThemeMetrics>()!;
-
-    return Container(
-      height: 56,
-      decoration: BoxDecoration(
-        borderRadius: metrics.borderRadius,
-        boxShadow: const [
-          BoxShadow(
-            blurRadius: 0,
-            color: Color.fromARGB(255, 32, 32, 32),
-            offset: Offset(0, 4),
-          )
-        ],
-      ),
-      child: RawMaterialButton(
-        onPressed: onPressed,
-        fillColor: const Color(0xFF313131),
-        padding: metrics.padding,
-        elevation: 0,
-        highlightElevation: 0,
-        hoverElevation: 0,
-        focusElevation: 0,
-        shape: RoundedRectangleBorder(borderRadius: metrics.borderRadius),
-        textStyle: const TextStyle(
-          color: Colors.white,
-          fontSize: 18,
-          fontWeight: FontWeight.bold,
-        ),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Expanded(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  const Icon(Ionicons.logo_github),
-                  SizedBox(width: metrics.gap),
-                  Text(text),
-                ],
-              ),
-            ),
-            SizedBox(width: metrics.gap),
-            const Icon(Ionicons.arrow_forward_outline),
-          ],
-        ),
-      ),
+    return ButtonWidget(
+      icon: Ionicons.logo_github,
+      text: text,
+      full: true,
+      backgroundColor: const Color(0xFF313131),
+      borderColor: const Color(0xFF202020),
+      textColor: Colors.white,
+      onPressed: _onTap,
     );
   }
 }

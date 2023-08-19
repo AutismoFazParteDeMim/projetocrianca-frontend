@@ -3,10 +3,6 @@ import 'package:flame/flame.dart';
 import 'package:flutter/material.dart';
 
 class HintContainerComponent extends RectangleComponent {
-  final Iterable<Component> data;
-  final String image;
-  final Vector2 imageSize;
-
   HintContainerComponent({
     required this.data,
     required this.image,
@@ -14,6 +10,10 @@ class HintContainerComponent extends RectangleComponent {
   }) {
     paint = Paint()..color = Colors.transparent;
   }
+
+  final Iterable<Component> data;
+  final String image;
+  final Vector2 imageSize;
 
   @override
   Future<void> onLoad() async {
@@ -29,6 +29,6 @@ class HintContainerComponent extends RectangleComponent {
       ),
     );
 
-    addAll(data);
+    await addAll(data);
   }
 }

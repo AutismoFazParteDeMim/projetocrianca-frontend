@@ -5,6 +5,8 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:projeto_crianca/ui/theme/theme_extensions.dart';
 
 class AppTheme {
+  AppTheme({required this.isDark});
+
   final bool isDark;
 
   static const _lightColors = ThemeColors(
@@ -18,7 +20,7 @@ class AppTheme {
     errorShadow: Color(0xFFB92013),
     onError: Color(0xFFFFFFFF),
     success: Color(0xFF25D366),
-    sucessShadow: Color(0xFF1EAE54),
+    successShadow: Color(0xFF1EAE54),
     onSuccess: Color(0xFFFFFFFF),
     warning: Color(0xFFFCC936),
     warningShadow: Color(0xFFC99603),
@@ -38,7 +40,7 @@ class AppTheme {
     errorShadow: Color(0xFFB92013),
     onError: Color(0xFFFFFFFF),
     success: Color(0xFF25D366),
-    sucessShadow: Color(0xFF1EAE54),
+    successShadow: Color(0xFF1EAE54),
     onSuccess: Color(0xFFFFFFFF),
     warning: Color(0xFFFCC936),
     warningShadow: Color(0xFFC99603),
@@ -46,8 +48,6 @@ class AppTheme {
     text: Color(0xFFFFFFFF),
     background: Color(0xFF3E4651),
   );
-
-  AppTheme({required this.isDark});
 
   late final _theme = ThemeData(
     useMaterial3: false,
@@ -58,13 +58,13 @@ class AppTheme {
         headerHeight: Platform.isIOS ? 120 : 100,
         borderRadius: BorderRadius.circular(16),
       ),
-      isDark ? _darkColors : _lightColors,
+      if (isDark) _darkColors else _lightColors,
     ],
   );
 
   ThemeData getTheme() {
-    final ThemeMetrics metrics = _theme.extension<ThemeMetrics>()!;
-    final ThemeColors colors = _theme.extension<ThemeColors>()!;
+    final metrics = _theme.extension<ThemeMetrics>()!;
+    final colors = _theme.extension<ThemeColors>()!;
 
     return _theme.copyWith(
       colorScheme: ColorScheme.fromSeed(

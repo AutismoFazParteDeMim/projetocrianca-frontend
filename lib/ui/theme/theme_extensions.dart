@@ -4,17 +4,17 @@ import 'package:flutter/material.dart';
 
 @immutable
 class ThemeMetrics extends ThemeExtension<ThemeMetrics> {
-  final EdgeInsets padding;
-  final double gap;
-  final double headerHeight;
-  final BorderRadius borderRadius;
-
   const ThemeMetrics({
     required this.padding,
     required this.gap,
     required this.headerHeight,
     required this.borderRadius,
   });
+
+  final EdgeInsets padding;
+  final double gap;
+  final double headerHeight;
+  final BorderRadius borderRadius;
 
   @override
   ThemeMetrics copyWith({
@@ -46,30 +46,12 @@ class ThemeMetrics extends ThemeExtension<ThemeMetrics> {
   }
 
   double? toDouble(EdgeInsets? padding) {
-    return padding?.top.toDouble();
+    return padding?.top;
   }
 }
 
 @immutable
 class ThemeColors extends ThemeExtension<ThemeColors> {
-  final Color primary;
-  final Color primaryShadow;
-  final Color onPrimary;
-  final Color secondary;
-  final Color secondaryShadow;
-  final Color onSecondary;
-  final Color error;
-  final Color errorShadow;
-  final Color onError;
-  final Color success;
-  final Color sucessShadow;
-  final Color onSuccess;
-  final Color warning;
-  final Color warningShadow;
-  final Color onWarning;
-  final Color text;
-  final Color background;
-
   const ThemeColors({
     required this.primary,
     required this.primaryShadow,
@@ -81,7 +63,7 @@ class ThemeColors extends ThemeExtension<ThemeColors> {
     required this.errorShadow,
     required this.onError,
     required this.success,
-    required this.sucessShadow,
+    required this.successShadow,
     required this.onSuccess,
     required this.warning,
     required this.warningShadow,
@@ -102,7 +84,7 @@ class ThemeColors extends ThemeExtension<ThemeColors> {
     Color? errorShadow,
     Color? onError,
     Color? success,
-    Color? sucessShadow,
+    Color? successShadow,
     Color? onSuccess,
     Color? warning,
     Color? warningShadow,
@@ -121,7 +103,7 @@ class ThemeColors extends ThemeExtension<ThemeColors> {
       errorShadow: errorShadow ?? this.errorShadow,
       onError: onError ?? this.onError,
       success: success ?? this.success,
-      sucessShadow: sucessShadow ?? this.sucessShadow,
+      successShadow: successShadow ?? this.successShadow,
       onSuccess: onSuccess ?? this.onSuccess,
       warning: warning ?? this.warning,
       warningShadow: warningShadow ?? this.warningShadow,
@@ -130,6 +112,24 @@ class ThemeColors extends ThemeExtension<ThemeColors> {
       background: background ?? this.background,
     );
   }
+
+  final Color primary;
+  final Color primaryShadow;
+  final Color onPrimary;
+  final Color secondary;
+  final Color secondaryShadow;
+  final Color onSecondary;
+  final Color error;
+  final Color errorShadow;
+  final Color onError;
+  final Color success;
+  final Color successShadow;
+  final Color onSuccess;
+  final Color warning;
+  final Color warningShadow;
+  final Color onWarning;
+  final Color text;
+  final Color background;
 
   @override
   ThemeColors lerp(covariant ThemeExtension<ThemeColors>? other, double t) {
@@ -148,7 +148,7 @@ class ThemeColors extends ThemeExtension<ThemeColors> {
       errorShadow: Color.lerp(errorShadow, other.errorShadow, t)!,
       onError: Color.lerp(onError, other.onError, t)!,
       success: Color.lerp(success, other.success, t)!,
-      sucessShadow: Color.lerp(sucessShadow, other.sucessShadow, t)!,
+      successShadow: Color.lerp(successShadow, other.successShadow, t)!,
       onSuccess: Color.lerp(onSuccess, other.onSuccess, t)!,
       warning: Color.lerp(warning, other.warning, t)!,
       warningShadow: Color.lerp(warningShadow, other.warningShadow, t)!,

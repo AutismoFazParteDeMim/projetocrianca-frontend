@@ -1,111 +1,122 @@
+// ignore_for_file: no_default_cases
+
 import 'package:flutter/material.dart';
+import 'package:projeto_crianca/mixins/audio_mixin.dart';
 import 'package:projeto_crianca/ui/theme/theme_extensions.dart';
 
-enum ButtonComponentType {
+enum ButtonWidgetColor {
   primary,
-  secoundary,
+  secondary,
   danger,
   warning,
   success,
 }
 
-class ButtonComponent extends StatelessWidget {
-  final VoidCallback? onPressed;
-  final String text;
-  final IconData? icon;
-  final ButtonComponentType? type;
-  final bool? reversed;
-  final bool? full;
-
-  const ButtonComponent({
-    super.key,
+class ButtonWidget extends StatelessWidget with AudioMixin {
+  const ButtonWidget({
     required this.text,
+    super.key,
     this.onPressed,
-    this.type,
+    this.color,
     this.icon,
     this.reversed,
     this.full,
+    this.isLoading,
+    this.backgroundColor,
+    this.borderColor,
+    this.textColor,
   });
+
+  final String text;
+  final IconData? icon;
+  final ButtonWidgetColor? color;
+  final VoidCallback? onPressed;
+  final bool? reversed;
+  final bool? full;
+  final bool? isLoading;
+  final Color? backgroundColor;
+  final Color? borderColor;
+  final Color? textColor;
+
+  void _onTap() {
+    playButtonClickAudio();
+    onPressed?.call();
+  }
 
   @override
   Widget build(BuildContext context) {
-    final ThemeMetrics metrics = Theme.of(context).extension<ThemeMetrics>()!;
-    final ThemeColors colors = Theme.of(context).extension<ThemeColors>()!;
+    final metrics = Theme.of(context).extension<ThemeMetrics>()!;
+    final colors = Theme.of(context).extension<ThemeColors>()!;
 
-    Color backgroundColor = colors.primary;
-    Color borderColor = colors.primaryShadow;
-    Color textColor = colors.onPrimary;
+    var backgroundcolor = colors.primary;
+    var bordercolor = colors.primaryShadow;
+    var textcolor = colors.onPrimary;
 
-    switch (type) {
-      case ButtonComponentType.primary:
-        backgroundColor = colors.primary;
-        borderColor = colors.primaryShadow;
-        textColor = colors.onPrimary;
-        break;
-      case ButtonComponentType.secoundary:
-        backgroundColor = colors.secondary;
-        borderColor = colors.secondaryShadow;
-        textColor = colors.onSecondary;
-        break;
-      case ButtonComponentType.danger:
-        backgroundColor = colors.error;
-        borderColor = colors.errorShadow;
-        textColor = colors.onPrimary;
-        break;
-      case ButtonComponentType.warning:
-        backgroundColor = colors.warning;
-        borderColor = colors.warningShadow;
-        textColor = colors.onPrimary;
-        break;
-      case ButtonComponentType.success:
-        backgroundColor = colors.success;
-        borderColor = colors.sucessShadow;
-        textColor = colors.onPrimary;
-        break;
+    switch (color) {
+      case ButtonWidgetColor.primary:
+        backgroundcolor = colors.primary;
+        bordercolor = colors.primaryShadow;
+        textcolor = colors.onPrimary;
+      case ButtonWidgetColor.secondary:
+        backgroundcolor = colors.secondary;
+        bordercolor = colors.secondaryShadow;
+        textcolor = colors.onSecondary;
+      case ButtonWidgetColor.danger:
+        backgroundcolor = colors.error;
+        bordercolor = colors.errorShadow;
+        textcolor = colors.onPrimary;
+      case ButtonWidgetColor.warning:
+        backgroundcolor = colors.warning;
+        bordercolor = colors.warningShadow;
+        textcolor = colors.onPrimary;
+      case ButtonWidgetColor.success:
+        backgroundcolor = colors.success;
+        bordercolor = colors.successShadow;
+        textcolor = colors.onPrimary;
       default:
-        backgroundColor = colors.primary;
-        borderColor = colors.primaryShadow;
-        textColor = colors.onPrimary;
+        backgroundcolor = backgroundColor ?? colors.primary;
+        bordercolor = borderColor ?? colors.primaryShadow;
+        textcolor = textColor ?? colors.onPrimary;
     }
 
-    final List<Widget> content = [
-      if (icon != null) Icon(icon),
+    final content = <Widget>[
+      if (icon != null) Icon(icon, color: textcolor),
       if (icon != null) SizedBox(width: metrics.gap),
-      Text(text),
+      Text(
+        text,
+        style: TextStyle(
+          color: textcolor,
+          fontSize: 16,
+          fontWeight: FontWeight.bold,
+        ),
+      ),
     ];
 
     return Container(
-      width: full == true ? null : 250,
-      height: 56,
       decoration: BoxDecoration(
+        color: backgroundcolor,
         borderRadius: metrics.borderRadius,
         boxShadow: [
           BoxShadow(
-            blurRadius: 0,
-            color: borderColor,
+            color: bordercolor,
             offset: const Offset(0, 4),
-          )
+          ),
         ],
       ),
-      child: RawMaterialButton(
-        onPressed: onPressed,
-        fillColor: backgroundColor,
-        padding: metrics.padding,
-        elevation: 0,
-        highlightElevation: 0,
-        hoverElevation: 0,
-        focusElevation: 0,
-        shape: RoundedRectangleBorder(borderRadius: metrics.borderRadius),
-        textStyle: TextStyle(
-          color: textColor,
-          fontSize: 18,
-          fontWeight: FontWeight.bold,
-        ),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          verticalDirection: VerticalDirection.up,
-          children: reversed == true ? content.reversed.toList() : content,
+      child: Material(
+        type: MaterialType.transparency,
+        child: InkWell(
+          onTap: _onTap,
+          splashColor: textcolor.withOpacity(0.1),
+          borderRadius: metrics.borderRadius,
+          child: Ink(
+            width: full == true ? null : 200,
+            padding: metrics.padding,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: reversed == true ? content.reversed.toList() : content,
+            ),
+          ),
         ),
       ),
     );

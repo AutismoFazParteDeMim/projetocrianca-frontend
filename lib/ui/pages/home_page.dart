@@ -1,19 +1,28 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+
 import 'package:projeto_crianca/controllers/home_page_controller.dart';
 import 'package:projeto_crianca/routes/app_routes.dart';
-import 'package:projeto_crianca/ui/widgets/Buttons/square_button_component.dart';
-import 'package:projeto_crianca/ui/widgets/svg_component.dart';
+import 'package:projeto_crianca/services/auth_service.dart';
 import 'package:projeto_crianca/ui/theme/theme_extensions.dart';
+import 'package:projeto_crianca/ui/widgets/buttons/square_button_component.dart';
+import 'package:projeto_crianca/ui/widgets/svg_component.dart';
 
-class _CustomAppBar extends StatelessWidget with PreferredSizeWidget {
+class _CustomAppBar extends PreferredSize {
+  _CustomAppBar()
+      : super(
+          child: Container(),
+          preferredSize: const Size.fromHeight(100),
+        );
+
   final HomePageController controller = Get.find<HomePageController>();
+  final AuthService authService = Get.find<AuthService>();
 
   @override
   Widget build(BuildContext context) {
-    final ThemeData theme = Theme.of(context);
-    final ThemeMetrics metrics = theme.extension<ThemeMetrics>()!;
-    final ThemeColors colors = theme.extension<ThemeColors>()!;
+    final theme = Theme.of(context);
+    final metrics = theme.extension<ThemeMetrics>()!;
+    final colors = theme.extension<ThemeColors>()!;
 
     return Container(
       height: metrics.headerHeight * 2,
@@ -21,7 +30,6 @@ class _CustomAppBar extends StatelessWidget with PreferredSizeWidget {
       alignment: Alignment.bottomCenter,
       padding: metrics.padding,
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.end,
         children: [
           ClipRRect(
@@ -29,12 +37,12 @@ class _CustomAppBar extends StatelessWidget with PreferredSizeWidget {
             child: ColoredBox(
               color: colors.secondary,
               child: InkWell(
-                onTap: () => Get.toNamed(AppRoutes.profile),
+                onTap: () => Get.toNamed<void>(AppRoutes.avatar),
                 child: Obx(
                   () => SVGComponent(
                     width: 60,
                     height: 60,
-                    rawSvg: controller.getCurrentChild?.photoURL,
+                    rawSvg: authService.getCurrentChild?.photoURL,
                   ),
                 ),
               ),
@@ -46,23 +54,19 @@ class _CustomAppBar extends StatelessWidget with PreferredSizeWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Obx(
-                () => controller.getCurrentChild?.name != null
-                    ? Text(
-                        controller.getCurrentChild?.sex == "f" ||
-                                controller.getCurrentChild?.sex == "female"
-                            ? "Bem vinda"
-                            : "Bem vindo",
-                        style: theme.textTheme.titleSmall,
-                      )
-                    : const CircularProgressIndicator(),
+                () => Text(
+                  controller.getCurrentChild?.sex == 'f' ||
+                          controller.getCurrentChild?.sex == 'female'
+                      ? 'Bem vinda'
+                      : 'Bem vindo',
+                  style: theme.textTheme.titleSmall,
+                ),
               ),
               Obx(
-                () => controller.getCurrentChild?.name != null
-                    ? Text(
-                        "${controller.getCurrentChild?.name}!",
-                        style: theme.textTheme.titleLarge,
-                      )
-                    : const CircularProgressIndicator(),
+                () => Text(
+                  '${controller.getCurrentChild?.name}',
+                  style: theme.textTheme.titleLarge,
+                ),
               ),
             ],
           ),
@@ -70,9 +74,6 @@ class _CustomAppBar extends StatelessWidget with PreferredSizeWidget {
       ),
     );
   }
-
-  @override
-  Size get preferredSize => const Size.fromHeight(100);
 }
 
 class HomePage extends GetView<HomePageController> {
@@ -80,7 +81,7 @@ class HomePage extends GetView<HomePageController> {
 
   @override
   Widget build(BuildContext context) {
-    final ThemeMetrics metrics = Theme.of(context).extension<ThemeMetrics>()!;
+    final metrics = Theme.of(context).extension<ThemeMetrics>()!;
 
     return Scaffold(
       appBar: _CustomAppBar(),
@@ -92,25 +93,25 @@ class HomePage extends GetView<HomePageController> {
           shrinkWrap: true,
           padding: metrics.padding,
           children: [
-            SquareButtonComponent(
-              text: "Atividades",
-              image: const AssetImage("assets/icons/activities-icon.png"),
-              onPressed: () => Get.toNamed(AppRoutes.activities),
+            SquareButtonWidget(
+              text: 'Atividades',
+              image: const AssetImage('assets/icons/activities-icon.png'),
+              onPressed: () => Get.toNamed<void>(AppRoutes.activities),
             ),
-            SquareButtonComponent(
-              text: "Jogos",
-              image: const AssetImage("assets/icons/games-icon.png"),
-              onPressed: () => Get.toNamed(AppRoutes.games),
+            SquareButtonWidget(
+              text: 'Jogos',
+              image: const AssetImage('assets/icons/games-icon.png'),
+              onPressed: () => Get.toNamed<void>(AppRoutes.games),
             ),
-            SquareButtonComponent(
-              text: "Localizar",
-              image: const AssetImage("assets/icons/local-icon.png"),
-              onPressed: () => Get.toNamed(AppRoutes.localize),
+            SquareButtonWidget(
+              text: 'Localizar',
+              image: const AssetImage('assets/icons/local-icon.png'),
+              onPressed: () => Get.toNamed<void>(AppRoutes.localize),
             ),
-            SquareButtonComponent(
-              text: "Configurações",
-              image: const AssetImage("assets/icons/settings-icon.png"),
-              onPressed: () => Get.toNamed(AppRoutes.settings),
+            SquareButtonWidget(
+              text: 'Configurações',
+              image: const AssetImage('assets/icons/settings-icon.png'),
+              onPressed: () => Get.toNamed<void>(AppRoutes.settings),
             ),
           ],
         ),

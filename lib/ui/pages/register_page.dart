@@ -1,16 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ionicons/ionicons.dart';
+
 import 'package:projeto_crianca/controllers/register_page_controller.dart';
-import 'package:projeto_crianca/ui/widgets/Buttons/button_component.dart';
-import 'package:projeto_crianca/ui/widgets/Buttons/facebook_button_component.dart';
-import 'package:projeto_crianca/ui/widgets/Buttons/google_button_component.dart';
-import 'package:projeto_crianca/ui/widgets/Inputs/pass_input_component.dart';
-import 'package:projeto_crianca/ui/widgets/Inputs/text_input_component.dart';
-import 'package:projeto_crianca/ui/widgets/appbar_component.dart';
-import 'package:projeto_crianca/ui/widgets/image_checkbox_component.dart';
-import 'package:projeto_crianca/ui/widgets/modal_component.dart';
+import 'package:projeto_crianca/mixins/validators_mixin.dart';
 import 'package:projeto_crianca/ui/theme/theme_extensions.dart';
+import 'package:projeto_crianca/ui/widgets/appbar_component.dart';
+import 'package:projeto_crianca/ui/widgets/buttons/button_component.dart';
+import 'package:projeto_crianca/ui/widgets/buttons/facebook_button_component.dart';
+import 'package:projeto_crianca/ui/widgets/buttons/google_button_component.dart';
+import 'package:projeto_crianca/ui/widgets/image_checkbox_component.dart';
+import 'package:projeto_crianca/ui/widgets/inputs/pass_input_component.dart';
+import 'package:projeto_crianca/ui/widgets/inputs/text_input_component.dart';
+import 'package:projeto_crianca/ui/widgets/modal_component.dart';
 
 enum _LoginType {
   google,
@@ -18,79 +20,76 @@ enum _LoginType {
   emailAndPass,
 }
 
-class _Modal extends StatelessWidget {
+class _Modal extends StatelessWidget with ValidatorsMixin {
+  _Modal({required this.loginType});
+
   final _LoginType loginType;
   final RegisterPageController controller = Get.find<RegisterPageController>();
 
-  _Modal({required this.loginType});
-
   @override
   Widget build(BuildContext context) {
-    final ThemeMetrics metrics = Theme.of(context).extension<ThemeMetrics>()!;
+    final metrics = Theme.of(context).extension<ThemeMetrics>()!;
 
     return Column(
       children: [
-        Expanded(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Row(
-                children: const [
-                  Text("Qual o nome da criança?"),
-                ],
+        Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            const Row(
+              children: [
+                Text('Qual o nome da criança?'),
+              ],
+            ),
+            SizedBox(height: metrics.gap),
+            Form(
+              key: controller.getChildFormKey,
+              child: TextInputComponent(
+                placeholder: 'Digite o nome da criança',
+                icon: Ionicons.person_outline,
+                controller: controller.getChildFieldController,
+                action: TextInputAction.done,
+                validador: nameValidador,
               ),
-              SizedBox(height: metrics.gap),
-              Form(
-                key: controller.childFormKey,
-                child: TextInputComponent(
-                  placeholder: "Digite o nome da criança",
-                  icon: Ionicons.person_outline,
-                  controller: controller.childFieldController,
-                  action: TextInputAction.done,
-                  validador: (String value) => controller.nameValidador(value),
+            ),
+            SizedBox(height: metrics.gap),
+            const Row(
+              children: [
+                Text('Qual o sexo da criança?'),
+              ],
+            ),
+            SizedBox(height: metrics.gap),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Obx(
+                  () => ImageCheckboxComponent(
+                    isChecked: controller.getChildSex == 'female' && true,
+                    image: const AssetImage('assets/icons/avatarF.png'),
+                    text: 'Feminino',
+                    onChange: ({required bool isChecked}) =>
+                        controller.setChildSex = 'female',
+                  ),
                 ),
-              ),
-              SizedBox(height: metrics.gap),
-              Row(
-                children: const [
-                  Text("Qual o sexo da criança?"),
-                ],
-              ),
-              SizedBox(height: metrics.gap),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Obx(
-                    () => ImageCheckboxComponent(
-                      isChecked: controller.childSex == "female" ? true : false,
-                      image: const AssetImage("assets/icons/avatarF.png"),
-                      text: "Feminino",
-                      onChange: (bool value) =>
-                          controller.setChildSex = "female",
-                    ),
+                SizedBox(width: metrics.gap * 2),
+                Obx(
+                  () => ImageCheckboxComponent(
+                    isChecked: controller.getChildSex == 'male' && true,
+                    image: const AssetImage('assets/icons/avatarM.png'),
+                    text: 'Masculino',
+                    onChange: ({required bool isChecked}) =>
+                        controller.setChildSex = 'male',
                   ),
-                  SizedBox(width: metrics.gap * 2),
-                  Obx(
-                    () => ImageCheckboxComponent(
-                      isChecked: controller.childSex == "male" ? true : false,
-                      image: const AssetImage("assets/icons/avatarM.png"),
-                      text: "Masculino",
-                      onChange: (bool value) => controller.setChildSex = "male",
-                    ),
-                  ),
-                ],
-              )
-            ],
-          ),
+                ),
+              ],
+            ),
+          ],
         ),
         SizedBox(height: metrics.gap),
-        ButtonComponent(
-          text: "Finalizar",
+        ButtonWidget(
+          text: 'Finalizar',
           icon: Ionicons.checkmark_circle_outline,
           onPressed: () {
-            if (controller.childFormKey.currentState!.validate()) {
+            if (controller.getChildFormKey.currentState!.validate()) {
               if (loginType == _LoginType.emailAndPass) {
                 controller.registerWithEmailAndPass();
               } else if (loginType == _LoginType.google) {
@@ -106,16 +105,17 @@ class _Modal extends StatelessWidget {
   }
 }
 
-class RegisterPage extends GetView<RegisterPageController> {
+class RegisterPage extends GetView<RegisterPageController>
+    with ValidatorsMixin {
   const RegisterPage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final ThemeMetrics metrics = Theme.of(context).extension<ThemeMetrics>()!;
+    final metrics = Theme.of(context).extension<ThemeMetrics>()!;
 
     return Scaffold(
       appBar: AppBarComponent(
-        title: "Cadastre-se",
+        title: 'Cadastre-se',
       ),
       body: Padding(
         padding: metrics.padding,
@@ -123,17 +123,15 @@ class RegisterPage extends GetView<RegisterPageController> {
           child: SingleChildScrollView(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Column(
                   children: [
-                    GoogleButtonComponent(
-                      text: "Cadastrar com o Google",
-                      onPressed: () => showDialog(
+                    GoogleButtonWidget(
+                      text: 'Cadastrar com o Google',
+                      onPressed: () => showDialog<void>(
                         context: context,
                         builder: (BuildContext context) => ModalComponent(
-                          title: "Cadastro da criança",
-                          size: ModalComponentSize.medium,
+                          title: 'Cadastro da criança',
                           child: _Modal(
                             loginType: _LoginType.google,
                           ),
@@ -141,13 +139,12 @@ class RegisterPage extends GetView<RegisterPageController> {
                       ),
                     ),
                     SizedBox(height: metrics.gap),
-                    FacebookButtonComponent(
-                      text: "Cadastrar com Facebook",
-                      onPressed: () => showDialog(
+                    FacebookButtonWidget(
+                      text: 'Cadastrar com Facebook',
+                      onPressed: () => showDialog<void>(
                         context: context,
                         builder: (BuildContext context) => ModalComponent(
-                          title: "Cadastro da criança",
-                          size: ModalComponentSize.medium,
+                          title: 'Cadastro da criança',
                           child: _Modal(
                             loginType: _LoginType.facebook,
                           ),
@@ -157,68 +154,65 @@ class RegisterPage extends GetView<RegisterPageController> {
                   ],
                 ),
                 SizedBox(height: metrics.gap),
-                const Text("ou"),
+                const Text('ou'),
                 SizedBox(height: metrics.gap),
                 Form(
-                  key: controller.formKey,
+                  key: controller.getFormKey,
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       TextInputComponent(
-                        controller: controller.nameFieldController,
-                        placeholder: "Digite seu nome",
+                        controller: controller.getNameFieldController,
+                        placeholder: 'Digite seu nome',
                         icon: Ionicons.person_outline,
                         action: TextInputAction.next,
                         autofillHints: const [AutofillHints.name],
-                        validador: (String value) =>
-                            controller.nameValidador(value),
+                        validador: nameValidador,
                       ),
                       SizedBox(height: metrics.gap),
                       TextInputComponent(
-                        controller: controller.emailFieldController,
-                        placeholder: "Digite seu email",
+                        controller: controller.getEmailFieldController,
+                        placeholder: 'Digite seu email',
                         icon: Ionicons.mail_outline,
                         type: TextInputType.emailAddress,
                         action: TextInputAction.next,
                         autofillHints: const [AutofillHints.email],
-                        validador: (String value) =>
-                            controller.emailValidador(value),
+                        validador: emailValidador,
                       ),
                       SizedBox(height: metrics.gap),
                       PassInputComponent(
-                        controller: controller.passFieldController,
-                        placeholder: "Digite uma senha",
+                        controller: controller.getPassFieldController,
+                        placeholder: 'Digite uma senha',
                         icon: Ionicons.lock_closed_outline,
                         action: TextInputAction.next,
                         autofillHints: const [AutofillHints.newPassword],
-                        validador: (String value) =>
-                            controller.passValidador(value),
+                        validador: passwordValidador,
                       ),
                       SizedBox(height: metrics.gap),
                       PassInputComponent(
-                        placeholder: "Digite novamente a senha",
+                        placeholder: 'Digite novamente a senha',
                         icon: Ionicons.lock_closed_outline,
                         action: TextInputAction.done,
                         autofillHints: const [AutofillHints.newPassword],
-                        validador: (String value) =>
-                            controller.confirmPassValidador(value),
+                        validador: (String? value) => equalValidador(
+                          value,
+                          controller.getPassFieldController.text,
+                        ),
                       ),
                     ],
                   ),
                 ),
                 SizedBox(height: metrics.gap),
-                ButtonComponent(
-                  text: "Próximo",
+                ButtonWidget(
+                  text: 'Próximo',
                   icon: Ionicons.arrow_forward_outline,
                   reversed: true,
                   onPressed: () => {
-                    if (controller.formKey.currentState!.validate())
-                      showDialog(
+                    if (controller.getFormKey.currentState!.validate())
+                      showDialog<void>(
                         context: context,
                         builder: (BuildContext context) => ModalComponent(
-                          title: "Cadastro da criança",
-                          size: ModalComponentSize.medium,
+                          title: 'Cadastro da criança',
                           child: _Modal(
                             loginType: _LoginType.emailAndPass,
                           ),

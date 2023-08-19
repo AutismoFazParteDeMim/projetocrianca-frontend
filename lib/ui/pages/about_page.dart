@@ -1,25 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:projeto_crianca/controllers/about_page_controller.dart';
-import 'package:projeto_crianca/ui/widgets/Buttons/github_button_component.dart';
-import 'package:projeto_crianca/ui/widgets/appbar_component.dart';
 import 'package:projeto_crianca/ui/theme/theme_extensions.dart';
+import 'package:projeto_crianca/ui/widgets/appbar_component.dart';
+import 'package:projeto_crianca/ui/widgets/buttons/github_button_component.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class _ContributorComponent extends StatelessWidget {
-  final String user;
-  final String photoUrl;
-  final String profileUrl;
-
   const _ContributorComponent({
     required this.user,
     required this.photoUrl,
     required this.profileUrl,
   });
 
+  final String user;
+  final String photoUrl;
+  final String profileUrl;
+
   @override
   Widget build(BuildContext context) {
-    final ThemeMetrics metrics = Theme.of(context).extension<ThemeMetrics>()!;
+    final metrics = Theme.of(context).extension<ThemeMetrics>()!;
 
     return SizedBox(
       width: 116,
@@ -29,7 +29,6 @@ class _ContributorComponent extends StatelessWidget {
         borderRadius: BorderRadius.circular(16),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             ClipRRect(
               borderRadius: BorderRadius.circular(50),
@@ -56,12 +55,12 @@ class AboutPage extends GetView<AboutPageController> {
 
   @override
   Widget build(BuildContext context) {
-    final ThemeData theme = Theme.of(context);
-    final ThemeMetrics metrics = theme.extension<ThemeMetrics>()!;
+    final theme = Theme.of(context);
+    final metrics = theme.extension<ThemeMetrics>()!;
 
     return Scaffold(
       appBar: AppBarComponent(
-        title: "Sobre",
+        title: 'Sobre',
       ),
       body: Padding(
         padding: metrics.padding,
@@ -75,7 +74,7 @@ class AboutPage extends GetView<AboutPageController> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    "Desenvolvedores",
+                    'Desenvolvedores',
                     style: theme.textTheme.titleMedium,
                   ),
                   SizedBox(height: metrics.gap),
@@ -84,7 +83,7 @@ class AboutPage extends GetView<AboutPageController> {
                       scrollDirection: Axis.horizontal,
                       child: Row(
                         children: [
-                          for (var contributor in controller.getContributors!)
+                          for (final contributor in controller.getContributors!)
                             _ContributorComponent(
                               user: contributor!.user!,
                               photoUrl: contributor.photoUrl!,
@@ -97,11 +96,11 @@ class AboutPage extends GetView<AboutPageController> {
                 ],
               ),
             ),
-            GitHubButtonComponent(
-              text: "GitHub",
+            GitHubButtonWidget(
+              text: 'GitHub',
               onPressed: () => launchUrl(
                 Uri.parse(
-                  "https://github.com/AutismoFazParteDeMim/ProjetoCrianca",
+                  'https://github.com/AutismoFazParteDeMim/ProjetoCrianca',
                 ),
               ),
             ),
@@ -111,6 +110,10 @@ class AboutPage extends GetView<AboutPageController> {
     );
   }
 }
+
+const creditsText = '''
+Sound from zapsplat.com
+''';
 
 const aboutText = '''
 A idealizadora do projeto Rose, uma mãe dedicada e uma cidadã exemplar, criou uma apostila para lidar com as dificuldades que ela mesma tinha em criar sua filha, e, além disso, fez cópias para ajudar outras mães que enfrentam a mesma dificuldade.

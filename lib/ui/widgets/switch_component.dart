@@ -2,24 +2,24 @@ import 'package:flutter/material.dart';
 import 'package:projeto_crianca/ui/theme/theme_extensions.dart';
 
 class SwitchComponent extends StatelessWidget {
-  final Function(bool value) onChanged;
-  final bool? isChecked;
-
   const SwitchComponent({
-    super.key,
     required this.onChanged,
+    super.key,
     this.isChecked,
   });
 
+  final void Function({required bool isChecked}) onChanged;
+  final bool? isChecked;
+
   @override
   Widget build(BuildContext context) {
-    final ThemeColors colors = Theme.of(context).extension<ThemeColors>()!;
+    final colors = Theme.of(context).extension<ThemeColors>()!;
 
     return Switch(
       activeColor: colors.primary,
       activeTrackColor: colors.primary,
-      value: isChecked == true,
-      onChanged: onChanged,
+      value: isChecked == true && true,
+      onChanged: (bool value) => onChanged(isChecked: value),
     );
   }
 }

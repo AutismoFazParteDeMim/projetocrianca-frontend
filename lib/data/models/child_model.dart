@@ -1,10 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class ChildModel {
-  String? name;
-  String? sex;
-  String? photoURL;
-
   ChildModel({
     this.name,
     this.sex,
@@ -14,8 +10,12 @@ class ChildModel {
   ChildModel.fromDocumentSnapshot({
     required DocumentSnapshot documentSnapshot,
   }) {
-    name = documentSnapshot["childName"];
-    sex = documentSnapshot["childSex"];
-    photoURL = documentSnapshot["childPic"];
+    name = documentSnapshot['childName'] as String?;
+    sex = documentSnapshot['childSex'] as String?;
+    photoURL = documentSnapshot['childPic'] as String?;
   }
+
+  String? name;
+  String? sex;
+  String? photoURL;
 }
