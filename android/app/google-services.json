@@ -1,46 +1,38 @@
 {
   "project_info": {
-    "project_number": "654760512004",
-    "firebase_url": "https://projetocrianca-ae4a3-default-rtdb.firebaseio.com",
-    "project_id": "projetocrianca-ae4a3",
-    "storage_bucket": "projetocrianca-ae4a3.appspot.com"
+    "project_number": "156087953461",
+    "firebase_url": "https://projeto-crianca-default-rtdb.firebaseio.com",
+    "project_id": "projeto-crianca",
+    "storage_bucket": "projeto-crianca.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:654760512004:android:4cd006bb569f71ff568351",
+        "mobilesdk_app_id": "1:156087953461:android:2f802e1c0719026bb9297c",
         "android_client_info": {
           "package_name": "br.com.unisociesc.projeto_crianca"
         }
       },
       "oauth_client": [
         {
-          "client_id": "654760512004-0ho9i4tv4geeokunf5mlvvvl9brc63bs.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "br.com.unisociesc.projeto_crianca",
-            "certificate_hash": "b70382ce7e16e403da9b9144861068e4d29e6139"
-          }
-        },
-        {
-          "client_id": "654760512004-a2vl4fki9bd11t6mo5u1hmvirrs0igjm.apps.googleusercontent.com",
+          "client_id": "156087953461-u43kgs4n2esf37m88fq8tjkvlvoo37tc.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyAdZPkx8S1BrdPrs1SHnxqQ56_VddgYGO4"
+          "current_key": "AIzaSyBM59ZcK8FcALal2Ph_Jb9XjQmKOw3Rpz4"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "654760512004-a2vl4fki9bd11t6mo5u1hmvirrs0igjm.apps.googleusercontent.com",
+              "client_id": "156087953461-u43kgs4n2esf37m88fq8tjkvlvoo37tc.apps.googleusercontent.com",
               "client_type": 3
             },
             {
-              "client_id": "654760512004-5epb49djc918msfo7d718c6rfmg5gco7.apps.googleusercontent.com",
+              "client_id": "156087953461-efara79to0f17dd50f0ff8kq6bb968n5.apps.googleusercontent.com",
               "client_type": 2,
               "ios_info": {
                 "bundle_id": "br.com.unisociesc.projetocrianca"
