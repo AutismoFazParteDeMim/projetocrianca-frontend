@@ -46,3 +46,5 @@ app.*.map.json
 node_modules
 # Environment variable
 .env*
+**/firebase_options.dart
+**/google-services.json
