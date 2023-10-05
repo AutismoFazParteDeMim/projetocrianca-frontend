@@ -5,16 +5,15 @@ import 'package:projeto_crianca/data/models/avatar_model.dart';
 class AvatarProvider {
   final Dio _instance = Dio();
 
-  static const String baseUrl =
-      'https://avatars.dicebear.com/api/big-smile/:seed.svg';
+  static const String baseUrl = 'https://api.dicebear.com/7.x/big-smile/svg';
 
   Future<String?> getAvatar(AvatarModel avatar) async {
     final params = <String, dynamic>{
       'mouth': avatar.mouth.name,
       'eyes': avatar.eye.name,
       'hair': avatar.hair.name,
-      'skinColor': avatar.skinColor.name,
-      'hairColor': avatar.hairColor.name,
+      // 'skinColor': avatar.skinColor.name,
+      'hairColor': avatar.hairColor.name.split('v').last,
     }
       ..addIf(
         avatar.accessories != AvatarModelAccessories.none,
@@ -22,9 +21,9 @@ class AvatarProvider {
         avatar.accessories.name,
       )
       ..addIf(
-        avatar.accessories == AvatarModelAccessories.none,
+        avatar.accessories != AvatarModelAccessories.none,
         'accessoriesProbability',
-        0,
+        100,
       );
 
     final response = await _instance.get<dynamic>(

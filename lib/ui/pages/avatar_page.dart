@@ -189,35 +189,35 @@ class AvatarPage extends GetView<AvatarPageController> {
 
   static final List<Map<String, dynamic>> _hairColor = [
     {
-      'style': AvatarModelHairColor.variant01,
+      'style': AvatarModelHairColor.v220f00,
       'color': '0xFF220F00',
     },
     {
-      'style': AvatarModelHairColor.variant02,
+      'style': AvatarModelHairColor.v3a1a00,
       'color': '0xFF3A1A00',
     },
     {
-      'style': AvatarModelHairColor.variant03,
+      'style': AvatarModelHairColor.v71472d,
       'color': '0xFF71472D',
     },
     {
-      'style': AvatarModelHairColor.variant04,
+      'style': AvatarModelHairColor.ve2ba87,
       'color': '0xFFE2BA87',
     },
     {
-      'style': AvatarModelHairColor.variant05,
+      'style': AvatarModelHairColor.v605de4,
       'color': '0xFF605DE4',
     },
     {
-      'style': AvatarModelHairColor.variant06,
+      'style': AvatarModelHairColor.v238d80,
       'color': '0xFF238D80',
     },
     {
-      'style': AvatarModelHairColor.variant07,
+      'style': AvatarModelHairColor.vd56c0c,
       'color': '0xFFD56C0C',
     },
     {
-      'style': AvatarModelHairColor.variant08,
+      'style': AvatarModelHairColor.ve9b729,
       'color': '0xFFE9B729',
     },
   ];

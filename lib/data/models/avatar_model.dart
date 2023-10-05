@@ -60,14 +60,14 @@ enum AvatarModelSkinColor {
 }
 
 enum AvatarModelHairColor {
-  variant01,
-  variant02,
-  variant03,
-  variant04,
-  variant05,
-  variant06,
-  variant07,
-  variant08
+  v220f00,
+  v3a1a00,
+  v71472d,
+  ve2ba87,
+  v605de4,
+  v238d80,
+  vd56c0c,
+  ve9b729
 }
 
 class AvatarModel {
@@ -84,7 +84,7 @@ class AvatarModel {
     this.hair = hair ?? AvatarModelHairType.shavedHead;
     this.accessories = accessories ?? AvatarModelAccessories.none;
     this.skinColor = skinColor ?? AvatarModelSkinColor.variant01;
-    this.hairColor = hairColor ?? AvatarModelHairColor.variant01;
+    this.hairColor = hairColor ?? AvatarModelHairColor.v220f00;
   }
 
   late AvatarModelMouth mouth;
