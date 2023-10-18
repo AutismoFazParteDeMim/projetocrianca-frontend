@@ -11,6 +11,11 @@
       "args": ["--enable-impeller"]
     },
     {
+      "name": "projeto_crianca (no impeller)",
+      "request": "launch",
+      "type": "dart"
+    },
+    {
       "name": "projeto_crianca (profile mode)",
       "request": "launch",
       "type": "dart",
