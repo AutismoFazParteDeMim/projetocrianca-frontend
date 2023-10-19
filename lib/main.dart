@@ -5,15 +5,15 @@ import 'package:flutter/services.dart';
 import 'package:flutter_config/flutter_config.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
-import 'package:projeto_crianca/data/providers/auth_provider.dart';
-import 'package:projeto_crianca/data/providers/user_provider.dart';
-import 'package:projeto_crianca/data/repositories/auth_repository.dart';
+import 'package:projeto_crianca/core/external/datasources/auth_datasource_impl.dart';
+import 'package:projeto_crianca/core/external/datasources/user_datasource_impl.dart';
+import 'package:projeto_crianca/core/infra/repositories/auth_repository_impl.dart';
+import 'package:projeto_crianca/core/mixins/storage_mixin.dart';
+import 'package:projeto_crianca/core/presentation/theme/app_theme.dart';
+import 'package:projeto_crianca/core/routes/app_pages.dart';
+import 'package:projeto_crianca/core/routes/app_routes.dart';
+import 'package:projeto_crianca/core/services/auth_service.dart';
 import 'package:projeto_crianca/firebase_options.dart';
-import 'package:projeto_crianca/mixins/storage_mixin.dart';
-import 'package:projeto_crianca/routes/app_pages.dart';
-import 'package:projeto_crianca/routes/app_routes.dart';
-import 'package:projeto_crianca/services/auth_service.dart';
-import 'package:projeto_crianca/ui/theme/app_theme.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -35,9 +35,9 @@ Future<void> main() async {
   ).then(
     (value) => Get.put(
       AuthService(
-        AuthRepository(
-          authProvider: AuthProvider(),
-          userProvider: UserProvider(),
+        AuthRepositoryImpl(
+          authDatasource: AuthDatasourceImpl(),
+          userDatasource: UserDatasourceImpl(),
         ),
       ),
     ),
