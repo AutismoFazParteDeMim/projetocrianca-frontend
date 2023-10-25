@@ -18,6 +18,7 @@ class AboutPageController extends GetxController with DialogMixin {
   @override
   Future<void> onReady() async {
     super.onReady();
+
     try {
       final contributors = await repository.getContributors();
       _contributors.value = contributors;
